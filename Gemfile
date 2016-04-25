@@ -71,3 +71,6 @@ group :deployment do
   gem 'capistrano-bundler'
   gem 'capistrano3-unicorn'
 end
+
+gem 'react-rails'
+gem 'browserify-rails'
