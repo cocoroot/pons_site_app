@@ -1,0 +1,2 @@
+class CreationImage < Image
+end

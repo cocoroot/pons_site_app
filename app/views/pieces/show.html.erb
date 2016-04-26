@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @piece.name %>
+</p>
+
+<p>
+  <strong>File name:</strong>
+  <%= @piece.file_name %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @piece.url %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @piece.image %>
+</p>
+
+<p>
+  <strong>Thumbnail:</strong>
+  <%= @piece.thumbnail %>
+</p>
+
+<%= link_to 'Edit', edit_piece_path(@piece) %> |
+<%= link_to 'Back', pieces_path %>

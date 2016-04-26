@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Creations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Created by</th>
+      <th>Published at</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @creations.each do |creation| %>
+      <tr>
+        <td><%= creation.title %></td>
+        <td><%= creation.created_by %></td>
+        <td><%= creation.published_at %></td>
+        <td><%= link_to 'Show', creation %></td>
+        <td><%= link_to 'Edit', edit_creation_path(creation) %></td>
+        <td><%= link_to 'Destroy', creation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Creation', new_creation_path %>

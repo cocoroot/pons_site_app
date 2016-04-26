@@ -1,0 +1,7 @@
+create_table :creations, id: :bigserial do |t|
+  t.string :title
+  t.string :created_by
+  t.datetime :published_at
+
+  t.timestamps null: false
+end
