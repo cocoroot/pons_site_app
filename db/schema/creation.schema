@@ -1,6 +1,6 @@
 create_table :creations, id: :bigserial do |t|
-  t.string :title
-  t.string :created_by
+  t.string :title, null: false, limit: 200, default: ''
+  t.string :created_by, index: true
   t.datetime :published_at
 
   t.timestamps null: false

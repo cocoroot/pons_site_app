@@ -1,4 +1,4 @@
 # Schemafile
 require 'schema/creation.schema'
-require 'schema/piece.schema'
 require 'schema/image.schema'
+require 'schema/piece.schema'
