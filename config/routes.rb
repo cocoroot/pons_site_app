@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :pieces
+  resources :images
+  resources :creations
   get 'hello/index'
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -18,3 +18,4 @@ config/environments/*.local.yml
 /coverage
 /node_modules
 .tern-port
+/public/uploads

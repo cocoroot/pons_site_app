@@ -1,0 +1,11 @@
+create_table :pieces, id: :bigserial do |t|
+  t.string :name, null: false, default: ''
+  t.text :url
+  t.integer :image_id, limit: 8, index: true
+  t.integer :thumbnail_id, limit: 8, index: true
+
+  t.timestamps null: false
+end
+
+add_foreign_key :pieces, :images, column: :image_id, name: 'fk_pieces_images_image_id'
+add_foreign_key :pieces, :images, column: :thumbnail_id, name: 'fk_pieces_images_thumbnail_id'

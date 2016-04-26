@@ -1,0 +1,13 @@
+class CreatePieces < ActiveRecord::Migration
+  def change
+    create_table :pieces do |t|
+      t.string :name
+      t.string :file_name
+      t.text :url
+      t.references :image
+      t.references :thumbnail
+
+      t.timestamps null: false
+    end
+  end
+end
