@@ -5,6 +5,7 @@ create_table :images, id: :bigserial do |t|
   t.string :type
   t.integer :creation_id, limit: 8
   t.integer :piece_id, limit: 8
+  t.string :image
 
   t.timestamps null: false
 end

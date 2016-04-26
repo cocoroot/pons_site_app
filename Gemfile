@@ -74,3 +74,7 @@ end
 
 gem 'react-rails'
 gem 'browserify-rails'
+
+gem 'carrierwave', git: 'https://github.com/carrierwaveuploader/carrierwave.git'
+gem 'fog'
+gem 'rmagick'

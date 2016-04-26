@@ -20,5 +20,10 @@
   <%= @image.type %>
 </p>
 
+<p>
+  <strong>Image</strong>
+  <%= image_tag @image.image.thumb.url %>
+</p>
+
 <%= link_to 'Edit', edit_image_path(@image) %> |
 <%= link_to 'Back', images_path %>
