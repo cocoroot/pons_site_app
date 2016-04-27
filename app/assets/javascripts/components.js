@@ -4,4 +4,4 @@ import * as Containers from './components/containers'
 
 window.React = React
 window.ReactDOM = ReactDOM
-window.Root  = Containers
+window.Containers  = Containers
