@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'gitfab/index'
+
   resources :pieces
   resources :images
   resources :creations
