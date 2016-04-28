@@ -4,17 +4,16 @@ import App from '../components/App'
 import * as Actions from '../actions'
 
 function mapStateToProps(state) {
-    //console.log("AppConnector mapStatetoprops(state) state=%o, state.note=%o", state, state.note)
-    return {
+  console.log("AppConnector mapStatetoprops(state) state=%o, state.creations=%o", state, state.creations)
+  return {
 	//note: state.note
-    }
+    creations: state.creations
+  }
 }
 
 function mapDispatchToProps(dispatch) {
-    //console.log("AppConnector mapDispatchtoprops(dispatch) Actions=%o", Actions)
-    return bindActionCreators(Actions, dispatch)
+  //console.log("AppConnector mapDispatchtoprops(dispatch) Actions=%o", Actions)
+  return bindActionCreators(Actions, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)
-
-
