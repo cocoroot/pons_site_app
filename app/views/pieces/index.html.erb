@@ -6,7 +6,6 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>File name</th>
       <th>Url</th>
       <th>Image</th>
       <th>Thumbnail</th>
@@ -18,10 +17,9 @@
     <% @pieces.each do |piece| %>
       <tr>
         <td><%= piece.name %></td>
-        <td><%= piece.file_name %></td>
         <td><%= piece.url %></td>
-        <td><%= piece.image %></td>
-        <td><%= piece.thumbnail %></td>
+        <td><%= piece.image_id %></td>
+        <td><%= piece.thumbnail_id %></td>
         <td><%= link_to 'Show', piece %></td>
         <td><%= link_to 'Edit', edit_piece_path(piece) %></td>
         <td><%= link_to 'Destroy', piece, method: :delete, data: { confirm: 'Are you sure?' } %></td>
