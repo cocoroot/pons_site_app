@@ -11,7 +11,6 @@ const store = configureStore()
 export class Root extends Component {
 
   componentWillMount() {
-    console.log("Root componentWillMount() this.props=%o", this.props)
     //store.dispatch(attachNote(this.props.note))
     store.dispatch(setCreations(this.props.creations))
   }

@@ -4,7 +4,6 @@ import Creation from './Creation'
 class CreationList extends Component {
   render() {
     const { creations } = this.props
-    console.log("TodoList render() this.props= %o, creations=%o", this.props, creations)
     return (
       <ul>
         {creations.map(creation =>

@@ -2,9 +2,7 @@ import React, { Component, PropTypes } from 'react'
 
 class Creation extends Component {
   render() {
-    console.log("Creation render() this.props= %o" , this.props)
     const {  title, created_by, published_at, url  } = this.props
-    console.log("Creation render() title=%o", title)
     return (
       <li>
         <h3>{title}</h3>
