@@ -1,9 +1,13 @@
 import React, { Component, PropTypes } from 'react'
+import CreationList from './CreationList'
 
-class App extends React.Component {
+class App extends Component {
   render() {
+    const { creations } = this.props
     return (
-      <div>Hello, ATOM!</div>
+      <div>
+        <CreationList creations={creations} />
+      </div>
     )
   }
 }

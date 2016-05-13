@@ -1,0 +1,2 @@
+module GitfabHelper
+end
