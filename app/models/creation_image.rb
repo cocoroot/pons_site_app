@@ -1,2 +1,0 @@
-class CreationImage < Image
-end
