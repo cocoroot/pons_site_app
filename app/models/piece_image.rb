@@ -1,2 +1,0 @@
-class PieceImage < Image
-end
