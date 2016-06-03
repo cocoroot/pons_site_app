@@ -1,4 +1,38 @@
 Rails.application.routes.draw do
+  get 'login/login'
+
+  scope :api do
+    with_options(defaults: { format: :json }, format: false) do
+      # post 'create_user'
+      post 'site_users' => 'core_api#create_site_user'
+      get 'site_users/:id' => 'core_api#show_site_user'
+      put 'site_users/:id' => 'core_api#update_site_user'
+      post 'site_user_images' => 'core_api#create_site_user_image'
+      post 'site_user_header_images' => 'core_api#create_site_user_header_image'
+
+      post 'creations/' => 'core_api#create_creation'
+      get 'creations/:id' => 'core_api#show_creation'
+      put 'creations/:id' => 'core_api#update_creation'
+
+      post 'creations/:id/creation_images' => 'core_api#create_creation_image'
+      get 'creation_images/:id' => 'core_api#show_creation_image'
+      put 'creation_images/:id' => 'core_api#update_creation_image'
+      delete 'creation_images/:id' => 'core_api#delete_creation_image'
+
+      post 'creation_pieces' => 'core_api#create_creation_piece'
+      put 'creation_pieces' => 'core_api#update_creation_piece'
+      delete 'cleation_pieces' => 'core_api#delete_cleation_piece'
+
+      post 'creation/id:/creation_tags' => 'core_api#create_creation_tag'
+      delete 'creation_tags/id' => 'core_api#delete_creation_tag'
+
+      post 'creation_comments' => 'core_api#create_creation_comment'
+      post 'goods' => 'core_api#create_good'
+      get 'goods' => 'core_api#index_good'
+      delete 'goods' => 'core_api#delete_good'
+    end
+  end
+
   get 'gitfab/index'
 
   get 'hello/index'

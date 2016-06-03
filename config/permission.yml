@@ -46,6 +46,7 @@
 default: &controller_default
   index: &action_default
     - unauthenticated
+    - user
   create:
     *action_default
   new:
@@ -59,8 +60,52 @@ default: &controller_default
   destroy:
     *action_default
 
-#
-# SAMPLE
-#
-# authors:
-#   <<: *controller_default
+login:
+  login:
+    *action_default
+    
+core_api:
+  create_user:
+    *action_default 
+  create_site_user:
+    *action_default 
+  show_site_user:
+    *action_default 
+  update_site_user:
+    *action_default 
+  create_site_user_image:
+    *action_default 
+  create_site_user_header_image:
+    *action_default 
+  create_creation:
+    *action_default 
+  show_creation:
+    *action_default 
+  update_creation:
+    *action_default 
+  create_creation_image:
+    *action_default 
+  show_creation_image:
+    *action_default 
+  update_creation_image:
+    *action_default 
+  delete_creation_image:
+    *action_default 
+  create_creation_piece:
+    *action_default 
+  update_creation_piece:
+    *action_default 
+  delete_cleation_piece:
+    *action_default 
+  create_creation_tag:
+    *action_default 
+  delete_creation_tag:
+    *action_default 
+  create_creation_comment:
+    *action_default 
+  create_good:
+    *action_default 
+  index_good:
+    *action_default 
+  delete_good:
+    *action_default
