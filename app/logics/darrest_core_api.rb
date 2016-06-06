@@ -135,8 +135,8 @@ class DarrestCoreApi
 
   private
 
-  def send_get(api, &block)
-    send(:get, api) { |r, p| block.call(r, p) }
+  def send_get(api, &_block)
+    send(:get, api, nil)
   end
 
   def send_post(api, params, &block)
