@@ -1,5 +1,5 @@
 # coding: utf-8
-#require 'httpclient'
+require 'json'
 
 ACCESS_KEY = 'D7F2575F-B365-4B30-926E-85334BD176B7'
 API_BASE = 'http://localhost:3000'
@@ -41,32 +41,21 @@ class DarrestCoreApi
   #     image: <image>
   #   }
   # }
-  # def create_site_user_image(params)
-  #   api = '/my/site_user_image'
-  #   response = RestClient.post("#{API_BASE}#{api}", {
-  #                     site_user_image: {
-  #                       image: params[:site_user_image][:image]
-  #                     }
-  #                   },
-  #                   {
-  #                     'access_key' => ACCESS_KEY
-  #                   }
-  #                             )
-  #   binding.pry
-  #   JSON.parse(response.body)
-  # end
+  def create_site_user_image(params)
+    send_post('/my/site_user_image', params) do |req, parameters|
+      upload_file = parameters[:site_user_image][:image]
+      file = upload_file.tempfile
 
-  # def create_site_user_image(params)
-  #   api = '/my/site_user_image'
-  #   uri = URI.parse("#{API_BASE}#{api}")
-    
-  #   boundary = 'boundary'
-  #   client = HTTPClient.new
-  #   client.post_content(uri,
-  #                       { image: params[:site_user_image][:image] },
-  #                       'content-type' => "multipart/form-data; boundary=#{boundary}")
-  # end
-  
+      stream = MultiPartFormDataStream.new
+      stream.add_form('user_baas_id', parameters[:user_baas_id])
+      stream.add_file('image', upload_file.original_filename, upload_file.content_type, file)
+
+      req.body_stream = stream
+      req['Content-Length'] = stream.size
+      req['Content-Type'] = stream.content_type
+    end
+  end
+
   def _create_site_user_image(params)
     api = '/my/site_user_image'
     uri = URI.parse("#{API_BASE}#{api}")
@@ -84,14 +73,15 @@ class DarrestCoreApi
     req['access_key'] = ACCESS_KEY
 
     upload_file = params[:site_user_image][:image]
-    basename = File.basename(upload_file.tempfile)
     file = upload_file.tempfile
-    
-    form_data = MultiPartFormDataStream.new('image', basename, file)
-    req.body_stream = form_data
 
-    req['Content-Length'] = form_data.size
-    req['Content-Type'] = form_data.content_type
+    stream = MultiPartFormDataStream.new
+    stream.add_form('user_baas_id', params[:user_baas_id])
+    stream.add_file('image', upload_file.original_filename, upload_file.content_type, file)
+
+    req.body_stream = stream
+    req['Content-Length'] = stream.size
+    req['Content-Type'] = stream.content_type
 
     #
     # send request
@@ -166,19 +156,23 @@ class DarrestCoreApi
 
   private
 
-  def send_get(api)
-    send(:get, api)
+  def send_get(api, &block)
+    send(:get, api) { |r, p| block.call(r, p) }
   end
 
-  def send_post(api, params)
-    send(:post, api, params)
+  def send_post(api, params, &block)
+    send(:post, api, params) { |r, p| block.call(r, p) }
   end
 
-  def send_put(api, params)
-    send(:put, api, params)
+  def send_put(api, params, &block)
+    send(:put, api, params) { |r, p| block.call(r, p) }
   end
 
-  def send(method, api, params = nil)
+  def send_delete(api, params, &block)
+    send(:put, api, params) { |r, p| block.call(r, p) }
+  end
+
+  def send(method, api, params, &block)
     uri = URI.parse("#{API_BASE}#{api}")
 
     http = Net::HTTP.new(uri.host, uri.port)
@@ -201,10 +195,13 @@ class DarrestCoreApi
     end
 
     req['access_key'] = ACCESS_KEY
-    req['Content-Type'] = 'application/json'
 
-    req.body = params.to_json if params
-    
+    if block
+      block.call(req, params)
+    else
+      req['Content-Type'] = 'application/json'
+      req.body = params.to_json if params
+    end
 
     #
     # send request
