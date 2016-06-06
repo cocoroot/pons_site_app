@@ -1,5 +1,5 @@
 # coding: utf-8
-require 'rest-client'
+#require 'httpclient'
 
 ACCESS_KEY = 'D7F2575F-B365-4B30-926E-85334BD176B7'
 API_BASE = 'http://localhost:3000'
@@ -56,7 +56,18 @@ class DarrestCoreApi
   #   JSON.parse(response.body)
   # end
 
-  def create_site_user_image(params)
+  # def create_site_user_image(params)
+  #   api = '/my/site_user_image'
+  #   uri = URI.parse("#{API_BASE}#{api}")
+    
+  #   boundary = 'boundary'
+  #   client = HTTPClient.new
+  #   client.post_content(uri,
+  #                       { image: params[:site_user_image][:image] },
+  #                       'content-type' => "multipart/form-data; boundary=#{boundary}")
+  # end
+  
+  def _create_site_user_image(params)
     api = '/my/site_user_image'
     uri = URI.parse("#{API_BASE}#{api}")
 
@@ -75,7 +86,7 @@ class DarrestCoreApi
     upload_file = params[:site_user_image][:image]
     basename = File.basename(upload_file.tempfile)
     file = upload_file.tempfile
-    binding.pry
+    
     form_data = MultiPartFormDataStream.new('image', basename, file)
     req.body_stream = form_data
 

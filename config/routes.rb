@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       # post 'create_user'
       post 'site_users' => 'core_api#create_site_user'
       get 'site_users/:id' => 'core_api#show_site_user'
+      get 'me' => 'core_api#show_site_user'
       put 'me' => 'core_api#update_site_user'
       post 'my/user_image' => 'core_api#create_site_user_image'
       post 'my/user_header_image' => 'core_api#create_site_user_header_image'
