@@ -17,6 +17,7 @@ class Header extends Component {
             </ul>
             <ul className="nav navbar-nav navbar-right">
               <Button className="navbar-btn" bsStyle="primary">作品投稿</Button>
+              <a href="#"></a>
             </ul>
           </div>
         </div>

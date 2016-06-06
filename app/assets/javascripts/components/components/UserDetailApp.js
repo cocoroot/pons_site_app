@@ -11,7 +11,7 @@ class UserDetailApp extends Component {
         <div className="container">
           <ul>
             <li>user_id:{user.user_id} </li>
-            <li>user_name:</li>
+            <li><a href="/gitfab/index">gitfab</a></li>
             <li><img src={user.image.url} /></li>
             <li><img src={user.image.thumb.url} /></li>
             <li>biography: {user.biography}</li>
