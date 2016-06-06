@@ -1,7 +1,7 @@
 # coding: utf-8
 require 'json'
 
-ACCESS_KEY = 'D7F2575F-B365-4B30-926E-85334BD176B7'
+ACCESS_KEY = '8DC8D19E-8A35-43C8-95F4-49A316283591'
 API_BASE = 'http://localhost:3000'
 
 class DarrestCoreApi
@@ -38,17 +38,20 @@ class DarrestCoreApi
   # params = {
   #   user_baas_id: <user_baas_id>,
   #   site_user_image: {
-  #     image: <image>
+  #     image: <image_file>
   #   }
   # }
   def create_site_user_image(params)
     send_post('/my/site_user_image', params) do |req, parameters|
-      upload_file = parameters[:site_user_image][:image]
-      file = upload_file.tempfile
+      received_image = parameters[:site_user_image][:image]
+
+      original_filename = received_image.original_filename
+      content_type = received_image.content_type
+      file = received_image.tempfile
 
       stream = MultiPartFormDataStream.new
       stream.add_form('user_baas_id', parameters[:user_baas_id])
-      stream.add_file('image', upload_file.original_filename, upload_file.content_type, file)
+      stream.add_file('image', original_filename, content_type, file)
 
       req.body_stream = stream
       req['Content-Length'] = stream.size
@@ -56,52 +59,28 @@ class DarrestCoreApi
     end
   end
 
-  def _create_site_user_image(params)
-    api = '/my/site_user_image'
-    uri = URI.parse("#{API_BASE}#{api}")
-
-    http = Net::HTTP.new(uri.host, uri.port)
-
-    if %w(development test).include? Rails.env
-      http.use_ssl = false
-    else
-      http.use_ssl = true
-    end
-
-    req = Net::HTTP::Post.new(uri.request_uri)
-
-    req['access_key'] = ACCESS_KEY
-
-    upload_file = params[:site_user_image][:image]
-    file = upload_file.tempfile
-
-    stream = MultiPartFormDataStream.new
-    stream.add_form('user_baas_id', params[:user_baas_id])
-    stream.add_file('image', upload_file.original_filename, upload_file.content_type, file)
-
-    req.body_stream = stream
-    req['Content-Length'] = stream.size
-    req['Content-Type'] = stream.content_type
-
-    #
-    # send request
-    #
-    res = http.request(req)
-
-    #
-    # parse response
-    #
-    JSON.parse(res.body)
-  end
-
   # params = {
-  #   site_user_id: <site_user_id *required>,
+  #   user_baas_id: <user_baas_id>
   #   site_user_header_image: {
-  #     image: <image>
+  #     image: <image_file>
   #   }
   # }
   def create_site_user_header_image(params)
-    send_post('/my/site_user_header_image', site_user_header_image: params[:site_user_header_image])
+    send_post('/my/site_user_header_image', params) do |req, parameters|
+      received_image = parameters[:site_user_header_image][:image]
+
+      original_filename = received_image.original_filename
+      content_type = received_image.content_type
+      file = received_image.tempfile
+
+      stream = MultiPartFormDataStream.new
+      stream.add_form('user_baas_id', parameters[:user_baas_id])
+      stream.add_file('image', original_filename, content_type, file)
+
+      req.body_stream = stream
+      req['Content-Length'] = stream.size
+      req['Content-Type'] = stream.content_type
+    end
   end
 
   def create_creation(params)
