@@ -35,7 +35,19 @@ class CoreApiController < ApplicationController
     render json: @result
   end
 
+  #
+  # params = {
+  #   image: <image_file>
+  # }
   def create_site_user_header_image
+    args = {
+      user_baas_id: user_baas_id,
+      site_user_header_image: {
+        image: params[:image]
+      }
+    }
+    @result = DarrestCoreApi.new.create_site_user_header_image(args)
+    render json: @result
   end
 
   def create_creation
