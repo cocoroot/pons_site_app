@@ -1,9 +1,7 @@
 # coding: utf-8
-require 'json'
+#require 'httpclient'
 
-<<<<<<< HEAD
 ACCESS_KEY = '06CD4808-C0F4-46B0-A2E0-51863217A91C'
-=======
 API_BASE = 'http://localhost:3000'
 
 class DarrestCoreApi
