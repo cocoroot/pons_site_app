@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'site_user_detail/index'
+  get 'creator/:id' => 'site_user_detail#index'
 
   get 'login/login'
 
