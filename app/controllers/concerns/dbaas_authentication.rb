@@ -45,7 +45,7 @@ module DbaasAuthentication extend ActiveSupport::Concern
     # make response
     #
     ret = JSON.parse(res.body)["returnedValue"]
-    binding.pry
+
     if ret["status"] == 'OK'
       user_hash = ret["user"]
 
