@@ -7,15 +7,18 @@ class ApplicationController < ActionController::Base
 
   class AuthenticationError < ActionController::ActionControllerError; end
   class PermissionError < ActionController::ActionControllerError; end
-  
+
   include ErrorHandlers
-  #include DbaasAuthentication
+  include DbaasAuthentication
   include CheckPermission
-  
+
   protected
-  
+
   def json_request?
     request.format.json?
   end
 
+  def user_baas_id
+    RequestLocals.store[:request_user].try(:ex_user_id)
+  end
 end
