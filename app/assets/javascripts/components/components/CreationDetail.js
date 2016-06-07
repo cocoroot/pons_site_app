@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react'
 
-class Creation extends Component {
+class CreationDetail extends Component {
   render() {
     const {  id, title, created_by, published_at, url } = this.props.creation
-    console.log("Creation props=%o", this.props)
+    console.log("CreationDetail props=%o", this.props)
     return (
       <div>
         <h3>{title}</h3>
@@ -18,7 +18,7 @@ class Creation extends Component {
   }
 }
 
-Creation.propTypes = {
+CreationDetail.propTypes = {
   id: PropTypes.number ,
   title: PropTypes.string ,
   created_by: PropTypes.string,
@@ -26,4 +26,4 @@ Creation.propTypes = {
   url: PropTypes.string
 }
 
-export default Creation
+export default CreationDetail

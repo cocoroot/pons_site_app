@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'top/index'
+
   get 'creation_detail/index'
 
   get 'login/login'
