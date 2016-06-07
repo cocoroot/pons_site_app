@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'creation_detail/index'
+
   get 'login/login'
 
   scope :api do

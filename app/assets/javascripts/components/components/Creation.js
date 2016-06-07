@@ -2,17 +2,18 @@ import React, { Component, PropTypes } from 'react'
 
 class Creation extends Component {
   render() {
-    const {  title, created_by, published_at, url  } = this.props
+    const {  id, title, created_by, published_at, url } = this.props.creation
+    console.log("Creation props=%o", this.props)
     return (
-      <li>
+      <div>
         <h3>{title}</h3>
-        <p>
-          {/*id: {id}<br />*/}
-          created by: {created_by}<br />
-          published at: {published_at}<br />
-          url: <a href={url}>{url}</a>
-        </p>
-      </li>
+        <ul>
+          <li>id: {id}</li>
+          <li>created by: {created_by}</li>
+          <li>published at: {published_at}</li>
+          <li>url: <a href={url}>{url}</a></li>
+        </ul>
+      </div>
     )
   }
 }

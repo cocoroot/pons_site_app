@@ -1,0 +1,2 @@
+module CreationDetailHelper
+end

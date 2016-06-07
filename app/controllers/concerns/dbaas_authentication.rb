@@ -10,19 +10,20 @@ module DbaasAuthentication extend ActiveSupport::Concern
 
   private
 
-  def verify_access_token
-    user_info = UserInfo.new('5422fb650500-2b2b-6e11-8802-0816b8d4', ['user'])
-    RequestLocals.store[:request_user] = user_info
+  def _verify_access_token
+    raise ApplicationController::AuthenticationError, response.code
+    #user_info = UserInfo.new('5422fb650500-2b2b-6e11-8802-0816b8d4', ['user'])
+    #RequestLocals.store[:request_user] = user_info
   end
 
   # verify access token which http request header contains.
-  def _verify_access_token
+  def verify_access_token
     #
     # receive token
     #
     token = request.headers[:HTTP_ACCESS_TOKEN]
     token = (valid_token?(token) ? token : "")
-
+Rails.logger.debug "token=#{token}"
     #
     # build request
     #
