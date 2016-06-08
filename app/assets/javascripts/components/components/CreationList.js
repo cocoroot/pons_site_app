@@ -1,24 +1,28 @@
 import React, { Component, PropTypes } from 'react'
 import Creation from './Creation'
 
+import { Grid, Row } from 'react-bootstrap'
+
 class CreationList extends Component {
   render() {
-    const { creations } = this.props
+    const { creationList } = this.props
     return (
-      <ul>
-        {creations.map(creation =>
-          <Creation
-            key={creation.id}
-            {...creation}
-          />
-        )}
-      </ul>
+      <Grid>
+        <Row>
+          {creationList.map(creation =>
+            <Creation
+              key={creation.id}
+              {...creation}
+            />
+          )}
+        </Row>
+      </Grid>
     )
   }
 }
 
 CreationList.propTypes = {
-  creations: PropTypes.arrayOf(PropTypes.object).isRequired
+  creationList: PropTypes.arrayOf(PropTypes.object).isRequired
 }
 
 export default CreationList

@@ -1,5 +1,5 @@
 # coding: utf-8
-require 'json'
+#require 'httpclient'
 
 ACCESS_KEY = '8DC8D19E-8A35-43C8-95F4-49A316283591'
 API_BASE = 'http://localhost:3000'
@@ -32,7 +32,7 @@ class DarrestCoreApi
   #   }
   # }
   def update_site_user(params)
-    send_post('/me', params)
+    send_put('/me', params)
   end
 
   # params = {

@@ -1,20 +1,91 @@
-import React, { Component } from 'react'
 import { render } from 'react-dom'
-import { IndexRoute, Link, Router, Route, browserHistory } from 'react-router'
-import { bindActionCreators } from 'redux'
-import { Provider, connect } from 'react-redux'
-import { syncHistoryWithStore } from 'react-router-redux'
-import configureStore from '../store/configureStore'
 
-import * as Actions from '../actions'
+//----------------------------------------
+// Store
+//----------------------------------------
+import { createStore, applyMiddleware, combineReducers } from 'redux'
+import createLogger from 'redux-logger'
+import thunk from 'redux-thunk'
+
+const logger = createLogger()
+
+const createStoreWithMiddleware = applyMiddleware(
+  thunk,
+  logger
+)(createStore)
+
+function configureStore(initialState) {
+  return createStoreWithMiddleware(rootReducer, initialState)
+}
 
 const store = configureStore()
 
-const history = syncHistoryWithStore(browserHistory, store)
+//----------------------------------------
+// Actions
+//----------------------------------------
+const SET_CREATION = 'SET_CREATION'
+
+function setCreation(creation) {
+  return {
+    type: SET_CREATION,
+    creation: creation
+  }
+}
+
+const SET_HEAD_MESSAGE = 'SET_HEAD_MESSAGE'
+
+function setHeadMessage(message) {
+  return {
+    type: SET_HEAD_MESSAGE,
+    headMessage: message
+  }
+}
+
+//----------------------------------------
+// Reducers
+//----------------------------------------
+
+//
+// Top
+//
+function top(state = [], action) {
+  switch (action.type) {
+    case SET_HEAD_MESSAGE:
+      return action.headMessage
+    default:
+      return state
+  }
+}
+
+//
+// creation
+//
+function creation(state = [], action) {
+  switch (action.type) {
+    case SET_CREATION:
+      return action.creation
+    default:
+      return state
+  }
+}
+
+//
+// roodReducer
+//
+import { combineReducers } from 'redux'
+import { routerReducer } from 'react-router-redux'
+
+const rootReducer = combineReducers({
+  creation,
+  routing: routerReducer
+})
 
 //----------------------------------------
 // Components
 //----------------------------------------
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
 //
 // Login
@@ -34,7 +105,6 @@ class Top extends Component {
   }
 }
 
-const setHeadMessage = Actions.setHeadMessage
 var ConnectedTop = connect((state) => {
   return {
     headMessage: state.headMessage
@@ -76,8 +146,6 @@ class CreationDetail extends Component {
     })
       .then((response) => response.json())
       .then(json => {
-	//console.log(responseText)
-	//var json = JSON.parse(responseText)
 	console.log("CreationDetail json = %o", json)
 	store.dispatch(setCreation(json))
       })
@@ -87,10 +155,8 @@ class CreationDetail extends Component {
   }
 
   render() {
-    console.log("CreationDetail props=%o", this.props)
     const { creation_id, title, created_by, published_at } = this.props.creation
     var images = this.props.creation.images || []
-    console.log("CreationDetail images=%o", images)
     
     return (
       <div>
@@ -108,8 +174,6 @@ class CreationDetail extends Component {
   }
 }
 
-
-const setCreation = Actions.setCreation
 var ConnectedCreationDetail = connect((state) => {
   return {
     creation: state.creation
@@ -148,7 +212,14 @@ class App extends Component {
 //----------------------------------------
 // Root
 //----------------------------------------
-export class Root extends Component {
+import { Provider } from 'react-redux'
+import { IndexRoute, Link, Router, Route } from 'react-router'
+import { syncHistoryWithStore } from 'react-router-redux'
+import { browserHistory } from 'react-router'
+
+const history = syncHistoryWithStore(browserHistory, store)
+
+export class RouteTest extends Component {
   requireAuth(nextState, replace) {
     localStorage.access_token = 'dummy-token'
     if (!localStorage.access_token) {

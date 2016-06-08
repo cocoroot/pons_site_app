@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'top/index'
 
   get 'creation_detail/index'
+  get 'creator/:id' => 'site_user_detail#index'
 
   get 'login/login'
 
