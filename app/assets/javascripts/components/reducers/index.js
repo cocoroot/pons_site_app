@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 //import note from './note'
-import creations from './top'
+import top from './top'
 import creation from './creation'
 
 import { routerReducer } from 'react-router-redux'
@@ -9,7 +9,7 @@ import { routerReducer } from 'react-router-redux'
 
 const rootReducer = combineReducers({
   //    note
-  creations,
+  top,
   creation,
   routing: routerReducer
 })

@@ -17,6 +17,15 @@ const history = syncHistoryWithStore(browserHistory, store)
 //----------------------------------------
 
 //
+// Login
+//
+class Login extends Component {
+  render() {
+    return <div>Login</div>
+  }
+}
+
+//
 // Top
 //
 class Top extends Component {
@@ -40,6 +49,16 @@ var ConnectedTop = connect((state) => {
 //
 // CreationDetail
 //
+
+class Image extends Component {
+  render() {
+    var image = this.props.image
+    if (image == null) return null
+    return (
+      <li>{ image.url }, { image.image_name_for_user }</li>
+    )
+  }
+}
 class CreationDetail extends Component {
 
   componentWillMount() {
@@ -66,22 +85,29 @@ class CreationDetail extends Component {
 	console.warn(error)
       })
   }
-  
+
   render() {
     console.log("CreationDetail props=%o", this.props)
     const { creation_id, title, created_by, published_at } = this.props.creation
+    var images = this.props.creation.images || []
+    console.log("CreationDetail images=%o", images)
+    
     return (
       <div>
         <h3>{title}</h3>
         <ul>
-          <li>id: {this.props.params.creation_id}</li>
+          <li>id: {creation_id}</li>
           <li>created by: {created_by}</li>
           <li>published at: {published_at}</li>
-        </ul>
+          <li>
+            <ul>{ images.map((image) => { return <Image key={image.key} image={image} /> }) } </ul>
+          </li>
+         </ul>
       </div>
     )
   }
 }
+
 
 const setCreation = Actions.setCreation
 var ConnectedCreationDetail = connect((state) => {
@@ -123,9 +149,17 @@ class App extends Component {
 // Root
 //----------------------------------------
 export class Root extends Component {
-  // componentWillMount() {
-  //   store.dispatch(Actions.setCreation(this.props.creation))
-  // }
+  requireAuth(nextState, replace) {
+    localStorage.access_token = 'dummy-token'
+    if (!localStorage.access_token) {
+      replace({
+	pathname: '/login',
+	state: {
+	  nextPathname: nextState.location.pathname
+	}
+      })
+    }
+  }
   
   render() {
     return(
@@ -133,7 +167,8 @@ export class Root extends Component {
 	<Router history={ history }>
 	  <Route path="/top/index" component={ App }>
             <IndexRoute component={ ConnectedTop } />
-            <Route path="/creations/:creation_id" component={ ConnectedCreationDetail } />
+            <Route path="/creations/:creation_id" component={ ConnectedCreationDetail } onEnter={this.requireAuth} />
+	    <Route path="/login" component={ Login } />
           </Route>
 	</Router>
       </Provider>
