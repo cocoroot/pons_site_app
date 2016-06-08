@@ -1,23 +1,19 @@
 import React, { Component, PropTypes } from 'react'
 import Header from './Header'
-// import CreationList from './CreationList'
+import Footer from './Footer'
+import UserDetailProfileBox from './UserDetailProfileBox'
+import UserDetailCreationBox from './UserDetailCreationBox'
 
 class UserDetailApp extends Component {
   render() {
-    const { user } = this.props
+    const { profile, creations } = this.props
+    const { changeEditMode } = this.props
     return (
       <div>
-        <Header user={user} />
-        <div className="container">
-          <ul>
-            <li>user_id:{user.user_id} </li>
-            <li><a href="/gitfab/index">gitfab</a></li>
-            <li><img src={user.image.url} /></li>
-            <li><img src={user.image.thumb.url} /></li>
-            <li>biography: {user.biography}</li>
-            <li></li>
-          </ul>
-        </div>
+        <Header user={profile.user} />
+        <UserDetailProfileBox profile={profile} changeEditMode={changeEditMode}  />
+        <UserDetailCreationBox creations={creations} />
+        <Footer />
       </div>
     )
   }

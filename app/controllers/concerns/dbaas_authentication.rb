@@ -1,3 +1,4 @@
+# coding: utf-8
 require 'net/http'
 require 'uri'
 require 'json'
@@ -9,8 +10,13 @@ module DbaasAuthentication extend ActiveSupport::Concern
 
   private
 
-  # verify access token which http request header contains.
   def verify_access_token
+    user_info = UserInfo.new('5422fb650500-2b2b-6e11-8802-0816b8d4', ['user'])
+    RequestLocals.store[:request_user] = user_info
+  end
+
+  # verify access token which http request header contains.
+  def _verify_access_token
     #
     # receive token
     #

@@ -1,3 +1,33 @@
-// Place all the styles related to the site_user_detail controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.container {
+  max-width:1000px;
+}
+
+.profile-image {
+  position:relative;
+  top:-20px;
+  height:300px;
+  overflow: hidden;
+}
+
+.user-profile {
+  margin-bottom: 30px;
+}
+
+
+.user-avatar{
+  width:100px;
+  height: 100px;
+}
+
+.user-profile-text {
+  position: relative;
+}
+.user-edit-btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.user-form-name {
+  width:300px;
+}

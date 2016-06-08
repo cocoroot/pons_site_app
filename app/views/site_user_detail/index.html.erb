@@ -1,24 +1,87 @@
 <%= react_component 'Containers.UserDetailRoot',
 {
-  # store: {
-      isLoggedIn: true,
-      user: {
-        id: 1,
-        user_id: 1,
-        site_id: 1,
-        image: {
-          url: "/site_users/1/site_user_images/e849af27-e916-4e58-9428-c6920016817b.jpg",
-          thumb: {
-            url: "/site_users/1/site_user_images/thumb_e849af27-e916-4e58-9428-c6920016817b.jpg"
-          }
-        },
-        biography: "更新バイオグラフィー2",
-        tos_accepted: true,
-        site_user_status: {
-          id: 20,
-          name: "本登録"
-        },
-      }
+  # login: {
+  #   isLoggedIn: true,
+  #   user: {}
+  # }
+  user: @response['user'],
+  originalCreations: [
+    {
+      id: 1,
+      title:"title",
+      imgUrl: "url",
+      author: @response['user'],
+      viewCount: 22,
+      likeCount: 33,
+      commentCount: 55
+    },
+    {
+      id:2,
+      title:"title",
+      imgUrl: "url",
+      author: @response['user'],
+      viewCount: 22,
+      likeCount: 33,
+      commentCount: 55
+    },
+    {
+      id:3,
+      title:"title",
+      imgUrl: "url",
+      author: @response['user'],
+      viewCount: 22,
+      likeCount: 33,
+      commentCount: 55
+    },
+    {
+      id:4,
+      title:"title",
+      imgUrl: "url",
+      author: @response['user'],
+      viewCount: 22,
+      likeCount: 33,
+      commentCount: 55
+    }
+
+  ],
+  favoriteCreations: [
+    {
+      id: 1,
+      title:"title",
+      imgUrl: "url",
+      author: @response['user'],
+      viewCount: 22,
+      likeCount: 33,
+      commentCount: 55
+    },
+    {
+      id:2,
+      title:"title",
+      imgUrl: "url",
+      author: @response['user'],
+      viewCount: 22,
+      likeCount: 33,
+      commentCount: 55
+    }
+  ]
+
+
+  # user: {
+  #   id: 1,
+  #   user_id: 1,
+  #   site_id: 1,
+  #   image: {
+  #     url: "/site_users/1/site_user_images/e849af27-e916-4e58-9428-c6920016817b.jpg",
+  #     thumb: {
+  #       url: "/site_users/1/site_user_images/thumb_e849af27-e916-4e58-9428-c6920016817b.jpg"
+  #     }
+  #   },
+  #   biography: "更新バイオグラフィー2",
+  #   tos_accepted: true,
+  #   site_user_status: {
+  #     id: 20,
+  #     name: "本登録"
+  #   },
   # }
 
 }

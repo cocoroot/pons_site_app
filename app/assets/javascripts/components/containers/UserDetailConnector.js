@@ -6,13 +6,14 @@ import * as Actions from '../actions'
 function mapStateToProps(state) {
   return {
 	//note: state.note
-    user: state.user
-    // creations: state.creations
+    // user_detail: state.UserDetail
+    profile: state.UserDetail_profile,
+    creations: state.UserDetail_creations
   }
 }
 
 function mapDispatchToProps(dispatch) {
-  //console.log("AppConnector mapDispatchtoprops(dispatch) Actions=%o", Actions)
+  console.log("AppConnector mapDispatchtoprops(dispatch) Actions=%o", Actions)
   return bindActionCreators(Actions, dispatch)
 }
 

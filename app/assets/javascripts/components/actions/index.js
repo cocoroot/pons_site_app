@@ -1,3 +1,3 @@
 // export * from './note'
-export * from './creations'
-export * from './user'
+export * from './UserDetail_profile'
+export * from './UserDetail_creations'
