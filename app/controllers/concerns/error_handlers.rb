@@ -21,8 +21,8 @@ module ErrorHandlers extend ActiveSupport::Concern
 
   def rescue401(e)
     @exception = e
-    #render 'errors/error401', status: 401
-    redirect_to login_login_path
+    render 'errors/error401', status: 401
+    #redirect_to login_login_path
   end
 
   def rescue403(e)

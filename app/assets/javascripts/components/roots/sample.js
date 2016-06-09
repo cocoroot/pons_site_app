@@ -1,26 +1,6 @@
 import { render } from 'react-dom'
 
 //----------------------------------------
-// Store
-//----------------------------------------
-import { createStore, applyMiddleware, combineReducers } from 'redux'
-import createLogger from 'redux-logger'
-import thunk from 'redux-thunk'
-
-const logger = createLogger()
-
-const createStoreWithMiddleware = applyMiddleware(
-  thunk,
-  logger
-)(createStore)
-
-function configureStore(initialState) {
-  return createStoreWithMiddleware(rootReducer, initialState)
-}
-
-const store = configureStore()
-
-//----------------------------------------
 // Actions
 //----------------------------------------
 const SET_CREATION = 'SET_CREATION'
@@ -81,6 +61,48 @@ const rootReducer = combineReducers({
 })
 
 //----------------------------------------
+// Store
+//----------------------------------------
+import { createStore, applyMiddleware } from 'redux'
+import createLogger from 'redux-logger'
+import thunk from 'redux-thunk'
+
+const logger = createLogger()
+
+const createStoreWithMiddleware = applyMiddleware(
+  thunk,
+  logger
+)(createStore)
+
+function configureStore(initialState) {
+  return createStoreWithMiddleware(rootReducer, initialState)
+}
+
+const store = configureStore()
+
+//----------------------------------------
+// function
+//----------------------------------------
+function fetchCreation(id) {
+  fetch('/api/creations/' + id, {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'access_token': 'ZGlvbC3EmXps7OsgAdq17Tsp6opGZ3-Xn5jUDgjdM_Q'
+    }
+  })
+    .then((response) => response.json())
+    .then(json => {
+      console.log("CreationDetail json = %o", json)
+      store.dispatch(setCreation(json))
+    })
+    .catch((error) => {
+      console.warn(error)
+    })
+}
+
+//----------------------------------------
 // Components
 //----------------------------------------
 import React, { Component } from 'react'
@@ -132,26 +154,7 @@ class Image extends Component {
 class CreationDetail extends Component {
 
   componentWillMount() {
-    this.fetchCreation(this.props.params.creation_id)
-  }
-  
-  fetchCreation(id) {
-    fetch('/api/creations/' + id, {
-      method: 'GET',
-      headers: {
-	'Accept': 'application/json',
-	'Content-Type': 'application/json',
-	'access_token': 'ZGlvbC3EmXps7OsgAdq17Tsp6opGZ3-Xn5jUDgjdM_Q'
-      }
-    })
-      .then((response) => response.json())
-      .then(json => {
-	console.log("CreationDetail json = %o", json)
-	store.dispatch(setCreation(json))
-      })
-      .catch((error) => {
-	console.warn(error)
-      })
+    //this.fetchCreation(this.props.params.creation_id)
   }
 
   render() {
@@ -160,6 +163,7 @@ class CreationDetail extends Component {
     
     return (
       <div>
+	<h2>Creation {this.props.params.creation_id}</h2>
         <h3>{title}</h3>
         <ul>
           <li>id: {creation_id}</li>
@@ -189,12 +193,16 @@ var ConnectedCreationDetail = connect((state) => {
 // App
 //----------------------------------------
 class App extends Component {
+  handleLinkClick(id) {
+    fetchCreation(id)
+  }
+  
   render() {
     const { creation } = this.props
     return (
       <div>
 	<ul>
-	  <li><Link to="/top/index">Top</Link></li>
+	  <li><Link to="/sample/show">Top</Link></li>
 	  <li><Link to="/creations/1">creation 1</Link></li>
 	  <li><Link to="/creations/2">creation 2</Link></li>
 	</ul>
@@ -219,7 +227,7 @@ import { browserHistory } from 'react-router'
 
 const history = syncHistoryWithStore(browserHistory, store)
 
-export class RouteTest extends Component {
+export class SampleRoot extends Component {
   requireAuth(nextState, replace) {
     localStorage.access_token = 'dummy-token'
     if (!localStorage.access_token) {
@@ -236,7 +244,7 @@ export class RouteTest extends Component {
     return(
       <Provider store={ store }>
 	<Router history={ history }>
-	  <Route path="/top/index" component={ App }>
+	  <Route path="/sample/show" component={ App }>
             <IndexRoute component={ ConnectedTop } />
             <Route path="/creations/:creation_id" component={ ConnectedCreationDetail } onEnter={this.requireAuth} />
 	    <Route path="/login" component={ Login } />

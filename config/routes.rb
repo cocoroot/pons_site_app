@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'sample/show'
+
   get 'site_top/index'
   get 'site_new_work_list/index'
   get 'creator/:id' => 'site_user_detail#index'
