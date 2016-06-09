@@ -4,32 +4,32 @@ import { Col, Image, Media, Glyphicon } from 'react-bootstrap'
 
 class Creation extends Component {
   render() {
-    // const {  title, imgUrl, author, viewCount, likeCount, commentCount  } = this.props
+    const {  title, img, url, author, viewCount, likeCount, commentCount  } = this.props
     return (
       <Col xs={6} md={4}>
         <div>
-          <a href="#">
-            <Image responsive src="http://pipsum.com/435x310.jpg" />
+          <a href={url}>
+            <Image responsive src={img} />
           </a>
           <Media>
             <Media.Left>
-              <a href="#">
-                <Image className="img-circle" width={40} height={40} src="http://pipsum.com/80x40.jpg" />
+              <a href={author.url}>
+                <Image className="img-circle" width={40} height={40} src={author.avatar} />
               </a>
             </Media.Left>
             <Media.Body>
               <Media.Heading>
-                <a href="#">作品名</a>
+                <a href={url}>{title}</a>
               </Media.Heading>
-              <p><a href="#">by　ユーザ名</a></p>
+              <p><a href={author.url}>by {author.name}</a></p>
             </Media.Body>
             <div className="">
               <Glyphicon glyph="eye-open" />
-              <span>133</span>
+              <span>{viewCount}</span>
               <Glyphicon glyph="heart" />
-              <span>133</span>
+              <span>{likeCount}</span>
               <Glyphicon glyph="comment" />
-              <span>133</span>
+              <span>{commentCount}</span>
             </div>
           </Media>
         </div>
