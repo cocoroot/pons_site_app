@@ -14,7 +14,6 @@ class UserDetailProfileBox extends Component {
       display: editMode ? 'block' : 'none'
     }
 
-
     let base_url = 'http://localhost:3000/uploads/dev'
     return (
       <div>
@@ -37,26 +36,15 @@ class UserDetailProfileBox extends Component {
               <div style={editStyle}>
                 <form>
                   <div className="user-form-name">
-                    <FormControl type="text" width="50%" placeholder="ユーザ名" value="ユーザ名" />
+                    <FormControl type="text" width="50%" placeholder="ユーザ名"  />
                     <p className="user-id">{user.user_id}</p>
                   </div>
-                  <FormControl componentClass="textarea"  placeholder="バイオグラフィー" value={user.biography} />
+                  <FormControl componentClass="textarea"  placeholder="バイオグラフィー"  />
                 </form>
                 <Button className="user-edit-btn"  >完了</Button>
               </div>
             </Media.Body>
           </Media>
-          {/*<div className="row">
-            <div className="col-md-2">
-              <img className="img-circle user-avatar" src={base_url + user.image.thumb.url} />
-            </div>
-            <div className="col-md-10">
-              <p className="user-name">ユーザ名</p>
-              <p className="user-id">{user.user_id}</p>
-              <p className="user-biography">{user.biography}</p>
-              <Button >編集</Button>
-            </div>
-          </div>*/}
         </div>
       </div>
     )
