@@ -14,6 +14,7 @@ export class UserDetailRoot extends Component {
     store.dispatch(setUser(this.props.user))
     store.dispatch(setCreations(this.props))
   }
+
   render() {
     return (
       <Provider store={store}>

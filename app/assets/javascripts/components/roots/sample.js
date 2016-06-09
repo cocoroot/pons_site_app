@@ -29,7 +29,10 @@ function setHeadMessage(message) {
 // Top
 //
 function top(state = [], action) {
+  console.log("top reducer action=%o", action)
   switch (action.type) {
+  case SET_CREATION:
+    return state
     case SET_HEAD_MESSAGE:
       return action.headMessage
     default:
@@ -56,7 +59,8 @@ import { combineReducers } from 'redux'
 import { routerReducer } from 'react-router-redux'
 
 const rootReducer = combineReducers({
-  creation,
+  top: top,
+  creation: creation,
   routing: routerReducer
 })
 
@@ -127,6 +131,7 @@ class Top extends Component {
   }
 }
 
+// 
 var ConnectedTop = connect((state) => {
   return {
     headMessage: state.headMessage
@@ -154,7 +159,23 @@ class Image extends Component {
 class CreationDetail extends Component {
 
   componentWillMount() {
-    //this.fetchCreation(this.props.params.creation_id)
+    //fetchCreation(this.props.params.creation_id)
+    console.log("CreationDetail componentWillmount")
+    store.dispatch(setCreation({
+      id: 1,
+      creation_id: 1,
+      title: 'たいとる',
+      created_by: 'ゆーざ',
+      published_at: 'いま',
+      images: [
+	{
+	  key: 1,
+	  id: 1,
+	  image: '画像名.jpg',
+	  url: 'http://aaaaaaaaaa.aaaa'
+	}
+      ]
+    }))
   }
 
   render() {
