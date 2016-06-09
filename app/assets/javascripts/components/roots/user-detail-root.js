@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 
 import UserDetailContainer from '../containers/user-detail-container'
 import configureStore from '../store/configure-store'
-import { setUser, setCreations } from '../actions/user-detail'
+import { setUser, setCreations } from '../actions/user-detail-action'
 
 const store = configureStore()
 

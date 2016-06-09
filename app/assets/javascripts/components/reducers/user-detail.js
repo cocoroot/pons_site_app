@@ -1,4 +1,4 @@
-import * as Actions from '../actions/user-detail'
+import * as Actions from '../actions/user-detail-action'
 
 const initialState = {
   creations: {

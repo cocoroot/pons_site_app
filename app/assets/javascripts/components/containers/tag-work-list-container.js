@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react'
-import Header from '../components/common-header'
-import Footer from '../components/common-footer'
-import * as Actions from '../actions/tag-work-list' // 自分の action だけ import する
-import CreationList from '../components/common-creation-list'
+import Header from '../components/common-header-comp'
+import Footer from '../components/common-footer-comp'
+import * as Actions from '../actions/tag-work-list-action' // 自分の action だけ import する
+import CreationList from '../components/common-creation-list-comp'
 
 // bootstrap import 必要な部分をcomponentでimportする
 import { Button } from 'react-bootstrap'

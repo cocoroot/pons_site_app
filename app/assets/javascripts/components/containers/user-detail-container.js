@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react'
-import Header from '../components/common-header'
-import Footer from '../components/common-footer'
-import UserDetailProfileBox from '../components/user-detail-profile-box'
-import UserDetailCreationBox from '../components/user-detail-creation-box'
-import * as Actions from '../actions/user-detail' // 自分の action だけ import する
+import Header from '../components/common-header-comp'
+import Footer from '../components/common-footer-comp'
+import UserDetailProfileBox from '../components/user-detail-profile-box-comp'
+import UserDetailCreationBox from '../components/user-detail-creation-box-comp'
+import * as Actions from '../actions/user-detail-action' // 自分の action だけ import する
 
 class UserDetailContainer extends Component {
   render() {
