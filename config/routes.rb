@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'site_app/index'
+
   get 'sample/show'
 
   get 'site_top/index'
