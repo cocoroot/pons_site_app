@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react'
-import Header from '../components/Header'
-import Footer from '../components/Footer'
+import Header from '../components/common-header'
+import Footer from '../components/common-footer'
 import * as Actions from '../actions/top' // 自分の action だけ import する
-import CreationList from '../components/CreationList'
+import CreationList from '../components/common-creation-list'
 
 // bootstrap import 必要な部分をcomponentでimportする
 import { Carousel, Button, ButtonToolbar } from 'react-bootstrap'
@@ -13,7 +13,7 @@ let dummyCreationList = [
   { id: 3 }
 ]
 
-class TopApp extends Component {
+class TopContainer extends Component {
   render() {
     return (
       <div>
@@ -60,7 +60,7 @@ class TopApp extends Component {
   }
 }
 
-TopApp.propTypes = {
+TopContainer.propTypes = {
 }
 
 //
@@ -78,4 +78,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(Actions, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TopApp)
+export default connect(mapStateToProps, mapDispatchToProps)(TopContainer)

@@ -1,11 +1,11 @@
 import React, { Component, PropTypes } from 'react'
-import Header from '../components/Header'
-import Footer from '../components/Footer'
-import UserDetailProfileBox from '../components/UserDetailProfileBox'
-import UserDetailCreationBox from '../components/UserDetailCreationBox'
+import Header from '../components/common-header'
+import Footer from '../components/common-footer'
+import UserDetailProfileBox from '../components/user-detail-profile-box'
+import UserDetailCreationBox from '../components/user-detail-creation-box'
 import * as Actions from '../actions/user-detail' // 自分の action だけ import する
 
-class UserDetailApp extends Component {
+class UserDetailContainer extends Component {
   render() {
     const { profile, creations } = this.props.userDetail
     const { changeEditMode } = this.props.userDetail
@@ -20,7 +20,7 @@ class UserDetailApp extends Component {
   }
 }
 
-UserDetailApp.propTypes = {
+UserDetailContainer.propTypes = {
 }
 
 //
@@ -39,4 +39,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(Actions, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserDetailApp)
+export default connect(mapStateToProps, mapDispatchToProps)(UserDetailContainer)
