@@ -1,0 +1,5 @@
+    dbaas:
+      api_url: <%= ENV['DBAAS_API_URL'] %>
+      app_id:  <%= ENV['DBAAS_APP_ID'] %>
+      app_key: <%= ENV['DBAAS_APP_KEY'] %>
+

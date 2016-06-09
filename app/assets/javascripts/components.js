@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import * as Containers from './components/containers'
+import * as Roots from './components/roots'
 
 window.React = React
 window.ReactDOM = ReactDOM
-window.Containers  = Containers
+window.Roots  = Roots

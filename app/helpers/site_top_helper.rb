@@ -1,0 +1,2 @@
+module SiteTopHelper
+end

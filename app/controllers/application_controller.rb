@@ -1,3 +1,4 @@
+# coding: utf-8
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
@@ -6,14 +7,18 @@ class ApplicationController < ActionController::Base
 
   class AuthenticationError < ActionController::ActionControllerError; end
   class PermissionError < ActionController::ActionControllerError; end
-  
+
   include ErrorHandlers
+  include DbaasAuthentication
   include CheckPermission
-  
+
   protected
-  
+
   def json_request?
     request.format.json?
   end
 
+  def user_baas_id
+    RequestLocals.store[:request_user].try(:ex_user_id)
+  end
 end

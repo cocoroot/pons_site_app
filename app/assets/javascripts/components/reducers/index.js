@@ -1,12 +1,11 @@
 import { combineReducers } from 'redux'
-//import note from './note'
-import creations from './creations'
+import { routerReducer } from 'react-router-redux'
 
-//console.log("note: %o", note)
+import userDetail from './user-detail'
 
 const rootReducer = combineReducers({
-//    note
-  creations
+  userDetail,
+  routing: routerReducer
 })
 
 export default rootReducer

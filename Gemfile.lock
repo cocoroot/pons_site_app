@@ -63,12 +63,17 @@ GEM
     airbrussh (1.0.1)
       sshkit (>= 1.6.1, != 1.7.0)
     arel (6.0.3)
+    autoprefixer-rails (6.3.6.1)
+      execjs
     babel-source (5.8.35)
     babel-transpiler (0.7.0)
       babel-source (>= 4.0, < 6)
       execjs (~> 2.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bootstrap-sass (3.3.6)
+      autoprefixer-rails (>= 5.2.1)
+      sass (>= 3.3.4)
     browserify-rails (3.0.1)
       railties (>= 4.0.0, < 5.0)
       sprockets (>= 3.5.2)
@@ -411,6 +416,7 @@ PLATFORMS
 
 DEPENDENCIES
   atom!
+  bootstrap-sass
   browserify-rails
   byebug
   capistrano

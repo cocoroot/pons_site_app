@@ -2,12 +2,12 @@
 module ErrorHandlers extend ActiveSupport::Concern
   
   included do
-    unless Rails.env.development?
+    #unless Rails.env.development?
       rescue_from Exception,                                  with: :emergency_alert
       rescue_from ActionController::RoutingError,             with: :rescue404
       rescue_from ApplicationController::PermissionError,     with: :rescue403
       rescue_from ApplicationController::AuthenticationError, with: :rescue401
-    end
+    #end
   end
 
   private
@@ -22,6 +22,7 @@ module ErrorHandlers extend ActiveSupport::Concern
   def rescue401(e)
     @exception = e
     render 'errors/error401', status: 401
+    #redirect_to login_login_path
   end
 
   def rescue403(e)
