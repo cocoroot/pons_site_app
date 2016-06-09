@@ -4,7 +4,7 @@ import { Button } from 'react-bootstrap'
 
 class Header extends Component {
   render() {
-    const { user } = this.props
+    // const { user } = this.props
     let base_url = 'http://localhost:3000/uploads/dev'
 
     return (
@@ -23,7 +23,7 @@ class Header extends Component {
               <li >
                 <a id="header-avatar" href="#">
                   {/*<div className="circle-avatar" style={{ backgroundImage: 'url(' + base_url + user.image.thumb.url + ')' }} ></div>*/}
-                  <img className="avatar img-circle" src={base_url + user.image.thumb.url} />
+                  <img className="avatar img-circle" src="http://pipsum.com/200x100.jpg" />
                   ユーザ名<b className="caret"></b>
                 </a>
               </li>

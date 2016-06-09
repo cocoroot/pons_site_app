@@ -2,6 +2,7 @@
   max-width:1000px;
 }
 
+
 .profile-image {
   position:relative;
   top:-20px;
@@ -30,4 +31,23 @@
 
 .user-form-name {
   width:300px;
+}
+
+
+// top
+.top-carousel {
+  position:relative;
+  top:-20px;
+}
+.top-carousel-item img{
+  width:100%;
+}
+
+// tag-work-list
+.tag-work-list-title {
+  background-color: #ddd;
+  text-align: center;
+  padding: 1px;
+  position:relative;
+  top:-20px;
 }

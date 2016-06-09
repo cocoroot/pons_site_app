@@ -1,0 +1,81 @@
+import React, { Component, PropTypes } from 'react'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
+import * as Actions from '../actions/top' // 自分の action だけ import する
+import CreationList from '../components/CreationList'
+
+// bootstrap import 必要な部分をcomponentでimportする
+import { Carousel, Button, ButtonToolbar } from 'react-bootstrap'
+
+let dummyCreationList = [
+  { id: 1 },
+  { id: 2 },
+  { id: 3 }
+]
+
+class TopApp extends Component {
+  render() {
+    return (
+      <div>
+        <Header />
+        {/* この範囲でcomponetを作ってください */}
+        <Carousel className="top-carousel">
+          <Carousel.Item className="top-carousel-item">
+            <a href="#">
+              <img src="http://pipsum.com/900x300.jpg" />
+            </a>
+          </Carousel.Item>
+          <Carousel.Item className="top-carousel-item">
+            <a href="#">
+              <img src="http://pipsum.com/900x300.jpg" />
+            </a>
+          </Carousel.Item>
+          <Carousel.Item className="top-carousel-item">
+            <a href="#">
+              <img  src="http://pipsum.com/900x300.jpg" />
+            </a>
+          </Carousel.Item>
+        </Carousel>
+
+        <div className="top-pickup container">
+          <h3 className="top-title">ピックアップ作品</h3>
+          <CreationList creationList={dummyCreationList} />
+        </div>
+        <div className="top-tags container">
+          <h3 className="top-title">注目のタグ</h3>
+          <ButtonToolbar className="top-tag-box">
+            <Button className="top-tag-button">タグ</Button>
+            <Button className="top-tag-button">セーラームーン</Button>
+            <Button className="top-tag-button">ハロウィン</Button>
+          </ButtonToolbar>
+        </div>
+        <div className="top-new-creation container">
+          <h3 className="top-title">注目の新着作品</h3>
+          <CreationList creationList={dummyCreationList} />
+        </div>
+        {/* ここまでComponent */}
+        <Footer />
+      </div>
+    )
+  }
+}
+
+TopApp.propTypes = {
+}
+
+//
+// Connector
+//
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+
+function mapStateToProps(state) {
+  return {
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(Actions, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TopApp)

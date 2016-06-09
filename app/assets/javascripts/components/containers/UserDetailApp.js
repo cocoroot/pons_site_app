@@ -11,7 +11,7 @@ class UserDetailApp extends Component {
     const { changeEditMode } = this.props.userDetail
     return (
       <div>
-        <Header user={profile.user} />
+        <Header  />
         <UserDetailProfileBox profile={profile} changeEditMode={changeEditMode}  />
         <UserDetailCreationBox creations={creations} />
         <Footer />

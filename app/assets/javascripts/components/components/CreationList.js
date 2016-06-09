@@ -7,7 +7,7 @@ class CreationList extends Component {
   render() {
     const { creationList } = this.props
     return (
-      <Grid>
+      // <Grid>
         <Row>
           {creationList.map(creation =>
             <Creation
@@ -16,7 +16,7 @@ class CreationList extends Component {
             />
           )}
         </Row>
-      </Grid>
+      // </Grid>
     )
   }
 }
