@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react'
-import CreationList from './common-creation-list-comp'
+import CreationList from './common-creation-list-component'
 
 import { Tabs, Tab } from 'react-bootstrap'
 

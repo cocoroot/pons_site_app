@@ -11,6 +11,7 @@ export class TagWorkListRoot extends Component {
 
   componentWillMount() {
   }
+
   render() {
     return (
       <Provider store={store}>

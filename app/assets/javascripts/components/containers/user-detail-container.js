@@ -2,7 +2,7 @@ import * as Actions from '../actions/user-detail-action' // 自分の action だ
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-import UserDetail from '../components/user-detail-comp'
+import UserDetail from '../components/user-detail-component'
 
 function mapStateToProps(state) {
   return {

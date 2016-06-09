@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react'
-import Creation from './common-creation-comp'
+import Creation from './common-creation-component'
 
 import { Grid, Row } from 'react-bootstrap'
 
