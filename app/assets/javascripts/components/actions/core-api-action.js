@@ -2,6 +2,14 @@ import { CALL_API } from 'redux-api-middleware'
 
 const api_base = '/api'
 
+// export const REQUEST_AUTHENTICATION = 'REQUEST_AUTHENTICATION'
+// export const SUCCESS_AUTHENTICATION = 'REQUEST_AUTHENTICATION'
+// export const FAILURE_AUTHENTICATION = 'FAILURE_AUTHENTICATION'
+
+// export function authentication() {
+  
+// }
+
 export const REQUEST_LOAD_CREATION = 'REQUEST_LOAD_CREATION'
 export const SUCCESS_LOAD_CREATION = 'SUCCESS_LOAD_CREATION'
 export const FAILURE_LOAD_CREATION = 'FAILURE_LOAD_CREATION'
@@ -27,5 +35,13 @@ export function loadCreation(id) {
         FAILURE_LOAD_CREATION
       ]
     }
+  }
+}
+
+export const REQUIRE_LOGIN = 'REQUIRE_LOGIN'
+
+export function requireLogin() {
+  return {
+    type: REQUIRE_LOGIN
   }
 }
