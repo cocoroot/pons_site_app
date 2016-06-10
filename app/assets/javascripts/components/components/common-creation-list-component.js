@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import Creation from './common-creation-component'
 
-import { Grid, Row } from 'react-bootstrap'
+import { Row } from 'react-bootstrap'
 
 class CreationList extends Component {
   render() {
