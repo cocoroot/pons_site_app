@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux'
 import { routerReducer } from 'react-router-redux'
 
-import userDetail from './user-detail'
+import top from './top'
 
 const rootReducer = combineReducers({
-  userDetail,
+  top,
   routing: routerReducer
 })
 

@@ -5,7 +5,9 @@ import * as Actions from '../actions/top-action' // 自分の action だけ impo
 import Top from '../components/top-component'
 
 function mapStateToProps(state) {
+  console.log(state.top)
   return {
+    top: state.top
   }
 }
 

@@ -1,0 +1,29 @@
+import React, { Component, PropTypes } from 'react'
+
+import { Tabs, Tab } from 'react-bootstrap'
+
+class TopCarousel extends Component {
+  render() {
+    const { id, imgUrl, targetUrl } = this.props.
+    return (
+        <Tabs defaultActiveKey={tabKey} id="uncontrolled-tab">
+          <Tab eventKey={1} title="オリジナル作品" >
+            <div className="container">
+              <CreationList creationList={originalCreations} />
+            </div>
+          </Tab>
+          <Tab eventKey={2} title="お気に入り" >
+            <div className="container">
+              <CreationList creationList={favoriteCreations} />
+            </div>
+          </Tab>
+        </Tabs>
+
+    )
+  }
+}
+
+UserDetailCreationBox.propTypes = {
+}
+
+export default UserDetailCreationBox

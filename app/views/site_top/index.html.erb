@@ -1,1 +1,88 @@
-<%= react_component 'Roots.TopRoot' %>
+<%= react_component 'Roots.TopRoot' ,
+{
+   banners: [
+       {
+           id: 1,
+           imgUrl: "http://pipsum.com/900x300.jpg",
+           targetUrl: "http://www.yahoo.co.jp"
+       },
+       {
+           id: 2,
+           imgUrl: "http://pipsum.com/900x300.jpg",
+           targetUrl: "http://www.dnp.co.jp"
+       }
+   ],
+   pickupCreations: [
+        {
+            id: 1,
+            title: "hogehoge",
+            imgUrl: "http://dummy.img.jpg",
+            author: {
+                id: 300,
+                name: "Penguin",
+                url: "/user/300/",
+                img: "http://icon.img.jpg"
+            },
+            viewCount: 123,
+            likeCount: 45,
+            commentCount: 6
+        },
+        {
+            id: 2,
+            title: "mofumofu",
+            imgUrl: "http://dummy.img.jpg",
+            author: {
+                id: 301,
+                name: "Cat",
+                url: "/user/301/",
+                img: "http://icon.img.jpg"
+            },
+            viewCount: 123,
+            likeCount: 45,
+            commentCount: 6
+        }
+    ],
+   tags: [
+       {
+         id: 1,
+         name: "楽天",
+         url: "http://www.rakuten.co.jp"
+       },
+       {
+         id: 2,
+         name: "Amazon",
+         url: "http://www.amazon.co.jp"
+       }
+   ],
+   newCreations: [
+        {
+            id: 1,
+            title: "hogehoge",
+            imgUrl: "http://dummy.img.jpg",
+            author: {
+                id: 300,
+                name: "Penguin",
+                url: "/user/300/",
+                img: "http://icon.img.jpg"
+            },
+            viewCount: 123,
+            likeCount: 45,
+            commentCount: 6
+        },
+        {
+            id: 2,
+            title: "mofumofu",
+            imgUrl: "http://dummy.img.jpg",
+            author: {
+                id: 301,
+                name: "Cat",
+                url: "/user/301/",
+                img: "http://icon.img.jpg"
+            },
+            viewCount: 123,
+            likeCount: 45,
+            commentCount: 6
+        }
+   ]
+}
+%>

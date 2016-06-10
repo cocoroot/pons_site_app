@@ -14,43 +14,38 @@ let dummyCreationList = [
 
 export default class Top extends Component {
   render() {
+    const {banners,pickupCreations,tags,newCreations} = this.props.top
+    console.log(banners)
     return (
       <div>
         <Header />
-        {/* この範囲でcomponetを作ってください */}
+        {/* banner */}
         <Carousel className="top-carousel">
-          <Carousel.Item className="top-carousel-item">
-            <a href="#">
-              <img src="http://pipsum.com/900x300.jpg" />
-            </a>
-          </Carousel.Item>
-          <Carousel.Item className="top-carousel-item">
-            <a href="#">
-              <img src="http://pipsum.com/900x300.jpg" />
-            </a>
-          </Carousel.Item>
-          <Carousel.Item className="top-carousel-item">
-            <a href="#">
-              <img  src="http://pipsum.com/900x300.jpg" />
-            </a>
-          </Carousel.Item>
-        </Carousel>
+          {banners.map((banner) => {
+          return <Carousel.Item className="top-carousel-item"><a href={banner.targetUrl}><img src={banner.imgUrl} /></a></Carousel.Item>
+        })}
+       </Carousel>
 
+       {/* pickupCreations */}
         <div className="top-pickup container">
           <h3 className="top-title">ピックアップ作品</h3>
-          <CreationList creationList={dummyCreationList} />
+          <CreationList creationList={pickupCreations} />
         </div>
+
+        {/* tags */}
         <div className="top-tags container">
           <h3 className="top-title">注目のタグ</h3>
           <ButtonToolbar className="top-tag-box">
-            <Button className="top-tag-button">タグ</Button>
-            <Button className="top-tag-button">セーラームーン</Button>
-            <Button className="top-tag-button">ハロウィン</Button>
+            {tags.map((tag) => {
+            return <a href={tag.url}><Button className="top-tag-button">{tag.name}</Button></a>
+          })}
           </ButtonToolbar>
         </div>
+
+        {/* newCreations */}
         <div className="top-new-creation container">
           <h3 className="top-title">注目の新着作品</h3>
-          <CreationList creationList={dummyCreationList} />
+          <CreationList creationList={newCreations} />
         </div>
         {/* ここまでComponent */}
         <Footer />
