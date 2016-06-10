@@ -7,11 +7,19 @@ import rootReducer from '../reducers'
 const logger = createLogger()
 
 const createStoreWithMiddleware = applyMiddleware(
-  thunk,
   apiMiddleware,
+  thunk,
   logger
 )(createStore)
 
-export default function configureStore(initialState) {
+function configureStore(initialState) {
   return createStoreWithMiddleware(rootReducer, initialState)
 }
+
+export const store = configureStore()
+
+
+import { syncHistoryWithStore } from 'react-router-redux'
+import { browserHistory } from 'react-router'
+
+export const history = syncHistoryWithStore(browserHistory, store)

@@ -14,4 +14,13 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(Actions, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TestCreation)
+let TestCreationContainer =  connect(mapStateToProps, mapDispatchToProps)(TestCreation)
+
+TestCreationContainer.onEnter = function (dispatch, nextState, replace) {
+  console.log("TestCreationContainer dispatch=%o, nextState=%o, replace=%o", dispatch, nextState, replace)
+  if (nextState.params) {
+    dispatch(Actions.loadCreation(nextState.params.creation_id || 0))
+  }
+}
+
+export default TestCreationContainer

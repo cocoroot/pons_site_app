@@ -7,10 +7,6 @@ export default class TestCreation extends Component {
     return (
       <div>
 	TestCreation
-	<ul>
-          <li><Link to="/test-creations/1">creation: 1</Link></li>
-          <li><Link to="/test-creations/2">creation: 2</Link></li>
-        </ul>
         <h3>Creation: {creation_id}</h3>
         <ul>
           <li>id: {creation_id}</li>
