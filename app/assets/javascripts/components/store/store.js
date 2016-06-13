@@ -12,8 +12,9 @@ const createStoreWithMiddleware = applyMiddleware(
   logger
 )(createStore)
 
+
 function configureStore(initialState) {
-  return createStoreWithMiddleware(rootReducer, initialState)
+  return createStoreWithMiddleware(rootReducer, initialState, window.devToolsExtension ? window.devToolsExtension() : f => f)
 }
 
 export const store = configureStore()

@@ -5,7 +5,7 @@ import { Tabs, Tab } from 'react-bootstrap'
 
 class UserDetailCreationBox extends Component {
   render() {
-    const { tabKey, originalCreations, favoriteCreations } = this.props.creations
+    const { tabKey, originalCreations, favoriteCreations } = this.props.userDetail
     return (
         <Tabs defaultActiveKey={tabKey} id="uncontrolled-tab">
           <Tab eventKey={1} title="オリジナル作品" >
