@@ -13,6 +13,9 @@ import NewWorkList from '../containers/new-work-list-container'
 import UserDetail from '../containers/user-detail-container'
 import TestCreation from '../containers/test-creation-container'
 
+import Header from '../components/common-header-component'
+import Footer from '../components/common-footer-component'
+
 class App extends Component {
   render() {
     return(
@@ -20,14 +23,17 @@ class App extends Component {
         <div>
           <ul>
             <li><Link to="/login">login</Link></li>
+            <li><Link to="/">top</Link></li>
             <li><Link to="/test-creations/1">creation: 1</Link></li>
             <li><Link to="/test-creations/2">creation: 2</Link></li>
             <li><Link to="/sorry">sorry</Link></li>
           </ul>
         </div>
+        <Header />
         <div>
           {this.props.children}
-        </div> 
+        </div>
+        <Footer />
       </div>
     )
   }
@@ -51,6 +57,8 @@ export class SiteRouter extends Component {
     }
   }
 
+  onEnterTop(nextState, replace) { Top.onEnter(store.dispatch, nextState, replace) }
+
   onEnterTestCreation(nextState, replace) { TestCreation.onEnter(store.dispatch, nextState, replace) }
   
   render() {
@@ -58,7 +66,7 @@ export class SiteRouter extends Component {
     return(
       <Router history={ history }>
         <Route path="/" component={ App }>
-          <IndexRoute component={ Top } />
+          <IndexRoute component={ Top } onEnter={ this.onEnterTop } />
           <Route path="/" component={ Top } onEnter={ this.onEnterTop }/>
           <Route path="/creators/:creator_id" component={ UserDetail } onEnter={this.requireAuth} />
           <Route path="/test-creations/:creation_id" component={ TestCreation } onEnter={this.onEnterTestCreation} />

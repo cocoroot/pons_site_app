@@ -3,16 +3,14 @@ import { history } from '../store/store'
 
 const api_base = '/api'
 
-
 //----------------------------------------
-// TOP
+// Top Banners
 //----------------------------------------
 export const LOAD_TOP_BANNERS_REQUEST = 'LOAD_TOP_BANNERS_REQUEST'
 export const LOAD_TOP_BANNERS_SUCCESS = 'LOAD_TOP_BANNERS_SUCCESS'
 export const LOAD_TOP_BANNERS_FAILURE = 'LOAD_TOP_BANNERS_FAILURE'
 function fetchTopBanners() {
-  return (dispatch, nextState) => {
-  }
+  return { type: LOAD_TOP_BANNERS_SUCCESS }
 }
 
 export function loadTopBanners() {
@@ -21,12 +19,14 @@ export function loadTopBanners() {
   }
 }
 
+//----------------------------------------
+// Pickup Work List
+//----------------------------------------
 export const LOAD_PICKUP_WORK_LIST_REQUEST = 'LOAD_PICKUP_WORK_LIST_REQUEST'
 export const LOAD_PICKUP_WORK_LIST_SUCCESS = 'LOAD_PICKUP_WORK_LIST_SUCCESS'
 export const LOAD_PICKUP_WORK_LIST_FAILURE = 'LOAD_PICKUP_WORK_LIST_FAILURE'
 function fetchPickupWorkList() {
-  return (dispatch, nextState) => {
-  }
+  return { type: LOAD_PICKUP_WORK_LIST_SUCCESS }
 }
 
 export function loadPickupWorkList() {
@@ -35,12 +35,14 @@ export function loadPickupWorkList() {
   }
 }
 
+//----------------------------------------
+// Pickup Tags
+//----------------------------------------
 export const LOAD_PICKUP_TAGS_REQUEST = 'LOAD_PICKUP_TAGS_REQUEST'
 export const LOAD_PICKUP_TAGS_SUCCESS = 'LOAD_PICKUP_TAGS_SUCCESS'
 export const LOAD_PICKUP_TAGS_FAILURE = 'LOAD_PICKUP_TAGS_FAILURE'
 function fetchPickupTags() {
-  return (dispatch, nextState) => {
-  }
+  return { type: LOAD_PICKUP_TAGS_SUCCESS }
 }
 
 export function loadPickupTags() {
@@ -49,22 +51,24 @@ export function loadPickupTags() {
   }
 }
 
+//----------------------------------------
+// Pickup New Work List
+//----------------------------------------
 export const LOAD_PICKUP_NEW_WORK_LIST_REQUEST = 'LOAD_PICKUP_NEW_WORK_LIST_REQUEST'
 export const LOAD_PICKUP_NEW_WORK_LIST_SUCCESS = 'LOAD_PICKUP_NEW_WORK_LIST_SUCCESS'
 export const LOAD_PICKUP_NEW_WORK_LIST_FAILURE = 'LOAD_PICKUP_NEW_WORK_LIST_FAILURE'
 function fetchPickupNewWorkList() {
-  return (dispatch, nextState) => {
-  }
+  return { type: LOAD_PICKUP_NEW_WORK_LIST_SUCCESS }
 }
 
 export function loadPickupNewWorkList() {
   return (dispatch, getstate) => {
-    return dispatch(fetchPickupWorkList())
+    return dispatch(fetchPickupNewWorkList())
   }
 }
 
 //----------------------------------------
-// TAG_CREATION_LIST
+// Tag Creation Lits
 //----------------------------------------
 export const LOAD_TAG_WORK_LIST_REQUEST = 'LOAD_TAG_WORK_LIST_REQUEST'
 export const LOAD_TAG_WORK_LIST_SUCCESS = 'LOAD_TAG_WORK_LIST_SUCCESS'
@@ -81,7 +85,7 @@ export function loadTagWorkList() {
 }
 
 //----------------------------------------
-// NEW_CREATION_LIST
+// New Creation List
 //----------------------------------------
 export const LOAD_NEW_WORK_LIST_REQUEST = 'LOAD_NEW_WORK_LIST_REQUEST'
 export const LOAD_NEW_WORK_LIST_SUCCESS = 'LOAD_NEW_WORK_LIST_SUCCESS'
@@ -98,7 +102,7 @@ export function loadNewWorkList() {
 }
 
 //----------------------------------------
-// CREATION
+// Creation
 //----------------------------------------
 export const LOAD_CREATION_REQUEST = 'LOAD_CREATION_REQUEST'
 export const LOAD_CREATION_SUCCESS = 'LOAD_CREATION_SUCCESS'

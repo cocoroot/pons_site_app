@@ -1,7 +1,7 @@
 import * as Actions from '../actions/core-api-action'
 
 const TOP_BANNERS_RESPONSE = {
-  banners: [
+  topBanners: [
     {
       id: 1,
       imgUrl: "http://pipsum.com/900x300.jpg",
@@ -49,7 +49,7 @@ const PICKUP_WORK_LIST_RESPONSE = {
 }
 
 const PICKUP_TAGS_RESPONSE = {
-  tags: [
+  pickupTags: [
     {
       id: 1,
       name: "楽天",
@@ -96,24 +96,39 @@ const PICKUP_NEW_WORK_LIST_RESPONSE = {
   ]
 }
 
-export default function coreApi(state = [], action) {
+const INITIAL_STATE = {
+  topBanners: [],
+  pickupCreations: [],
+  pickupTags: [],
+  pickupNewCreations: [],
+  creation: {},
+  creations: [],
+  userDetail: {}
+}
+
+export default function coreApi(state = INITIAL_STATE, action) {
   switch (action.type) {
+      // Top Banner
     case Actions.LOAD_TOP_BANNERS_REQUEST: return state
     case Actions.LOAD_TOP_BANNERS_SUCCESS: return Object.assign({}, state, TOP_BANNERS_RESPONSE)
     case Actions.LOAD_TOP_BANNERS_FAILURE: return state
 
+      // Pickup Work List
     case Actions.LOAD_PICKUP_WORK_LIST_REQUEST: return state
     case Actions.LOAD_PICKUP_WORK_LIST_SUCCESS: return Object.assign({}, state, PICKUP_WORK_LIST_RESPONSE)
     case Actions.LOAD_PICKUP_WORK_LIST_FAILURE: return state
 
+      // Pickup Tags
     case Actions.LOAD_PICKUP_TAGS_REQUEST: return state
     case Actions.LOAD_PICKUP_TAGS_SUCCESS: return Object.assign({}, state, PICKUP_TAGS_RESPONSE)
     case Actions.LOAD_PICKUP_TAGS_FAILURE: return state
 
+      // Pickup New Work List
     case Actions.LOAD_PICKUP_NEW_WORK_LIST_REQUEST: return state
     case Actions.LOAD_PICKUP_NEW_WORK_LIST_SUCCESS: return Object.assign({}, state, PICKUP_NEW_WORK_LIST_RESPONSE)
     case Actions.LOAD_PICKUP_NEW_WORK_LIST_FAILURE: return state
-      
+
+      // Pickup Creation
     case Actions.LOAD_CREATION_REQUEST: return state
     case Actions.LOAD_CREATION_SUCCESS: return Object.assign({}, state, {
       creation: action.payload
