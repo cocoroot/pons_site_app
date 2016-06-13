@@ -6,12 +6,6 @@ import CreationList from '../components/common-creation-list-component'
 // bootstrap import 必要な部分をcomponentでimportする
 import { Carousel, Button, ButtonToolbar } from 'react-bootstrap'
 
-let dummyCreationList = [
-  { id: 1 },
-  { id: 2 },
-  { id: 3 }
-]
-
 export default class Top extends Component {
   render() {
     const {banners,pickupCreations,tags,newCreations} = this.props.top
@@ -22,7 +16,7 @@ export default class Top extends Component {
         {/* banner */}
         <Carousel className="top-carousel">
           {banners.map((banner) => {
-          return <Carousel.Item className="top-carousel-item"><a href={banner.targetUrl}><img src={banner.imgUrl} /></a></Carousel.Item>
+          return <Carousel.Item className="top-carousel-item" key={banner.id}><a href={banner.targetUrl}><img src={banner.imgUrl} /></a></Carousel.Item>
         })}
        </Carousel>
 
