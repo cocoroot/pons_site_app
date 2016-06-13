@@ -5,7 +5,11 @@ import { store, history } from '../store/store'
 
 import Login from '../containers/login-container'
 import Sorry from '../containers/sorry-container'
+
 import Top from '../containers/top-container'
+import TagWorkList from '../containers/tag-work-list-container'
+import NewWorkList from '../containers/new-work-list-container'
+
 import UserDetail from '../containers/user-detail-container'
 import TestCreation from '../containers/test-creation-container'
 
@@ -47,19 +51,17 @@ export class SiteRouter extends Component {
     }
   }
 
-  enterTestCreation(nextState, replace) {
-    // console.log("SiteRouterComponent enterTestCreation nextState=%o, this.props", nextState, this.props)
-    TestCreation.onEnter(store.dispatch, nextState, replace)
-  }
+  onEnterTestCreation(nextState, replace) { TestCreation.onEnter(store.dispatch, nextState, replace) }
   
   render() {
     // console.log("SiteRouterComponent render props=%o", this.props)
     return(
       <Router history={ history }>
         <Route path="/" component={ App }>
-          <IndexRoute component={ TestCreation } />
+          <IndexRoute component={ Top } />
+          <Route path="/" component={ Top } onEnter={ this.onEnterTop }/>
           <Route path="/creators/:creator_id" component={ UserDetail } onEnter={this.requireAuth} />
-          <Route path="/test-creations/:creation_id" component={ TestCreation } onEnter={this.enterTestCreation} />
+          <Route path="/test-creations/:creation_id" component={ TestCreation } onEnter={this.onEnterTestCreation} />
           <Route path="/login" component={ Login } />
           <Route path="/sorry" component={ Sorry } />
         </Route>
@@ -67,3 +69,7 @@ export class SiteRouter extends Component {
     )
   }
 }
+
+// <route path="/tags/:tag_name/works" component={ TagWorkList } onEnter={ this.onEnterTagWorkList } />
+//           <route path="/works/new" component={ NewWorkList } onEnter={ this.onEnterNewWorkList } />
+          

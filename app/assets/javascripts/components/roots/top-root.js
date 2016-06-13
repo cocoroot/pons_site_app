@@ -3,9 +3,7 @@ import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 
 import TopContainer from '../containers/top-container'
-import configureStore from '../store/configure-store'
-
-const store = configureStore()
+import { store } from '../store/store'
 
 export class TopRoot extends Component {
 

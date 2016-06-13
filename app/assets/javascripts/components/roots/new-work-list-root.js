@@ -3,9 +3,7 @@ import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 
 import NewWorkListContainer from '../containers/new-work-list-container'
-import configureStore from '../store/configure-store'
-
-const store = configureStore()
+import { store } from '../store/store'
 
 export class NewWorkListRoot extends Component {
 

@@ -1,4 +1,4 @@
-import * as Actions from '../actions/core-api-action' // 自分の action だけ import
+import * as ApiActions from '../actions/core-api-action' // API を使う場合 API のアクションをimport
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
@@ -11,15 +11,15 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators(Actions, dispatch)
+  return bindActionCreators(ApiActions, dispatch)
 }
 
-let TestCreationContainer =  connect(mapStateToProps, mapDispatchToProps)(TestCreation)
+let TestCreationContainer = connect(mapStateToProps, mapDispatchToProps)(TestCreation)
 
 TestCreationContainer.onEnter = function (dispatch, nextState, replace) {
   console.log("TestCreationContainer dispatch=%o, nextState=%o, replace=%o", dispatch, nextState, replace)
   if (nextState.params) {
-    dispatch(Actions.loadCreation(nextState.params.creation_id || 0))
+    dispatch(ApiActions.loadCreation(nextState.params.creation_id || 0))
   }
 }
 
