@@ -29,6 +29,8 @@
     "react-router": "^2.4.1",
     "react-router-redux": "^4.0.5",
     "redux": "^3.5.2",
+    "redux-api-middleware": "^1.0.2",
+    "redux-history-transitions": "^2.2.0",
     "redux-logger": "^2.6.1",
     "redux-thunk": "^2.0.1"
   }

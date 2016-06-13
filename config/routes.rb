@@ -1,14 +1,4 @@
 Rails.application.routes.draw do
-
-  get 'sample/show'
-
-  get 'site_top/index'
-  get 'site_new_work_list/index'
-  get 'creator/:id' => 'site_user_detail#index'
-  get 'site_work_detail/index'
-  get 'site_tag_work_list/index'
-
-
   scope :api do
     with_options(defaults: { format: :json }, format: false) do
       # post 'create_user'
@@ -41,6 +31,17 @@ Rails.application.routes.draw do
       delete 'goods' => 'core_api#delete_good'
     end
   end
+
+  root to: 'site_app#index'
+  get '*path' => 'site_app#index'
+
+  # get 'sample/show'
+
+  # get 'site_top/index'
+  # get 'site_new_work_list/index'
+  # get 'creator/:id' => 'site_user_detail#index'
+  # get 'site_work_detail/index'
+  # get 'site_tag_work_list/index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

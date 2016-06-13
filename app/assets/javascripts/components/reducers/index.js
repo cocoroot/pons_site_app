@@ -1,10 +1,14 @@
 import { combineReducers } from 'redux'
 import { routerReducer } from 'react-router-redux'
 
-import userDetail from './user-detail'
+import topReducer from './top-reducer'
+import userDetailReducer from './user-detail-reducer'
+import coreApiReducer from './core-api-reducer'
 
 const rootReducer = combineReducers({
-  userDetail,
+  useDetail: userDetailReducer,
+  top: topReducer,
+  coreApi: coreApiReducer,
   routing: routerReducer
 })
 

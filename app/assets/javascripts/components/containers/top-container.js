@@ -1,11 +1,21 @@
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import * as Actions from '../actions/top-action' // 自分の action だけ import する
+import * as TopActions from '../actions/top-action' // 自分の action だけ import する
+import * as ApiActions from '../actions/core-api-action' // API を使う場合 API のアクションをimport
+
+const Actions = { ...TopActions, ...ApiActions }
 
 import Top from '../components/top-component'
 
 function mapStateToProps(state) {
+  console.log("TopContainer mapStateToProps state=%o", state)
   return {
+    top: {
+      banners: state.coreApi.topBanners,
+      pickupCreations: state.coreApi.pickupCreations,
+      tags: state.coreApi.pickupTags,
+      newCreations: state.coreApi.pickupNewCreations
+    }
   }
 }
 
@@ -13,4 +23,14 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(Actions, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Top)
+let TopContainer = connect(mapStateToProps, mapDispatchToProps)(Top)
+
+TopContainer.onEnter = function (dispatch, nextState, replace) {
+  console.log("TopContainer onEnter")
+  dispatch(ApiActions.loadTopBanners())
+  dispatch(ApiActions.loadPickupWorkList())
+  dispatch(ApiActions.loadPickupTags())
+  dispatch(ApiActions.loadPickupNewWorkList())
+}
+
+export default TopContainer
