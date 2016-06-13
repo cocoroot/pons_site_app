@@ -20,12 +20,13 @@ class DarrestCoreApi
   #   id: <site_user_id>
   # }
   def show_site_user(params)
-    send_get("/site_users/#{params[:id]}")
+    send_get("/site_users/#{params[:id]}", params.except(:id))
   end
 
   # params = {
   #   user_baas_id: <user_baas_id>,
   #   site_user: {
+  #     nickname: <nickname>,
   #     biography: <biography>,
   #     tos_accepted: <true|false>,
   #     site_user_status: <site_user_status>
@@ -83,6 +84,10 @@ class DarrestCoreApi
     end
   end
 
+  def index_creations_created_by_user(params)
+    send_get("/site_users/#{params[:site_user_id]}/creations", params)
+  end
+
   def create_creation(params)
     send_post('/creations', params)
   end
@@ -128,6 +133,7 @@ class DarrestCoreApi
   end
 
   def index_good(params)
+    send_get("/site_users/#{params[:site_user_id]}/goods", params)
   end
 
   def delete_good(params)
@@ -135,24 +141,39 @@ class DarrestCoreApi
 
   private
 
-  def send_get(api, &_block)
-    send(:get, api, nil)
+  def send_get(api, params = nil, &_block)
+    send(:get, api, params)
   end
 
   def send_post(api, params, &block)
-    send(:post, api, params) { |r, p| block.call(r, p) }
+    if block
+      send(:post, api, params) { |r, p| block.call(r, p) }
+    else
+      send(:post, api, params)
+    end
   end
 
   def send_put(api, params, &block)
-    send(:put, api, params) { |r, p| block.call(r, p) }
+    if block
+      send(:put, api, params) { |r, p| block.call(r, p) }
+    else
+      send(:put, api, params)
+    end
   end
 
   def send_delete(api, params, &block)
-    send(:put, api, params) { |r, p| block.call(r, p) }
+    if block
+      send(:delete, api, params) { |r, p| block.call(r, p) }
+    else
+      send(:delete, api, params)
+    end
   end
 
   def send(method, api, params, &block)
     uri = URI.parse("#{API_BASE}#{api}")
+    if method == :get && params
+      uri.query = params.to_param
+    end
 
     http = Net::HTTP.new(uri.host, uri.port)
 

@@ -101,8 +101,8 @@ const INITIAL_STATE = {
   pickupCreations: [],
   pickupTags: [],
   pickupNewCreations: [],
-  creation: {},
-  creations: [],
+  work: {},
+  works: [],
   userDetail: {}
 }
 
@@ -128,12 +128,12 @@ export default function coreApi(state = INITIAL_STATE, action) {
     case Actions.LOAD_PICKUP_NEW_WORK_LIST_SUCCESS: return Object.assign({}, state, PICKUP_NEW_WORK_LIST_RESPONSE)
     case Actions.LOAD_PICKUP_NEW_WORK_LIST_FAILURE: return state
 
-      // Pickup Creation
-    case Actions.LOAD_CREATION_REQUEST: return state
-    case Actions.LOAD_CREATION_SUCCESS: return Object.assign({}, state, {
-      creation: action.payload
+      // Work
+    case Actions.LOAD_WORK_REQUEST: return state
+    case Actions.LOAD_WORK_SUCCESS: return Object.assign({}, state, {
+      work: action.payload
     })
-    case Actions.LOAD_CREATION_FAILURE: return state
+    case Actions.LOAD_WORK_FAILURE: return state
 
     case Actions.REQUIRE_LOGIN: return Object.assign({}, state, {
       error: {

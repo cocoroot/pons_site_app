@@ -68,7 +68,7 @@ export function loadPickupNewWorkList() {
 }
 
 //----------------------------------------
-// Tag Creation Lits
+// Tag Work Lits
 //----------------------------------------
 export const LOAD_TAG_WORK_LIST_REQUEST = 'LOAD_TAG_WORK_LIST_REQUEST'
 export const LOAD_TAG_WORK_LIST_SUCCESS = 'LOAD_TAG_WORK_LIST_SUCCESS'
@@ -85,7 +85,7 @@ export function loadTagWorkList() {
 }
 
 //----------------------------------------
-// New Creation List
+// New Work List
 //----------------------------------------
 export const LOAD_NEW_WORK_LIST_REQUEST = 'LOAD_NEW_WORK_LIST_REQUEST'
 export const LOAD_NEW_WORK_LIST_SUCCESS = 'LOAD_NEW_WORK_LIST_SUCCESS'
@@ -102,49 +102,64 @@ export function loadNewWorkList() {
 }
 
 //----------------------------------------
-// Creation
+// Works created by a User
 //----------------------------------------
-export const LOAD_CREATION_REQUEST = 'LOAD_CREATION_REQUEST'
-export const LOAD_CREATION_SUCCESS = 'LOAD_CREATION_SUCCESS'
-export const LOAD_CREATION_FAILURE = 'LOAD_CREATION_FAILURE'
-function fetchCreation(id) {
-  return (dispatch, nextState) => {
-    dispatch(
-      {
-        [CALL_API]: {
-          endpoint: `${api_base}/creations/${id}`,
-          method: 'GET',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'access_token': localStorage.access_token
-          },
-          types: [
-            LOAD_CREATION_REQUEST,
-            {
-              type: LOAD_CREATION_SUCCESS,
-              payload: (action, state, res) => {
-                return res.json().then(payload => payload)
-              }
-            },
-            {
-              type: LOAD_CREATION_FAILURE,
-              meta: (action, state, res) => {
-                // console.log("LOAD_CREATION_FAILURE action=%o, state=%o, res=%o", action, state, res)
-		return dispatch(error(action, state, res))
-              }
-            }
-          ]
-        }
-      })
+export const LOAD_WORK_LIST_CREATED_BY_USER_REQUEST = 'LOAD_WORK_LIST_CREATED_BY_USER_REQUEST'
+export const LOAD_WORK_LIST_CREATED_BY_USER_SUCCESS = 'LOAD_WORK_LIST_CREATED_BY_USER_SUCCESS'
+export const LOAD_WORK_LIST_CREATED_BY_USER_FAILURE = 'LOAD_WORK_LIST_CREATED_BY_USER_FAILURE'
+export function loadWorkListCreatedByUser(id) {
+  return (dispatch, getState) => {
+    return dispatch(get(`/works?created_by=${id}`))
   }
 }
 
-export function loadCreation(id) {
+
+//----------------------------------------
+// Work
+//----------------------------------------
+export const LOAD_WORK_REQUEST = 'LOAD_WORK_REQUEST'
+export const LOAD_WORK_SUCCESS = 'LOAD_WORK_SUCCESS'
+export const LOAD_WORK_FAILURE = 'LOAD_WORK_FAILURE'
+export function loadWork(id) {
   return (dispatch, getState) => {
-    return dispatch(fetchCreation(id))
+    return dispatch(get(`/works/${id}`, 'LOAD_WORK'))
   }
 }
+
+//----------------------------------------
+// common
+//----------------------------------------
+function get(api, actionName) {
+  return (dispatch, nextState) => {
+    dispatch({
+      [CALL_API]: {
+        endpoint: `${api_base}${api}`,
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'access_token': localStorage.access_token
+        },
+        types: [
+          actionName + '_REQUEST',
+          {
+            type: actionName + '_SUCCESS',
+            payload: (action, state, res) => {
+              return res.json().then(payload => payload)
+            }
+          },
+          {
+            type: actionName + '_FAILURE',
+            meta: (action, state, res) => {
+              return dispatch(error(action, state, res))
+            }
+          }
+        ] // types
+      } // [CALL_API]
+    }) // dispatch
+  }
+}
+
 
 export function error(action, state, res) {
   return (dispatch, nextState) => {

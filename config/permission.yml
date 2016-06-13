@@ -60,10 +60,10 @@ default: &controller_default
   destroy:
     *action_default
 
-login:
-  login:
+errors:
+  routing_error:
     *action_default
-    
+
 core_api:
   create_user:
     *action_default 
@@ -76,6 +76,10 @@ core_api:
   create_site_user_image:
     *action_default 
   create_site_user_header_image:
+    *action_default
+  index_creation_created_by_user:
+    *action_default
+  index_good_by_user:
     *action_default 
   create_creation:
     *action_default 
@@ -104,8 +108,6 @@ core_api:
   create_creation_comment:
     *action_default 
   create_good:
-    *action_default 
-  index_good:
     *action_default 
   delete_good:
     *action_default

@@ -18,7 +18,7 @@ module CheckPermission extend ActiveSupport::Concern
     roles = user_info.roles
 
     unless roles.any? {|r| permission.include?(r) }
-      raise ApplicationController::PermissionError, "user is not permitted to execute action #{controller}##{action}."
+      raise ApplicationController::PermissionError, "requester is not permitted to execute action #{controller}##{action}."
     end
   end
   
