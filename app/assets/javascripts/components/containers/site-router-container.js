@@ -11,6 +11,9 @@ import TagWorkList from '../containers/tag-work-list-container'
 import NewWorkList from '../containers/new-work-list-container'
 
 import UserDetail from '../containers/user-detail-container'
+
+import TestMe from '../containers/test-me-container'
+import TestUser from '../containers/test-user-container'
 import TestCreation from '../containers/test-creation-container'
 
 import Header from '../components/common-header-component'
@@ -26,6 +29,9 @@ class App extends Component {
             <li><Link to="/">top</Link></li>
             <li><Link to="/test-creations/1">creation: 1</Link></li>
             <li><Link to="/test-creations/2">creation: 2</Link></li>
+            <li><Link to="/test-users/1">user: 1</Link></li>
+            <li><Link to="/test-users/2">user: 2</Link></li>
+            <li><Link to="/test-me">me</Link></li>
             <li><Link to="/sorry">sorry</Link></li>
           </ul>
         </div>
@@ -58,7 +64,8 @@ export class SiteRouter extends Component {
   }
 
   onEnterTop(nextState, replace) { Top.onEnter(store.dispatch, nextState, replace) }
-
+  onEnterTestMe(nextState, replace) { TestMe.onEnter(store.dispatch, nextState, replace) }
+  onEnterTestUser(nextState, replace) { TestUser.onEnter(store.dispatch, nextState, replace) }
   onEnterTestCreation(nextState, replace) { TestCreation.onEnter(store.dispatch, nextState, replace) }
   
   render() {
@@ -69,6 +76,8 @@ export class SiteRouter extends Component {
           <IndexRoute component={ Top } onEnter={ this.onEnterTop } />
           <Route path="/" component={ Top } onEnter={ this.onEnterTop }/>
           <Route path="/creators/:creator_id" component={ UserDetail } onEnter={this.requireAuth} />
+          <Route path="/test-users/:user_id" component={ TestUser } onEnter={this.onEnterTestUser} />
+          <Route path="/test-me" component={ TestMe } onEnter={this.onEnterTestMe} />
           <Route path="/test-creations/:creation_id" component={ TestCreation } onEnter={this.onEnterTestCreation} />
           <Route path="/login" component={ Login } />
           <Route path="/sorry" component={ Sorry } />

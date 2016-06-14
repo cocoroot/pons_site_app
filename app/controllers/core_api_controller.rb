@@ -1,12 +1,16 @@
 class CoreApiController < ApplicationController
   def create_user
-  end
-
-  def create_site_user
     # @result = DarrestCoreApi.new.create_site_user(user_id: @user_info.ex_user_id)
   end
 
-  def show_site_user
+  def show_my_info
+    @result = DarrestCoreApi.new.show_my_info(
+      user_baas_id: user_baas_id
+    )
+    render_json(@result)
+  end
+
+  def show_user
     @result = DarrestCoreApi.new.show_site_user(
       user_baas_id: user_baas_id,
       id: params[:id]
@@ -14,15 +18,16 @@ class CoreApiController < ApplicationController
     render_json(@result)
   end
 
-  def update_site_user
+  def update_user
     @result = DarrestCoreApi.new.update_site_user(
       user_baas_id: user_baas_id,
-      site_user: params.require(:site_user).permit(:nickname, :biography)
+      site_user: params.require(:user).permit(:nickname, :biography)
     )
     render_json(@result)
   end
 
-  def create_site_user_image
+  def create_user_image
+    logger.debug("CoreApiController params=#{params}")
     @result = DarrestCoreApi.new.create_site_user_image(
       user_baas_id: user_baas_id,
       site_user_image: {
@@ -31,7 +36,7 @@ class CoreApiController < ApplicationController
     render_json(@result)
   end
 
-  def create_site_user_header_image
+  def create_user_header_image
     @result = DarrestCoreApi.new.create_site_user_header_image(
       user_baas_id: user_baas_id,
       site_user_header_image: {
@@ -42,7 +47,7 @@ class CoreApiController < ApplicationController
 
   def index_creation_created_by_user
     @result = DarrestCoreApi.new.index_creations_created_by_user(
-      site_user_id: params.require(:site_user_id),
+      site_user_id: params.require(:user_id),
       page: params[:page]
     )
     render_json(@result)
@@ -96,7 +101,7 @@ class CoreApiController < ApplicationController
 
   def index_good_by_user
     @result = DarrestCoreApi.new.index_good(
-      site_user_id: params.require(:site_user_id),
+      site_user_id: params.require(:user_id),
       page: params[:page]
     )
     render_json(@result)

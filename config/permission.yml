@@ -67,15 +67,17 @@ errors:
 core_api:
   create_user:
     *action_default 
-  create_site_user:
+  create_user:
+    *action_default
+  show_my_info:
+    *action_default
+  show_user:
+    *action_default
+  update_user:
     *action_default 
-  show_site_user:
+  create_user_image:
     *action_default 
-  update_site_user:
-    *action_default 
-  create_site_user_image:
-    *action_default 
-  create_site_user_header_image:
+  create_user_header_image:
     *action_default
   index_creation_created_by_user:
     *action_default

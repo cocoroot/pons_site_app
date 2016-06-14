@@ -101,6 +101,7 @@ const INITIAL_STATE = {
   pickupCreations: [],
   pickupTags: [],
   pickupNewCreations: [],
+  user: {},
   work: {},
   works: [],
   userDetail: {}
@@ -128,6 +129,45 @@ export default function coreApi(state = INITIAL_STATE, action) {
     case Actions.LOAD_PICKUP_NEW_WORK_LIST_SUCCESS: return Object.assign({}, state, PICKUP_NEW_WORK_LIST_RESPONSE)
     case Actions.LOAD_PICKUP_NEW_WORK_LIST_FAILURE: return state
 
+      // load Me
+    case Actions.LOAD_ME_REQUEST: return state
+    case Actions.LOAD_ME_SUCCESS: return Object.assign({}, state, {
+      me: action.payload
+    })
+    case Actions.LOAD_ME_FAILURE: return state
+      
+      // update Me
+    case Actions.UPDATE_ME_REQUEST: return state
+    case Actions.UPDATE_ME_SUCCESS: return Object.assign({}, state, {
+      me: action.payload
+    })
+    case Actions.UPDATE_ME_FAILURE: return state
+
+      // load User
+    case Actions.LOAD_USER_REQUEST: return state
+    case Actions.LOAD_USER_SUCCESS: return Object.assign({}, state, {
+      user: action.payload
+    })
+    case Actions.LOAD_USER_FAILURE: return state
+
+      // create User Image
+    case Actions.CREATE_USER_IMAGE_REQUEST: return state
+    case Actions.CREATE_USER_IMAGE_SUCCESS: return Object.assign({}, state, {
+      me: Object.assign({}, state.me, {
+        image: action.payload.image
+      })
+    })
+    case Actions.CREATE_USER_IMAGE_FAILURE: return state
+
+      // User Header Image
+    case Actions.CREATE_USER_HEADER_IMAGE_REQUEST: return state
+    case Actions.CREATE_USER_HEADER_IMAGE_SUCCESS: return Object.assign({}, state, {
+      me: Object.assign({}, state.me, {
+        header_image: action.payload.image
+      })
+    })
+    case Actions.CREATE_USER_HEADER_IMAGE_FAILURE: return state
+
       // Work
     case Actions.LOAD_WORK_REQUEST: return state
     case Actions.LOAD_WORK_SUCCESS: return Object.assign({}, state, {
@@ -135,12 +175,6 @@ export default function coreApi(state = INITIAL_STATE, action) {
     })
     case Actions.LOAD_WORK_FAILURE: return state
 
-    case Actions.REQUIRE_LOGIN: return Object.assign({}, state, {
-      error: {
-        type: 'AUTHENTICATION_ERROR',
-        message: 'need login'
-      }
-    })
     default:
       return state
   }

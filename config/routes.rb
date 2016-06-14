@@ -2,14 +2,14 @@ Rails.application.routes.draw do
   scope :api do
     with_options(defaults: { format: :json }, format: false) do
       # post 'create_user'
-      post 'users' => 'core_api#create_site_user'
-      get 'users/:id' => 'core_api#show_site_user'
-      get 'me' => 'core_api#show_site_user'
-      put 'me' => 'core_api#update_site_user'
-      post 'my/user_image' => 'core_api#create_site_user_image'
-      post 'my/user_header_image' => 'core_api#create_site_user_header_image'
-      get 'users/:site_user_id/creations' => 'core_api#index_creation_created_by_user'
-      get 'users/:site_user_id/goods' => 'core_api#index_good_by_user'
+      post 'users' => 'core_api#create_user'
+      get 'users/:id' => 'core_api#show_user'
+      get 'me' => 'core_api#show_my_info'
+      put 'me' => 'core_api#update_user'
+      post 'my/user_image' => 'core_api#create_user_image'
+      post 'my/user_header_image' => 'core_api#create_user_header_image'
+      get 'users/:user_id/creations' => 'core_api#index_creation_created_by_user'
+      get 'users/:user_id/goods' => 'core_api#index_good_by_user'
 
       post 'works' => 'core_api#create_creation'
       get 'works/:id' => 'core_api#show_creation'

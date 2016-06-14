@@ -8,13 +8,9 @@ class DarrestCoreApi
   def create_user(params)
   end
 
-  # params = {
-  #   user_id: <user_id *required>,
-  #   biography: <biography>
-  # }
-  # def create_site_user(params)
-  #   send_post('/site_users', params)
-  # end
+  def show_my_info(params)
+    send_get('/me', params)
+  end
 
   # params = {
   #   id: <site_user_id>
