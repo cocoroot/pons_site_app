@@ -9,6 +9,7 @@ import Login from '../components/login-component'
 
 function mapStateToProps(state) {
   return {
+    login: state.login
   }
 }
 
