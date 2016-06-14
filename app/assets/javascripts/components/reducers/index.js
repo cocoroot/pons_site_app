@@ -3,11 +3,13 @@ import { routerReducer } from 'react-router-redux'
 
 import topReducer from './top-reducer'
 import userDetailReducer from './user-detail-reducer'
+import workDetailReducer from './work-detail-reducer'
 import coreApiReducer from './core-api-reducer'
 
 const rootReducer = combineReducers({
   useDetail: userDetailReducer,
   top: topReducer,
+  workDetail: workDetailReducer,
   coreApi: coreApiReducer,
   routing: routerReducer
 })

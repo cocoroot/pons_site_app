@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'site_work_detail/index'
+
   scope :api do
     with_options(defaults: { format: :json }, format: false) do
       # post 'create_user'
