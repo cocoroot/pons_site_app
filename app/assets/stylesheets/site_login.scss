@@ -1,0 +1,29 @@
+.login-body {
+  position: relative;
+}
+.login-container {
+  position:absolute;
+  top:0;
+  right: 0;
+  bottom:0;
+  left:0;
+  margin:auto;
+  width:500px;
+  height:400px;
+  text-align: center;
+}
+
+.login-logo {
+  margin-bottom: 30px;
+}
+
+.login-form {
+  padding: 30px 80px;
+  background: #ddd;
+}
+.login-form input {
+  margin-bottom: 15px;
+}
+.login-alert {
+  text-align: left;
+}
