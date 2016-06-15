@@ -7,7 +7,7 @@ import coreApiReducer from './core-api-reducer'
 import loginReducer from './login-reducer'
 
 const rootReducer = combineReducers({
-  useDetail: userDetailReducer,
+  userDetail: userDetailReducer,
   top: topReducer,
   login: loginReducer,
   coreApi: coreApiReducer,

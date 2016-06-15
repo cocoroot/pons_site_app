@@ -19,7 +19,9 @@ let TestUserContainer = connect(mapStateToProps, mapDispatchToProps)(TestUser)
 TestUserContainer.onEnter = function (dispatch, nextState, replace) {
   console.log("TestUserContainer dispatch=%o, nextState=%o, replace=%o", dispatch, nextState, replace)
   if (nextState.params) {
-    dispatch(ApiActions.loadUser(nextState.params.user_id || 0))
+    const user_id = nextState.params.user_id || 0
+    dispatch(ApiActions.loadUser(user_id))
+    dispatch(ApiActions.loadWorkListCreatedByUser(user_id))
   }
 }
 

@@ -125,6 +125,26 @@ export function createUserHeaderImage(file) {
   return post('/my/user_header_image', 'CREATE_USER_HEADER_IMAGE', {}, {}, { image: file })
 }
 
+//
+// Works created by a User
+//
+export const LOAD_WORK_LIST_CREATED_BY_USER_REQUEST = 'LOAD_WORK_LIST_CREATED_BY_USER_REQUEST'
+export const LOAD_WORK_LIST_CREATED_BY_USER_SUCCESS = 'LOAD_WORK_LIST_CREATED_BY_USER_SUCCESS'
+export const LOAD_WORK_LIST_CREATED_BY_USER_FAILURE = 'LOAD_WORK_LIST_CREATED_BY_USER_FAILURE'
+export function loadWorkListCreatedByUser(id, page = 1) {
+  return get(`/users/${id}/works?page=${page}`, 'LOAD_WORK_LIST_CREATED_BY_USER')
+}
+
+//
+// Favorite Works
+//
+export const LOAD_FAVORITE_WORKS_REQUEST = 'LOAD_FAVORITE_WORKS_REQUEST'
+export const LOAD_FAVORITE_WORKS_SUCCESS = 'LOAD_FAVORITE_WORKS_SUCCESS'
+export const LOAD_FAVORITE_WORKS_FAILURE = 'LOAD_FAVORITE_WORKS_FAILURE'
+export function loadFavoriteWorks(id, page = 1) {
+  return get(`/users/${id}/goods?page=${page}`, 'LOAD_FAVORITE_WORKS')
+}
+
 //----------------------------------------
 // Work
 //----------------------------------------
@@ -162,17 +182,6 @@ export function loadNewWorkList() {
     return dispatch(fetchNewWorkList())
   }
 }
-
-//
-// Works created by a User
-//
-export const LOAD_WORK_LIST_CREATED_BY_USER_REQUEST = 'LOAD_WORK_LIST_CREATED_BY_USER_REQUEST'
-export const LOAD_WORK_LIST_CREATED_BY_USER_SUCCESS = 'LOAD_WORK_LIST_CREATED_BY_USER_SUCCESS'
-export const LOAD_WORK_LIST_CREATED_BY_USER_FAILURE = 'LOAD_WORK_LIST_CREATED_BY_USER_FAILURE'
-export function loadWorkListCreatedByUser(id) {
-  return get(`/works?created_by=${id}`)
-}
-
 
 //
 // Work

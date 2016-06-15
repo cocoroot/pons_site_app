@@ -5,7 +5,7 @@ import { Row } from 'react-bootstrap'
 
 class CreationList extends Component {
   render() {
-    const { creationList } = this.props
+    const { creationList = [] } = this.props
     return (
       // <Grid>
         <Row>
