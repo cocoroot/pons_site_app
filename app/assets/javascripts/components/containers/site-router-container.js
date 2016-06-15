@@ -11,6 +11,7 @@ import TagWorkList from '../containers/tag-work-list-container'
 import NewWorkList from '../containers/new-work-list-container'
 
 import UserDetail from '../containers/user-detail-container'
+import WorkDetail from '../containers/work-detail-container'
 
 import TestMe from '../containers/test-me-container'
 import TestUser from '../containers/test-user-container'
@@ -51,8 +52,6 @@ class App extends Component {
               <LinkContainer to="/users/2"><NavItem>user: 2</NavItem></LinkContainer>
               <LinkContainer to="/works/1"><NavItem>work: 1</NavItem></LinkContainer>
               <LinkContainer to="/works/2"><NavItem>work: 2</NavItem></LinkContainer>
-              <LinkContainer to="/test-creations/1"><NavItem>test creation: 1</NavItem></LinkContainer>
-              <LinkContainer to="/test-creations/2"><NavItem>test creation: 2</NavItem></LinkContainer>
               <LinkContainer to="/test-users/1"><NavItem>test user: 1</NavItem></LinkContainer>
               <LinkContainer to="/test-users/2"><NavItem>test user: 2</NavItem></LinkContainer>
               <LinkContainer to="/test-me"><NavItem>me</NavItem></LinkContainer>
@@ -90,6 +89,7 @@ export class SiteRouter extends Component {
 
   onEnterTop(nextState, replace) { Top.onEnter(store.dispatch, nextState, replace) }
   onEnterUserDetail(nextState, replace) { UserDetail.onEnter(store.dispatch, nextState, replace) }
+  onEnterWorkDetail(nextState, replace) { WorkDetail.onEnter(store.dispatch, nextState, replace) }
 
   // TODO: 要削除　テスト用
   onEnterTestMe(nextState, replace) { TestMe.onEnter(store.dispatch, nextState, replace) }
@@ -105,6 +105,7 @@ export class SiteRouter extends Component {
           <IndexRoute component={ Top } onEnter={ this.onEnterTop } />
           <Route path="/" component={ Top } onEnter={ this.onEnterTop }/>
           <Route path="/users/:user_id" component={ UserDetail } onEnter={this.onEnterUserDetail} />
+          <Route path="/works/:work_id" component={ WorkDetail } onEnter={this.onEnterWorkDetail} />
           <Route path="/test-users/:user_id" component={ TestUser } onEnter={this.onEnterTestUser} />
           <Route path="/test-me" component={ TestMe } onEnter={this.onEnterTestMe} />
           <Route path="/test-creations/:creation_id" component={ TestCreation } onEnter={this.onEnterTestCreation} />

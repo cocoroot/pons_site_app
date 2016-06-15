@@ -1,3 +1,73 @@
-// Place all the styles related to the site_work_detail controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.workdetail-container {
+  width: 900px;
+}
+
+// header
+.workdetail-header-title {
+  font-size: 1.4em;
+  height:24px;
+  font-weight: bold;
+}
+
+// data
+.workdetail-data-panel {
+  margin-right: 0;
+  margin-left: 0;
+  padding:15px;
+}
+.workdetail-data-panel .table > tbody > tr > td {
+  vertical-align: middle;
+}
+
+// control
+.workdetail-control {
+  text-align: right;
+}
+
+// response
+.workdetail-responsebox {
+  text-align: center;
+  padding: 10px 0;
+  margin-right: 0;
+  margin-left: 0;
+}
+.workdetail-glyph {
+  font-size: 40px;
+  height:47px;
+}
+.workdetail-res-count {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 0;
+  padding:0;
+}
+.workdetail-res-unit {
+  position: relative;
+  top: -5px;
+  font-size: 0.8em;
+  margin:0;
+  padding:0;
+}
+
+// tags
+.workdetail-tagbox {
+  padding-bottom: 15px;
+}
+.workdetail-tag {
+  margin-right:5px;
+  margin-bottom:5px;
+}
+
+// lisence
+.workdetail-lisencebox img{
+  float:left;
+  width:100px;
+  padding-right:15px;
+}
+
+// comment
+.workdetail-commentbox {
+  margin-right: 0;
+  margin-left: 0;
+  padding:15px;
+}
