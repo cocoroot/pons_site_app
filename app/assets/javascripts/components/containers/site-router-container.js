@@ -15,7 +15,7 @@ import WorkDetail from '../containers/work-detail-container'
 
 import TestMe from '../containers/test-me-container'
 import TestUser from '../containers/test-user-container'
-import TestCreation from '../containers/test-creation-container'
+import TestWork from '../containers/test-work-container'
 
 import Header from '../components/common-header-component'
 import Footer from '../components/common-footer-component'
@@ -94,7 +94,7 @@ export class SiteRouter extends Component {
   // TODO: 要削除　テスト用
   onEnterTestMe(nextState, replace) { TestMe.onEnter(store.dispatch, nextState, replace) }
   onEnterTestUser(nextState, replace) { TestUser.onEnter(store.dispatch, nextState, replace) }
-  onEnterTestCreation(nextState, replace) { TestCreation.onEnter(store.dispatch, nextState, replace) }
+  onEnterTestWork(nextState, replace) { TestWork.onEnter(store.dispatch, nextState, replace) }
   
   render() {
     // console.log("SiteRouterComponent render props=%o", this.props)
@@ -108,14 +108,10 @@ export class SiteRouter extends Component {
           <Route path="/works/:work_id" component={ WorkDetail } onEnter={this.onEnterWorkDetail} />
           <Route path="/test-users/:user_id" component={ TestUser } onEnter={this.onEnterTestUser} />
           <Route path="/test-me" component={ TestMe } onEnter={this.onEnterTestMe} />
-          <Route path="/test-creations/:creation_id" component={ TestCreation } onEnter={this.onEnterTestCreation} />
+          <Route path="/test-works/:work_id" component={ TestWork } onEnter={this.onEnterTestWork} />
           <Route path="/sorry" component={ Sorry } />
         </Route>
       </Router>
     )
   }
 }
-
-// <route path="/tags/:tag_name/works" component={ TagWorkList } onEnter={ this.onEnterTagWorkList } />
-//           <route path="/works/new" component={ NewWorkList } onEnter={ this.onEnterNewWorkList } />
-

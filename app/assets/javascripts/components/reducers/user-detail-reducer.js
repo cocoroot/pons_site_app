@@ -3,18 +3,18 @@ import * as Actions from '../actions/user-detail-action'
 const initialState = {
   editMode: false,
   profile: {},
-  originalCreations: [],
+  originalWorks: [],
   originalCount: 0,
-  favoriteCreations: [],
+  favoriteWorks: [],
   favoriteCount: 0
 }
 
 export default function userDetail(state = initialState, action) {
   switch (action.type) {
-    case Actions.SET_CREATIONS:
+    case Actions.SET_WORKS:
       return Object.assign({}, state, {
-        originalCreations: action.originalCreations,
-        favoriteCreations: action.favoriteCreations
+        originalWorks: action.originalWorks,
+        favoriteWorks: action.favoriteWorks
       })
     case Actions.SET_USER:
       return Object.assign({}, state, {

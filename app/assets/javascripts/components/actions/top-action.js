@@ -1,7 +1,7 @@
 export const SET_BANNERS = "SET_BANNERS"
-export const SET_PICKUP_CREATIONS = "SET_PICKUP_CREATIONS"
+export const SET_PICKUP_WORKS = "SET_PICKUP_WORKS"
 export const SET_TAGS = "SET_TAGS"
-export const SET_NEW_CREATIONS = "SET_NEW_CREATIONS"
+export const SET_NEW_WORKS = "SET_NEW_WORKS"
 
 
 export function setBanners(banners){
@@ -11,10 +11,10 @@ export function setBanners(banners){
   }
 }
 
-export function setPickupCreations(pickupCreations){
+export function setPickupWorks(pickupWorks){
   return {
-    type: SET_PICKUP_CREATIONS,
-    pickupCreations: pickupCreations
+    type: SET_PICKUP_WORKS,
+    pickupWorks: pickupWorks
   }
 }
 
@@ -25,9 +25,9 @@ export function setTags(tags){
   }
 }
 
-export function setNewCreations(newCreations){
+export function setNewWorks(newWorks){
   return{
-    type: SET_NEW_CREATIONS,
-    newCreations: newCreations
+    type: SET_NEW_WORKS,
+    newWorks: newWorks
   }
 }
