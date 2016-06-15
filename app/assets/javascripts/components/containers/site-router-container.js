@@ -17,7 +17,7 @@ import TestMe from '../containers/test-me-container'
 import TestUser from '../containers/test-user-container'
 import TestWork from '../containers/test-work-container'
 
-import Header from '../components/common-header-component'
+import Header from '../containers/header-container'
 import Footer from '../components/common-footer-component'
 
 import { Button, Navbar, Nav, NavItem } from 'react-bootstrap'
@@ -34,12 +34,12 @@ class App extends Component {
     localStorage.access_token_bak = localStorage.access_token
     localStorage.access_token = 'ZGlvbC3EmXps7OsgAdq17Tsp6opGZ3-Xn5jUDgjdM_Q'
   }
-  
+
   render() {
     return(
       <div>
         <div>
-          
+
           <Navbar>
             <Navbar.Header>
               <Navbar.Brand>
@@ -75,7 +75,7 @@ export class SiteRouter extends Component {
       history.push(`/${this.props.path}`)
     }
   }
-  
+
   requireAuth(nextState, replace) {
     if (!localStorage.access_token) {
       replace({
@@ -95,7 +95,7 @@ export class SiteRouter extends Component {
   onEnterTestMe(nextState, replace) { TestMe.onEnter(store.dispatch, nextState, replace) }
   onEnterTestUser(nextState, replace) { TestUser.onEnter(store.dispatch, nextState, replace) }
   onEnterTestWork(nextState, replace) { TestWork.onEnter(store.dispatch, nextState, replace) }
-  
+
   render() {
     // console.log("SiteRouterComponent render props=%o", this.props)
     return(

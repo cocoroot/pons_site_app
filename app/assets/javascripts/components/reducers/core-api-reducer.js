@@ -106,7 +106,8 @@ const INITIAL_STATE = {
   favoriteWorks: [],
   work: {},
   works: [],
-  userDetail: {}
+  userDetail: {},
+  me: {}
 }
 
 export default function coreApi(state = INITIAL_STATE, action) {
@@ -134,14 +135,14 @@ export default function coreApi(state = INITIAL_STATE, action) {
       //----------------------------------------
       // User
       //----------------------------------------
-      
+
       // load Me
     case Actions.LOAD_ME_REQUEST: return state
     case Actions.LOAD_ME_SUCCESS: return Object.assign({}, state, {
       me: action.payload
     })
     case Actions.LOAD_ME_FAILURE: return state
-      
+
       // update Me
     case Actions.UPDATE_ME_REQUEST: return state
     case Actions.UPDATE_ME_SUCCESS: return Object.assign({}, state, {
@@ -187,7 +188,7 @@ export default function coreApi(state = INITIAL_STATE, action) {
       favoriteWorks: action.payload.goods
     })
     case Actions.LOAD_FAVORITE_WORKS_FAILURE: return state
-      
+
       //----------------------------------------
       // Work
       //----------------------------------------
