@@ -2,18 +2,15 @@ import React, { Component, PropTypes } from 'react'
 
 import { Button, FormControl, Alert } from 'react-bootstrap'
 
-
 export default class Login extends Component {
-
-
-
   onSubmit(e) {
     e.preventDefault()
-    const { submitLogin } = this.props
+    const { login } = this.props
     var form = document.forms[0]
     var loginId = form.loginId.value
     var password = form.password.value
-    submitLogin( loginId, password)
+    console.log("login loginId=%o, passwond=%o", loginId, password)
+    login(loginId, password)
   }
 
   onFieldChanged(e) {

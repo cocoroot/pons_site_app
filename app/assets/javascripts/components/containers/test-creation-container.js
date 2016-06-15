@@ -6,7 +6,7 @@ import TestCreation from '../components/test-creation-component'
 
 function mapStateToProps(state) {
   return {
-    creation: state.coreApi.creation
+    creation: state.coreApi.work
   }
 }
 
@@ -19,7 +19,7 @@ let TestCreationContainer = connect(mapStateToProps, mapDispatchToProps)(TestCre
 TestCreationContainer.onEnter = function (dispatch, nextState, replace) {
   console.log("TestCreationContainer dispatch=%o, nextState=%o, replace=%o", dispatch, nextState, replace)
   if (nextState.params) {
-    dispatch(ApiActions.loadCreation(nextState.params.creation_id || 0))
+    dispatch(ApiActions.loadWork(nextState.params.creation_id || 0))
   }
 }
 
