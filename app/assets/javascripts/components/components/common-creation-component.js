@@ -1,27 +1,45 @@
 import React, { Component, PropTypes } from 'react'
+import { Link } from 'react-router'
+
+import { CORE_CONTENTS_BASE_URL } from '../settings'
 
 import { Col, Image, Media, Glyphicon } from 'react-bootstrap'
 
 class Creation extends Component {
   render() {
-    const {  title, img, url, author, viewCount, likeCount, commentCount  } = this.props
+    //console.log("Creation render props=%o", this.props)
+    
+    const {
+      id,
+      title,
+      creation_images: images = null,
+      site_user: author = null,
+      viewCount = 777, // TODO: viewCount
+      goods_count: likeCount,
+      creation_comments_count: commentCount
+    } = this.props
+    const image_url = images ? CORE_CONTENTS_BASE_URL + images[0].image.url : ''
+    const author_image_url = author ? CORE_CONTENTS_BASE_URL + author.image.url : ''
+    const author_id = author ? author.id : 0
+    const author_name = author ? author.name : ''
+    
     return (
       <Col xs={6} md={4}>
         <div>
-          <a href={url}>
-            <Image responsive src={img} />
-          </a>
+          <Link to={`/works/${id}`}>
+            <Image responsive src={image_url} />
+          </Link>
           <Media>
             <Media.Left>
-              <a href={author.url}>
-                <Image className="img-circle" width={40} height={40} src={author.avatar} />
-              </a>
+              <Link to="`/users/${author_id}`">
+                <Image className="img-circle" width={40} height={40} src={author_image_url} />
+              </Link>
             </Media.Left>
             <Media.Body>
               <Media.Heading>
-                <a href={url}>{title}</a>
+                <Link to="`/works/${id}`">{title}</Link>
               </Media.Heading>
-              <p><a href={author.url}>by {author.name}</a></p>
+              <p><Link to="`/users/${author_id}`">by {author_name}</Link></p>
             </Media.Body>
             <div className="">
               <Glyphicon glyph="eye-open" />

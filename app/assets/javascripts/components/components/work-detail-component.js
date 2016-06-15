@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react'
-import * as Actions from '../actions/work-detail-action'
 
 import DetailHeader from './work-detail-header-component'
 import DetailImage from './work-detail-image-component'
@@ -14,37 +13,39 @@ import { Button, Media, Image, FormControl, Glyphicon } from 'react-bootstrap'
 export default class WorkDetail extends Component {
 
   render() {
-    const workDetail = this.props.workDetail
+    const { work, editMode } = this.props
+    // TODO: 
     const actions = this.props
+
     return (
       <div className="workdetail-container container">
         <div className="row">
           {/* header */}
-          <DetailHeader workDetail={workDetail} actions={actions} />
+          <DetailHeader editMode={editMode} actions={actions} />
           {/* control */}
-          <DetailControl workDetail={workDetail} actions={actions} />
+          <DetailControl editMode={editMode} actions={actions} />
         </div>
         <div className="row">
           <div className="col-xs-8 col-md-8">
             {/* image box */}
-            <DetailImage workDetail={workDetail} actions={actions} />
+            <DetailImage work={work} editMode={editMode} actions={actions} />
             {/* data box */}
-            <DetailData workDetail={workDetail} actions={actions} />
+            <DetailData work={work} editMode={editMode} actions={actions} />
             {/* lisence box */}
             <div className="workdetail-lisencebox">
               <img src="/assets/by-nc-sa.eu.png" />
               <p>xxx作xxxは、クリエイティブコモンズ表示・非営利・継承2.1 日本ライセンスの元に提示されています</p>
             </div>
             {/* comment box */}
-            <DetailComment workDetail={workDetail} actions={actions} />
+            <DetailComment work={work} editMode={editMode} actions={actions} />
           </div>
           <div className="col-xs-4 col-md-4">
             {/* response box */}
             <DetailResponse />
             {/* detail box */}
-            <DetailDetail workDetail={workDetail} actions={actions} />
+            <DetailDetail work={work} editMode={editMode} actions={actions} />
             {/* tag box */}
-            <DetailTags workDetail={workDetail} actions={actions} />
+            <DetailTags work={work} editMode={editMode} actions={actions} />
             {/* download button */}
             <div>
               <Button href="#download" bsStyle="primary" block> <Glyphicon glyph="download-alt" /> ダウンロード</Button>

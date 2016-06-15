@@ -102,6 +102,8 @@ const INITIAL_STATE = {
   pickupTags: [],
   pickupNewCreations: [],
   user: {},
+  userWorks: [],
+  favoriteWorks: [],
   work: {},
   works: [],
   userDetail: {}
@@ -129,6 +131,10 @@ export default function coreApi(state = INITIAL_STATE, action) {
     case Actions.LOAD_PICKUP_NEW_WORK_LIST_SUCCESS: return Object.assign({}, state, PICKUP_NEW_WORK_LIST_RESPONSE)
     case Actions.LOAD_PICKUP_NEW_WORK_LIST_FAILURE: return state
 
+      //----------------------------------------
+      // User
+      //----------------------------------------
+      
       // load Me
     case Actions.LOAD_ME_REQUEST: return state
     case Actions.LOAD_ME_SUCCESS: return Object.assign({}, state, {
@@ -168,7 +174,23 @@ export default function coreApi(state = INITIAL_STATE, action) {
     })
     case Actions.CREATE_USER_HEADER_IMAGE_FAILURE: return state
 
+      // Works created by a User
+    case Actions.LOAD_WORK_LIST_CREATED_BY_USER_REQUEST: return state
+    case Actions.LOAD_WORK_LIST_CREATED_BY_USER_SUCCESS: return Object.assign({}, state, {
+      userWorks: action.payload.creations
+    })
+    case Actions.LOAD_WORK_LIST_CREATED_BY_USER_FAILURE: return state
+
+      // FavoriteWorks
+    case Actions.LOAD_FAVORITE_WORKS_REQUEST: return state
+    case Actions.LOAD_FAVORITE_WORKS_SUCCESS: return Object.assign({}, state, {
+      favoriteWorks: action.payload.goods
+    })
+    case Actions.LOAD_FAVORITE_WORKS_FAILURE: return state
+      
+      //----------------------------------------
       // Work
+      //----------------------------------------
     case Actions.LOAD_WORK_REQUEST: return state
     case Actions.LOAD_WORK_SUCCESS: return Object.assign({}, state, {
       work: action.payload
