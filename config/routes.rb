@@ -8,28 +8,37 @@ Rails.application.routes.draw do
       put 'me' => 'core_api#update_user'
       post 'my/user_image' => 'core_api#create_user_image'
       post 'my/user_header_image' => 'core_api#create_user_header_image'
-      get 'users/:user_id/creations' => 'core_api#index_creation_created_by_user'
+      get 'users/:user_id/works' => 'core_api#index_creation_created_by_user'
       get 'users/:user_id/goods' => 'core_api#index_good_by_user'
 
-      post 'works' => 'core_api#create_creation'
-      get 'works/:id' => 'core_api#show_creation'
-      put 'works/:id' => 'core_api#update_creation'
+      # post 'works' => 'core_api#create_creation' do
+      #   get 'works/:id' => 'core_api#show_creation'
+      #   put 'works/:id' => 'core_api#update_creation'
+      # end
 
-      post 'works/:id/work_images' => 'core_api#create_creation_image'
+      resources :works, only: [:create, :show, :update] do
+        post 'work_images' => 'core_api#create_creation_image'
+        post 'work_pieces' => 'core_api#create_creation_piece'
+        post 'work_tags' => 'core_api#create_creation_tag'
+        post 'work_comments' => 'core_api#create_creation_comment'
+        post 'goods' => 'core_api#create_good'
+      end
+
+      # post 'works/:id/work_images' => 'core_api#create_creation_image'
       get 'work_images/:id' => 'core_api#show_creation_image'
       put 'work_images/:id' => 'core_api#update_creation_image'
       delete 'work_images/:id' => 'core_api#delete_creation_image'
 
-      post 'work_pieces' => 'core_api#create_creation_piece'
-      put 'work_pieces' => 'core_api#update_creation_piece'
-      delete 'cleation_pieces' => 'core_api#delete_cleation_piece'
+      # post 'work_pieces' => 'core_api#create_creation_piece'
+      put 'work_pieces/:id' => 'core_api#update_creation_piece'
+      delete 'work_pieces/:id' => 'core_api#delete_cleation_piece'
 
-      post 'work/id:/work_tags' => 'core_api#create_creation_tag'
-      delete 'work_tags/id' => 'core_api#delete_creation_tag'
+      # post 'works/:id/work_tags' => 'core_api#create_creation_tag'
+      delete 'work_tags/:id' => 'core_api#delete_creation_tag'
 
-      post 'work_comments' => 'core_api#create_creation_comment'
-      post 'goods' => 'core_api#create_good'
-      delete 'goods' => 'core_api#delete_good'
+      #post 'works/:id/work_comments' => 'core_api#create_creation_comment'
+      #post 'works/:id/goods' => 'core_api#create_good'
+      delete 'goods/:id' => 'core_api#delete_good'
 
       match '*path', to: 'errors#routing_error', via: :all
     end
