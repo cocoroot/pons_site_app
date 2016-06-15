@@ -14,35 +14,37 @@ import { Button, Media, Image, FormControl, Glyphicon } from 'react-bootstrap'
 export default class WorkDetail extends Component {
 
   render() {
+    const workDetail = this.props.workDetail
+    const actions = this.props
     return (
       <div className="workdetail-container container">
         <div className="row">
           {/* header */}
-          <DetailHeader />
+          <DetailHeader workDetail={workDetail} actions={actions} />
           {/* control */}
-          <DetailControl />
+          <DetailControl workDetail={workDetail} actions={actions} />
         </div>
         <div className="row">
           <div className="col-xs-8 col-md-8">
             {/* image box */}
-            <DetailImage />
+            <DetailImage workDetail={workDetail} actions={actions} />
             {/* data box */}
-            <DetailData />
+            <DetailData workDetail={workDetail} actions={actions} />
             {/* lisence box */}
             <div className="workdetail-lisencebox">
               <img src="/assets/by-nc-sa.eu.png" />
               <p>xxx作xxxは、クリエイティブコモンズ表示・非営利・継承2.1 日本ライセンスの元に提示されています</p>
             </div>
             {/* comment box */}
-            <DetailComment />
+            <DetailComment workDetail={workDetail} actions={actions} />
           </div>
           <div className="col-xs-4 col-md-4">
             {/* response box */}
             <DetailResponse />
             {/* detail box */}
-            <DetailDetail />
+            <DetailDetail workDetail={workDetail} actions={actions} />
             {/* tag box */}
-            <DetailTags />
+            <DetailTags workDetail={workDetail} actions={actions} />
             {/* download button */}
             <div>
               <Button href="#download" bsStyle="primary" block> <Glyphicon glyph="download-alt" /> ダウンロード</Button>
