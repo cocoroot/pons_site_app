@@ -1,23 +1,23 @@
 import React, { Component, PropTypes } from 'react'
-import CreationList from './common-creation-list-component'
+import WorkList from './common-work-list-component'
 
 import { Tabs, Tab } from 'react-bootstrap'
 
-class UserDetailCreationBox extends Component {
+class UserDetailWorkBox extends Component {
   render() {
-    console.log("UserDetailCreationBox render props=%o", this.props)
+    console.log("UserDetailWorkBox render props=%o", this.props)
     // TODO: tabKey を設定している場所がない？
     const { tabKey, originalWorks, favoriteWorks } = this.props
     return (
         <Tabs defaultActiveKey={tabKey} id="uncontrolled-tab">
           <Tab eventKey={1} title="オリジナル作品" >
             <div className="container">
-              <CreationList creationList={originalWorks} />
+              <WorkList workList={originalWorks} />
             </div>
           </Tab>
           <Tab eventKey={2} title="お気に入り" >
             <div className="container">
-              <CreationList creationList={favoriteWorks} />
+              <WorkList workList={favoriteWorks} />
             </div>
           </Tab>
         </Tabs>
@@ -26,7 +26,7 @@ class UserDetailCreationBox extends Component {
   }
 }
 
-UserDetailCreationBox.propTypes = {
+UserDetailWorkBox.propTypes = {
 }
 
-export default UserDetailCreationBox
+export default UserDetailWorkBox

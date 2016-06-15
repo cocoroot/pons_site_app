@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import Header from './common-header-component'
 import Footer from './common-footer-component'
 import UserDetailProfileBox from './user-detail-profile-box-component'
-import UserDetailCreationBox from './user-detail-creation-box-component'
+import UserDetailWorkBox from './user-detail-work-box-component'
 
 export default class UserDetail extends Component {
 
@@ -20,7 +20,7 @@ export default class UserDetail extends Component {
     return (
       <div>
         <UserDetailProfileBox profile={profile} editMode={editMode} changeEditMode={changeEditMode}  />
-        <UserDetailCreationBox originalWorks={originalWorks} favoriteWorks={favoriteWorks} />
+        <UserDetailWorkBox originalWorks={originalWorks} favoriteWorks={favoriteWorks} />
       </div>
     )
   }

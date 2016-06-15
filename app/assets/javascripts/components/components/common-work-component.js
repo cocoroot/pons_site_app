@@ -5,9 +5,9 @@ import { CORE_CONTENTS_BASE_URL } from '../settings'
 
 import { Col, Image, Media, Glyphicon } from 'react-bootstrap'
 
-class Creation extends Component {
+class Work extends Component {
   render() {
-    //console.log("Creation render props=%o", this.props)
+    //console.log("Work render props=%o", this.props)
     
     const {
       id,
@@ -56,8 +56,8 @@ class Creation extends Component {
   }
 }
 
-Creation.propTypes = {
+Work.propTypes = {
 
 }
 
-export default Creation
+export default Work

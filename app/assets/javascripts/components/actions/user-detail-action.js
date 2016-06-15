@@ -1,5 +1,5 @@
 export const SELECT_FILTER = 'SELECT_FILTER'
-export const SET_CREATIONS = 'SET_CREATIONS'
+export const SET_WORKS = 'SET_WORKS'
 export const SET_USER = 'SET_USER'
 export const CHANGE_EDIT_MODE = 'CHANGE_EDIT_MODE'
 export const FETCH_PROFILE_REQUEST = 'FETCH_PROFILE_REQUEST'
@@ -13,11 +13,11 @@ export function selectFilter(filter = 1) {
   }
 }
 
-export function setCreations(props) {
+export function setWorks(props) {
   return {
-    type: SET_CREATIONS,
-    originalCreations: props.originalCreations,
-    favoriteCreations: props.favoriteCreations
+    type: SET_WORKS,
+    originalWorks: props.originalWorks,
+    favoriteWorks: props.favoriteWorks
   }
 }
 

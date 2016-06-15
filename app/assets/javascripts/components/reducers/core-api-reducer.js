@@ -16,7 +16,7 @@ const TOP_BANNERS_RESPONSE = {
 }
 
 const PICKUP_WORK_LIST_RESPONSE = {
-  pickupCreations: [
+  pickupWorks: [
     {
       id: 1,
       title: "hogehoge",
@@ -64,7 +64,7 @@ const PICKUP_TAGS_RESPONSE = {
 }
 
 const PICKUP_NEW_WORK_LIST_RESPONSE = {
-  newCreations: [
+  pickupNewWorks: [
     {
       id: 1,
       title: "hogehoge",
@@ -98,9 +98,9 @@ const PICKUP_NEW_WORK_LIST_RESPONSE = {
 
 const INITIAL_STATE = {
   topBanners: [],
-  pickupCreations: [],
+  pickupWorks: [],
   pickupTags: [],
-  pickupNewCreations: [],
+  pickupNewWorks: [],
   user: {},
   userWorks: [],
   favoriteWorks: [],
