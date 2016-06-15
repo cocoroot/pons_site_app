@@ -19,7 +19,7 @@ import TestCreation from '../containers/test-creation-container'
 import Header from '../components/common-header-component'
 import Footer from '../components/common-footer-component'
 
-import { Button, Navbar, Nav, NavItem, ListGroup, ListGroupItem } from 'react-bootstrap'
+import { Button, Navbar, Nav, NavItem } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 
 class App extends Component {
@@ -61,7 +61,6 @@ class App extends Component {
         </div>
         <Header />
         {this.props.children}
-        <Footer />
       </div>
     )
   }
