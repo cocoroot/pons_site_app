@@ -1,5 +1,6 @@
 import { CALL_API } from 'redux-api-middleware'
 import { history } from '../store/store'
+import { loadMe } from './core-api-action'
 
 // TODO: 設定値
 const LOGIN_API = 'https://api.stg.dbackend.jp/api/oauth2/token'
@@ -16,7 +17,7 @@ export function login(username, password) {
     password: password,
     expiresAt: Date.now() + 7 * 24 * 60 * 60 * 100 // expires at just a week later
   }
-  
+
   return (dispatch, nextState) => {
     //console.log("login username=%o, passwortd=%o, expiresAt=%o", body.username, body.password, body.expiresAt)
     dispatch({
@@ -36,9 +37,12 @@ export function login(username, password) {
             payload: (action, state, res) => { return res.json().then(
               json => {
                 localStorage.access_token = json.access_token
-                history.push('/')
                 return json
-              })
+              }).then(
+                dispatch(loadMe())
+              ).then(
+                history.push('/')
+              )
             }
           },
           {

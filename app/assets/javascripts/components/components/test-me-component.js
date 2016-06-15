@@ -29,13 +29,13 @@ export default class TestMe extends Component {
       this.props.createUserImage(file)
     })
   }
-  
+
   onDropHeaderImage(files) {
     files.forEach((file) => {
       this.props.createUserHeaderImage(file)
     })
   }
-  
+
   render() {
     const { id, nickname, biography, owner, image, header_image } = this.props.me || { id: 0, nickname: '', biography: '', owner: false }
 
@@ -43,13 +43,13 @@ export default class TestMe extends Component {
       <div>
         TestMe
         <h3>Me</h3>
-	<Button onClick={ this.onUpdateButtoClicked } >更新！</Button>
+        <Button onClick={ this.onUpdateButtoClicked } >更新！</Button>
         <ul>
           <li>id: {id}</li>
           <li>nickname: {nickname}</li>
           <li>biography: {biography}</li>
           <li>owner: {owner ? 'true' : 'false'}</li>
-          <li>image: 
+          <li>image:
             <div>
               <Dropzone onDrop={ this.onDropImage } accept="image/jpeg,image/png,image/jpg" style={{width: '100%'}}>
                 {
@@ -61,7 +61,7 @@ export default class TestMe extends Component {
               </Dropzone>
             </div>
           </li>
-          <li>header_image: 
+          <li>header_image:
             <div>
               <Dropzone onDrop={ this.onDropHeaderImage } accept="image/jpeg,image/png,image/jpg" style={{width: '100%'}}>
                 {
@@ -81,4 +81,3 @@ export default class TestMe extends Component {
 
 TestMe.propTypes = {
 }
-
