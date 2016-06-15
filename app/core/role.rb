@@ -1,12 +1,12 @@
 
 module Role
-  UNAUTHENTICATED = "unauthenticated"
-  API             = "api"
-  MANAGER         = "manager"
-  ADMIN           = "admin"
-  USER            = "user"
-  SYSTEM          = "system"
-  
+  UNAUTHENTICATED = 'unauthenticated'
+  API             = 'api'
+  MANAGER         = 'manager'
+  ADMIN           = 'admin'
+  USER            = 'user'
+  SYSTEM          = 'system'
+
   def self.value(role)
     STATUSES[role]
   end
