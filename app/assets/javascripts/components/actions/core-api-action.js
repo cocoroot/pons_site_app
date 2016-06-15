@@ -256,17 +256,11 @@ function send(method, api, actionName, headers = {}, params = {}, forms = {}) {
 
 export function error(action, state, res) {
   return (dispatch, nextState) => {
-    if (400 == res.status) {
-      return history.push('login')
-    } else if (400 <= res.status && res.status < 500) {
-      return {
-        type: 'ERROR',
-        message: `Client Error (status=${res.status})`
-      }
+    if (400 <= res.status && res.status < 500) {
+      return history.push('/login')
     } else if (500 <= res.status && res.status < 600) {
       return history.push('/sorry')
     }
-    
   }
 }
 

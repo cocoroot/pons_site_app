@@ -19,26 +19,48 @@ import TestCreation from '../containers/test-creation-container'
 import Header from '../components/common-header-component'
 import Footer from '../components/common-footer-component'
 
+import { Button, Navbar, Nav, NavItem, ListGroup, ListGroupItem } from 'react-bootstrap'
+import { LinkContainer } from 'react-router-bootstrap'
+
 class App extends Component {
+  constructor() {
+    super()
+    this.onResetAccessToken = this.onResetAccessToken.bind(this)
+  }
+
+  // TODO: 開発用
+  onResetAccessToken() {
+    localStorage.access_token_bak = localStorage.access_token
+    localStorage.access_token = 'ZGlvbC3EmXps7OsgAdq17Tsp6opGZ3-Xn5jUDgjdM_Q'
+  }
+  
   render() {
     return(
       <div>
         <div>
-          <ul>
-            <li><Link to="/login">login</Link></li>
-            <li><Link to="/">top</Link></li>
-            <li><Link to="/test-creations/1">creation: 1</Link></li>
-            <li><Link to="/test-creations/2">creation: 2</Link></li>
-            <li><Link to="/test-users/1">user: 1</Link></li>
-            <li><Link to="/test-users/2">user: 2</Link></li>
-            <li><Link to="/test-me">me</Link></li>
-            <li><Link to="/sorry">sorry</Link></li>
-          </ul>
+          
+          <Navbar>
+            <Navbar.Header>
+              <Navbar.Brand>
+                <Link to="/">Top</Link>
+              </Navbar.Brand>
+            </Navbar.Header>
+            <Nav bsStyle="tabs">
+              <LinkContainer to="/login"><NavItem>login</NavItem></LinkContainer>
+              <LinkContainer to="/test-creations/1"><NavItem>creation: 1</NavItem></LinkContainer>
+              <LinkContainer to="/test-creations/2"><NavItem>creation: 2</NavItem></LinkContainer>
+              <LinkContainer to="/test-users/1"><NavItem>user: 1</NavItem></LinkContainer>
+              <LinkContainer to="/test-users/2"><NavItem>user: 2</NavItem></LinkContainer>
+              <LinkContainer to="/test-me"><NavItem>me</NavItem></LinkContainer>
+              <LinkContainer to="/sorry"><NavItem>sorry</NavItem></LinkContainer>
+            </Nav>
+            <Nav pullRight>
+              <NavItem><Button onClick={this.onResetAccessToken}>Reset Access Token</Button></NavItem>
+            </Nav>
+          </Navbar>
         </div>
         <Header />
-        <div>
-          {this.props.children}
-        </div>
+        {this.props.children}
         <Footer />
       </div>
     )
@@ -72,6 +94,7 @@ export class SiteRouter extends Component {
     // console.log("SiteRouterComponent render props=%o", this.props)
     return(
       <Router history={ history }>
+        <Route path="/login" component={ Login } />
         <Route path="/" component={ App }>
           <IndexRoute component={ Top } onEnter={ this.onEnterTop } />
           <Route path="/" component={ Top } onEnter={ this.onEnterTop }/>
@@ -79,7 +102,6 @@ export class SiteRouter extends Component {
           <Route path="/test-users/:user_id" component={ TestUser } onEnter={this.onEnterTestUser} />
           <Route path="/test-me" component={ TestMe } onEnter={this.onEnterTestMe} />
           <Route path="/test-creations/:creation_id" component={ TestCreation } onEnter={this.onEnterTestCreation} />
-          <Route path="/login" component={ Login } />
           <Route path="/sorry" component={ Sorry } />
         </Route>
       </Router>
@@ -89,4 +111,4 @@ export class SiteRouter extends Component {
 
 // <route path="/tags/:tag_name/works" component={ TagWorkList } onEnter={ this.onEnterTagWorkList } />
 //           <route path="/works/new" component={ NewWorkList } onEnter={ this.onEnterNewWorkList } />
-          
+

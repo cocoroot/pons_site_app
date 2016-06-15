@@ -1,7 +1,7 @@
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as LoginActions from '../actions/login-action' // 自分の action だけ import する
-import * as ApiActions from '../actions/core-api-action'
+import * as ApiActions from '../actions/dbaas-api-action'
 
 const Actions = { ...LoginActions, ...ApiActions }
 

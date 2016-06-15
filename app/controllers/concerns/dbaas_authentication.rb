@@ -10,12 +10,6 @@ module DbaasAuthentication extend ActiveSupport::Concern
 
   private
 
-  def _verify_access_token
-    raise ApplicationController::AuthenticationError, response.code
-    #user_info = UserInfo.new('5422fb650500-2b2b-6e11-8802-0816b8d4', ['user'])
-    #RequestLocals.store[:request_user] = user_info
-  end
-
   # verify access token which http request header contains.
   def verify_access_token
     #
@@ -23,7 +17,7 @@ module DbaasAuthentication extend ActiveSupport::Concern
     #
     token = request.headers[:HTTP_ACCESS_TOKEN]
     token = (valid_token?(token) ? token : "")
-Rails.logger.debug "token=#{token}"
+
     #
     # build request
     #
@@ -36,11 +30,11 @@ Rails.logger.debug "token=#{token}"
     https.use_ssl = true
 
     req = Net::HTTP::Post.new(uri.request_uri)
-    req["X-Kii-AppID"] = Settings.dbaas.app_id
-    req["X-Kii-AppKey"] = Settings.dbaas.app_key
-    req["Content-Type"] = "application/json"
+    req['X-Kii-AppID'] = Settings.dbaas.app_id
+    req['X-Kii-AppKey'] = Settings.dbaas.app_key
+    req['Content-Type'] = 'application/json'
     req.body = {
-      "access_token" => token
+      'access_token' => token
     }.to_json
 
     #
@@ -51,12 +45,15 @@ Rails.logger.debug "token=#{token}"
     #
     # make response
     #
-    ret = JSON.parse(res.body)["returnedValue"]
+    ret = JSON.parse(res.body)['returnedValue']
 
-    if ret["status"] == 'OK'
-      user_hash = ret["user"]
+    if ret['status'] == 'OK'
+      user_hash = ret['user']
 
-      user_info = UserInfo.new(user_hash["userID"] , user_hash["roles"])
+      user_info = UserInfo.new(user_hash['userID'], user_hash['roles'])
+      # logger.debug "UserInfo ex_user_id=#{user_info.ex_user_id}, roles=#{user_info.roles}, res.userID=#{user_hash['userId']}, res.roles=#{user_hash['roles']}"
+      raise ApplicationController::PermissionError, 403 unless user_info.valid?
+
       RequestLocals.store[:request_user] = user_info
     else
       raise ApplicationController::AuthenticationError, response.code

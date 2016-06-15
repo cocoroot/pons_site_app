@@ -4,6 +4,9 @@ import { Link } from 'react-router'
 
 import { Image, Button } from 'react-bootstrap'
 
+// TODO: 開発環境用
+const image_base_url = 'http://localhost:3000/uploads/dev'
+
 export default class TestMe extends Component {
   constructor() {
     super()
@@ -51,7 +54,7 @@ export default class TestMe extends Component {
               <Dropzone onDrop={ this.onDropImage } accept="image/jpeg,image/png,image/jpg" style={{width: '100%'}}>
                 {
                   (() => {
-                    return image !== void 0? <Image src={`http://localhost:3000/uploads/dev/${image.url}`} rounded /> : null
+                    return image !== void 0? <Image src={`${image_base_url}/${image.url}`} rounded /> : null
                   })()
                 }
                 <div>Drag & Drop or Click to select files to upload.</div>
@@ -63,7 +66,7 @@ export default class TestMe extends Component {
               <Dropzone onDrop={ this.onDropHeaderImage } accept="image/jpeg,image/png,image/jpg" style={{width: '100%'}}>
                 {
                   (() => {
-                    return header_image !== void 0? <Image src={`http://localhost:3000/uploads/dev/${header_image.url}`} rounded /> : null
+                    return header_image !== void 0? <Image src={`${image_base_url}/${header_image.url}`} rounded /> : null
                   })()
                 }
                 <div>Drag & Drop or Click to select files to upload.</div>
