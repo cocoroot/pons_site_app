@@ -5,31 +5,29 @@ import { CORE_CONTENTS_BASE_URL } from '../settings'
 
 class UserDetailProfileBox extends Component {
 
-  // handleChangeEditMode(mode) {
-  //   console.log("handleChangeEditMode")
-  //   this.props.dispatch(changeEditMode(mode))
-  // }
-
   render() {
     console.log("UserDetailProfileBox render props=%o", this.props)
-    const { editMode } = this.props
+    const { editMode, changeEditMode } = this.props
     const {
       id: user_id = 0,
       image = null,
-      biography = ''
+      biography = '',
+      owner = false
     } = this.props.profile
-    const { changeEditMode } = this.props
-    
+
     let displayStyle = {
       display: editMode ? 'none' : 'block'
     }
     let editStyle = {
       display: editMode ? 'block' : 'none'
     }
+    let ownerStyle = {
+      display: owner ? 'block': 'none'
+    }
 
     let image_url = image ? CORE_CONTENTS_BASE_URL + image.url : ''
     let thumbnail_url = image ? CORE_CONTENTS_BASE_URL + image.thumb.url : ''
-    
+
     return (
       <div>
         <div className="profile-image">
@@ -46,7 +44,7 @@ class UserDetailProfileBox extends Component {
                 <Media.Heading>ユーザ名</Media.Heading>
                 <p className="user-id">{user_id}</p>
                 <p className="user-biography">{biography}</p>
-                <Button className="user-edit-btn" onClick={() => changeEditMode(true)}  >編集</Button>
+                <Button className="user-edit-btn" style={ownerStyle} onClick={() => changeEditMode(true)}  >編集</Button>
               </div>
               <div style={editStyle}>
                 <form>

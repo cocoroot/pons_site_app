@@ -11,16 +11,12 @@ export default class UserDetail extends Component {
   }
 
   render() {
-    // const { userDetail } = this.props
-    // const { changeEditMode } = this.props
-    const { profile, editMode } = this.props
-    const { originalWorks, favoriteWorks } = this.props
-    const { changeEditMode } = this.props
-    
+    console.log("UserDetail render props=%o", this.props)
+
     return (
       <div>
-        <UserDetailProfileBox profile={profile} editMode={editMode} changeEditMode={changeEditMode}  />
-        <UserDetailWorkBox originalWorks={originalWorks} favoriteWorks={favoriteWorks} />
+        <UserDetailProfileBox {...this.props} />
+        <UserDetailWorkBox {...this.props} />
       </div>
     )
   }
