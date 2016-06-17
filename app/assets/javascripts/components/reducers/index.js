@@ -7,13 +7,16 @@ import workDetailReducer from './work-detail-reducer'
 import coreApiReducer from './core-api-reducer'
 import loginReducer from './login-reducer'
 
+import {reducer as formReducer} from 'redux-form';
+
 const rootReducer = combineReducers({
   useDetail: userDetailReducer,
   top: topReducer,
   workDetail: workDetailReducer,
   login: loginReducer,
   coreApi: coreApiReducer,
-  routing: routerReducer
+  routing: routerReducer,
+  form: formReducer
 })
 
 export default rootReducer

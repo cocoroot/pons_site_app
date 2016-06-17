@@ -22,6 +22,8 @@ import Footer from '../components/common-footer-component'
 import { Button, Navbar, Nav, NavItem } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 
+import Regist from '../containers/register-container'
+
 class App extends Component {
   constructor() {
     super()
@@ -33,12 +35,12 @@ class App extends Component {
     localStorage.access_token_bak = localStorage.access_token
     localStorage.access_token = 'ZGlvbC3EmXps7OsgAdq17Tsp6opGZ3-Xn5jUDgjdM_Q'
   }
-  
+
   render() {
     return(
       <div>
         <div>
-          
+
           <Navbar>
             <Navbar.Header>
               <Navbar.Brand>
@@ -53,6 +55,8 @@ class App extends Component {
               <LinkContainer to="/test-users/2"><NavItem>user: 2</NavItem></LinkContainer>
               <LinkContainer to="/test-me"><NavItem>me</NavItem></LinkContainer>
               <LinkContainer to="/sorry"><NavItem>sorry</NavItem></LinkContainer>
+              <LinkContainer to="/regist"><NavItem>regist</NavItem></LinkContainer>
+
             </Nav>
             <Nav pullRight>
               <NavItem><Button onClick={this.onResetAccessToken}>Reset Access Token</Button></NavItem>
@@ -72,7 +76,7 @@ export class SiteRouter extends Component {
       history.push(`/${this.props.path}`)
     }
   }
-  
+
   requireAuth(nextState, replace) {
     if (!localStorage.access_token) {
       replace({
@@ -88,7 +92,9 @@ export class SiteRouter extends Component {
   onEnterTestMe(nextState, replace) { TestMe.onEnter(store.dispatch, nextState, replace) }
   onEnterTestUser(nextState, replace) { TestUser.onEnter(store.dispatch, nextState, replace) }
   onEnterTestCreation(nextState, replace) { TestCreation.onEnter(store.dispatch, nextState, replace) }
-  
+
+  onEnterRegist(nextState, replace) { Regist.onEnter(store.dispatch, nextState, replace) }
+
   render() {
     // console.log("SiteRouterComponent render props=%o", this.props)
     return(
@@ -102,6 +108,7 @@ export class SiteRouter extends Component {
           <Route path="/test-me" component={ TestMe } onEnter={this.onEnterTestMe} />
           <Route path="/test-creations/:creation_id" component={ TestCreation } onEnter={this.onEnterTestCreation} />
           <Route path="/sorry" component={ Sorry } />
+          <Route path="/regist" component={ Regist } onEnter={ this.onEnterRegist }/>
         </Route>
       </Router>
     )
@@ -110,4 +117,3 @@ export class SiteRouter extends Component {
 
 // <route path="/tags/:tag_name/works" component={ TagWorkList } onEnter={ this.onEnterTagWorkList } />
 //           <route path="/works/new" component={ NewWorkList } onEnter={ this.onEnterNewWorkList } />
-
