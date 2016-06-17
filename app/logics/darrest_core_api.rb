@@ -97,7 +97,7 @@ class DarrestCoreApi
   end
 
   def create_creation_image(params)
-    send_post("/creations/#{params[:id]}/creation_images", params) do |req, parameters|
+    send_post("/creations/#{params[:creation_id]}/creation_images", params) do |req, parameters|
       received_image = parameters[:creation_image][:image]
 
       original_filename = received_image.original_filename
@@ -123,22 +123,57 @@ class DarrestCoreApi
   end
 
   def delete_creation_image(params)
-    send_delete("/creation_images/#{params[:id]}", {})
+    send_delete("/creation_images/#{params[:id]}", params.except(:id))
   end
 
   def create_creation_piece(params)
+    send_post("/creations/#{params[:creation_id]}/creation_pieces", params) do |req, parameters|
+      stream = MultiPartFormDataStream.new
+
+      # string params
+      stream.add_form('user_baas_id', parameters[:user_baas_id])
+      stream.add_form('name', parameters[:creation_piece][:name])
+
+      # file
+      received_file = parameters[:creation_piece][:file]
+      if received_file
+        stream.add_file('file',
+                        received_file.original_filename,
+                        received_file.content_type,
+                        received_file.tempfile
+                       )
+      end
+
+      # image
+      received_image = parameters[:creation_piece][:image]
+      if received_image
+        stream.add_file('image',
+                        received_image.original_filename,
+                        received_image.content_type,
+                        received_image.tempfile
+                       )
+      end
+
+      req.body_stream = stream
+      req['Content-Length'] = stream.size
+      req['Content-Type'] = stream.content_type
+    end
   end
 
   def update_creation_piece(params)
+    send_put("/creation_pieces/#{params[:id]}", params.except(:id))
   end
 
-  def delete_cleation_piece(params)
+  def delete_creation_piece(params)
+    send_delete("/creation_pieces/#{params[:id]}", params.except(:id))
   end
 
   def create_creation_tag(params)
+    send_post("/creations/#{params[:creation_id]}/creation_tags", params.except(:creation_id))
   end
 
   def delete_creation_tag(params)
+    send_delete("/creation_tags/#{params[:id]}", params.except(:id))
   end
 
   def create_creation_comment(params)

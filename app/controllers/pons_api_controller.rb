@@ -79,7 +79,7 @@ class PonsApiController < ApplicationController
 
   def create_work_image
     @result = DarrestCoreApi.new.create_creation_image(
-      id: params[:id],
+      creation_id: params[:work_id],
       user_baas_id: user_baas_id,
       creation_image: {
         image: params[:image],
@@ -103,25 +103,57 @@ class PonsApiController < ApplicationController
 
   def delete_work_image
     @result = DarrestCoreApi.new.delete_creation_image(
-      id: params[:id],
-      user_baas_id: user_baas_id
+      user_baas_id: user_baas_id,
+      id: params[:id]
     )
     render_json(@result)
   end
 
   def create_work_piece
+    @result = DarrestCoreApi.new.create_creation_piece(
+      user_baas_id: user_baas_id,
+      creation_id: params[:work_id],
+      creation_piece: {
+        file: params[:file],
+        image: params[:image],
+        name: params[:name]
+      }
+    )
+    render_json(@result)
   end
 
   def update_work_piece
+    @result = DarrestCoreApi.new.update_creation_piece(
+      user_baas_id: user_baas_id,
+      id: params[:id],
+      creation_piece: params[:work_piece]
+    )
+    render_json(@result)
   end
 
   def delete_cleation_piece
+    @result = DarrestCoreApi.new.delete_creation_piece(
+      user_baas_id: user_baas_id,
+      id: params[:id]
+    )
+    render_json(@result)
   end
 
   def create_work_tag
+    @result = DarrestCoreApi.new.create_creation_tag(
+      user_baas_id: user_baas_id,
+      creation_id: params[:work_id],
+      creation_tag: params[:work_tag]
+    )
+    render_json(@result)
   end
 
   def delete_work_tag
+    @result = DarrestCoreApi.new.delete_creation_tag(
+      user_baas_id: user_baas_id,
+      id: params[:id]
+    )
+    render_json(@result)
   end
 
   def create_work_comment

@@ -4,10 +4,10 @@ require 'stringio'
 class MultiPartFormDataStream
   attr_reader :data
 
-  def initialize(boundary = nil)
-    @boundary = boundary || 'boundary'
+  def initialize(bound = nil)
+    @boundary = bound || 'boundary'
 
-    @end_data = StringIO.new(['', '--' + @boundary + '--', ''].join(new_line))
+    @end_data = StringIO.new(['--' + @boundary + '--', ''].join(new_line))
     @data = []
     append_end_data
   end
@@ -16,6 +16,7 @@ class MultiPartFormDataStream
     delete_end_line
     stream = [boundary]
     stream << content_disposition(name)
+    stream << ''
     stream << ''
     stream << value
     stream << ''
@@ -41,11 +42,12 @@ class MultiPartFormDataStream
     stream = [boundary]
     stream << content_disposition_file(name, filename)
     stream << "Content-Type: #{content_type}"
+    stream << 'Content-Transfer-Encoding: binary'
     stream << ''
     stream << ''
     @data.push(StringIO.new(stream.join(new_line)))
     @data.push(file)
-    stream << ''
+    @data.push(StringIO.new(new_line))
     append_end_data
   end
 

@@ -276,6 +276,28 @@ export default function coreApi(state = INITIAL_STATE, action) {
     })
     case Actions.DELETE_WORK_PIECE_FAILURE: return state
 
+      //----------------------------------------
+      // Work Tag
+      //----------------------------------------
+
+      // create Work Tag
+    case Actions.CREATE_WORK_TAG_REQUEST: return state
+    case Actions.CREATE_WORK_TAG_SUCCESS: return Object.assign({}, state, {
+      work: Object.assign({}, state.work, {
+        creation_tags: action.payload.creation_tags
+      })
+    })
+    case Actions.CREATE_WORK_TAG_FAILURE: return state
+
+      // delete Work Tag
+    case Actions.DELETE_WORK_TAG_REQUEST: return state
+    case Actions.DELETE_WORK_TAG_SUCCESS: return Object.assign({}, state, {
+      work: Object.assign({}, state.work, {
+        creation_tags: action.payload.creation_tags
+      })
+    })
+    case Actions.DELETE_WORK_TAG_FAILURE: return state
+
     default:
       return state
   }

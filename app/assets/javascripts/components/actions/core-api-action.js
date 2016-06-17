@@ -283,6 +283,30 @@ export function deleteWorkPiece(id) {
 }
 
 //----------------------------------------
+// Work Tag
+//----------------------------------------
+
+//
+// Create Work Tag
+//
+export const CREATE_WORK_TAG_REQUEST = 'CREATE_WORK_TAG_REQUEST'
+export const CREATE_WORK_TAG_SUCCESS = 'CREATE_WORK_TAG_SUCCESS'
+export const CREATE_WORK_TAG_FAILURE = 'CREATE_WORK_TAG_FAILURE'
+export function createWorkTag(id, params) {
+  return post(`/works/${id}/work_tags`, 'CREATE_WORK_TAG', {}, { work_tag: params })
+}
+
+//
+// Delete Work_Tag Tag
+//
+export const DELETE_WORK_TAG_REQUEST = 'DELETE_WORK_TAG_REQUEST'
+export const DELETE_WORK_TAG_SUCCESS = 'DELETE_WORK_TAG_SUCCESS'
+export const DELETE_WORK_TAG_FAILURE = 'DELETE_WORK_TAG_FAILURE'
+export function deleteWorkTag(id) {
+  return del(`/work_tags/${id}`, 'DELETE_WORK_TAG')
+}
+
+//----------------------------------------
 // common
 //----------------------------------------
 function get(api, actionName, headers = {}, params = {}, forms = {}) {
@@ -298,7 +322,7 @@ function post(api, actionName, headers = {}, params = {}, forms = {}) {
 
 function put(api, actionName, headers = {}, params = {}, forms = {}) {
   return send('PUT', api, actionName, Object.assign({}, headers, {
-    'Accept': 'application/json',
+    'Accept': 'application/json'
   }), params, forms)
 }
 
