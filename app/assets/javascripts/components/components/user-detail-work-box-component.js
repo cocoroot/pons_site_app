@@ -6,22 +6,25 @@ import { Tabs, Tab } from 'react-bootstrap'
 class UserDetailWorkBox extends Component {
   render() {
     console.log("UserDetailWorkBox render props=%o", this.props)
-    // TODO: tabKey を設定している場所がない？
-    const { tabKey, originalWorks, favoriteWorks } = this.props
-    return (
-        <Tabs defaultActiveKey={tabKey} id="uncontrolled-tab">
-          <Tab eventKey={1} title="オリジナル作品" >
-            <div className="container">
-              <WorkList workList={originalWorks} />
-            </div>
-          </Tab>
-          <Tab eventKey={2} title="お気に入り" >
-            <div className="container">
-              <WorkList workList={favoriteWorks} />
-            </div>
-          </Tab>
-        </Tabs>
+    const { tabKey, originalWorks, favoriteWorks, changeTab } = this.props
 
+    var workList
+    if (tabKey==1) {
+      workList = originalWorks
+    } else {
+      workList = favoriteWorks
+    }
+
+    return (
+      <div className="container">
+        <ul className="nav nav-tabs">
+          <li role="presentation" className={tabKey==1 ? 'active': null}><a onClick={()=>changeTab(1)}>オリジナル</a></li>
+          <li role="presentation" className={tabKey==2 ? 'active': null}><a onClick={()=>changeTab(2)}>お気に入り</a></li>
+        </ul>
+        <div className="userdetail-worklist">
+          <WorkList workList={workList} />
+        </div>
+      </div>
     )
   }
 }

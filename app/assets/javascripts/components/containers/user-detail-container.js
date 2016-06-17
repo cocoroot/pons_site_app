@@ -8,9 +8,9 @@ import UserDetail from '../components/user-detail-component'
 function mapStateToProps(state) {
   return {
     profile: state.coreApi.user,
-    editMode: state.userDetail.editMode,
     originalWorks: state.coreApi.userWorks,
-    favoriteWorks: state.coreApi.favoriteWorks
+    favoriteWorks: state.coreApi.favoriteWorks,
+    ...state.userDetail
   }
 }
 
@@ -28,6 +28,7 @@ UserDetailContainer.onEnter = function (dispatch, nextState, replace) {
     dispatch(ApiActions.loadWorkListCreatedByUser(user_id))
     dispatch(ApiActions.loadFavoriteWorks(user_id))
   }
+  dispatch(Actions.reset())
 }
 
 export default UserDetailContainer
