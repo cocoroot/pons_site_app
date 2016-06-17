@@ -102,6 +102,11 @@ class PonsApiController < ApplicationController
   end
 
   def delete_work_image
+    @result = DarrestCoreApi.new.delete_creation_image(
+      id: params[:id],
+      user_baas_id: user_baas_id
+    )
+    render_json(@result)
   end
 
   def create_work_piece

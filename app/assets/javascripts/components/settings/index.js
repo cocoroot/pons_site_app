@@ -1,4 +1,8 @@
 
+
+//========================================
+// image url base
+//========================================
 let core_contents_base_url = ''
 
 if (process.env.NODE_ENV === 'production') {
@@ -9,3 +13,15 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 export const CORE_CONTENTS_BASE_URL = core_contents_base_url
+
+
+//========================================
+// Consts
+//========================================
+export const WorkStatus = {
+  CREATING: 1,
+  PUBLISHED: 2,
+  PRIVATE: 3,
+  USER_DELETED: 4,
+  INSPECTED: 5
+}

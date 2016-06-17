@@ -93,18 +93,37 @@ class DarrestCoreApi
   end
 
   def update_creation(params)
+    send_put("/creations/#{params[:id]}", params.except(:id))
   end
 
   def create_creation_image(params)
+    send_post("/creations/#{params[:id]}/creation_images", params) do |req, parameters|
+      received_image = parameters[:creation_image][:image]
+
+      original_filename = received_image.original_filename
+      content_type = received_image.content_type
+      file = received_image.tempfile
+
+      stream = MultiPartFormDataStream.new
+      stream.add_form('user_baas_id', parameters[:user_baas_id])
+      stream.add_form('order', parameters[:creation_image][:order])
+      stream.add_file('image', original_filename, content_type, file)
+
+      req.body_stream = stream
+      req['Content-Length'] = stream.size
+      req['Content-Type'] = stream.content_type
+    end
   end
 
   def show_creation_image(params)
   end
 
   def update_creation_image(params)
+    send_put("/creation_images/#{params[:id]}", params.except(:id))
   end
 
   def delete_creation_image(params)
+    send_delete("/creation_images/#{params[:id]}", {})
   end
 
   def create_creation_piece(params)
@@ -166,6 +185,8 @@ class DarrestCoreApi
   end
 
   def send(method, api, params, &block)
+    Rails.logger.debug "darrest_core_api send method=#{method}, api=#{api}, params=#{params}"
+
     uri = URI.parse("#{API_BASE}#{api}")
     if method == :get && params
       uri.query = params.to_param
