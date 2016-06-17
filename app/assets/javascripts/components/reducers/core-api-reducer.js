@@ -298,6 +298,44 @@ export default function coreApi(state = INITIAL_STATE, action) {
     })
     case Actions.DELETE_WORK_TAG_FAILURE: return state
 
+      //----------------------------------------
+      // Work Comment
+      //----------------------------------------
+
+      // create Work Comment
+    case Actions.CREATE_WORK_COMMENT_REQUEST: return state
+    case Actions.CREATE_WORK_COMMENT_SUCCESS: return Object.assign({}, state, {
+      work: Object.assign({}, state.work, {
+        creation_comments: action.payload.creation_comments
+      })
+    })
+    case Actions.CREATE_WORK_COMMENT_FAILURE: return state
+
+      //----------------------------------------
+      // Good
+      //----------------------------------------
+
+      // create Good
+    case Actions.CREATE_GOOD_REQUEST: return state
+    case Actions.CREATE_GOOD_SUCCESS: return Object.assign({}, state, {
+      work: Object.assign({}, state.work, {
+        goods_count: action.payload.goods_count,
+        good: action.payload.good
+      })
+    })
+    case Actions.CREATE_GOOD_FAILURE: return state
+
+      // delete Good
+    case Actions.DELETE_GOOD_REQUEST: return state
+    case Actions.DELETE_GOOD_SUCCESS: return Object.assign({}, state, {
+      work: Object.assign({}, state.work, {
+        goods_count: action.payload.goods_count,
+        good: action.payload.good
+      })
+    })
+    case Actions.DELETE_GOOD_FAILURE: return state
+
+
     default:
       return state
   }

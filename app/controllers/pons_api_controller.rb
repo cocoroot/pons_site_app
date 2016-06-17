@@ -157,9 +157,20 @@ class PonsApiController < ApplicationController
   end
 
   def create_work_comment
+    @result = DarrestCoreApi.new.create_creation_comment(
+      user_baas_id: user_baas_id,
+      creation_id: params[:work_id],
+      creation_comment: params[:work_comment]
+    )
+    render_json(@result)
   end
 
   def create_good
+    @result = DarrestCoreApi.new.create_good(
+      user_baas_id: user_baas_id,
+      creation_id: params[:work_id]
+    )
+    render_json(@result)
   end
 
   def index_good_by_user
@@ -171,6 +182,11 @@ class PonsApiController < ApplicationController
   end
 
   def delete_good
+    @result = DarrestCoreApi.new.delete_good(
+      user_baas_id: user_baas_id,
+      creation_id: params[:work_id]
+    )
+    render_json(@result)
   end
 
   private

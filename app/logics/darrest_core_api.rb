@@ -177,9 +177,11 @@ class DarrestCoreApi
   end
 
   def create_creation_comment(params)
+    send_post("/creations/#{params[:creation_id]}/creation_comments", params.except(:creation_id))
   end
 
   def create_good(params)
+    send_post("/creations/#{params[:creation_id]}/good", params.except(:creation_id))
   end
 
   def index_good(params)
@@ -187,15 +189,16 @@ class DarrestCoreApi
   end
 
   def delete_good(params)
+    send_delete("/creations/#{params[:creation_id]}/good", params.except(:creation_id))
   end
 
   private
 
-  def send_get(api, params = nil, &_block)
+  def send_get(api, params = {}, &_block)
     send(:get, api, params)
   end
 
-  def send_post(api, params, &block)
+  def send_post(api, params = {}, &block)
     if block
       send(:post, api, params) { |r, p| block.call(r, p) }
     else
@@ -203,7 +206,7 @@ class DarrestCoreApi
     end
   end
 
-  def send_put(api, params, &block)
+  def send_put(api, params = {}, &block)
     if block
       send(:put, api, params) { |r, p| block.call(r, p) }
     else
@@ -211,7 +214,7 @@ class DarrestCoreApi
     end
   end
 
-  def send_delete(api, params, &block)
+  def send_delete(api, params = {}, &block)
     if block
       send(:delete, api, params) { |r, p| block.call(r, p) }
     else
@@ -223,7 +226,7 @@ class DarrestCoreApi
     Rails.logger.debug "darrest_core_api send method=#{method}, api=#{api}, params=#{params}"
 
     uri = URI.parse("#{API_BASE}#{api}")
-    if method == :get && params
+    if method == :get && !params.empty?
       uri.query = params.to_param
     end
 

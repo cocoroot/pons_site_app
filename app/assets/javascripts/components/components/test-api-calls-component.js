@@ -21,6 +21,9 @@ export default class TestApiCalls extends Component {
     this.onDeleteWorkPiece = this.onDeleteWorkPiece.bind(this)
     this.onCreateWorkTag = this.onCreateWorkTag.bind(this)
     this.onDeleteWorkTag = this.onDeleteWorkTag.bind(this)
+    this.onCreateWorkComment = this.onCreateWorkComment.bind(this)
+    this.onCreateGood = this.onCreateGood.bind(this)
+    this.onDeleteGood = this.onDeleteGood.bind(this)
     this.work_piece = {}
   }
 
@@ -125,16 +128,34 @@ export default class TestApiCalls extends Component {
     this.props.deleteWorkTag(work_tag_id)
   }
 
+  onCreateWorkComment() {
+    const date = new Date()
+    let params = {
+      body: `コメントコメント ${date.getSeconds()} 秒のコメント`
+    }
+    this.props.createWorkComment(1, params)
+  }
+
+  onCreateGood() {
+    const work_id = this.refs.work_id_for_good.value
+    this.props.createGood(work_id)
+  }
+
+  onDeleteGood() {
+    const work_id = this.refs.work_id_for_good.value
+    this.props.deleteGood(work_id)
+  }
+
   render() {
     return (
       <div>
-	<div>
-	  <h3>Work</h3>
-	  <Button onClick={this.onCreateWork}>Create Work</Button>
-	  <Button onClick={this.onUpdateWork}>Update Work</Button>
-	</div>
-	<div>
-	  <h3>Work Image</h3>
+        <div>
+          <h3>Work</h3>
+          <Button onClick={this.onCreateWork}>Create Work</Button>
+          <Button onClick={this.onUpdateWork}>Update Work</Button>
+        </div>
+        <div>
+          <h3>Work Image</h3>
           <Dropzone onDrop={ this.onCreateWorkImage } accept="image/jpeg,image/png,image/jpg">
             <div>Create Work Image</div>
             <br/>
@@ -145,7 +166,7 @@ export default class TestApiCalls extends Component {
           <Button onClick={ this.onDeleteWorkImage }>Delete Work Image</Button>
         </div>
         <div>
-	  <h3>Work Piece</h3>
+          <h3>Work Piece</h3>
           <form>
             <FormGroup controlId="pieceFile">
               <ControlLabel>Piece File</ControlLabel>
@@ -164,7 +185,7 @@ export default class TestApiCalls extends Component {
           <Button onClick={ this.onDeleteWorkPiece }>Delete Work Piece</Button>
         </div>
         <div>
-	  <h3>Work Tag</h3>
+          <h3>Work Tag</h3>
           <form>
             <Button onClick={ this.onCreateWorkTag }>
               Create Tag
@@ -173,6 +194,22 @@ export default class TestApiCalls extends Component {
           <Button onClick={ this.onUpdateWorkTag }>Update Tag</Button>
           <input type="text" placeholder="Tag id to delete" ref="work_tag_id" />
           <Button onClick={ this.onDeleteWorkTag }>Delete Tag</Button>
+        </div>
+        <div>
+          <h3>Work Comment</h3>
+          <Button onClick={ this.onCreateWorkComment }>
+            Create Comment
+          </Button>
+        </div>
+        <div>
+          <h3>Good</h3>
+          <input type="text" placeholder="Work id for good" ref="work_id_for_good" />
+          <Button onClick={ this.onCreateGood }>
+            Create Good
+          </Button>
+          <Button onClick={ this.onDeleteGood }>
+            Delete Good
+          </Button>
         </div>
       </div>
     )

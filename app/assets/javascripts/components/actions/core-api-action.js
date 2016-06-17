@@ -307,6 +307,44 @@ export function deleteWorkTag(id) {
 }
 
 //----------------------------------------
+// Work Comment
+//----------------------------------------
+
+//
+// Create Work Comment
+//
+export const CREATE_WORK_COMMENT_REQUEST = 'CREATE_WORK_COMMENT_REQUEST'
+export const CREATE_WORK_COMMENT_SUCCESS = 'CREATE_WORK_COMMENT_SUCCESS'
+export const CREATE_WORK_COMMENT_FAILURE = 'CREATE_WORK_COMMENT_FAILURE'
+export function createWorkComment(id, params) {
+  return post(`/works/${id}/work_comments`, 'CREATE_WORK_COMMENT', {}, { work_comment: params })
+}
+
+//----------------------------------------
+// Work Good
+//----------------------------------------
+
+//
+// Create Work Good
+//
+export const CREATE_GOOD_REQUEST = 'CREATE_GOOD_REQUEST'
+export const CREATE_GOOD_SUCCESS = 'CREATE_GOOD_SUCCESS'
+export const CREATE_GOOD_FAILURE = 'CREATE_GOOD_FAILURE'
+export function createGood(work_id) {
+  return post(`/works/${work_id}/good`, 'CREATE_GOOD')
+}
+
+//
+// Delete Work_Tag Tag
+//
+export const DELETE_GOOD_REQUEST = 'DELETE_GOOD_REQUEST'
+export const DELETE_GOOD_SUCCESS = 'DELETE_GOOD_SUCCESS'
+export const DELETE_GOOD_FAILURE = 'DELETE_GOOD_FAILURE'
+export function deleteGood(work_id) {
+  return del(`/works/${work_id}/good`, 'DELETE_GOOD')
+}
+
+//----------------------------------------
 // common
 //----------------------------------------
 function get(api, actionName, headers = {}, params = {}, forms = {}) {
