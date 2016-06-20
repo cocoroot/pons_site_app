@@ -1,25 +1,21 @@
-export const RESET = 'UD_RESET'
-export const CHANGE_EDIT_MODE = 'UD_CHANGE_EDIT_MODE'
-export const CHANGE_TAB = 'UD_CHANGE_TAB'
-
+export const USD_RESET = 'USD_RESET'
 export function reset() {
   return {
-    type: RESET,
-    editMode: false,
-    tabKey: 1
+    type: USD_RESET
   }
 }
-
+export const USD_CHANGE_EDIT_MODE = 'USD_CHANGE_EDIT_MODE'
 export function changeEditMode(editMode) {
   return {
-    type: CHANGE_EDIT_MODE,
+    type: USD_CHANGE_EDIT_MODE,
     editMode: editMode
   }
 }
 
+export const USD_CHANGE_TAB = 'USD_CHANGE_TAB'
 export function changeTab(tabKey) {
   return {
-    type: CHANGE_TAB,
+    type: USD_CHANGE_TAB,
     tabKey: tabKey
   }
 }

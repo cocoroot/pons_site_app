@@ -13,13 +13,14 @@ class CreateWork extends Component {
       title: title
     }
     this.props.createWork(params)
-    this.props.closeModal()
   }
 
   render() {
-    const { showModal, closeModal } = this.props
+    const { newWorkModalOpened } = this.props
+    const { showNewWorkModal } = this.props
+
     return (
-      <Modal show={showModal} onHide={closeModal}>
+      <Modal show={newWorkModalOpened} onHide={() => showNewWorkModal(false)}>
         <Modal.Header closeButton>
           <Modal.Title>作品投稿</Modal.Title>
         </Modal.Header>

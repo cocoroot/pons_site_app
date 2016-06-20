@@ -22,8 +22,8 @@ export default class TestApiCalls extends Component {
     this.onCreateWorkTag = this.onCreateWorkTag.bind(this)
     this.onDeleteWorkTag = this.onDeleteWorkTag.bind(this)
     this.onCreateWorkComment = this.onCreateWorkComment.bind(this)
-    this.onCreateGood = this.onCreateGood.bind(this)
-    this.onDeleteGood = this.onDeleteGood.bind(this)
+    this.onCreateLike = this.onCreateLike.bind(this)
+    this.onDeleteLike = this.onDeleteLike.bind(this)
     this.work_piece = {}
   }
 
@@ -136,14 +136,14 @@ export default class TestApiCalls extends Component {
     this.props.createWorkComment(1, params)
   }
 
-  onCreateGood() {
-    const work_id = this.refs.work_id_for_good.value
-    this.props.createGood(work_id)
+  onCreateLike() {
+    const work_id = this.refs.work_id_for_like.value
+    this.props.createLike(work_id)
   }
 
-  onDeleteGood() {
-    const work_id = this.refs.work_id_for_good.value
-    this.props.deleteGood(work_id)
+  onDeleteLike() {
+    const work_id = this.refs.work_id_for_like.value
+    this.props.deleteLike(work_id)
   }
 
   render() {
@@ -202,13 +202,13 @@ export default class TestApiCalls extends Component {
           </Button>
         </div>
         <div>
-          <h3>Good</h3>
-          <input type="text" placeholder="Work id for good" ref="work_id_for_good" />
-          <Button onClick={ this.onCreateGood }>
-            Create Good
+          <h3>Like</h3>
+          <input type="text" placeholder="Work id for like" ref="work_id_for_like" />
+          <Button onClick={ this.onCreateLike }>
+            Create Like
           </Button>
-          <Button onClick={ this.onDeleteGood }>
-            Delete Good
+          <Button onClick={ this.onDeleteLike }>
+            Delete Like
           </Button>
         </div>
       </div>
