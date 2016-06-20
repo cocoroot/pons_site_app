@@ -5,10 +5,10 @@ export function reset() {
   }
 }
 
-export const CHANGE_EDIT_MODE = 'WD_CHANGE_EDIT_MODE'
+export const WKD_CHANGE_EDIT_MODE = 'WKD_CHANGE_EDIT_MODE'
 export function changeEditMode(mode) {
   return {
-    type: CHANGE_EDIT_MODE,
+    type: WKD_CHANGE_EDIT_MODE,
     editMode: mode
   }
 }

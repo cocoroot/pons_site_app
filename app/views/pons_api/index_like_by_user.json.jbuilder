@@ -1,3 +1,3 @@
-json.works do
-  json.partial! partial: 'work', collection: @result['creations'], as: :work
+json.likes do
+  json.partial! partial: 'work', collection: @result['goods'], as: :work
 end

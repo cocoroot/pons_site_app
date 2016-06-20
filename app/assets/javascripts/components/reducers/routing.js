@@ -9,7 +9,7 @@ export default function routing(state = initialState, action) {
   }
 
   switch (action.type) {
-    case Actions.CREATE_WORK_SUCCESS: {
+    case Actions.API_CREATE_WORK_SUCCESS: {
       let location = state.locationBeforeTransitions
       let id = action.payload.id
       const pathname = `/works/${id}`

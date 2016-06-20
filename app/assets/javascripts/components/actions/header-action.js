@@ -1,15 +1,8 @@
-export const SHOW_CREATE_FORM = 'HD_SHOW_CREATE_FORM'
+export const HDR_SHOW_NEW_WORK_MODAL = 'HDR_SHOW_NEW_WORK_MODAL'
 
-export function openModal() {
+export function showNewWorkModal(opened) {
   return {
-    type: SHOW_CREATE_FORM,
-    showModal: true
-  }
-}
-
-export function closeModal() {
-  return {
-    type: SHOW_CREATE_FORM,
-    showModal: false
+    type: HDR_SHOW_NEW_WORK_MODAL,
+    newWorkModalOpened: opened
   }
 }

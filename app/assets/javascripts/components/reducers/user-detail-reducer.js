@@ -39,8 +39,8 @@ function profile(state = INITIAL_STATE_FOR_PROFILE, action) {
   switch (action.type) {
     case Actions.USD_RESET:
       return INITIAL_STATE_FOR_PROFILE
-    case ApiActions.LOAD_ME_SUCCESS:
-    case ApiActions.LOAD_USER_SUCCESS:
+    case ApiActions.API_LOAD_ME_SUCCESS:
+    case ApiActions.API_LOAD_USER_SUCCESS:
       return action.payload
     default:
       return state
@@ -52,7 +52,7 @@ function originalWorkList(state = INITIAL_STATE_FOR_ORIGINAL_WORK_LIST, action) 
   switch (action.type) {
     case Actions.USD_RESET:
       return INITIAL_STATE_FOR_ORIGINAL_WORK_LIST
-    case ApiActions.LOAD_WORK_LIST_CREATED_BY_USER_SUCCESS:
+    case ApiActions.API_LOAD_WORK_LIST_CREATED_BY_USER_SUCCESS:
       return action.payload.works
     default:
       return state
@@ -64,7 +64,7 @@ function favoriteWorkList(state = INITAL_STATE_FOR_FAVORITE_WORK_LIST, action) {
   switch (action.type) {
     case Actions.USD_RESET:
       return INITAL_STATE_FOR_FAVORITE_WORK_LIST
-    case ApiActions.LOAD_FAVORITE_WORK_LIST_SUCCESS:
+    case ApiActions.API_LOAD_FAVORITE_WORK_LIST_SUCCESS:
       return action.payload.likes
     default:
       return state
