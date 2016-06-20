@@ -14,7 +14,7 @@ export default class WorkDetailComment extends Component {
           <Media.Body>
             <form>
               <FormControl height="64px" componentClass="textarea" placeholder="この作品にコメントを残してみませんか？" />
-              <Button>コメント投稿</Button>
+              <p className="workdetail-comment-form-submit"><Button>コメント投稿</Button></p>
             </form>
           </Media.Body>
         </Media>
@@ -28,6 +28,8 @@ export default class WorkDetailComment extends Component {
             <p>かわいいです！思わずコメントしてしまいました！レンダリングも綺麗ですね</p>
           </Media.Body>
         </Media>
+
+        <Button block>コメントをさらに見る</Button>
       </div>
     )
   }
