@@ -1,12 +1,12 @@
 import React, { Component, PropTypes } from 'react'
 import Header from '../components/common-header-component'
 import Footer from '../components/common-footer-component'
-import CreationList from '../components/common-creation-list-component'
+import WorkList from '../components/common-work-list-component'
 
 // bootstrap import 必要な部分をcomponentでimportする
 import { Button } from 'react-bootstrap'
 
-let dummyCreationList = [
+let dummyWorkList = [
   { id: 1 },
   { id: 2 },
   { id: 3 }
@@ -19,7 +19,7 @@ class NewWorkListContainer extends Component {
         <Header />
         {/* この範囲でcomponetを作ってください */}
         <div className="new-work-list container">
-          <CreationList creationList={dummyCreationList} />
+          <WorkList workList={dummyWorkList} />
           <Button className="new-work-list-btn" bsSize="large" block>もっとみる</Button>
         </div>
         {/* ここまでComponent */}

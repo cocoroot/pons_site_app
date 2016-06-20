@@ -5,15 +5,15 @@ import { Provider } from 'react-redux'
 import TopContainer from '../containers/top-container'
 import { store } from '../store/store'
 
-import {setBanners,setPickupCreations,setTags,setNewCreations} from "../actions/top-action"
+import { setBanners, setPickupWorks, setTags, setNewWorks } from '../actions/top-action'
 
 export class TopRoot extends Component {
 
   componentWillMount() {
     store.dispatch(setBanners(this.props.banners))
-    store.dispatch(setPickupCreations(this.props.pickupCreations))
+    store.dispatch(setPickupWorks(this.props.pickupWorks))
     store.dispatch(setTags(this.props.tags))
-    store.dispatch(setNewCreations(this.props.newCreations))
+    store.dispatch(setNewWorks(this.props.newWorks))
     console.log(this.props.banners)
   }
   render() {

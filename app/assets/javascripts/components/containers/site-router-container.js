@@ -11,12 +11,13 @@ import TagWorkList from '../containers/tag-work-list-container'
 import NewWorkList from '../containers/new-work-list-container'
 
 import UserDetail from '../containers/user-detail-container'
+import WorkDetail from '../containers/work-detail-container'
 
 import TestMe from '../containers/test-me-container'
 import TestUser from '../containers/test-user-container'
-import TestCreation from '../containers/test-creation-container'
+import TestWork from '../containers/test-work-container'
 
-import Header from '../components/common-header-component'
+import Header from '../containers/header-container'
 import Footer from '../components/common-footer-component'
 
 import { Button, Navbar, Nav, NavItem } from 'react-bootstrap'
@@ -49,10 +50,12 @@ class App extends Component {
             </Navbar.Header>
             <Nav bsStyle="tabs">
               <LinkContainer to="/login"><NavItem>login</NavItem></LinkContainer>
-              <LinkContainer to="/test-creations/1"><NavItem>creation: 1</NavItem></LinkContainer>
-              <LinkContainer to="/test-creations/2"><NavItem>creation: 2</NavItem></LinkContainer>
-              <LinkContainer to="/test-users/1"><NavItem>user: 1</NavItem></LinkContainer>
-              <LinkContainer to="/test-users/2"><NavItem>user: 2</NavItem></LinkContainer>
+              <LinkContainer to="/users/1"><NavItem>user: 1</NavItem></LinkContainer>
+              <LinkContainer to="/users/2"><NavItem>user: 2</NavItem></LinkContainer>
+              <LinkContainer to="/works/1"><NavItem>work: 1</NavItem></LinkContainer>
+              <LinkContainer to="/works/2"><NavItem>work: 2</NavItem></LinkContainer>
+              <LinkContainer to="/test-users/1"><NavItem>test user: 1</NavItem></LinkContainer>
+              <LinkContainer to="/test-users/2"><NavItem>test user: 2</NavItem></LinkContainer>
               <LinkContainer to="/test-me"><NavItem>me</NavItem></LinkContainer>
               <LinkContainer to="/sorry"><NavItem>sorry</NavItem></LinkContainer>
               <LinkContainer to="/regist"><NavItem>regist</NavItem></LinkContainer>
@@ -89,11 +92,19 @@ export class SiteRouter extends Component {
   }
 
   onEnterTop(nextState, replace) { Top.onEnter(store.dispatch, nextState, replace) }
+  onEnterUserDetail(nextState, replace) { UserDetail.onEnter(store.dispatch, nextState, replace) }
+  onEnterWorkDetail(nextState, replace) { WorkDetail.onEnter(store.dispatch, nextState, replace) }
+
+  // TODO: 要削除　テスト用
   onEnterTestMe(nextState, replace) { TestMe.onEnter(store.dispatch, nextState, replace) }
   onEnterTestUser(nextState, replace) { TestUser.onEnter(store.dispatch, nextState, replace) }
+<<<<<<< HEAD
   onEnterTestCreation(nextState, replace) { TestCreation.onEnter(store.dispatch, nextState, replace) }
 
   onEnterRegist(nextState, replace) { Regist.onEnter(store.dispatch, nextState, replace) }
+=======
+  onEnterTestWork(nextState, replace) { TestWork.onEnter(store.dispatch, nextState, replace) }
+>>>>>>> origin/develop
 
   render() {
     // console.log("SiteRouterComponent render props=%o", this.props)
@@ -103,10 +114,11 @@ export class SiteRouter extends Component {
         <Route path="/" component={ App }>
           <IndexRoute component={ Top } onEnter={ this.onEnterTop } />
           <Route path="/" component={ Top } onEnter={ this.onEnterTop }/>
-          <Route path="/creators/:creator_id" component={ UserDetail } onEnter={this.requireAuth} />
+          <Route path="/users/:user_id" component={ UserDetail } onEnter={this.onEnterUserDetail} />
+          <Route path="/works/:work_id" component={ WorkDetail } onEnter={this.onEnterWorkDetail} />
           <Route path="/test-users/:user_id" component={ TestUser } onEnter={this.onEnterTestUser} />
           <Route path="/test-me" component={ TestMe } onEnter={this.onEnterTestMe} />
-          <Route path="/test-creations/:creation_id" component={ TestCreation } onEnter={this.onEnterTestCreation} />
+          <Route path="/test-works/:work_id" component={ TestWork } onEnter={this.onEnterTestWork} />
           <Route path="/sorry" component={ Sorry } />
           <Route path="/regist" component={ Regist } onEnter={ this.onEnterRegist }/>
         </Route>
@@ -114,6 +126,9 @@ export class SiteRouter extends Component {
     )
   }
 }
+<<<<<<< HEAD
 
 // <route path="/tags/:tag_name/works" component={ TagWorkList } onEnter={ this.onEnterTagWorkList } />
 //           <route path="/works/new" component={ NewWorkList } onEnter={ this.onEnterNewWorkList } />
+=======
+>>>>>>> origin/develop

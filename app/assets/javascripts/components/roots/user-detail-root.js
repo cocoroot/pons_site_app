@@ -4,13 +4,13 @@ import { Provider } from 'react-redux'
 
 import UserDetailContainer from '../containers/user-detail-container'
 import { store } from '../store/store'
-import { setUser, setCreations } from '../actions/user-detail-action'
+import { setUser, setWorks } from '../actions/user-detail-action'
 
 export class UserDetailRoot extends Component {
 
   componentWillMount() {
     store.dispatch(setUser(this.props.user))
-    store.dispatch(setCreations(this.props))
+    store.dispatch(setWorks(this.props))
   }
 
   render() {

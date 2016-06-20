@@ -1,48 +1,56 @@
 import React, { Component, PropTypes } from 'react'
 import { Button, Media, Image, FormControl } from 'react-bootstrap'
 
+import { CORE_CONTENTS_BASE_URL } from '../settings'
+
 class UserDetailProfileBox extends Component {
 
-  // handleChangeEditMode(mode) {
-  //   console.log("handleChangeEditMode")
-  //   this.props.dispatch(changeEditMode(mode))
-  // }
-
   render() {
-    const { profile, editMode } = this.props.userDetail
-    const { changeEditMode } = this.props
-    // var editMode = true
+    console.log("UserDetailProfileBox render props=%o", this.props)
+    const { editMode, changeEditMode } = this.props
+    const {
+      id: user_id = 0,
+      image = null,
+      biography = '',
+      owner = false
+    } = this.props.profile
+
     let displayStyle = {
       display: editMode ? 'none' : 'block'
     }
     let editStyle = {
       display: editMode ? 'block' : 'none'
     }
+    let ownerStyle = {
+      display: owner ? 'block': 'none'
+    }
 
-    let base_url = 'http://localhost:3000/uploads/dev'
+    let image_url = image ? CORE_CONTENTS_BASE_URL + image.url : ''
+    let thumbnail_url = image ? CORE_CONTENTS_BASE_URL + image.thumb.url : ''
+
     return (
       <div>
         <div className="profile-image">
-          <img className="img-responsive" src={base_url + profile.image.url} />
+          <img className="img-responsive" src={image_url} />
         </div>
 
         <div className="container user-profile">
           <Media>
             <Media.Left align="top">
-              <Image className="img-circle user-avatar" src={base_url + profile.image.thumb.url} />
+              <Image className="img-circle user-avatar" src={thumbnail_url} />
             </Media.Left>
             <Media.Body   className="user-profile-text">
               <div style={displayStyle}>
                 <Media.Heading>ユーザ名</Media.Heading>
-                <p className="user-id">{profile.user_id}</p>
-                <p className="user-biography">{profile.biography}</p>
-                <Button className="user-edit-btn" onClick={() => changeEditMode(true)}  >編集</Button>
+                <p className="user-id">{user_id}</p>
+                <p className="user-biography">{biography}</p>
+                <Button className="user-edit-btn" style={ownerStyle} onClick={() => changeEditMode(true)}  >編集</Button>
               </div>
               <div style={editStyle}>
                 <form>
                   <div className="user-form-name">
                     <FormControl type="text" width="50%" placeholder="ユーザ名"  />
-                    <p className="user-id">{profile.user_id}</p>
+                    <p className="user-id">{user_id}</p>
                   </div>
                   <FormControl componentClass="textarea"  placeholder="バイオグラフィー"  />
                 </form>

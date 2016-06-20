@@ -4,7 +4,7 @@ import { Button, Media, Image, FormControl, Glyphicon } from 'react-bootstrap'
 export default class WorkDetailHeader extends Component {
 
   render() {
-    const { editMode } = this.props.workDetail
+    const { editMode } = this.props
     if (editMode) {
       return (
         <div className="workdetail-header col-xs-8 col-md-8">

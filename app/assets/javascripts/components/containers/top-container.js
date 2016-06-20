@@ -12,9 +12,9 @@ function mapStateToProps(state) {
   return {
     top: {
       banners: state.coreApi.topBanners,
-      pickupCreations: state.coreApi.pickupCreations,
+      pickupWorks: state.coreApi.pickupWorks,
       tags: state.coreApi.pickupTags,
-      newCreations: state.coreApi.pickupNewCreations
+      newWorks: state.coreApi.pickupNewWorks
     }
   }
 }

@@ -1,12 +1,12 @@
 import React, { Component, PropTypes } from 'react'
-import CreationList from '../components/common-creation-list-component'
+import WorkList from '../components/common-work-list-component'
 
 // bootstrap import 必要な部分をcomponentでimportする
 import { Carousel, Button, ButtonToolbar } from 'react-bootstrap'
 
 export default class Top extends Component {
   render() {
-    const { banners, pickupCreations, tags, newCreations } = this.props.top
+    const { banners, pickupWorks, tags, newWorks } = this.props.top
     console.log("Top props=%o", this.props)
     return (
       <div>
@@ -25,10 +25,10 @@ export default class Top extends Component {
           }
         </Carousel>
 
-        {/* pickupCreations */}
+        {/* pickupWorks */}
         <div className="top-pickup container">
           <h3 className="top-title">ピックアップ作品</h3>
-          <CreationList creationList={ pickupCreations } />
+          <WorkList workList={ pickupWorks } />
         </div>
 
         {/* tags */}
@@ -41,10 +41,10 @@ export default class Top extends Component {
           </ButtonToolbar>
         </div>
 
-        {/* newCreations */}
-        <div className="top-new-creation container">
+        {/* newWorks */}
+        <div className="top-new-work container">
           <h3 className="top-title">注目の新着作品</h3>
-          <CreationList creationList={newCreations} />
+          <WorkList workList={newWorks} />
         </div>
         {/* ここまでComponent */}
       </div>
