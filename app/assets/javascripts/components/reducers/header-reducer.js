@@ -16,6 +16,7 @@ export default function header(state = initialState, action) {
         newWorkModalOpened: action.newWorkModalOpened
       })
     case ApiActions.API_LOAD_ME_SUCCESS:
+    case ApiActions.API_UPDATE_ME_SUCCESS:
       return Object.assign({}, state, {
         me: action.payload
       })

@@ -19,7 +19,8 @@ function mapDispatchToProps(dispatch) {
 
 let HeaderContainer = connect(mapStateToProps, mapDispatchToProps)(Header)
 
-// HeaderContainer.onEnter = function (dispatch, nextState, replace) {
-// }
+HeaderContainer.onEnter = function (dispatch, nextState, replace) {
+  dispatch(ApiActions.loadMe())
+}
 
 export default HeaderContainer

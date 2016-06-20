@@ -89,6 +89,7 @@ export class SiteRouter extends Component {
     }
   }
 
+  onEnterRoot(nextState, replace) { Header.onEnter(store.dispatch, nextState, replace) }
   onEnterTop(nextState, replace) { Top.onEnter(store.dispatch, nextState, replace) }
   onEnterUserDetail(nextState, replace) { UserDetail.onEnter(store.dispatch, nextState, replace) }
   onEnterWorkDetail(nextState, replace) { WorkDetail.onEnter(store.dispatch, nextState, replace) }
@@ -104,7 +105,7 @@ export class SiteRouter extends Component {
     return(
       <Router history={ history }>
         <Route path="/login" component={ Login } />
-        <Route path="/" component={ App }>
+        <Route path="/" component={ App } onEnter={ this.onEnterRoot }>
           <IndexRoute component={ Top } onEnter={ this.onEnterTop } />
           <Route path="/" component={ Top } onEnter={ this.onEnterTop }/>
           <Route path="/users/:user_id" component={ UserDetail } onEnter={this.onEnterUserDetail} />
