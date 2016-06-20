@@ -1,12 +1,19 @@
 import React, { Component, PropTypes } from 'react'
 import { Button, Modal, FormGroup, FormControl, ControlLabel, HelpBlock } from 'react-bootstrap'
+import { LinkContainer } from 'react-router-bootstrap'
 
 class CreateWork extends Component {
 
   onSubmit(e) {
     e.preventDefault()
-    var title = document.getElementById('title').value
+    const title = document.getElementById('title').value
     console.log("create work title=%o", title)
+
+    const params = {
+      title: title
+    }
+    this.props.createWork(params)
+    this.props.closeModal()
   }
 
   render() {
