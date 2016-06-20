@@ -7,8 +7,7 @@ import WorkDetail from '../components/work-detail-component'
 
 function mapStateToProps(state) {
   return {
-    work: state.coreApi.work,
-    editMode: state.workDetail.editMode
+    ...state.workDetail
   }
 }
 

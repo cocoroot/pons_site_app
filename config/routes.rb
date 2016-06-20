@@ -9,7 +9,7 @@ Rails.application.routes.draw do
       post 'my/user_image' => 'pons_api#create_user_image'
       post 'my/user_header_image' => 'pons_api#create_user_header_image'
       get 'users/:user_id/works' => 'pons_api#index_work_created_by_user'
-      get 'users/:user_id/goods' => 'pons_api#index_good_by_user'
+      get 'users/:user_id/likes' => 'pons_api#index_like_by_user'
 
       post 'works' => 'pons_api#create_work'
       get 'works/:id' => 'pons_api#show_work'
@@ -18,8 +18,8 @@ Rails.application.routes.draw do
       post 'works/:work_id/work_pieces' => 'pons_api#create_work_piece'
       post 'works/:work_id/work_tags' => 'pons_api#create_work_tag'
       post 'works/:work_id/work_comments' => 'pons_api#create_work_comment'
-      post 'works/:work_id/good' => 'pons_api#create_good'
-      delete 'works/:work_id/good' => 'pons_api#delete_good'
+      post 'works/:work_id/like' => 'pons_api#create_like'
+      delete 'works/:work_id/like' => 'pons_api#delete_like'
 
       # post 'works/:id/work_images' => 'pons_api#create_work_image'
       get 'work_images/:id' => 'pons_api#show_work_image'
@@ -32,8 +32,6 @@ Rails.application.routes.draw do
 
       # post 'works/:id/work_tags' => 'pons_api#create_work_tag'
       delete 'work_tags/:id' => 'pons_api#delete_work_tag'
-
-      #delete 'goods/:id' => 'pons_api#delete_good'
 
       match '*path', to: 'errors#routing_error', via: :all
     end

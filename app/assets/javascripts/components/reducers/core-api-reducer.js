@@ -97,17 +97,23 @@ const PICKUP_NEW_WORK_LIST_RESPONSE = {
 }
 
 const INITIAL_STATE = {
-  topBanners: [],
-  pickupWorks: [],
-  pickupTags: [],
-  pickupNewWorks: [],
-  user: {},
-  userWorks: [],
-  favoriteWorks: [],
-  work: {},
-  works: [],
-  userDetail: {},
-  me: {}
+  // topBanners: [],
+  // pickupWorks: [],
+  // pickupTags: [],
+  // pickupNewWorks: [],
+  // user: {},
+  // userWorks: [],
+  // favoriteWorkList: [],
+  // work: {},
+  // works: [],
+  // userDetail: {},
+  // me: {}
+}
+
+export const INITIAL_STATE_FOR_USER = {
+}
+
+export const INITIAL_STATE_FOR_WORK = {
 }
 
 export default function coreApi(state = INITIAL_STATE, action) {
@@ -183,11 +189,11 @@ export default function coreApi(state = INITIAL_STATE, action) {
     case Actions.LOAD_WORK_LIST_CREATED_BY_USER_FAILURE: return state
 
       // load Favorite Works
-    case Actions.LOAD_FAVORITE_WORKS_REQUEST: return state
-    case Actions.LOAD_FAVORITE_WORKS_SUCCESS: return Object.assign({}, state, {
-      favoriteWorks: action.payload.goods
+    case Actions.LOAD_FAVORITE_WORK_LIST_REQUEST: return state
+    case Actions.LOAD_FAVORITE_WORK_LIST_SUCCESS: return Object.assign({}, state, {
+      favoriteWorkList: action.payload.likes
     })
-    case Actions.LOAD_FAVORITE_WORKS_FAILURE: return state
+    case Actions.LOAD_FAVORITE_WORK_LIST_FAILURE: return state
 
       //----------------------------------------
       // Work
@@ -312,28 +318,28 @@ export default function coreApi(state = INITIAL_STATE, action) {
     case Actions.CREATE_WORK_COMMENT_FAILURE: return state
 
       //----------------------------------------
-      // Good
+      // Like
       //----------------------------------------
 
-      // create Good
-    case Actions.CREATE_GOOD_REQUEST: return state
-    case Actions.CREATE_GOOD_SUCCESS: return Object.assign({}, state, {
+      // create Like
+    case Actions.CREATE_LIKE_REQUEST: return state
+    case Actions.CREATE_LIKE_SUCCESS: return Object.assign({}, state, {
       work: Object.assign({}, state.work, {
-        goods_count: action.payload.goods_count,
-        good: action.payload.good
+        likes_count: action.payload.likes_count,
+        like: action.payload.like
       })
     })
-    case Actions.CREATE_GOOD_FAILURE: return state
+    case Actions.CREATE_LIKE_FAILURE: return state
 
-      // delete Good
-    case Actions.DELETE_GOOD_REQUEST: return state
-    case Actions.DELETE_GOOD_SUCCESS: return Object.assign({}, state, {
+      // delete Like
+    case Actions.DELETE_LIKE_REQUEST: return state
+    case Actions.DELETE_LIKE_SUCCESS: return Object.assign({}, state, {
       work: Object.assign({}, state.work, {
-        goods_count: action.payload.goods_count,
-        good: action.payload.good
+        likes_count: action.payload.likes_count,
+        like: action.payload.like
       })
     })
-    case Actions.DELETE_GOOD_FAILURE: return state
+    case Actions.DELETE_LIKE_FAILURE: return state
 
 
     default:

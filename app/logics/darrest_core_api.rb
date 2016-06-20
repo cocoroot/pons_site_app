@@ -89,7 +89,7 @@ class DarrestCoreApi
   end
 
   def show_creation(params)
-    send_get("/creations/#{params[:id]}")
+    send_get("/creations/#{params[:id]}", params)
   end
 
   def update_creation(params)

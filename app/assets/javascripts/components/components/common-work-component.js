@@ -12,11 +12,11 @@ class Work extends Component {
     const {
       id,
       title,
-      creation_images: images = null,
+      work_images: images = null,
       site_user: author = null,
       viewCount = 777, // TODO: viewCount
-      goods_count: likeCount,
-      creation_comments_count: commentCount
+      likes_count: likeCount,
+      work_comments_count: commentCount
     } = this.props
     const image_url = images ? CORE_CONTENTS_BASE_URL + images[0].image.url : ''
     const author_image_url = author ? CORE_CONTENTS_BASE_URL + author.image.url : ''

@@ -138,11 +138,11 @@ export function loadWorkListCreatedByUser(id, page = 1) {
 //
 // Favorite Works
 //
-export const LOAD_FAVORITE_WORKS_REQUEST = 'LOAD_FAVORITE_WORKS_REQUEST'
-export const LOAD_FAVORITE_WORKS_SUCCESS = 'LOAD_FAVORITE_WORKS_SUCCESS'
-export const LOAD_FAVORITE_WORKS_FAILURE = 'LOAD_FAVORITE_WORKS_FAILURE'
-export function loadFavoriteWorks(id, page = 1) {
-  return get(`/users/${id}/goods?page=${page}`, 'LOAD_FAVORITE_WORKS')
+export const LOAD_FAVORITE_WORK_LIST_REQUEST = 'LOAD_FAVORITE_WORK_LIST_REQUEST'
+export const LOAD_FAVORITE_WORK_LIST_SUCCESS = 'LOAD_FAVORITE_WORK_LIST_SUCCESS'
+export const LOAD_FAVORITE_WORK_LIST_FAILURE = 'LOAD_FAVORITE_WORK_LIST_FAILURE'
+export function loadFavoriteWorkList(id, page = 1) {
+  return get(`/users/${id}/likes?page=${page}`, 'LOAD_FAVORITE_WORK_LIST')
 }
 
 //----------------------------------------
@@ -321,27 +321,27 @@ export function createWorkComment(id, params) {
 }
 
 //----------------------------------------
-// Work Good
+// Work Like
 //----------------------------------------
 
 //
-// Create Work Good
+// Create Work Like
 //
-export const CREATE_GOOD_REQUEST = 'CREATE_GOOD_REQUEST'
-export const CREATE_GOOD_SUCCESS = 'CREATE_GOOD_SUCCESS'
-export const CREATE_GOOD_FAILURE = 'CREATE_GOOD_FAILURE'
-export function createGood(work_id) {
-  return post(`/works/${work_id}/good`, 'CREATE_GOOD')
+export const CREATE_LIKE_REQUEST = 'CREATE_LIKE_REQUEST'
+export const CREATE_LIKE_SUCCESS = 'CREATE_LIKE_SUCCESS'
+export const CREATE_LIKE_FAILURE = 'CREATE_LIKE_FAILURE'
+export function createLike(work_id) {
+  return post(`/works/${work_id}/like`, 'CREATE_LIKE')
 }
 
 //
 // Delete Work_Tag Tag
 //
-export const DELETE_GOOD_REQUEST = 'DELETE_GOOD_REQUEST'
-export const DELETE_GOOD_SUCCESS = 'DELETE_GOOD_SUCCESS'
-export const DELETE_GOOD_FAILURE = 'DELETE_GOOD_FAILURE'
-export function deleteGood(work_id) {
-  return del(`/works/${work_id}/good`, 'DELETE_GOOD')
+export const DELETE_LIKE_REQUEST = 'DELETE_LIKE_REQUEST'
+export const DELETE_LIKE_SUCCESS = 'DELETE_LIKE_SUCCESS'
+export const DELETE_LIKE_FAILURE = 'DELETE_LIKE_FAILURE'
+export function deleteLike(work_id) {
+  return del(`/works/${work_id}/like`, 'DELETE_LIKE')
 }
 
 //----------------------------------------

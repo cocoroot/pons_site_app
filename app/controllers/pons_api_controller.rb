@@ -7,7 +7,6 @@ class PonsApiController < ApplicationController
     @result = DarrestCoreApi.new.show_my_info(
       user_baas_id: user_baas_id
     )
-    render_json(@result)
   end
 
   def show_user
@@ -15,7 +14,6 @@ class PonsApiController < ApplicationController
       user_baas_id: user_baas_id,
       id: params[:id]
     )
-    render_json(@result)
   end
 
   def update_user
@@ -23,7 +21,6 @@ class PonsApiController < ApplicationController
       user_baas_id: user_baas_id,
       site_user: params.require(:user).permit(:nickname, :biography)
     )
-    render_json(@result)
   end
 
   def create_user_image
@@ -33,7 +30,6 @@ class PonsApiController < ApplicationController
       site_user_image: {
         image: params[:image]
       })
-    render_json(@result)
   end
 
   def create_user_header_image
@@ -42,15 +38,14 @@ class PonsApiController < ApplicationController
       site_user_header_image: {
         image: params[:image]
       })
-    render_json(@result)
   end
 
   def index_work_created_by_user
     @result = DarrestCoreApi.new.index_creations_created_by_user(
+      user_baas_id: user_baas_id,
       site_user_id: params.require(:user_id),
       page: params[:page]
     )
-    render_json(@result)
   end
 
   def create_work
@@ -58,20 +53,19 @@ class PonsApiController < ApplicationController
       user_baas_id: user_baas_id,
       creation: params[:work]
     )
-    render_json(@result)
   end
 
   def show_work
     @result = DarrestCoreApi.new.show_creation(
+      user_baas_id: user_baas_id,
       id: params[:id]
     )
-    render_json(@result)
   end
 
   def update_work
     @result = DarrestCoreApi.new.update_creation(
-      id: params[:id],
       user_baas_id: user_baas_id,
+      id: params[:id],
       creation: params[:work]
     )
     render_json(@result)
@@ -79,8 +73,8 @@ class PonsApiController < ApplicationController
 
   def create_work_image
     @result = DarrestCoreApi.new.create_creation_image(
-      creation_id: params[:work_id],
       user_baas_id: user_baas_id,
+      creation_id: params[:work_id],
       creation_image: {
         image: params[:image],
         order: params[:order]
@@ -94,8 +88,8 @@ class PonsApiController < ApplicationController
 
   def update_work_image
     @result = DarrestCoreApi.new.update_creation_image(
-      id: params[:id],
       user_baas_id: user_baas_id,
+      id: params[:id],
       creation_image: params[:work_image]
     )
     render_json(@result)
@@ -165,7 +159,7 @@ class PonsApiController < ApplicationController
     render_json(@result)
   end
 
-  def create_good
+  def create_like
     @result = DarrestCoreApi.new.create_good(
       user_baas_id: user_baas_id,
       creation_id: params[:work_id]
@@ -173,15 +167,15 @@ class PonsApiController < ApplicationController
     render_json(@result)
   end
 
-  def index_good_by_user
+  def index_like_by_user
     @result = DarrestCoreApi.new.index_good(
+      user_baas_id: user_baas_id,
       site_user_id: params.require(:user_id),
       page: params[:page]
     )
-    render_json(@result)
   end
 
-  def delete_good
+  def delete_like
     @result = DarrestCoreApi.new.delete_good(
       user_baas_id: user_baas_id,
       creation_id: params[:work_id]
