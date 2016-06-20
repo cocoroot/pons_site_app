@@ -18,6 +18,12 @@
 .workdetail-data-panel .table > tbody > tr > td {
   vertical-align: middle;
 }
+.workdetail-data-thumbnail-drop {
+  width:100px;
+  height: 60px;
+  border: 2px dashed #000;
+  background-color: #ccc;
+}
 
 // control
 .workdetail-control {
