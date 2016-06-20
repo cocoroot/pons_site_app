@@ -10,11 +10,11 @@ const api_base = '/api'
 //
 // Top Banners
 //
-export const LOAD_TOP_BANNERS_REQUEST = 'LOAD_TOP_BANNERS_REQUEST'
-export const LOAD_TOP_BANNERS_SUCCESS = 'LOAD_TOP_BANNERS_SUCCESS'
-export const LOAD_TOP_BANNERS_FAILURE = 'LOAD_TOP_BANNERS_FAILURE'
+export const API_LOAD_TOP_BANNERS_REQUEST = 'API_LOAD_TOP_BANNERS_REQUEST'
+export const API_LOAD_TOP_BANNERS_SUCCESS = 'API_LOAD_TOP_BANNERS_SUCCESS'
+export const API_LOAD_TOP_BANNERS_FAILURE = 'API_LOAD_TOP_BANNERS_FAILURE'
 function fetchTopBanners() {
-  return { type: LOAD_TOP_BANNERS_SUCCESS }
+  return { type: API_LOAD_TOP_BANNERS_SUCCESS }
 }
 
 export function loadTopBanners() {
@@ -26,11 +26,11 @@ export function loadTopBanners() {
 //
 // Pickup Work List
 //
-export const LOAD_PICKUP_WORK_LIST_REQUEST = 'LOAD_PICKUP_WORK_LIST_REQUEST'
-export const LOAD_PICKUP_WORK_LIST_SUCCESS = 'LOAD_PICKUP_WORK_LIST_SUCCESS'
-export const LOAD_PICKUP_WORK_LIST_FAILURE = 'LOAD_PICKUP_WORK_LIST_FAILURE'
+export const API_LOAD_PICKUP_WORK_LIST_REQUEST = 'API_LOAD_PICKUP_WORK_LIST_REQUEST'
+export const API_LOAD_PICKUP_WORK_LIST_SUCCESS = 'API_LOAD_PICKUP_WORK_LIST_SUCCESS'
+export const API_LOAD_PICKUP_WORK_LIST_FAILURE = 'API_LOAD_PICKUP_WORK_LIST_FAILURE'
 function fetchPickupWorkList() {
-  return { type: LOAD_PICKUP_WORK_LIST_SUCCESS }
+  return { type: API_LOAD_PICKUP_WORK_LIST_SUCCESS }
 }
 
 export function loadPickupWorkList() {
@@ -42,11 +42,11 @@ export function loadPickupWorkList() {
 //
 // Pickup Tags
 //
-export const LOAD_PICKUP_TAGS_REQUEST = 'LOAD_PICKUP_TAGS_REQUEST'
-export const LOAD_PICKUP_TAGS_SUCCESS = 'LOAD_PICKUP_TAGS_SUCCESS'
-export const LOAD_PICKUP_TAGS_FAILURE = 'LOAD_PICKUP_TAGS_FAILURE'
+export const API_LOAD_PICKUP_TAGS_REQUEST = 'API_LOAD_PICKUP_TAGS_REQUEST'
+export const API_LOAD_PICKUP_TAGS_SUCCESS = 'API_LOAD_PICKUP_TAGS_SUCCESS'
+export const API_LOAD_PICKUP_TAGS_FAILURE = 'API_LOAD_PICKUP_TAGS_FAILURE'
 function fetchPickupTags() {
-  return { type: LOAD_PICKUP_TAGS_SUCCESS }
+  return { type: API_LOAD_PICKUP_TAGS_SUCCESS }
 }
 
 export function loadPickupTags() {
@@ -58,11 +58,11 @@ export function loadPickupTags() {
 //
 // Pickup New Work List
 //
-export const LOAD_PICKUP_NEW_WORK_LIST_REQUEST = 'LOAD_PICKUP_NEW_WORK_LIST_REQUEST'
-export const LOAD_PICKUP_NEW_WORK_LIST_SUCCESS = 'LOAD_PICKUP_NEW_WORK_LIST_SUCCESS'
-export const LOAD_PICKUP_NEW_WORK_LIST_FAILURE = 'LOAD_PICKUP_NEW_WORK_LIST_FAILURE'
+export const API_LOAD_PICKUP_NEW_WORK_LIST_REQUEST = 'API_LOAD_PICKUP_NEW_WORK_LIST_REQUEST'
+export const API_LOAD_PICKUP_NEW_WORK_LIST_SUCCESS = 'API_LOAD_PICKUP_NEW_WORK_LIST_SUCCESS'
+export const API_LOAD_PICKUP_NEW_WORK_LIST_FAILURE = 'API_LOAD_PICKUP_NEW_WORK_LIST_FAILURE'
 function fetchPickupNewWorkList() {
-  return { type: LOAD_PICKUP_NEW_WORK_LIST_SUCCESS }
+  return { type: API_LOAD_PICKUP_NEW_WORK_LIST_SUCCESS }
 }
 
 export function loadPickupNewWorkList() {
@@ -78,71 +78,71 @@ export function loadPickupNewWorkList() {
 //
 // load Me
 //
-export const LOAD_ME_REQUEST = 'LOAD_ME_REQUEST'
-export const LOAD_ME_SUCCESS = 'LOAD_ME_SUCCESS'
-export const LOAD_ME_FAILURE = 'LOAD_ME_FAILURE'
+export const API_LOAD_ME_REQUEST = 'API_LOAD_ME_REQUEST'
+export const API_LOAD_ME_SUCCESS = 'API_LOAD_ME_SUCCESS'
+export const API_LOAD_ME_FAILURE = 'API_LOAD_ME_FAILURE'
 export function loadMe() {
-  return get('/me', 'LOAD_ME')
+  return get('/me', 'API_LOAD_ME')
 }
 
 //
 // update Me
 //
-export const UPDATE_ME_REQUEST = 'UPDATE_ME_REQUEST'
-export const UPDATE_ME_SUCCESS = 'UPDATE_ME_SUCCESS'
-export const UPDATE_ME_FAILURE = 'UPDATE_ME_FAILURE'
+export const API_UPDATE_ME_REQUEST = 'API_UPDATE_ME_REQUEST'
+export const API_UPDATE_ME_SUCCESS = 'API_UPDATE_ME_SUCCESS'
+export const API_UPDATE_ME_FAILURE = 'API_UPDATE_ME_FAILURE'
 export function updateMe(params) {
-  return put('/me', 'UPDATE_ME', {}, { user: params })
+  return put('/me', 'API_UPDATE_ME', {}, { user: params })
 }
 
 //
 // load Other User
 //
-export const LOAD_USER_REQUEST = 'LOAD_USER_REQUEST'
-export const LOAD_USER_SUCCESS = 'LOAD_USER_SUCCESS'
-export const LOAD_USER_FAILURE = 'LOAD_USER_FAILURE'
+export const API_LOAD_USER_REQUEST = 'API_LOAD_USER_REQUEST'
+export const API_LOAD_USER_SUCCESS = 'API_LOAD_USER_SUCCESS'
+export const API_LOAD_USER_FAILURE = 'API_LOAD_USER_FAILURE'
 export function loadUser(id) {
-  return get(`/users/${id}`, 'LOAD_USER')
+  return get(`/users/${id}`, 'API_LOAD_USER')
 }
 
 //
 // create User Image
 //
-export const CREATE_USER_IMAGE_REQUEST = 'CREATE_USER_IMAGE_REQUEST'
-export const CREATE_USER_IMAGE_SUCCESS = 'CREATE_USER_IMAGE_SUCCESS'
-export const CREATE_USER_IMAGE_FAILURE = 'CREATE_USER_IMAGE_FAILURE'
+export const API_CREATE_USER_IMAGE_REQUEST = 'API_CREATE_USER_IMAGE_REQUEST'
+export const API_CREATE_USER_IMAGE_SUCCESS = 'API_CREATE_USER_IMAGE_SUCCESS'
+export const API_CREATE_USER_IMAGE_FAILURE = 'API_CREATE_USER_IMAGE_FAILURE'
 export function createUserImage(file) {
-  return post('/my/user_image', 'CREATE_USER_IMAGE', {}, {}, { image: file })
+  return post('/my/user_image', 'API_CREATE_USER_IMAGE', {}, {}, { image: file })
 }
 
 //
 // User Header Image
 //
-export const CREATE_USER_HEADER_IMAGE_REQUEST = 'CREATE_USER_HEADER_IMAGE_REQUEST'
-export const CREATE_USER_HEADER_IMAGE_SUCCESS = 'CREATE_USER_HEADER_IMAGE_SUCCESS'
-export const CREATE_USER_HEADER_IMAGE_FAILURE = 'CREATE_USER_HEADER_IMAGE_FAILURE'
+export const API_CREATE_USER_HEADER_IMAGE_REQUEST = 'API_CREATE_USER_HEADER_IMAGE_REQUEST'
+export const API_CREATE_USER_HEADER_IMAGE_SUCCESS = 'API_CREATE_USER_HEADER_IMAGE_SUCCESS'
+export const API_CREATE_USER_HEADER_IMAGE_FAILURE = 'API_CREATE_USER_HEADER_IMAGE_FAILURE'
 export function createUserHeaderImage(file) {
-  return post('/my/user_header_image', 'CREATE_USER_HEADER_IMAGE', {}, {}, { image: file })
+  return post('/my/user_header_image', 'API_CREATE_USER_HEADER_IMAGE', {}, {}, { image: file })
 }
 
 //
 // Works created by a User
 //
-export const LOAD_WORK_LIST_CREATED_BY_USER_REQUEST = 'LOAD_WORK_LIST_CREATED_BY_USER_REQUEST'
-export const LOAD_WORK_LIST_CREATED_BY_USER_SUCCESS = 'LOAD_WORK_LIST_CREATED_BY_USER_SUCCESS'
-export const LOAD_WORK_LIST_CREATED_BY_USER_FAILURE = 'LOAD_WORK_LIST_CREATED_BY_USER_FAILURE'
+export const API_LOAD_WORK_LIST_CREATED_BY_USER_REQUEST = 'API_LOAD_WORK_LIST_CREATED_BY_USER_REQUEST'
+export const API_LOAD_WORK_LIST_CREATED_BY_USER_SUCCESS = 'API_LOAD_WORK_LIST_CREATED_BY_USER_SUCCESS'
+export const API_LOAD_WORK_LIST_CREATED_BY_USER_FAILURE = 'API_LOAD_WORK_LIST_CREATED_BY_USER_FAILURE'
 export function loadWorkListCreatedByUser(id, page = 1) {
-  return get(`/users/${id}/works?page=${page}`, 'LOAD_WORK_LIST_CREATED_BY_USER')
+  return get(`/users/${id}/works?page=${page}`, 'API_LOAD_WORK_LIST_CREATED_BY_USER')
 }
 
 //
 // Favorite Works
 //
-export const LOAD_FAVORITE_WORKS_REQUEST = 'LOAD_FAVORITE_WORKS_REQUEST'
-export const LOAD_FAVORITE_WORKS_SUCCESS = 'LOAD_FAVORITE_WORKS_SUCCESS'
-export const LOAD_FAVORITE_WORKS_FAILURE = 'LOAD_FAVORITE_WORKS_FAILURE'
+export const API_LOAD_FAVORITE_WORKS_REQUEST = 'API_LOAD_FAVORITE_WORKS_REQUEST'
+export const API_LOAD_FAVORITE_WORKS_SUCCESS = 'API_LOAD_FAVORITE_WORKS_SUCCESS'
+export const API_LOAD_FAVORITE_WORKS_FAILURE = 'API_LOAD_FAVORITE_WORKS_FAILURE'
 export function loadFavoriteWorks(id, page = 1) {
-  return get(`/users/${id}/goods?page=${page}`, 'LOAD_FAVORITE_WORKS')
+  return get(`/users/${id}/goods?page=${page}`, 'API_LOAD_FAVORITE_WORKS')
 }
 
 //----------------------------------------
@@ -152,9 +152,9 @@ export function loadFavoriteWorks(id, page = 1) {
 //
 // Tag Work Lits
 //
-export const LOAD_TAG_WORK_LIST_REQUEST = 'LOAD_TAG_WORK_LIST_REQUEST'
-export const LOAD_TAG_WORK_LIST_SUCCESS = 'LOAD_TAG_WORK_LIST_SUCCESS'
-export const LOAD_TAG_WORK_LIST_FAILURE = 'LOAD_TAG_WORK_LIST_FAILURE'
+export const API_LOAD_TAG_WORK_LIST_REQUEST = 'API_LOAD_TAG_WORK_LIST_REQUEST'
+export const API_LOAD_TAG_WORK_LIST_SUCCESS = 'API_LOAD_TAG_WORK_LIST_SUCCESS'
+export const API_LOAD_TAG_WORK_LIST_FAILURE = 'API_LOAD_TAG_WORK_LIST_FAILURE'
 function fetchTagWorkList() {
   return (dispatch, nextState) => {
   }
@@ -169,9 +169,9 @@ export function loadTagWorkList() {
 //
 // New Work List
 //
-export const LOAD_NEW_WORK_LIST_REQUEST = 'LOAD_NEW_WORK_LIST_REQUEST'
-export const LOAD_NEW_WORK_LIST_SUCCESS = 'LOAD_NEW_WORK_LIST_SUCCESS'
-export const LOAD_NEW_WORK_LIST_FAILURE = 'LOAD_NEW_WORK_LIST_FAILURE'
+export const API_LOAD_NEW_WORK_LIST_REQUEST = 'API_LOAD_NEW_WORK_LIST_REQUEST'
+export const API_LOAD_NEW_WORK_LIST_SUCCESS = 'API_LOAD_NEW_WORK_LIST_SUCCESS'
+export const API_LOAD_NEW_WORK_LIST_FAILURE = 'API_LOAD_NEW_WORK_LIST_FAILURE'
 function fetchNewWorkList() {
   return (dispatch, nextState) => {
   }
@@ -186,31 +186,31 @@ export function loadNewWorkList() {
 //
 // Create Work
 //
-export const CREATE_WORK_REQUEST = 'CREATE_WORK_REQUEST'
-export const CREATE_WORK_SUCCESS = 'CREATE_WORK_SUCCESS'
-export const CREATE_WORK_FAILURE = 'CREATE_WORK_FAILURE'
+export const API_CREATE_WORK_REQUEST = 'API_CREATE_WORK_REQUEST'
+export const API_CREATE_WORK_SUCCESS = 'API_CREATE_WORK_SUCCESS'
+export const API_CREATE_WORK_FAILURE = 'API_CREATE_WORK_FAILURE'
 export function createWork(params) {
-  return post('/works', 'CREATE_WORK', {}, { work: params })
+  return post('/works', 'API_CREATE_WORK', {}, { work: params })
 }
 
 //
 // Update Work
 //
-export const UPDATE_WORK_REQUEST = 'UPDATE_WORK_REQUEST'
-export const UPDATE_WORK_SUCCESS = 'UPDATE_WORK_SUCCESS'
-export const UPDATE_WORK_FAILURE = 'UPDATE_WORK_FAILURE'
+export const API_UPDATE_WORK_REQUEST = 'API_UPDATE_WORK_REQUEST'
+export const API_UPDATE_WORK_SUCCESS = 'API_UPDATE_WORK_SUCCESS'
+export const API_UPDATE_WORK_FAILURE = 'API_UPDATE_WORK_FAILURE'
 export function updateWork(id, params) {
-  return put(`/works/${id}`, 'UPDATE_WORK', {}, { work: params })
+  return put(`/works/${id}`, 'API_UPDATE_WORK', {}, { work: params })
 }
 
 //
 // Load Work
 //
-export const LOAD_WORK_REQUEST = 'LOAD_WORK_REQUEST'
-export const LOAD_WORK_SUCCESS = 'LOAD_WORK_SUCCESS'
-export const LOAD_WORK_FAILURE = 'LOAD_WORK_FAILURE'
+export const API_LOAD_WORK_REQUEST = 'API_LOAD_WORK_REQUEST'
+export const API_LOAD_WORK_SUCCESS = 'API_LOAD_WORK_SUCCESS'
+export const API_LOAD_WORK_FAILURE = 'API_LOAD_WORK_FAILURE'
 export function loadWork(id) {
-  return get(`/works/${id}`, 'LOAD_WORK')
+  return get(`/works/${id}`, 'API_LOAD_WORK')
 
 }
 
@@ -221,31 +221,31 @@ export function loadWork(id) {
 //
 // Create Work Image
 //
-export const CREATE_WORK_IMAGE_REQUEST = 'CREATE_WORK_IMAGE_REQUEST'
-export const CREATE_WORK_IMAGE_SUCCESS = 'CREATE_WORK_IMAGE_SUCCESS'
-export const CREATE_WORK_IMAGE_FAILURE = 'CREATE_WORK_IMAGE_FAILURE'
+export const API_CREATE_WORK_IMAGE_REQUEST = 'API_CREATE_WORK_IMAGE_REQUEST'
+export const API_CREATE_WORK_IMAGE_SUCCESS = 'API_CREATE_WORK_IMAGE_SUCCESS'
+export const API_CREATE_WORK_IMAGE_FAILURE = 'API_CREATE_WORK_IMAGE_FAILURE'
 export function createWorkImage(id, params) {
-  return post(`/works/${id}/work_images`, 'CREATE_WORK_IMAGE', {}, {}, params)
+  return post(`/works/${id}/work_images`, 'API_CREATE_WORK_IMAGE', {}, {}, params)
 }
 
 //
 // Update Work_Image Image
 //
-export const UPDATE_WORK_IMAGE_REQUEST = 'UPDATE_WORK_IMAGE_REQUEST'
-export const UPDATE_WORK_IMAGE_SUCCESS = 'UPDATE_WORK_IMAGE_SUCCESS'
-export const UPDATE_WORK_IMAGE_FAILURE = 'UPDATE_WORK_IMAGE_FAILURE'
+export const API_UPDATE_WORK_IMAGE_REQUEST = 'API_UPDATE_WORK_IMAGE_REQUEST'
+export const API_UPDATE_WORK_IMAGE_SUCCESS = 'API_UPDATE_WORK_IMAGE_SUCCESS'
+export const API_UPDATE_WORK_IMAGE_FAILURE = 'API_UPDATE_WORK_IMAGE_FAILURE'
 export function updateWorkImage(id, params) {
-  return put(`/work_images/${id}`, 'UPDATE_WORK_IMAGE', {}, { work_image: params })
+  return put(`/work_images/${id}`, 'API_UPDATE_WORK_IMAGE', {}, { work_image: params })
 }
 
 //
 // Delete Work_Image Image
 //
-export const DELETE_WORK_IMAGE_REQUEST = 'DELETE_WORK_IMAGE_REQUEST'
-export const DELETE_WORK_IMAGE_SUCCESS = 'DELETE_WORK_IMAGE_SUCCESS'
-export const DELETE_WORK_IMAGE_FAILURE = 'DELETE_WORK_IMAGE_FAILURE'
+export const API_DELETE_WORK_IMAGE_REQUEST = 'API_DELETE_WORK_IMAGE_REQUEST'
+export const API_DELETE_WORK_IMAGE_SUCCESS = 'API_DELETE_WORK_IMAGE_SUCCESS'
+export const API_DELETE_WORK_IMAGE_FAILURE = 'API_DELETE_WORK_IMAGE_FAILURE'
 export function deleteWorkImage(id) {
-  return del(`/work_images/${id}`, 'DELETE_WORK_IMAGE')
+  return del(`/work_images/${id}`, 'API_DELETE_WORK_IMAGE')
 }
 
 //----------------------------------------
@@ -255,31 +255,31 @@ export function deleteWorkImage(id) {
 //
 // Create Work Piece
 //
-export const CREATE_WORK_PIECE_REQUEST = 'CREATE_WORK_PIECE_REQUEST'
-export const CREATE_WORK_PIECE_SUCCESS = 'CREATE_WORK_PIECE_SUCCESS'
-export const CREATE_WORK_PIECE_FAILURE = 'CREATE_WORK_PIECE_FAILURE'
+export const API_CREATE_WORK_PIECE_REQUEST = 'API_CREATE_WORK_PIECE_REQUEST'
+export const API_CREATE_WORK_PIECE_SUCCESS = 'API_CREATE_WORK_PIECE_SUCCESS'
+export const API_CREATE_WORK_PIECE_FAILURE = 'API_CREATE_WORK_PIECE_FAILURE'
 export function createWorkPiece(id, params) {
-  return post(`/works/${id}/work_pieces`, 'CREATE_WORK_PIECE', {}, {}, params)
+  return post(`/works/${id}/work_pieces`, 'API_CREATE_WORK_PIECE', {}, {}, params)
 }
 
 //
 // Update Work_Piece Piece
 //
-export const UPDATE_WORK_PIECE_REQUEST = 'UPDATE_WORK_PIECE_REQUEST'
-export const UPDATE_WORK_PIECE_SUCCESS = 'UPDATE_WORK_PIECE_SUCCESS'
-export const UPDATE_WORK_PIECE_FAILURE = 'UPDATE_WORK_PIECE_FAILURE'
+export const API_UPDATE_WORK_PIECE_REQUEST = 'API_UPDATE_WORK_PIECE_REQUEST'
+export const API_UPDATE_WORK_PIECE_SUCCESS = 'API_UPDATE_WORK_PIECE_SUCCESS'
+export const API_UPDATE_WORK_PIECE_FAILURE = 'API_UPDATE_WORK_PIECE_FAILURE'
 export function updateWorkPiece(id, params) {
-  return put(`/work_pieces/${id}`, 'UPDATE_WORK_PIECE', {}, { work_piece: params })
+  return put(`/work_pieces/${id}`, 'API_UPDATE_WORK_PIECE', {}, { work_piece: params })
 }
 
 //
-// Delete Work_Piece Piece
+// Delete API_Work_Piece Piece
 //
-export const DELETE_WORK_PIECE_REQUEST = 'DELETE_WORK_PIECE_REQUEST'
-export const DELETE_WORK_PIECE_SUCCESS = 'DELETE_WORK_PIECE_SUCCESS'
-export const DELETE_WORK_PIECE_FAILURE = 'DELETE_WORK_PIECE_FAILURE'
+export const API_DELETE_WORK_PIECE_REQUEST = 'API_DELETE_WORK_PIECE_REQUEST'
+export const API_DELETE_WORK_PIECE_SUCCESS = 'API_DELETE_WORK_PIECE_SUCCESS'
+export const API_DELETE_WORK_PIECE_FAILURE = 'API_DELETE_WORK_PIECE_FAILURE'
 export function deleteWorkPiece(id) {
-  return del(`/work_pieces/${id}`, 'DELETE_WORK_PIECE')
+  return del(`/work_pieces/${id}`, 'API_DELETE_WORK_PIECE')
 }
 
 //----------------------------------------
@@ -289,21 +289,21 @@ export function deleteWorkPiece(id) {
 //
 // Create Work Tag
 //
-export const CREATE_WORK_TAG_REQUEST = 'CREATE_WORK_TAG_REQUEST'
-export const CREATE_WORK_TAG_SUCCESS = 'CREATE_WORK_TAG_SUCCESS'
-export const CREATE_WORK_TAG_FAILURE = 'CREATE_WORK_TAG_FAILURE'
+export const API_CREATE_WORK_TAG_REQUEST = 'API_CREATE_WORK_TAG_REQUEST'
+export const API_CREATE_WORK_TAG_SUCCESS = 'API_CREATE_WORK_TAG_SUCCESS'
+export const API_CREATE_WORK_TAG_FAILURE = 'API_CREATE_WORK_TAG_FAILURE'
 export function createWorkTag(id, params) {
-  return post(`/works/${id}/work_tags`, 'CREATE_WORK_TAG', {}, { work_tag: params })
+  return post(`/works/${id}/work_tags`, 'API_CREATE_WORK_TAG', {}, { work_tag: params })
 }
 
 //
-// Delete Work_Tag Tag
+// Delete API_Work_Tag Tag
 //
-export const DELETE_WORK_TAG_REQUEST = 'DELETE_WORK_TAG_REQUEST'
-export const DELETE_WORK_TAG_SUCCESS = 'DELETE_WORK_TAG_SUCCESS'
-export const DELETE_WORK_TAG_FAILURE = 'DELETE_WORK_TAG_FAILURE'
+export const API_DELETE_WORK_TAG_REQUEST = 'API_DELETE_WORK_TAG_REQUEST'
+export const API_DELETE_WORK_TAG_SUCCESS = 'API_DELETE_WORK_TAG_SUCCESS'
+export const API_DELETE_WORK_TAG_FAILURE = 'API_DELETE_WORK_TAG_FAILURE'
 export function deleteWorkTag(id) {
-  return del(`/work_tags/${id}`, 'DELETE_WORK_TAG')
+  return del(`/work_tags/${id}`, 'API_DELETE_WORK_TAG')
 }
 
 //----------------------------------------
@@ -313,11 +313,11 @@ export function deleteWorkTag(id) {
 //
 // Create Work Comment
 //
-export const CREATE_WORK_COMMENT_REQUEST = 'CREATE_WORK_COMMENT_REQUEST'
-export const CREATE_WORK_COMMENT_SUCCESS = 'CREATE_WORK_COMMENT_SUCCESS'
-export const CREATE_WORK_COMMENT_FAILURE = 'CREATE_WORK_COMMENT_FAILURE'
+export const API_CREATE_WORK_COMMENT_REQUEST = 'API_CREATE_WORK_COMMENT_REQUEST'
+export const API_CREATE_WORK_COMMENT_SUCCESS = 'API_CREATE_WORK_COMMENT_SUCCESS'
+export const API_CREATE_WORK_COMMENT_FAILURE = 'API_CREATE_WORK_COMMENT_FAILURE'
 export function createWorkComment(id, params) {
-  return post(`/works/${id}/work_comments`, 'CREATE_WORK_COMMENT', {}, { work_comment: params })
+  return post(`/works/${id}/work_comments`, 'API_CREATE_WORK_COMMENT', {}, { work_comment: params })
 }
 
 //----------------------------------------
@@ -327,21 +327,21 @@ export function createWorkComment(id, params) {
 //
 // Create Work Good
 //
-export const CREATE_GOOD_REQUEST = 'CREATE_GOOD_REQUEST'
-export const CREATE_GOOD_SUCCESS = 'CREATE_GOOD_SUCCESS'
-export const CREATE_GOOD_FAILURE = 'CREATE_GOOD_FAILURE'
+export const API_CREATE_GOOD_REQUEST = 'API_CREATE_GOOD_REQUEST'
+export const API_CREATE_GOOD_SUCCESS = 'API_CREATE_GOOD_SUCCESS'
+export const API_CREATE_GOOD_FAILURE = 'API_CREATE_GOOD_FAILURE'
 export function createGood(work_id) {
-  return post(`/works/${work_id}/good`, 'CREATE_GOOD')
+  return post(`/works/${work_id}/good`, 'API_CREATE_GOOD')
 }
 
 //
-// Delete Work_Tag Tag
+// Delete API_Work_Tag Tag
 //
-export const DELETE_GOOD_REQUEST = 'DELETE_GOOD_REQUEST'
-export const DELETE_GOOD_SUCCESS = 'DELETE_GOOD_SUCCESS'
-export const DELETE_GOOD_FAILURE = 'DELETE_GOOD_FAILURE'
+export const API_DELETE_GOOD_REQUEST = 'API_DELETE_GOOD_REQUEST'
+export const API_DELETE_GOOD_SUCCESS = 'API_DELETE_GOOD_SUCCESS'
+export const API_DELETE_GOOD_FAILURE = 'API_DELETE_GOOD_FAILURE'
 export function deleteGood(work_id) {
-  return del(`/works/${work_id}/good`, 'DELETE_GOOD')
+  return del(`/works/${work_id}/good`, 'API_DELETE_GOOD')
 }
 
 //----------------------------------------
