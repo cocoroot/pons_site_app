@@ -184,13 +184,164 @@ export function loadNewWorkList() {
 }
 
 //
-// Work
+// Create Work
+//
+export const CREATE_WORK_REQUEST = 'CREATE_WORK_REQUEST'
+export const CREATE_WORK_SUCCESS = 'CREATE_WORK_SUCCESS'
+export const CREATE_WORK_FAILURE = 'CREATE_WORK_FAILURE'
+export function createWork(params) {
+  return post('/works', 'CREATE_WORK', {}, { work: params })
+}
+
+//
+// Update Work
+//
+export const UPDATE_WORK_REQUEST = 'UPDATE_WORK_REQUEST'
+export const UPDATE_WORK_SUCCESS = 'UPDATE_WORK_SUCCESS'
+export const UPDATE_WORK_FAILURE = 'UPDATE_WORK_FAILURE'
+export function updateWork(id, params) {
+  return put(`/works/${id}`, 'UPDATE_WORK', {}, { work: params })
+}
+
+//
+// Load Work
 //
 export const LOAD_WORK_REQUEST = 'LOAD_WORK_REQUEST'
 export const LOAD_WORK_SUCCESS = 'LOAD_WORK_SUCCESS'
 export const LOAD_WORK_FAILURE = 'LOAD_WORK_FAILURE'
 export function loadWork(id) {
   return get(`/works/${id}`, 'LOAD_WORK')
+
+}
+
+//----------------------------------------
+// Work Image
+//----------------------------------------
+
+//
+// Create Work Image
+//
+export const CREATE_WORK_IMAGE_REQUEST = 'CREATE_WORK_IMAGE_REQUEST'
+export const CREATE_WORK_IMAGE_SUCCESS = 'CREATE_WORK_IMAGE_SUCCESS'
+export const CREATE_WORK_IMAGE_FAILURE = 'CREATE_WORK_IMAGE_FAILURE'
+export function createWorkImage(id, params) {
+  return post(`/works/${id}/work_images`, 'CREATE_WORK_IMAGE', {}, {}, params)
+}
+
+//
+// Update Work_Image Image
+//
+export const UPDATE_WORK_IMAGE_REQUEST = 'UPDATE_WORK_IMAGE_REQUEST'
+export const UPDATE_WORK_IMAGE_SUCCESS = 'UPDATE_WORK_IMAGE_SUCCESS'
+export const UPDATE_WORK_IMAGE_FAILURE = 'UPDATE_WORK_IMAGE_FAILURE'
+export function updateWorkImage(id, params) {
+  return put(`/work_images/${id}`, 'UPDATE_WORK_IMAGE', {}, { work_image: params })
+}
+
+//
+// Delete Work_Image Image
+//
+export const DELETE_WORK_IMAGE_REQUEST = 'DELETE_WORK_IMAGE_REQUEST'
+export const DELETE_WORK_IMAGE_SUCCESS = 'DELETE_WORK_IMAGE_SUCCESS'
+export const DELETE_WORK_IMAGE_FAILURE = 'DELETE_WORK_IMAGE_FAILURE'
+export function deleteWorkImage(id) {
+  return del(`/work_images/${id}`, 'DELETE_WORK_IMAGE')
+}
+
+//----------------------------------------
+// Work Piece
+//----------------------------------------
+
+//
+// Create Work Piece
+//
+export const CREATE_WORK_PIECE_REQUEST = 'CREATE_WORK_PIECE_REQUEST'
+export const CREATE_WORK_PIECE_SUCCESS = 'CREATE_WORK_PIECE_SUCCESS'
+export const CREATE_WORK_PIECE_FAILURE = 'CREATE_WORK_PIECE_FAILURE'
+export function createWorkPiece(id, params) {
+  return post(`/works/${id}/work_pieces`, 'CREATE_WORK_PIECE', {}, {}, params)
+}
+
+//
+// Update Work_Piece Piece
+//
+export const UPDATE_WORK_PIECE_REQUEST = 'UPDATE_WORK_PIECE_REQUEST'
+export const UPDATE_WORK_PIECE_SUCCESS = 'UPDATE_WORK_PIECE_SUCCESS'
+export const UPDATE_WORK_PIECE_FAILURE = 'UPDATE_WORK_PIECE_FAILURE'
+export function updateWorkPiece(id, params) {
+  return put(`/work_pieces/${id}`, 'UPDATE_WORK_PIECE', {}, { work_piece: params })
+}
+
+//
+// Delete Work_Piece Piece
+//
+export const DELETE_WORK_PIECE_REQUEST = 'DELETE_WORK_PIECE_REQUEST'
+export const DELETE_WORK_PIECE_SUCCESS = 'DELETE_WORK_PIECE_SUCCESS'
+export const DELETE_WORK_PIECE_FAILURE = 'DELETE_WORK_PIECE_FAILURE'
+export function deleteWorkPiece(id) {
+  return del(`/work_pieces/${id}`, 'DELETE_WORK_PIECE')
+}
+
+//----------------------------------------
+// Work Tag
+//----------------------------------------
+
+//
+// Create Work Tag
+//
+export const CREATE_WORK_TAG_REQUEST = 'CREATE_WORK_TAG_REQUEST'
+export const CREATE_WORK_TAG_SUCCESS = 'CREATE_WORK_TAG_SUCCESS'
+export const CREATE_WORK_TAG_FAILURE = 'CREATE_WORK_TAG_FAILURE'
+export function createWorkTag(id, params) {
+  return post(`/works/${id}/work_tags`, 'CREATE_WORK_TAG', {}, { work_tag: params })
+}
+
+//
+// Delete Work_Tag Tag
+//
+export const DELETE_WORK_TAG_REQUEST = 'DELETE_WORK_TAG_REQUEST'
+export const DELETE_WORK_TAG_SUCCESS = 'DELETE_WORK_TAG_SUCCESS'
+export const DELETE_WORK_TAG_FAILURE = 'DELETE_WORK_TAG_FAILURE'
+export function deleteWorkTag(id) {
+  return del(`/work_tags/${id}`, 'DELETE_WORK_TAG')
+}
+
+//----------------------------------------
+// Work Comment
+//----------------------------------------
+
+//
+// Create Work Comment
+//
+export const CREATE_WORK_COMMENT_REQUEST = 'CREATE_WORK_COMMENT_REQUEST'
+export const CREATE_WORK_COMMENT_SUCCESS = 'CREATE_WORK_COMMENT_SUCCESS'
+export const CREATE_WORK_COMMENT_FAILURE = 'CREATE_WORK_COMMENT_FAILURE'
+export function createWorkComment(id, params) {
+  return post(`/works/${id}/work_comments`, 'CREATE_WORK_COMMENT', {}, { work_comment: params })
+}
+
+//----------------------------------------
+// Work Good
+//----------------------------------------
+
+//
+// Create Work Good
+//
+export const CREATE_GOOD_REQUEST = 'CREATE_GOOD_REQUEST'
+export const CREATE_GOOD_SUCCESS = 'CREATE_GOOD_SUCCESS'
+export const CREATE_GOOD_FAILURE = 'CREATE_GOOD_FAILURE'
+export function createGood(work_id) {
+  return post(`/works/${work_id}/good`, 'CREATE_GOOD')
+}
+
+//
+// Delete Work_Tag Tag
+//
+export const DELETE_GOOD_REQUEST = 'DELETE_GOOD_REQUEST'
+export const DELETE_GOOD_SUCCESS = 'DELETE_GOOD_SUCCESS'
+export const DELETE_GOOD_FAILURE = 'DELETE_GOOD_FAILURE'
+export function deleteGood(work_id) {
+  return del(`/works/${work_id}/good`, 'DELETE_GOOD')
 }
 
 //----------------------------------------
@@ -209,7 +360,7 @@ function post(api, actionName, headers = {}, params = {}, forms = {}) {
 
 function put(api, actionName, headers = {}, params = {}, forms = {}) {
   return send('PUT', api, actionName, Object.assign({}, headers, {
-    'Accept': 'application/json',
+    'Accept': 'application/json'
   }), params, forms)
 }
 

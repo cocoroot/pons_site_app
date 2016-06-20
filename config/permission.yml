@@ -64,7 +64,7 @@ errors:
   routing_error:
     *action_default
 
-core_api:
+pons_api:
   create_user:
     *action_default 
   create_user:
@@ -79,35 +79,35 @@ core_api:
     *action_default 
   create_user_header_image:
     *action_default
-  index_creation_created_by_user:
+  index_work_created_by_user:
     *action_default
   index_good_by_user:
     *action_default 
-  create_creation:
+  create_work:
     *action_default 
-  show_creation:
+  show_work:
     *action_default 
-  update_creation:
+  update_work:
     *action_default 
-  create_creation_image:
+  create_work_image:
     *action_default 
-  show_creation_image:
+  show_work_image:
     *action_default 
-  update_creation_image:
+  update_work_image:
     *action_default 
-  delete_creation_image:
+  delete_work_image:
     *action_default 
-  create_creation_piece:
+  create_work_piece:
     *action_default 
-  update_creation_piece:
+  update_work_piece:
     *action_default 
   delete_cleation_piece:
     *action_default 
-  create_creation_tag:
+  create_work_tag:
     *action_default 
-  delete_creation_tag:
+  delete_work_tag:
     *action_default 
-  create_creation_comment:
+  create_work_comment:
     *action_default 
   create_good:
     *action_default 

@@ -16,6 +16,7 @@ import WorkDetail from '../containers/work-detail-container'
 import TestMe from '../containers/test-me-container'
 import TestUser from '../containers/test-user-container'
 import TestWork from '../containers/test-work-container'
+import TestApiCalls from '../containers/test-api-calls-container'
 
 import Header from '../containers/header-container'
 import Footer from '../components/common-footer-component'
@@ -55,6 +56,7 @@ class App extends Component {
               <LinkContainer to="/test-users/1"><NavItem>test user: 1</NavItem></LinkContainer>
               <LinkContainer to="/test-users/2"><NavItem>test user: 2</NavItem></LinkContainer>
               <LinkContainer to="/test-me"><NavItem>me</NavItem></LinkContainer>
+              <LinkContainer to="/test-api-calls"><NavItem>API Test</NavItem></LinkContainer>
               <LinkContainer to="/sorry"><NavItem>sorry</NavItem></LinkContainer>
             </Nav>
             <Nav pullRight>
@@ -95,6 +97,7 @@ export class SiteRouter extends Component {
   onEnterTestMe(nextState, replace) { TestMe.onEnter(store.dispatch, nextState, replace) }
   onEnterTestUser(nextState, replace) { TestUser.onEnter(store.dispatch, nextState, replace) }
   onEnterTestWork(nextState, replace) { TestWork.onEnter(store.dispatch, nextState, replace) }
+  onEnterTestApiCalls(nextState, replace) { TestApiCalls.onEnter(store.dispatch, nextState, replace) }
 
   render() {
     // console.log("SiteRouterComponent render props=%o", this.props)
@@ -109,6 +112,7 @@ export class SiteRouter extends Component {
           <Route path="/test-users/:user_id" component={ TestUser } onEnter={this.onEnterTestUser} />
           <Route path="/test-me" component={ TestMe } onEnter={this.onEnterTestMe} />
           <Route path="/test-works/:work_id" component={ TestWork } onEnter={this.onEnterTestWork} />
+          <Route path="/test-api-calls" component={ TestApiCalls } onEnter={this.onEnterTestApiCalls} />
           <Route path="/sorry" component={ Sorry } />
         </Route>
       </Router>

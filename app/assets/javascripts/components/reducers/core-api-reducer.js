@@ -166,7 +166,7 @@ export default function coreApi(state = INITIAL_STATE, action) {
     })
     case Actions.CREATE_USER_IMAGE_FAILURE: return state
 
-      // User Header Image
+      // create User Header Image
     case Actions.CREATE_USER_HEADER_IMAGE_REQUEST: return state
     case Actions.CREATE_USER_HEADER_IMAGE_SUCCESS: return Object.assign({}, state, {
       me: Object.assign({}, state.me, {
@@ -175,14 +175,14 @@ export default function coreApi(state = INITIAL_STATE, action) {
     })
     case Actions.CREATE_USER_HEADER_IMAGE_FAILURE: return state
 
-      // Works created by a User
+      // load Works created by a User
     case Actions.LOAD_WORK_LIST_CREATED_BY_USER_REQUEST: return state
     case Actions.LOAD_WORK_LIST_CREATED_BY_USER_SUCCESS: return Object.assign({}, state, {
       userWorks: action.payload.creations
     })
     case Actions.LOAD_WORK_LIST_CREATED_BY_USER_FAILURE: return state
 
-      // FavoriteWorks
+      // load Favorite Works
     case Actions.LOAD_FAVORITE_WORKS_REQUEST: return state
     case Actions.LOAD_FAVORITE_WORKS_SUCCESS: return Object.assign({}, state, {
       favoriteWorks: action.payload.goods
@@ -192,11 +192,149 @@ export default function coreApi(state = INITIAL_STATE, action) {
       //----------------------------------------
       // Work
       //----------------------------------------
+
+      // create Work
+    case Actions.CREATE_WORK_REQUEST: return state
+    case Actions.CREATE_WORK_SUCCESS: return Object.assign({}, state, {
+      createdWork: action.payload
+    })
+    case Actions.CREATE_WORK_FAILURE: return state
+
+      // update Work
+    case Actions.UPDATE_WORK_REQUEST: return state
+    case Actions.UPDATE_WORK_SUCCESS: return Object.assign({}, state, {
+      updatedWork: action.payload
+    })
+    case Actions.UPDATE_WORK_FAILURE: return state
+
+      // load Work
     case Actions.LOAD_WORK_REQUEST: return state
     case Actions.LOAD_WORK_SUCCESS: return Object.assign({}, state, {
       work: action.payload
     })
     case Actions.LOAD_WORK_FAILURE: return state
+
+      //----------------------------------------
+      // Work Image
+      //----------------------------------------
+
+      // create Work Image
+    case Actions.CREATE_WORK_IMAGE_REQUEST: return state
+    case Actions.CREATE_WORK_IMAGE_SUCCESS: return Object.assign({}, state, {
+      work: Object.assign({}, state, {
+        creation_images: action.payload.creation_images
+      })
+    })
+    case Actions.CREATE_WORK_IMAGE_FAILURE: return state
+
+      // update Work Image
+    case Actions.UPDATE_WORK_IMAGE_REQUEST: return state
+    case Actions.UPDATE_WORK_IMAGE_SUCCESS: return Object.assign({}, state, {
+      work: Object.assign({}, state, {
+        creation_images: action.payload.creation_images
+      })
+    })
+    case Actions.UPDATE_WORK_IMAGE_FAILURE: return state
+
+      // delete Work Image
+    case Actions.DELETE_WORK_IMAGE_REQUEST: return state
+    case Actions.DELETE_WORK_IMAGE_SUCCESS: return Object.assign({}, state, {
+      work: Object.assign({}, state, {
+        creation_images: action.payload.creation_images
+      })
+    })
+    case Actions.DELETE_WORK_IMAGE_FAILURE: return state
+
+      //----------------------------------------
+      // Work Piece
+      //----------------------------------------
+
+      // create Work Piece
+    case Actions.CREATE_WORK_PIECE_REQUEST: return state
+    case Actions.CREATE_WORK_PIECE_SUCCESS: return Object.assign({}, state, {
+      work: Object.assign({}, state, {
+        creation_pieces: action.payload.creation_pieces
+      })
+    })
+    case Actions.CREATE_WORK_PIECE_FAILURE: return state
+
+      // update Work Piece
+    case Actions.UPDATE_WORK_PIECE_REQUEST: return state
+    case Actions.UPDATE_WORK_PIECE_SUCCESS: return Object.assign({}, state, {
+      work: Object.assign({}, state, {
+        creation_pieces: action.payload.creation_pieces
+      })
+    })
+    case Actions.UPDATE_WORK_PIECE_FAILURE: return state
+
+      // delete Work Piece
+    case Actions.DELETE_WORK_PIECE_REQUEST: return state
+    case Actions.DELETE_WORK_PIECE_SUCCESS: return Object.assign({}, state, {
+      work: Object.assign({}, state, {
+        creation_pieces: action.payload.creation_pieces
+      })
+    })
+    case Actions.DELETE_WORK_PIECE_FAILURE: return state
+
+      //----------------------------------------
+      // Work Tag
+      //----------------------------------------
+
+      // create Work Tag
+    case Actions.CREATE_WORK_TAG_REQUEST: return state
+    case Actions.CREATE_WORK_TAG_SUCCESS: return Object.assign({}, state, {
+      work: Object.assign({}, state.work, {
+        creation_tags: action.payload.creation_tags
+      })
+    })
+    case Actions.CREATE_WORK_TAG_FAILURE: return state
+
+      // delete Work Tag
+    case Actions.DELETE_WORK_TAG_REQUEST: return state
+    case Actions.DELETE_WORK_TAG_SUCCESS: return Object.assign({}, state, {
+      work: Object.assign({}, state.work, {
+        creation_tags: action.payload.creation_tags
+      })
+    })
+    case Actions.DELETE_WORK_TAG_FAILURE: return state
+
+      //----------------------------------------
+      // Work Comment
+      //----------------------------------------
+
+      // create Work Comment
+    case Actions.CREATE_WORK_COMMENT_REQUEST: return state
+    case Actions.CREATE_WORK_COMMENT_SUCCESS: return Object.assign({}, state, {
+      work: Object.assign({}, state.work, {
+        creation_comments: action.payload.creation_comments
+      })
+    })
+    case Actions.CREATE_WORK_COMMENT_FAILURE: return state
+
+      //----------------------------------------
+      // Good
+      //----------------------------------------
+
+      // create Good
+    case Actions.CREATE_GOOD_REQUEST: return state
+    case Actions.CREATE_GOOD_SUCCESS: return Object.assign({}, state, {
+      work: Object.assign({}, state.work, {
+        goods_count: action.payload.goods_count,
+        good: action.payload.good
+      })
+    })
+    case Actions.CREATE_GOOD_FAILURE: return state
+
+      // delete Good
+    case Actions.DELETE_GOOD_REQUEST: return state
+    case Actions.DELETE_GOOD_SUCCESS: return Object.assign({}, state, {
+      work: Object.assign({}, state.work, {
+        goods_count: action.payload.goods_count,
+        good: action.payload.good
+      })
+    })
+    case Actions.DELETE_GOOD_FAILURE: return state
+
 
     default:
       return state

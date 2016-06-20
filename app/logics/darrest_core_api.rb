@@ -93,39 +93,95 @@ class DarrestCoreApi
   end
 
   def update_creation(params)
+    send_put("/creations/#{params[:id]}", params.except(:id))
   end
 
   def create_creation_image(params)
+    send_post("/creations/#{params[:creation_id]}/creation_images", params) do |req, parameters|
+      received_image = parameters[:creation_image][:image]
+
+      original_filename = received_image.original_filename
+      content_type = received_image.content_type
+      file = received_image.tempfile
+
+      stream = MultiPartFormDataStream.new
+      stream.add_form('user_baas_id', parameters[:user_baas_id])
+      stream.add_form('order', parameters[:creation_image][:order])
+      stream.add_file('image', original_filename, content_type, file)
+
+      req.body_stream = stream
+      req['Content-Length'] = stream.size
+      req['Content-Type'] = stream.content_type
+    end
   end
 
   def show_creation_image(params)
   end
 
   def update_creation_image(params)
+    send_put("/creation_images/#{params[:id]}", params.except(:id))
   end
 
   def delete_creation_image(params)
+    send_delete("/creation_images/#{params[:id]}", params.except(:id))
   end
 
   def create_creation_piece(params)
+    send_post("/creations/#{params[:creation_id]}/creation_pieces", params) do |req, parameters|
+      stream = MultiPartFormDataStream.new
+
+      # string params
+      stream.add_form('user_baas_id', parameters[:user_baas_id])
+      stream.add_form('name', parameters[:creation_piece][:name])
+
+      # file
+      received_file = parameters[:creation_piece][:file]
+      if received_file
+        stream.add_file('file',
+                        received_file.original_filename,
+                        received_file.content_type,
+                        received_file.tempfile
+                       )
+      end
+
+      # image
+      received_image = parameters[:creation_piece][:image]
+      if received_image
+        stream.add_file('image',
+                        received_image.original_filename,
+                        received_image.content_type,
+                        received_image.tempfile
+                       )
+      end
+
+      req.body_stream = stream
+      req['Content-Length'] = stream.size
+      req['Content-Type'] = stream.content_type
+    end
   end
 
   def update_creation_piece(params)
+    send_put("/creation_pieces/#{params[:id]}", params.except(:id))
   end
 
-  def delete_cleation_piece(params)
+  def delete_creation_piece(params)
+    send_delete("/creation_pieces/#{params[:id]}", params.except(:id))
   end
 
   def create_creation_tag(params)
+    send_post("/creations/#{params[:creation_id]}/creation_tags", params.except(:creation_id))
   end
 
   def delete_creation_tag(params)
+    send_delete("/creation_tags/#{params[:id]}", params.except(:id))
   end
 
   def create_creation_comment(params)
+    send_post("/creations/#{params[:creation_id]}/creation_comments", params.except(:creation_id))
   end
 
   def create_good(params)
+    send_post("/creations/#{params[:creation_id]}/good", params.except(:creation_id))
   end
 
   def index_good(params)
@@ -133,15 +189,16 @@ class DarrestCoreApi
   end
 
   def delete_good(params)
+    send_delete("/creations/#{params[:creation_id]}/good", params.except(:creation_id))
   end
 
   private
 
-  def send_get(api, params = nil, &_block)
+  def send_get(api, params = {}, &_block)
     send(:get, api, params)
   end
 
-  def send_post(api, params, &block)
+  def send_post(api, params = {}, &block)
     if block
       send(:post, api, params) { |r, p| block.call(r, p) }
     else
@@ -149,7 +206,7 @@ class DarrestCoreApi
     end
   end
 
-  def send_put(api, params, &block)
+  def send_put(api, params = {}, &block)
     if block
       send(:put, api, params) { |r, p| block.call(r, p) }
     else
@@ -157,7 +214,7 @@ class DarrestCoreApi
     end
   end
 
-  def send_delete(api, params, &block)
+  def send_delete(api, params = {}, &block)
     if block
       send(:delete, api, params) { |r, p| block.call(r, p) }
     else
@@ -166,8 +223,10 @@ class DarrestCoreApi
   end
 
   def send(method, api, params, &block)
+    Rails.logger.debug "darrest_core_api send method=#{method}, api=#{api}, params=#{params}"
+
     uri = URI.parse("#{API_BASE}#{api}")
-    if method == :get && params
+    if method == :get && !params.empty?
       uri.query = params.to_param
     end
 
