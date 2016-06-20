@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import * as Actions from '../actions/work-detail-action'
-import { Button, Media, Image, FormControl, Glyphicon } from 'react-bootstrap'
+import { Button, Glyphicon, ButtonGroup } from 'react-bootstrap'
 
 export default class WorkDetailControl extends Component {
 
@@ -8,19 +8,49 @@ export default class WorkDetailControl extends Component {
     console.log("components", this.props)
     const { editMode } = this.props
     const { changeEditMode } = this.props.actions
-    if (editMode) {
-      return (
-        <div className="workdetail-control col-xs-4 col-md-4">
-          <Button onClick={()=>changeEditMode(false)}><Glyphicon glyph="ok" /> 完了</Button>
-        </div>
-      )
+    const owner = true
+    const like = false
+    if (owner) {
+      if (editMode) {
+        // 編集中
+        return (
+          <div className="workdetail-control col-xs-4 col-md-4">
+            <Button onClick={()=>changeEditMode(false)}><Glyphicon glyph="ok" /> 完了</Button>
+            <p>
+              <ButtonGroup>
+                <Button><Glyphicon glyph="ok-sign" /> 公開</Button>
+                <Button><Glyphicon glyph="minus-sign" /> 非公開</Button>
+              </ButtonGroup>
+              <Button><Glyphicon glyph="trash" /> 削除</Button>
+
+            </p>
+          </div>
+        )
+      } else {
+        // 表示中
+        return (
+          <div className="workdetail-control col-xs-4 col-md-4">
+            <Button onClick={()=>changeEditMode(true)}><Glyphicon glyph="pencil" /> 編集</Button>
+          </div>
+        )
+      }
     } else {
-      return (
-        <div className="workdetail-control col-xs-4 col-md-4">
-          <Button onClick={()=>changeEditMode(true)}><Glyphicon glyph="pencil" /> 編集</Button>
-          <Button><Glyphicon glyph="heart" /> Like</Button>
-        </div>
-      )
+      if (like) {
+        // Like済み
+        return (
+          <div className="workdetail-control col-xs-4 col-md-4">
+            <Button><Glyphicon glyph="heart" /> 解除</Button>
+          </div>
+        )
+      } else {
+        // 未Like
+        return (
+          <div className="workdetail-control col-xs-4 col-md-4">
+            <Button bsStyle="primary"><Glyphicon glyph="heart" /> Like</Button>
+          </div>
+        )
+      }
     }
+
   }
 }
