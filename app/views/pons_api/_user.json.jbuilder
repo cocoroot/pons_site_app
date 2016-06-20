@@ -1,4 +1,4 @@
-json.id user['site_user_id']
+json.id user['id']
 
 json.image user['image']
 json.header_image user['header_image']
