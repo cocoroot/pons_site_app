@@ -11,6 +11,7 @@ import NewWorkList from '../components/new-work-list-component'
 function mapStateToProps(state) {
   return {
     // xxx: state.coreApi.xxx
+    newWorkList: state.newWorkList
   }
 }
 

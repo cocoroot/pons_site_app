@@ -12,14 +12,17 @@ let dummyWorkList = [
   { id: 3 }
 ]
 
-class NewWorkListContainer extends Component {
+export default class NewWorkListContainer extends Component {
   render() {
+    const { newWorkList } = this.props.newWorkList
+    console.log(this.props.newWorkList)
     return (
       <div>
         <Header />
         {/* この範囲でcomponetを作ってください */}
         <div className="new-work-list container">
-          <WorkList workList={dummyWorkList} />
+          <WorkList workList={ newWorkList } />
+          {/*<WorkList workList={dummyWorkList} />*/}
           <Button className="new-work-list-btn" bsSize="large" block>もっとみる</Button>
         </div>
         {/* ここまでComponent */}
