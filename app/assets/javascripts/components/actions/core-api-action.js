@@ -316,8 +316,8 @@ export function deleteWorkTag(id) {
 export const API_LOAD_WORK_COMMENT_LIST_REQUEST = 'API_LOAD_WORK_COMMENT_LIST_REQUEST'
 export const API_LOAD_WORK_COMMENT_LIST_SUCCESS = 'API_LOAD_WORK_COMMENT_LIST_SUCCESS'
 export const API_LOAD_WORK_COMMENT_LIST_FAILURE = 'API_LOAD_WORK_COMMENT_LIST_FAILURE'
-export function loadWorkCommentList(id, page = 1) {
-  return get(`/works/${id}/work_comments?page=${page}`, 'API_LOAD_WORK_COMMENT_LIST')
+export function loadWorkCommentList(id, offset) {
+  return get(`/works/${id}/work_comments?offset=${offset}`, 'API_LOAD_WORK_COMMENT_LIST')
 }
 
 //

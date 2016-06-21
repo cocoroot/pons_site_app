@@ -112,7 +112,12 @@ const INITIAL_STATE = {
 
 export const INITIAL_STATE_FOR_USER = {
   id: 0,
-  image: null,
+  image: {
+    url: '',
+    thumb: {
+      url: ''
+    }
+  },
   header_image: null,
   nickname: '',
   biography: '',

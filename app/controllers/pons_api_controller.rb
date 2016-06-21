@@ -154,7 +154,7 @@ class PonsApiController < ApplicationController
     @result = DarrestCoreApi.new.index_creation_comment(
       user_baas_id: user_baas_id,
       creation_id: params[:work_id],
-      page: params[:page]
+      offset: params[:offset]
     )
   end
 
