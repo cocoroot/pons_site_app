@@ -113,9 +113,9 @@ const INITIAL_STATE = {
 export const INITIAL_STATE_FOR_USER = {
   id: 0,
   image: {
-    url: '',
+    url: null,
     thumb: {
-      url: ''
+      url: null
     }
   },
   header_image: null,

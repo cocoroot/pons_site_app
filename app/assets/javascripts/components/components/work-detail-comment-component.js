@@ -15,21 +15,17 @@ export default class WorkDetailComment extends Component {
     const params = {
       body: comment
     }
-    console.log("WorkDetailComment onSubmit props=%o", this.props)
     this.props.actions.createWorkComment(id, params)
   }
 
   onLoadMoreComment(e) {
     const id = this.props.values.currentWork.id
-    //const page = this.props.values.commentControl.loadedPage + 1
     const comments = this.props.values.currentWork.work_comments
     const lastCommentId = comments[comments.length - 1].id
     this.props.actions.loadWorkCommentList(id, lastCommentId)
   }
   
   render() {
-    console.log("WorkDetailComment render props=%o", this.props)
-    
     const { currentWork, commentControl, me } = this.props.values
     const { work_comments: comments } = currentWork
     const { currentComment, allCommentLoaded } = commentControl
@@ -39,8 +35,16 @@ export default class WorkDetailComment extends Component {
         <h4><Glyphicon glyph="comment"/> コメント数({ currentWork.work_comments_count })</h4>
         <Media className="workdetail-comment-form">
           <Media.Left>
-            <Image circle width={64} height={64} src={ CORE_CONTENTS_BASE_URL + me.image.thumb.url } />
-          </Media.Left>
+            {
+              (() => {
+                if (me.image.thumb.url) {
+                  return (
+                    <Image circle width={64} height={64} src={ CORE_CONTENTS_BASE_URL + me.image.thumb.url } />
+                  )
+                }
+              })
+            }
+      </Media.Left>
           <Media.Body>
             <form>
               <FormControl height="64px" componentClass="textarea" value={ currentComment } placeholder="この作品にコメントを残してみませんか？" onChange={(e) => this.onChangeInputComment(e) }/>

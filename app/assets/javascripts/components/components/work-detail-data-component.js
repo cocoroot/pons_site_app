@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react'
-import { Button, Media, Image, FormControl, Glyphicon } from 'react-bootstrap'
+import { Button, Image, FormControl, Glyphicon, FormGroup, ControlLabel, HelpBlock } from 'react-bootstrap'
 
 export default class WorkDetailData extends Component {
 
@@ -8,8 +8,9 @@ export default class WorkDetailData extends Component {
       <div className="workdetail-databox">
         <h4 id="download"><Glyphicon glyph="download-alt" /> データのダウンロード</h4>
         <div className="workdetail-data-panel panel panel-default">
+
           <table className="table">
-            {/* hr */}
+            {/* table header */}
             <thead>
               <tr>
                 <th width={100}>説明</th>
@@ -68,21 +69,33 @@ export default class WorkDetailData extends Component {
                   filename.stl
                 </td>
                 <td>
-                  
+
                 </td>
                 <td>
                   <Button><Glyphicon glyph="remove"/></Button>
                 </td>
               </tr>
+
             </tbody>
           </table>
 
           {/* ファイルアップロード */}
-          <hr />
-          <div className="workdetail-data-upload">
-            <input type="file" />
-            <p>50MB以下のSTL形式のファイルに対応しています</p>
-          </div>
+          <div className="workdetail-data-upload row">
+            <form>
+              <FormGroup controlId="pieceFile">
+                <ControlLabel>データファイル</ControlLabel>
+                <input type="file" />
+                <HelpBlock>50MB以下のSTL形式のファイルに対応しています</HelpBlock>
+              </FormGroup>
+
+              <FormGroup controlId="pieceFile">
+                <ControlLabel>サムネイル画像ファイル</ControlLabel>
+                <input type="file" />
+              </FormGroup>
+
+              <Button bsStyle="primary" block>アップロード</Button>
+            </form>
+        </div>
         </div>
       </div>
     )
