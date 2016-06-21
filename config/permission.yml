@@ -106,7 +106,9 @@ pons_api:
   create_work_tag:
     *action_default 
   delete_work_tag:
-    *action_default 
+    *action_default
+  index_work_comment:
+    *action_default
   create_work_comment:
     *action_default 
   create_like:

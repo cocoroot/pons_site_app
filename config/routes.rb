@@ -20,6 +20,7 @@ Rails.application.routes.draw do
       post 'works/:work_id/work_images' => 'pons_api#create_work_image'
       post 'works/:work_id/work_pieces' => 'pons_api#create_work_piece'
       post 'works/:work_id/work_tags' => 'pons_api#create_work_tag'
+      get 'works/:work_id/work_comments' => 'pons_api#index_work_comment'
       post 'works/:work_id/work_comments' => 'pons_api#create_work_comment'
       post 'works/:work_id/like' => 'pons_api#create_like'
       delete 'works/:work_id/like' => 'pons_api#delete_like'

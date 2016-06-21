@@ -311,6 +311,16 @@ export function deleteWorkTag(id) {
 //----------------------------------------
 
 //
+// Get Work Comment List
+//
+export const API_LOAD_WORK_COMMENT_LIST_REQUEST = 'API_LOAD_WORK_COMMENT_LIST_REQUEST'
+export const API_LOAD_WORK_COMMENT_LIST_SUCCESS = 'API_LOAD_WORK_COMMENT_LIST_SUCCESS'
+export const API_LOAD_WORK_COMMENT_LIST_FAILURE = 'API_LOAD_WORK_COMMENT_LIST_FAILURE'
+export function loadWorkCommentList(id, offset) {
+  return get(`/works/${id}/work_comments?offset=${offset}`, 'API_LOAD_WORK_COMMENT_LIST')
+}
+
+//
 // Create Work Comment
 //
 export const API_CREATE_WORK_COMMENT_REQUEST = 'API_CREATE_WORK_COMMENT_REQUEST'
@@ -319,6 +329,7 @@ export const API_CREATE_WORK_COMMENT_FAILURE = 'API_CREATE_WORK_COMMENT_FAILURE'
 export function createWorkComment(id, params) {
   return post(`/works/${id}/work_comments`, 'API_CREATE_WORK_COMMENT', {}, { work_comment: params })
 }
+
 
 //----------------------------------------
 // Work Like
