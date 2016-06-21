@@ -6,7 +6,7 @@ export default class WorkDetailControl extends Component {
 
   render() {
     console.log("components", this.props)
-    const { editMode } = this.props
+    const { editMode } = this.props.values
     const { changeEditMode } = this.props.actions
     const owner = true
     const like = false

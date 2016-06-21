@@ -10,9 +10,9 @@ import * as Constants from '../settings'
 const INITIAL_STATE_FOR_EDIT_MODE = false
 function editMode(state = INITIAL_STATE_FOR_EDIT_MODE, action) {
   switch (action.type) {
-    case Actions.RESET:
+    case Actions.WKD_RESET:
       return INITIAL_STATE_FOR_EDIT_MODE
-    case Actions.CHANGE_EDIT_MODE:
+    case Actions.WKD_CHANGE_EDIT_MODE:
       return action.editMode
     default:
       return state

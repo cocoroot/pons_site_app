@@ -4,6 +4,12 @@ import { Button, Image, FormControl, Glyphicon, FormGroup, ControlLabel, HelpBlo
 export default class WorkDetailData extends Component {
 
   render() {
+    const { currentWork, editMode } = this.props.values
+    const { work_pieces } = currentWork
+    
+    const displayModeStyle = { display: editMode ? 'none' : 'table-cell' }
+    const editModeStyle    = { display: editMode ? 'table-cell' : 'none' }
+
     return (
       <div className="workdetail-databox">
         <h4 id="download"><Glyphicon glyph="download-alt" /> データのダウンロード</h4>
@@ -22,6 +28,11 @@ export default class WorkDetailData extends Component {
             </thead>
             {/* table body */}
             <tbody>
+              {
+                work_pieces.map(piece => {
+                  
+                })
+              }
               {/* 表示用 */}
               <tr>
                 <td>
