@@ -5,6 +5,8 @@ import * as ApiActions from '../actions/core-api-action'
 
 import { INITIAL_STATE_FOR_WORK, INITIAL_STATE_FOR_USER } from './core-api-reducer'
 
+import * as Constants from '../settings'
+
 const INITIAL_STATE_FOR_EDIT_MODE = false
 function editMode(state = INITIAL_STATE_FOR_EDIT_MODE, action) {
   switch (action.type) {
@@ -106,17 +108,16 @@ export function commentControl(state = INITIAL_STATE_FOR_COMMENT_CONTROL, action
 
     case ApiActions.API_LOAD_WORK_SUCCESS:
       return Object.assign({}, state, {
-        allCommentLoaded: action.payload.work_comments_count <= 0
+        allCommentLoaded: action.payload.work_comments_count < Constants.COMMENTS_PER_PAGE
       })
 
     case ApiActions.API_LOAD_WORK_COMMENT_LIST_SUCCESS:
       return Object.assign({}, state, {
-        allCommentLoaded: action.payload.work_comments.length <= 0
+        allCommentLoaded: action.payload.work_comments.length < Constants.COMMENTS_PER_PAGE
       })
-      
+  
     case ApiActions.API_CREATE_WORK_COMMENT_SUCCESS:
       return Object.assign({}, state, {
-        allCommentLoaded: action.payload.length < 10,
         currentComment: ''
       })
 

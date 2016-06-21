@@ -6,7 +6,11 @@ end
 
 json.title work['title']
 json.description work['description']
-json.work_status work['creation_status']['creation_status']
+json.work_status do
+  json.id work['creation_status']['id']
+  json.code work['creation_status']['code']
+  json.name work['creation_status']['name']
+end
 
 json.work_images do
   json.array! work['creation_images'], 'id', 'image', 'image_name_for_user'
