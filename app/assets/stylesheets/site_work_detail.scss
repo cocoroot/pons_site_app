@@ -18,10 +18,14 @@
 .workdetail-data-panel .table > tbody > tr > td {
   vertical-align: middle;
 }
+.workdetail-data-upload  {
+  padding: 15px 15px 0 15px;
+  border-top: 1px solid #ddd;
+}
 .workdetail-data-thumbnail-drop {
   width:100px;
   height: 60px;
-  border: 2px dashed #000;
+  border: 2px dashed #888;
   background-color: #ccc;
 }
 

@@ -1,35 +1,16 @@
 import React, { Component, PropTypes } from 'react'
-import { Button, Media, Image, FormControl, Glyphicon, FormGroup, ControlLabel } from 'react-bootstrap'
-import Dropzone from 'react-dropzone'
+import { Button, Image, FormControl, Glyphicon, FormGroup, ControlLabel, HelpBlock } from 'react-bootstrap'
 
 export default class WorkDetailData extends Component {
 
   render() {
-    const thumbnailStyle={
-      width:'100px',
-      height:'60px'
-    }
-    const thumbnailDropStyle={
-      ...thumbnailStyle,
-      border: '2px dashed #000'
-    }
     return (
       <div className="workdetail-databox">
         <h4 id="download"><Glyphicon glyph="download-alt" /> データのダウンロード</h4>
         <div className="workdetail-data-panel panel panel-default">
-          <ul>
-            <li className="workdetail-data-header">
-              <span className="workdetail-data-thumbnail">説明</span>
-              <span className="workdetail-data-name">ファイル名</span>
-              <span className="workdetail-data-filename"></span>
-              <span className="workdetail-data-size"></span>
-              <span className="workdetail-data-button"></span>
-            </li>
-
-          </ul>
 
           <table className="table">
-            {/* hr */}
+            {/* table header */}
             <thead>
               <tr>
                 <th width={100}>説明</th>
@@ -95,46 +76,26 @@ export default class WorkDetailData extends Component {
                 </td>
               </tr>
 
-              {/* アップロード用 */}
-
-              <tr>
-
-                  <td width="100">
-                    <Dropzone className="workdetail-data-thumbnail-drop" accept="image/jpeg,image/png,image/jpg">
-                      <div>サムネイル</div>
-                    </Dropzone>
-                  </td>
-                  <td colSpan="3">
-                    <input type="file" />
-                    <p>50MB以下のSTL形式のファイルに対応しています</p>
-                  </td>
-                  <td>
-                    <Button><Glyphicon glyph="upload"/></Button>
-                  </td>
-                </form>
-                </tr>
-
             </tbody>
           </table>
 
           {/* ファイルアップロード */}
-          {/*<hr />
-            <div className="workdetail-data-upload">
+          <div className="workdetail-data-upload row">
             <form>
-            <FormGroup controlId="pieceFile">
-            <ControlLabel>Piece File</ControlLabel>
-            <input type="file" />
-            </FormGroup>
-            <FormGroup controlId="pieceImage">
-            <ControlLabel>Piece Image</ControlLabel>
-            <input type="file" />
-            </FormGroup>
-            <Button >
-            Create Piece
-            </Button>
-          </form>*/}
+              <FormGroup controlId="pieceFile">
+                <ControlLabel>データファイル</ControlLabel>
+                <input type="file" />
+                <HelpBlock>50MB以下のSTL形式のファイルに対応しています</HelpBlock>
+              </FormGroup>
 
-          {/*</div>*/}
+              <FormGroup controlId="pieceFile">
+                <ControlLabel>サムネイル画像ファイル</ControlLabel>
+                <input type="file" />
+              </FormGroup>
+
+              <Button bsStyle="primary" block>アップロード</Button>
+            </form>
+        </div>
         </div>
       </div>
     )
