@@ -150,13 +150,20 @@ class PonsApiController < ApplicationController
     render_json(@result)
   end
 
+  def index_work_comment
+    @result = DarrestCoreApi.new.index_creation_comment(
+      user_baas_id: user_baas_id,
+      creation_id: params[:work_id],
+      page: params[:page]
+    )
+  end
+
   def create_work_comment
     @result = DarrestCoreApi.new.create_creation_comment(
       user_baas_id: user_baas_id,
       creation_id: params[:work_id],
       creation_comment: params[:work_comment]
     )
-    render_json(@result)
   end
 
   def create_like

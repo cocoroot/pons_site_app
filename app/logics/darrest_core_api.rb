@@ -176,6 +176,10 @@ class DarrestCoreApi
     send_delete("/creation_tags/#{params[:id]}", params.except(:id))
   end
 
+  def index_creation_comment(params)
+    send_get("/creations/#{params[:creation_id]}/creation_comments", params.except(:creation_id))
+  end
+
   def create_creation_comment(params)
     send_post("/creations/#{params[:creation_id]}/creation_comments", params.except(:creation_id))
   end

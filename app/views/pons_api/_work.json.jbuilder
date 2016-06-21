@@ -1,8 +1,7 @@
 json.id work['id']
 
 json.user do
-  json.user_id work['site_user']['site_user_id']
-  json.image work['site_user']['image']
+  json.partial! partial: 'user', locals: { user: work['site_user'] }
 end
 
 json.title work['title']
@@ -23,18 +22,10 @@ end
 
 json.work_comments_count work['creation_comments_count']
 json.work_comments do
-  json.array! work['creation_comments'] do |comment|
-    json.id comment['id']
-    json.user do
-      json.user_id comment['id']
-      json.image comment['site_user']['site_user_image']
-    end
-    json.body comment['body']
-    json.created_at comment['created_at']
-  end
+  json.partial! partial: 'work_comment', collection: work['creation_comments'], as: :comment
 end
 
 json.owner work['owner']
 
-json.likess_count work['goods_count']
+json.likes_count work['goods_count']
 json.like work['good']

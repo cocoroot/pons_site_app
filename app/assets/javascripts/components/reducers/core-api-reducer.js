@@ -111,9 +111,30 @@ const INITIAL_STATE = {
 }
 
 export const INITIAL_STATE_FOR_USER = {
+  id: 0,
+  image: null,
+  header_image: null,
+  nickname: '',
+  biography: '',
+  tos_accepted: false,
+  user_status: null,
+  owner: false
 }
 
 export const INITIAL_STATE_FOR_WORK = {
+  id: 0,
+  user: INITIAL_STATE_FOR_USER,
+  title: '',
+  description: '',
+  work_status: null,
+  work_images: [],
+  work_pieces: [],
+  work_tags: [],
+  work_comments_count: 0,
+  work_comments: [],
+  owner: false,
+  likes_count: 0,
+  like: false
 }
 
 export default function coreApi(state = INITIAL_STATE, action) {

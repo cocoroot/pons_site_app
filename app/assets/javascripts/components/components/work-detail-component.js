@@ -13,54 +13,67 @@ import { Button, Media, Image, FormControl, Glyphicon } from 'react-bootstrap'
 export default class WorkDetail extends Component {
 
   render() {
-    const { currentWork, editMode } = this.props
-    const { updateWork,
+    console.log("WorkDetail render props=%o", this.props)
+    const { currentWork, editMode, commentControl } = this.props
+    const { changeEditMode,
+            changeInputComment,
+            updateWork,
             createWorkImage, updateWorkImage, deleteWorkImage,
             createWorkPiece, updateWorkPiece, deleteWorkPiece,
             createWorkTag, deleteWorkTag,
-            createWorkComment,
+            loadWorkCommentList, createWorkComment,
             createLike, deleteLike
           } = this.props
+    const actions = {
+      changeEditMode,
+      changeInputComment,
+      updateWork,
+      createWorkImage, updateWorkImage, deleteWorkImage,
+      createWorkPiece, updateWorkPiece, deleteWorkPiece,
+      createWorkTag, deleteWorkTag,
+      loadWorkCommentList, createWorkComment,
+      createLike, deleteLike
+    }
 
 
     const propsForDetailHeader = {
       values: { editMode },
-      actions: {}
+      actions
     }
 
     const propsForDetailControl = {
       values: {},
-      actions: {}
+      actions
     }
 
     const propsForDetailImage = {
       values: { work_images: currentWork.work_images },
-      actions: {}
+      actions
     }
 
     const propsForDetailData = {
       values: {},
-      actions: {}
+      actions
     }
 
     const propsForDetailComment = {
-      values: {},
-      actions: {}
+      values: { currentWork, commentControl },
+      actions
     }
 
     const propsForDetailResponse = {
       values: {},
-      actions: {}
+      actions
     }
 
     const propsForDetailDetail = {
       values: {},
-      actions: {}
+      actions
     }
 
     const propsForDetailTags = {
       values: {},
-      actions: {}
+      actions
     }
 
     return (
