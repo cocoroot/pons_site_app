@@ -116,7 +116,7 @@ export function commentControl(state = INITIAL_STATE_FOR_COMMENT_CONTROL, action
       
     case ApiActions.API_CREATE_WORK_COMMENT_SUCCESS:
       return Object.assign({}, state, {
-        allCommentLoaded: action.payload.length <= 0,
+        allCommentLoaded: action.payload.length < 10,
         currentComment: ''
       })
 

@@ -35,15 +35,15 @@ export default class WorkDetailComment extends Component {
         <h4><Glyphicon glyph="comment"/> コメント数({ currentWork.work_comments_count })</h4>
         <Media className="workdetail-comment-form">
           <Media.Left>
-            {
+            {/*
               (() => {
-                if (me.image.thumb.url) {
+                if (me.image.thumb.url.length > 0) {
                   return (
                     <Image circle width={64} height={64} src={ CORE_CONTENTS_BASE_URL + me.image.thumb.url } />
                   )
                 }
               })
-            }
+            */}
       </Media.Left>
           <Media.Body>
             <form>
