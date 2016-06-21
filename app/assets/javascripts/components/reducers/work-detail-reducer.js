@@ -3,6 +3,8 @@ import { combineReducers } from 'redux'
 import * as Actions from '../actions/work-detail-action'
 import * as ApiActions from '../actions/core-api-action'
 
+import { INITIAL_STATE_FOR_WORK, INITIAL_STATE_FOR_USER } from './core-api-reducer'
+
 const INITIAL_STATE_FOR_EDIT_MODE = false
 function editMode(state = INITIAL_STATE_FOR_EDIT_MODE, action) {
   switch (action.type) {
@@ -16,40 +18,52 @@ function editMode(state = INITIAL_STATE_FOR_EDIT_MODE, action) {
 }
 
 const INITIAL_STATE_FOR_CURRENT_WORK = {
+  ...INITIAL_STATE_FOR_WORK
 }
 function currentWork(state = INITIAL_STATE_FOR_CURRENT_WORK, action) {
   switch (action.type) {
 
       // Work
     case Actions.RESET: return INITIAL_STATE_FOR_CURRENT_WORK
-    case ApiActions.CREATE_WORK_SUCCESS: return action.payload
-    case ApiActions.UPDATE_WORK_SUCCESS: return action.payload
-    case ApiActions.LOAD_WORK_SUCCESS: return action.payload
+
+    case ApiActions.API_CREATE_WORK_SUCCESS:
+    case ApiActions.API_UPDATE_WORK_SUCCESS:
+    case ApiActions.API_LOAD_WORK_SUCCESS:
+      return action.payload
 
       // Work Image
-    case ApiActions.CREATE_WORK_IMAGE_SUCCESS:
-    case ApiActions.UPDATE_WORK_IMAGE_SUCCESS:
-    case ApiActions.DELETE_WORK_IMAGE_SUCCESS:
+    case ApiActions.API_CREATE_WORK_IMAGE_SUCCESS:
+    case ApiActions.API_UPDATE_WORK_IMAGE_SUCCESS:
+    case ApiActions.API_DELETE_WORK_IMAGE_SUCCESS:
       return Object.assign({}, state, {
         work_images: action.payload.work_images
       })
 
       // Work Tag
-    case ApiActions.CREATE_WORK_TAG_SUCCESS:
-    case ApiActions.DELETE_WORK_TAG_SUCCESS:
+    case ApiActions.API_CREATE_WORK_TAG_SUCCESS:
+    case ApiActions.API_DELETE_WORK_TAG_SUCCESS:
       return Object.assign({}, state, {
         work_tags: action.payload.work_tags
       })
 
       // Work Comment
-    case ApiActions.CREATE_WORK_COMMENT_SUCCESS:
+    case ApiActions.API_LOAD_WORK_COMMENT_LIST_SUCCESS:
       return Object.assign({}, state, {
-        work_comments: action.payload.work_comments
+        work_comments: [
+          ...state.work_comments,
+          ...action.payload.work_comments
+        ]
       })
+    case ApiActions.API_CREATE_WORK_COMMENT_SUCCESS:
+      return Object.assign({}, state, {
+        work_comments: [
+          action.payload.work_comment,
+          ...state.work_comments
+        ] })
 
       // Like
-    case ApiActions.CREATE_LIKE_SUCCESS:
-    case ApiActions.DELETE_LIKE_SUCCESS:
+    case ApiActions.API_CREATE_LIKE_SUCCESS:
+    case ApiActions.API_DELETE_LIKE_SUCCESS:
       return Object.assign({}, state, {
         likes_count: action.payload.likes_count,
         like: action.payload.like
@@ -60,9 +74,62 @@ function currentWork(state = INITIAL_STATE_FOR_CURRENT_WORK, action) {
   }
 }
 
+
+const INITIAL_STATE_FOR_ME = {
+  ...INITIAL_STATE_FOR_USER
+}
+function me(state = INITIAL_STATE_FOR_ME, action) {
+  switch (action.type) {
+    case Actions.RESET: return INITIAL_STATE_FOR_ME
+
+    case ApiActions.API_LOAD_ME_SUCCESS:
+      return action.payload
+
+    default:
+      return state
+  }
+}
+
+const INITIAL_STATE_FOR_COMMENT_CONTROL = {
+  currentComment: '',
+  loadedPage: 1,
+  allCommentLoaded: false
+}
+export function commentControl(state = INITIAL_STATE_FOR_COMMENT_CONTROL, action) {
+  switch (action.type) {
+    case Actions.RESET: return INITIAL_STATE_FOR_COMMENT_CONTROL
+
+    case Actions.WKD_CHANGE_INPUT_COMMENT:
+      return Object.assign({}, state, {
+        currentComment: action.comment
+      })
+
+    case ApiActions.API_LOAD_WORK_SUCCESS:
+      return Object.assign({}, state, {
+        allCommentLoaded: action.payload.work_comments_count <= 0
+      })
+
+    case ApiActions.API_LOAD_WORK_COMMENT_LIST_SUCCESS:
+      return Object.assign({}, state, {
+        allCommentLoaded: action.payload.work_comments.length <= 0
+      })
+      
+    case ApiActions.API_CREATE_WORK_COMMENT_SUCCESS:
+      return Object.assign({}, state, {
+        allCommentLoaded: action.payload.length < 10,
+        currentComment: ''
+      })
+
+    default:
+      return state
+  }
+}
+
 const workDetailReducer = combineReducers({
   editMode,
-  currentWork
+  currentWork,
+  commentControl,
+  me
 })
 
 export default workDetailReducer

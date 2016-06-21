@@ -12,3 +12,17 @@ export function changeEditMode(mode) {
     editMode: mode
   }
 }
+
+
+//
+// Comment
+//
+
+export const WKD_CHANGE_INPUT_COMMENT = 'WKD_CHANGE_INPUT_COMMENT'
+export function changeInputComment(comment) {
+  return {
+    type: WKD_CHANGE_INPUT_COMMENT,
+    comment: comment
+  }
+}
+
