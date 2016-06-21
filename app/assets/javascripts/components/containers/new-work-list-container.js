@@ -1,7 +1,7 @@
-import * as NewWorkListActions from '../actions/new-work-list-action' // 自分の action だけ import する
-//import * as ApiActions from '../actions/core-api-action' // API を使う場合 API のアクションをimport
+import * as NewWorkListActions from '../actions/new-work-list-action'
+import * as ApiActions from '../actions/core-api-action'
 
-const Actions = { ...NewWorkListActions/*, ...ApiActions */ }
+const Actions = { ...NewWorkListActions, ...ApiActions }
 
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
@@ -10,8 +10,7 @@ import NewWorkList from '../components/new-work-list-component'
 
 function mapStateToProps(state) {
   return {
-    // xxx: state.coreApi.xxx
-    newWorkList: state.newWorkList
+    ...state.newWorkList
   }
 }
 
@@ -23,7 +22,7 @@ let NewWorkListContainer = connect(mapStateToProps, mapDispatchToProps)(NewWorkL
 
 NewWorkListContainer.onEnter = function (dispatch, nextState, replace) {
   if (nextState.params) {
-    // dispatch(Actions.xxxXxx(nextState.params.xxx))
+    dispatch(Actions.loadNewWorkList())
   }
 }
 

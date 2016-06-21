@@ -1,8 +1,6 @@
-export const SET_NEWWORKLIST = 'SET_NEWWORKLIST'
-
-export function setNewWorkList(props) {
+export const NWL_RESET = 'NWL_RESET'
+export function reset() {
   return {
-    type: SET_NEWWORKLIST,
-    newWorkList: props.newWorkList
+    type: NWL_RESET
   }
 }

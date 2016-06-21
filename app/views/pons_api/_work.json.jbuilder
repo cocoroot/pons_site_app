@@ -29,6 +29,8 @@ json.work_comments do
   json.partial! partial: 'work_comment', collection: work['creation_comments'], as: :comment
 end
 
+json.published_at string_date_to_formated_date(work['published_at'])
+
 json.owner work['owner']
 
 json.likes_count work['goods_count']

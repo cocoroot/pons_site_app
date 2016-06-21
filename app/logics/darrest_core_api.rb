@@ -84,6 +84,10 @@ class DarrestCoreApi
     send_get("/site_users/#{params[:site_user_id]}/creations", params)
   end
 
+  def index_latest(params)
+    send_get("/creations/latest", params)
+  end
+
   def create_creation(params)
     send_post('/creations', params)
   end

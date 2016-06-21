@@ -12,7 +12,7 @@ class WorkList extends Component {
           {workList.map(work =>
             <Work
               key={work.id}
-              {...work}
+              work={work}
             />
           )}
         </Row>

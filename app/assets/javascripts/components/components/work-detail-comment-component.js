@@ -21,8 +21,9 @@ export default class WorkDetailComment extends Component {
   onLoadMoreComment(e) {
     const id = this.props.values.currentWork.id
     const comments = this.props.values.currentWork.work_comments
-    const lastCommentId = comments[comments.length - 1].id
-    this.props.actions.loadWorkCommentList(id, lastCommentId)
+    //const lastCommentId = comments[comments.length - 1].id
+    const offset = comments.length
+    this.props.actions.loadWorkCommentList(id, offset)
   }
   
   render() {
