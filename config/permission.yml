@@ -81,7 +81,7 @@ pons_api:
     *action_default
   index_work_created_by_user:
     *action_default
-  index_good_by_user:
+  index_like_by_user:
     *action_default 
   create_work:
     *action_default 
@@ -109,7 +109,7 @@ pons_api:
     *action_default 
   create_work_comment:
     *action_default 
-  create_good:
+  create_like:
     *action_default 
-  delete_good:
+  delete_like:
     *action_default

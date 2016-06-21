@@ -17,7 +17,6 @@ class MultiPartFormDataStream
     stream = [boundary]
     stream << content_disposition(name)
     stream << ''
-    stream << ''
     stream << value
     stream << ''
     @data.push(StringIO.new(stream.join(new_line)))
@@ -29,7 +28,6 @@ class MultiPartFormDataStream
     stream = [boundary]
     stream << content_disposition(name)
     stream << 'Content-Type: application/json'
-    stream << ''
     stream << ''
     stream << value
     stream << ''

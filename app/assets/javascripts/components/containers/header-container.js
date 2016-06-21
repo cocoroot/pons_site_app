@@ -9,7 +9,6 @@ import Header from '../components/common-header-component'
 
 function mapStateToProps(state) {
   return {
-    me: state.coreApi.me,
     ...state.header
   }
 }
@@ -20,7 +19,8 @@ function mapDispatchToProps(dispatch) {
 
 let HeaderContainer = connect(mapStateToProps, mapDispatchToProps)(Header)
 
-// HeaderContainer.onEnter = function (dispatch, nextState, replace) {
-// }
+HeaderContainer.onEnter = function (dispatch, nextState, replace) {
+  dispatch(ApiActions.loadMe())
+}
 
 export default HeaderContainer
