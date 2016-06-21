@@ -43,8 +43,8 @@ export default class WorkDetailComment extends Component {
                   )
                 }
               })
-            */}
-      </Media.Left>
+              */}
+          </Media.Left>
           <Media.Body>
             <form>
               <FormControl height="64px" componentClass="textarea" value={ currentComment } placeholder="この作品にコメントを残してみませんか？" onChange={(e) => this.onChangeInputComment(e) }/>
