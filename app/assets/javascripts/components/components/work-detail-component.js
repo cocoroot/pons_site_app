@@ -37,7 +37,12 @@ export default class WorkDetail extends Component {
 
 
     const propsForDetailHeader = {
-      values: { editMode },
+      values: {
+        editMode,
+        title: currentWork.title,
+        author: currentWork.user,
+        published_at: currentWork.published_at
+      },
       actions
     }
 
