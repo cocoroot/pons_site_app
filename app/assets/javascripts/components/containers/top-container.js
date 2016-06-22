@@ -10,12 +10,10 @@ import Top from '../components/top-component'
 function mapStateToProps(state) {
   console.log("TopContainer mapStateToProps state=%o", state)
   return {
-    top: {
-      banners: state.coreApi.topBanners,
-      pickupWorks: state.coreApi.pickupWorks,
-      tags: state.coreApi.pickupTags,
-      newWorks: state.coreApi.pickupNewWorks
-    }
+    banners: state.coreApi.topBanners,
+    pickupWorks: state.top.pickupWorks,
+    tags: state.coreApi.pickupTags,
+    newWorks: state.top.pickupNewWorks
   }
 }
 
@@ -28,9 +26,10 @@ let TopContainer = connect(mapStateToProps, mapDispatchToProps)(Top)
 TopContainer.onEnter = function (dispatch, nextState, replace) {
   console.log("TopContainer onEnter")
   dispatch(ApiActions.loadTopBanners())
-  dispatch(ApiActions.loadPickupWorkList())
-  dispatch(ApiActions.loadPickupTags())
-  dispatch(ApiActions.loadPickupNewWorkList())
+  //dispatch(ApiActions.loadPickupWorkList())
+  dispatch(ApiActions.loadNewWorkList())
+  dispatch(ApiActions.loadPickuppedTags())
+  //dispatch(ApiActions.loadPickuppedNewWorkList())
 }
 
 export default TopContainer
