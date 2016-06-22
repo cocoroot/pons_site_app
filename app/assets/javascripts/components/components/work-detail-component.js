@@ -62,7 +62,11 @@ export default class WorkDetail extends Component {
     }
 
     const propsForDetailResponse = {
-      values: {},
+      values: {
+        views_count: '000',
+        likes_count: currentWork.likes_count,
+        comments_count: currentWork.work_comments_count 
+      },
       actions
     }
 
