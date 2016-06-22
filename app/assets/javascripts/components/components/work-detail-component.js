@@ -5,7 +5,7 @@ import DetailImage from './work-detail-image-component'
 import DetailData from './work-detail-data-component'
 import DetailComment from './work-detail-comment-component'
 import DetailControl from './work-detail-control-component'
-import DetailDetail from './work-detail-detail-component'
+import DetailDescription from './work-detail-description-component'
 import DetailTags from './work-detail-tags-component'
 import DetailResponse from './work-detail-response-component'
 import { Button, Media, Image, FormControl, Glyphicon } from 'react-bootstrap'
@@ -66,8 +66,11 @@ export default class WorkDetail extends Component {
       actions
     }
 
-    const propsForDetailDetail = {
-      values: {},
+    const propsForDetailDescription = {
+      values: {
+        editMode,
+        description: currentWork.description
+      },
       actions
     }
 
@@ -102,7 +105,7 @@ export default class WorkDetail extends Component {
             {/* response box */}
             <DetailResponse {...propsForDetailResponse} />
             {/* detail box */}
-            <DetailDetail {...propsForDetailDetail} />
+            <DetailDescription {...propsForDetailDescription} />
             {/* tag box */}
             <DetailTags {...propsForDetailTags} />
             {/* download button */}
