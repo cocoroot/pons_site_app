@@ -7,21 +7,21 @@ import { Col, Image, Media, Glyphicon } from 'react-bootstrap'
 
 class Work extends Component {
   render() {
-    //console.log("Work render props=%o", this.props)
+    console.log("Work render props=%o", this.props)
     
     const {
       id,
       title,
-      work_images: images = null,
-      site_user: author = null,
+      work_images: images,
+      user,
       viewCount = 777, // TODO: viewCount
       likes_count: likeCount,
       work_comments_count: commentCount
-    } = this.props
-    const image_url = images ? CORE_CONTENTS_BASE_URL + images[0].image.url : ''
-    const author_image_url = author ? CORE_CONTENTS_BASE_URL + author.image.url : ''
-    const author_id = author ? author.id : 0
-    const author_name = author ? author.name : ''
+    } = this.props.work
+    const image_url = !!images[0] ? CORE_CONTENTS_BASE_URL + images[0].image.url : ''
+    const user_image_url = !!user.image ? CORE_CONTENTS_BASE_URL + user.image.url : ''
+    const user_id = user ? user.id : 0
+    const user_name = user ? user.nickname : ''
     
     return (
       <Col xs={6} md={4}>
@@ -31,15 +31,15 @@ class Work extends Component {
           </Link>
           <Media>
             <Media.Left>
-              <Link to="`/users/${author_id}`">
-                <Image className="img-circle" width={40} height={40} src={author_image_url} />
+              <Link to={`/users/${user_id}`}>
+                <Image className="img-circle" width={40} height={40} src={user_image_url} />
               </Link>
             </Media.Left>
             <Media.Body>
               <Media.Heading>
-                <Link to="`/works/${id}`">{title}</Link>
+                <Link to={`/works/${id}`}>{title}</Link>
               </Media.Heading>
-              <p><Link to="`/users/${author_id}`">by {author_name}</Link></p>
+              <p><Link to={`/users/${user_id}`}>by {user_name}</Link></p>
             </Media.Body>
             <div className="">
               <Glyphicon glyph="eye-open" />

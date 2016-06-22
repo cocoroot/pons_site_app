@@ -49,7 +49,7 @@ function fetchPickupTags() {
   return { type: API_LOAD_PICKUP_TAGS_SUCCESS }
 }
 
-export function loadPickupTags() {
+export function loadPickuppedTags() {
   return (dispatch, getstate) => {
     return dispatch(fetchPickupTags())
   }
@@ -65,7 +65,7 @@ function fetchPickupNewWorkList() {
   return { type: API_LOAD_PICKUP_NEW_WORK_LIST_SUCCESS }
 }
 
-export function loadPickupNewWorkList() {
+export function loadPickuppedNewWorkList() {
   return (dispatch, getstate) => {
     return dispatch(fetchPickupNewWorkList())
   }
@@ -172,15 +172,8 @@ export function loadTagWorkList() {
 export const API_LOAD_NEW_WORK_LIST_REQUEST = 'API_LOAD_NEW_WORK_LIST_REQUEST'
 export const API_LOAD_NEW_WORK_LIST_SUCCESS = 'API_LOAD_NEW_WORK_LIST_SUCCESS'
 export const API_LOAD_NEW_WORK_LIST_FAILURE = 'API_LOAD_NEW_WORK_LIST_FAILURE'
-function fetchNewWorkList() {
-  return (dispatch, nextState) => {
-  }
-}
-
-export function loadNewWorkList() {
-  return (dispatch, nextState) => {
-    return dispatch(fetchNewWorkList())
-  }
+export function loadNewWorkList(offset = 0) {
+  return get(`/works/latest?offset=${offset}`, 'API_LOAD_NEW_WORK_LIST')
 }
 
 //

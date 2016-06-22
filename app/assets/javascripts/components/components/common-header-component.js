@@ -29,9 +29,9 @@ class Header extends Component {
 
 class Account extends Component {
   render() {
-    const { me } = this.props
+    const { me = { image: null } } = this.props
     const { showNewWorkModal } = this.props
-    const  { nickname, user_id }  = me
+    const  { nickname = '' , user_id = 0 }  = me
     const thumbnail_url = me.image ? CORE_CONTENTS_BASE_URL + me.image.thumb.url : ''
 
     if (Object.keys(me).length === 0) {
