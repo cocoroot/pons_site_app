@@ -47,7 +47,11 @@ export default class WorkDetail extends Component {
     }
 
     const propsForDetailControl = {
-      values: {},
+      values: {
+        editMode,
+        owner: currentWork.owner,
+        like: currentWork.like
+      },
       actions
     }
 
