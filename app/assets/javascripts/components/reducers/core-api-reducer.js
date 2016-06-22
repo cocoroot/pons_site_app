@@ -20,30 +20,38 @@ const PICKUP_WORK_LIST_RESPONSE = {
     {
       id: 1,
       title: "hogehoge",
-      imgUrl: "http://pipsum.com/100x100.jpg",
-      author: {
+      user: {
         id: 300,
         name: "Penguin",
         url: "/user/300/",
-        img: "http://icon.img.jpg"
+        image: {
+          url: "http://pipsum.com/100x100.jpg",
+          thumb: { url: "http://pipsum.com/100x100.jpg" }
+        }
       },
       viewCount: 123,
-      likeCount: 45,
-      commentCount: 6
+      likes_count: 45,
+      work_comments_count: 6
     },
     {
       id: 2,
       title: "mofumofu",
-      imgUrl: "http://pipsum.com/100x100.jpg",
-      author: {
+      work_images: [
+        {
+          image: {
+            url: "http://pipsum.com/100x100.jpg",
+            thumb: { url: "http://pipsum.com/100x100.jpg" }
+          }
+        }
+      ],
+      user: {
         id: 301,
         name: "Cat",
         url: "/user/301/",
-        img: "http://icon.img.jpg"
-      },
-      viewCount: 123,
-      likeCount: 45,
-      commentCount: 6
+        image: {
+          url: "http://pipsum.com/100x100.jpg"
+        }
+      }
     }
   ]
 }
@@ -68,30 +76,41 @@ const PICKUP_NEW_WORK_LIST_RESPONSE = {
     {
       id: 1,
       title: "hogehoge",
-      imgUrl: "http://pipsum.com/100x100.jpg",
-      author: {
+      user: {
         id: 300,
         name: "Penguin",
         url: "/user/300/",
-        img: "http://pipsum.com/100x100.jpg"
+        image: {
+          url: "http://pipsum.com/100x100.jpg",
+          thumb: { url: "http://pipsum.com/100x100.jpg" }
+        }
       },
       viewCount: 123,
-      likeCount: 45,
-      commentCount: 6
+      likes_count: 45,
+      work_comments_count: 6
     },
     {
       id: 2,
       title: "mofumofu",
-      imgUrl: "http://pipsum.com/100x100.jpg",
-      author: {
+      work_images: [
+        {
+          image: {
+            url: "http://pipsum.com/100x100.jpg",
+            thumb: { url: "http://pipsum.com/100x100.jpg" }
+          }
+        }
+      ],
+      user: {
         id: 301,
         name: "Cat",
         url: "/user/301/",
-        img: "http://pipsum.com/100x100.jpg"
+        image: {
+          url: "http://pipsum.com/100x100.jpg"
+        }
       },
       viewCount: 123,
-      likeCount: 45,
-      commentCount: 6
+      likes_count: 45,
+      work_comments_count: 6
     }
   ]
 }

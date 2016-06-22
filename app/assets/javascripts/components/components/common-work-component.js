@@ -18,8 +18,8 @@ class Work extends Component {
       likes_count: likeCount,
       work_comments_count: commentCount
     } = this.props.work
-    const image_url = !!images[0] ? CORE_CONTENTS_BASE_URL + images[0].image.url : ''
-    const user_image_url = !!user.image ? CORE_CONTENTS_BASE_URL + user.image.url : ''
+    const image_url = !!images && images[0] ? CORE_CONTENTS_BASE_URL + images[0].image.url : ''
+    const user_image_url = !!user && user.image ? CORE_CONTENTS_BASE_URL + user.image.url : ''
     const user_id = user ? user.id : 0
     const user_name = user ? user.nickname : ''
     
