@@ -13,6 +13,14 @@
 .workdetail-control {
   text-align: right;
 }
+.workdetail-control-delbtn,
+.workdetail-control-publish {
+  margin-right:2px;
+}
+.workdetail-control-delbtn,
+.workdetail-control-publish  button {
+  padding: 6px;
+}
 
 // response
 .workdetail-responsebox {
