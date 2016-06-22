@@ -1,8 +1,7 @@
 # coding: utf-8
-#require 'httpclient'
 
-ACCESS_KEY = '8DC8D19E-8A35-43C8-95F4-49A316283591'
-API_BASE = 'http://localhost:3000'
+ACCESS_KEY = Settings.site_access_key
+API_BASE = Settings.darrest_core.api_base
 
 class DarrestCoreApi
   def create_user(params)

@@ -1,5 +1,9 @@
-    dbaas:
-      api_url: <%= ENV['DBAAS_API_URL'] %>
-      app_id:  <%= ENV['DBAAS_APP_ID'] %>
-      app_key: <%= ENV['DBAAS_APP_KEY'] %>
+dbaas:
+  api_url: <%= ENV['DBAAS_API_URL'] %>
+  app_id:  <%= ENV['DBAAS_APP_ID'] %>
+  app_key: <%= ENV['DBAAS_APP_KEY'] %>
 
+site_access_key: 8DC8D19E-8A35-43C8-95F4-49A316283591
+
+darrest_core:
+  api_base: http://localhost:3000
