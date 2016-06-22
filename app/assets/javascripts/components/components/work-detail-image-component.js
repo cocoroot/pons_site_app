@@ -17,10 +17,6 @@ export default class WorkDetailImage extends Component {
           <Image className="" responsive thumbnail src="http://pipsum.com/640x400.jpg" />
           <div className="workdetail-image-update" style={editStyle}>
             <Button className="workdetail-image-delbtn"><Glyphicon glyph="remove" /></Button>
-            <FormGroup controlId="pieceFile">
-              <ControlLabel>画像更新</ControlLabel>
-              <input type="file" />
-            </FormGroup>
           </div>
         </div>
 
