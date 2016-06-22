@@ -93,7 +93,7 @@ export default class WorkDetail extends Component {
             {/* lisence box */}
             <div className="workdetail-lisencebox">
               <img src="/assets/by-nc-sa.eu.png" />
-              <p>xxx作xxxは、クリエイティブコモンズ表示・非営利・継承2.1 日本ライセンスの元に提示されています</p>
+              <p>{currentWork.user.nickname}作{currentWork.title}は、クリエイティブコモンズ表示・非営利・継承2.1 日本ライセンスの元に提示されています</p>
             </div>
             {/* comment box */}
             <DetailComment {...propsForDetailComment} />
