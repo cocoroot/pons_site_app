@@ -42,7 +42,11 @@ export default class WorkDetail extends Component {
     }
 
     const propsForDetailControl = {
-      values: {},
+      values: {
+        editMode,
+        owner: currentWork.owner,
+        like: currentWork.like
+      },
       actions
     }
 
@@ -65,7 +69,7 @@ export default class WorkDetail extends Component {
       values: {
         views_count: '000',
         likes_count: currentWork.likes_count,
-        comments_count: currentWork.work_comments_count 
+        comments_count: currentWork.work_comments_count
       },
       actions
     }
