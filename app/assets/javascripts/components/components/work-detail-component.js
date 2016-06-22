@@ -37,7 +37,12 @@ export default class WorkDetail extends Component {
 
 
     const propsForDetailHeader = {
-      values: { editMode },
+      values: {
+        editMode,
+        title: currentWork.title,
+        author: currentWork.user,
+        published_at: currentWork.published_at
+      },
       actions
     }
 
@@ -65,7 +70,7 @@ export default class WorkDetail extends Component {
       values: {
         views_count: '000',
         likes_count: currentWork.likes_count,
-        comments_count: currentWork.work_comments_count 
+        comments_count: currentWork.work_comments_count
       },
       actions
     }
