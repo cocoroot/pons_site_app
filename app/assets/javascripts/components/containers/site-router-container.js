@@ -98,13 +98,9 @@ export class SiteRouter extends Component {
   // TODO: 要削除　テスト用
   onEnterTestMe(nextState, replace) { TestMe.onEnter(store.dispatch, nextState, replace) }
   onEnterTestUser(nextState, replace) { TestUser.onEnter(store.dispatch, nextState, replace) }
-<<<<<<< HEAD
-  onEnterTestCreation(nextState, replace) { TestCreation.onEnter(store.dispatch, nextState, replace) }
 
   onEnterRegist(nextState, replace) { Regist.onEnter(store.dispatch, nextState, replace) }
-=======
   onEnterTestWork(nextState, replace) { TestWork.onEnter(store.dispatch, nextState, replace) }
->>>>>>> origin/develop
 
   render() {
     // console.log("SiteRouterComponent render props=%o", this.props)
@@ -126,9 +122,3 @@ export class SiteRouter extends Component {
     )
   }
 }
-<<<<<<< HEAD
-
-// <route path="/tags/:tag_name/works" component={ TagWorkList } onEnter={ this.onEnterTagWorkList } />
-//           <route path="/works/new" component={ NewWorkList } onEnter={ this.onEnterNewWorkList } />
-=======
->>>>>>> origin/develop

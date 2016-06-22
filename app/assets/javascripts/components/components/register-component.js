@@ -1,8 +1,10 @@
 import React, { Component, PropTypes } from 'react'
 import { reduxForm } from 'redux-form'
-import { Form, FormGroup, Col, ControlLabel,Checkbox,Button, FormControl, Alert } from 'react-bootstrap'
+import { Form, FormGroup, Col, ControlLabel,Checkbox,Button, FormControl } from 'react-bootstrap'
 
-export const fields = [ 'email', 'nickname', 'password' ,'confirmpassword', 'agree']
+
+export const fields = [ 'email', 'nickname', 'password' ,'confirmpassword', 'agree' ]
+
 
 const validate = values => {
   const errors = {}
@@ -27,18 +29,37 @@ const asyncValidate = (values/*, dispatch */) => {
   })
 }
 
-const handleSubmit = () => console.log('Clicked!');
+
+const signup = values => {
+    console.log(values.nickname)
+    console.log(values.password)
+    console.log(values.email)
+    const {regist} = this.prpps
+    regist(values.nickname,values.password,values.email)
+    console.log("api called")
+}
 
 export default class Register extends Component {
+
+  signup(values) {
+    const { regist } = this.props
+    regist(values.nickname,values.password,values.email)
+  }
+
   render() {
-    const { asyncValidating, fields: { email,nickname, password, confirmpassword, agree }, resetForm, handleSubmit, submitting } = this.props
-    return (<div><Form horizontal onSubmit={handleSubmit}>
+    const { regist,asyncValidating, fields: { email,nickname, password, confirmpassword, agree }, resetForm, handleSubmit, submitting } = this.props
+
+    console.log("prpps = %o",this.props )
+
+
+
+    return (<div><Form horizontal onSubmit={this.props.handleSubmit}>
         <FormGroup controlId="formHorizontalEmail">
           <Col componentClass={ControlLabel} sm={2}>
             Email
           </Col>
           <Col sm={10}>
-            <FormControl type="email" placeholder="Email" />
+            <FormControl type="email" placeholder="Email"  {...email}/>
           </Col>
         </FormGroup>
 
@@ -47,8 +68,10 @@ export default class Register extends Component {
             ニックネーム
           </Col>
           <Col sm={10}>
+            <div>
             <FormControl type="text" placeholder="ニックネーム"  {...nickname}/>
               {asyncValidating === 'nickname' && <i /* spinning cog *//>}
+            </div>
               {nickname.touched && nickname.error && <div>{nickname.error}</div>}
           </Col>
         </FormGroup>
@@ -92,6 +115,7 @@ export default class Register extends Component {
 
 
       </Form></div>
+
     )
   }
 }
@@ -100,8 +124,12 @@ export default reduxForm({
   form: 'Register',
   fields,
   asyncValidate,
-  asyncBlurFields: [ 'username' ],
+  asyncBlurFields: [ 'nickname' ],
   validate
+},
+undefined, // or mapping some state to props
+{
+  onSubmit: signup  // action creator to run submit form mapped to onSubmit
 })(Register)
 
 
