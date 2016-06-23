@@ -14,7 +14,13 @@ export default class WorkDetail extends Component {
 
   render() {
     console.log("WorkDetail render props=%o", this.props)
-    const { currentWork, editMode, commentControl, me } = this.props
+    const {
+      currentWork,
+      editMode,
+      commentControl,
+      imageControl,
+      me
+    } = this.props
     const { changeEditMode,
             changeInputComment,
             updateWork,
@@ -56,7 +62,7 @@ export default class WorkDetail extends Component {
     }
 
     const propsForDetailImage = {
-      values: { work_images: currentWork.work_images },
+      values: { editMode, currentWork, imageControl },
       actions
     }
 
