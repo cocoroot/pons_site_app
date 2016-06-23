@@ -1,6 +1,7 @@
 class CoreApiController < ApplicationController
   def create_user
-    # @result = DarrestCoreApi.new.create_site_user(user_id: @user_info.ex_user_id)
+    @result = DarrestCoreApi.new.create_user(user_baas_id: user_baas_id)
+    #@result = DarrestCoreApi.new.create_site_user(user_id: @user_info.ex_user_id)
   end
 
   def show_my_info

@@ -75,6 +75,15 @@ export function loadPickupNewWorkList() {
 // User
 //----------------------------------------
 
+// create User
+export const CREATE_USER_REQUEST = 'CREATE_USER_REQUEST'
+export const CREATE_USER_SUCCESS = 'CREATE_USER_SUCCESS'
+export const CREATE_USER_FAILURE = 'CREATE_USER_FAILURE'
+export function createUser(params){
+  return post('/users','CREATE_USER', {}, params )
+}
+
+
 //
 // load Me
 //
@@ -239,7 +248,7 @@ function send(method, api, actionName, headers = {}, params = {}, forms = {}) {
     }
 
     console.log("send method=%o, actionName=%o, headers=%o, params=%o, body=%o, forms=%o", method, actionName, headers, params, body, forms)
-    
+
     dispatch({
       [CALL_API]: {
         endpoint: `${api_base}${api}`,
@@ -276,4 +285,3 @@ export function error(action, state, res) {
     }
   }
 }
-

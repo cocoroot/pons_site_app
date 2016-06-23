@@ -1,9 +1,9 @@
 import { CALL_API } from 'redux-api-middleware'
 import { history } from '../store/store'
-import { loadMe } from './core-api-action'
+import { createUser,loadMe } from './core-api-action'
 
 // TODO: 設定値
-const REGIST_API = 'https://api-jp.kii.com/api/apps/7fc25148/users'
+const REGIST_API = 'https://api.stg.dbackend.jp/api/apps/7fc25148/users'
 const APP_ID = '7fc25148'
 const APP_KEY = 'd05e3c325e951267944e740d29a9e3a0'
 
@@ -17,11 +17,12 @@ export function regist(nickname, password, email) {
     loginName: nickname,
     displayName: nickname,
     password: password,
-    emailAddress: email
+    emailAddress: email,
+    roles: ["user"]
   }
 
   return (dispatch, nextState) => {
-    console.log("loginName=%o, password=%o, emailAddress=%o", body.loginName, body.password, body.emailAdress)
+    console.log("loginName=%o, password=%o, emailAddress=%o", body.loginName, body.password, body.emailAddress)
     dispatch({
       [CALL_API]: {
         endpoint: `${REGIST_API}`,
@@ -29,7 +30,7 @@ export function regist(nickname, password, email) {
         headers: {
           'X-Kii-AppID': APP_ID,
           'X-Kii-AppKey': APP_KEY,
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/vnd.kii.RegistrationAndAuthorizationRequest+json'
         },
         body: JSON.stringify(body),
         types: [
@@ -38,12 +39,18 @@ export function regist(nickname, password, email) {
             type: actionName + '_SUCCESS',
             payload: (action, state, res) => { return res.json().then(
               json => {
-                localStorage.access_token = json.access_token
+                console.log("accessToken = %s", json._accessToken)
+                localStorage.access_token = json._accessToken
+                console.log("userID = %s", json.userID)
+                const params = { user: {baas_id: json.userID } }
+                dispatch(createUser(params))
                 return json
               }).then(
-                dispatch(loadMe())
+
+
+                //dispatch(loadMe())
               ).then(
-                history.push('/')
+                //history.push('/')
               )
             }
           },

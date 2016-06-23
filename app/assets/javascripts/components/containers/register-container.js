@@ -10,7 +10,6 @@ import Register from '../components/register-component'
 
 function mapStateToProps(state) {
   return{
-    //regist: state.regist
   }
 }
 

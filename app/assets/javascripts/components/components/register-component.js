@@ -14,9 +14,13 @@ const validate = values => {
   if (!values.password) {
     errors.password = '必須エラー'
   }
+  if (!values.agree) {
+    errors.agree = '必須エラー'
+  }
   return errors
 }
 
+/* 非同期のユーザー名重複確認（サンプル）*/
 const asyncValidate = (values/*, dispatch */) => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -30,30 +34,20 @@ const asyncValidate = (values/*, dispatch */) => {
 }
 
 
-const signup = values => {
-    console.log(values.nickname)
-    console.log(values.password)
-    console.log(values.email)
-    const {regist} = this.prpps
-    regist(values.nickname,values.password,values.email)
-    console.log("api called")
-}
-
 export default class Register extends Component {
 
-  signup(values) {
+  signup( values ) {
     const { regist } = this.props
     regist(values.nickname,values.password,values.email)
+    console.log("api called")
   }
 
   render() {
-    const { regist,asyncValidating, fields: { email,nickname, password, confirmpassword, agree }, resetForm, handleSubmit, submitting } = this.props
+    const { asyncValidating, fields: { email,nickname, password, confirmpassword, agree }, resetForm, handleSubmit, submitting } = this.props
 
     console.log("prpps = %o",this.props )
 
-
-
-    return (<div><Form horizontal onSubmit={this.props.handleSubmit}>
+    return (<div><Form horizontal onSubmit={handleSubmit(this.signup.bind(this))}>
         <FormGroup controlId="formHorizontalEmail">
           <Col componentClass={ControlLabel} sm={2}>
             Email
@@ -81,7 +75,7 @@ export default class Register extends Component {
             パスワード
           </Col>
           <Col sm={10}>
-            <FormControl type="text" placeholder="パスワード"  {...password}/>
+            <FormControl type="password" placeholder="パスワード"  {...password}/>
               {password.touched && password.error && <div>{password.error}</div>}
           </Col>
         </FormGroup>
@@ -91,7 +85,7 @@ export default class Register extends Component {
             パスワード（確認）
           </Col>
           <Col sm={10}>
-            <FormControl type="text" placeholder="パスワード（確認）"  {...confirmpassword}/>
+            <FormControl type="password" placeholder="パスワード（確認）"  {...confirmpassword}/>
               {confirmpassword.touched && confirmpassword.error && <div>{confirmpassword.error}</div>}
           </Col>
         </FormGroup>
@@ -99,6 +93,7 @@ export default class Register extends Component {
         <FormGroup>
           <Col smOffset={2} sm={10}>
             <Checkbox {...agree}>規約に同意</Checkbox>
+            {agree.touched && agree.error && <div>{agree.error}</div>}
           </Col>
         </FormGroup>
 
@@ -126,10 +121,6 @@ export default reduxForm({
   asyncValidate,
   asyncBlurFields: [ 'nickname' ],
   validate
-},
-undefined, // or mapping some state to props
-{
-  onSubmit: signup  // action creator to run submit form mapped to onSubmit
 })(Register)
 
 
