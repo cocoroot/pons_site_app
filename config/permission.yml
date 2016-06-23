@@ -79,9 +79,11 @@ pons_api:
     *action_default 
   create_user_header_image:
     *action_default
-  index_work_created_by_user:
+  index_works_created_by_user:
     *action_default
-  index_like_by_user:
+  index_latest_works:
+    *action_default
+  index_likes_by_user:
     *action_default 
   create_work:
     *action_default 
@@ -107,7 +109,7 @@ pons_api:
     *action_default 
   delete_work_tag:
     *action_default
-  index_work_comment:
+  index_work_comments:
     *action_default
   create_work_comment:
     *action_default 

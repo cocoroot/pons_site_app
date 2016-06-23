@@ -59,6 +59,10 @@ class DarrestCoreApi
     send_get("/site_users/#{params[:site_user_id]}/creations", params)
   end
 
+  def index_latest_creations(params)
+    send_get("/creations/latest", params)
+  end
+
   def create_creation(params)
     send_post('/creations', params)
   end
@@ -151,7 +155,7 @@ class DarrestCoreApi
     send_delete("/creation_tags/#{params[:id]}", params.except(:id))
   end
 
-  def index_creation_comment(params)
+  def index_creation_comments(params)
     send_get("/creations/#{params[:creation_id]}/creation_comments", params.except(:creation_id))
   end
 
@@ -163,7 +167,7 @@ class DarrestCoreApi
     send_post("/creations/#{params[:creation_id]}/good", params.except(:creation_id))
   end
 
-  def index_good(params)
+  def index_goods_by_user(params)
     send_get("/site_users/#{params[:site_user_id]}/goods", params)
   end
 
@@ -240,11 +244,11 @@ class DarrestCoreApi
     #
     # send request
     #
-    res = http.request(req)
+    http.request(req)
 
     #
     # parse response
     #
-    JSON.parse(res.body)
+    # JSON.parse(res.body)
   end
 end

@@ -1,0 +1,5 @@
+o:Net::HTTPCreated:@http_versionI"1.1:ET:
+@codeI"201;T:@messageI"Created ;T:@header{I"x-frame-options;T[I"SAMEORIGIN;TI"x-xss-protection;T[I"1; mode=block;TI"x-content-type-options;T[I"nosniff;TI"content-type;T[I"$application/json; charset=utf-8;TI"	etag;T[I")W/"cc0627f9727652f08ad005982d52c7f2";TI"cache-control;T[I"(max-age=0, private, must-revalidate;TI"x-request-id;T[I")e1f44467-ce54-4fea-853c-ac4fca025708;TI"x-runtime;T[I"0.022277;TI"server;T[I"*WEBrick/1.3.1 (Ruby/2.1.0/2013-12-25);TI"	date;T[I""Thu, 23 Jun 2016 11:58:33 GMT;TI"content-length;T[I"38;TI"connection;T[I"
+close;TI"set-cookie;T[I" request_method=POST; path=/;T:
+@bodyI"+{"good":{"goods_count":1,"good":true}};T:
+@readT:	@uri0:@decode_contentT:@socket0:@body_existT

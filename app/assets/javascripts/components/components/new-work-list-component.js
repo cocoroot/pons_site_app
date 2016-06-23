@@ -3,31 +3,41 @@ import Header from '../components/common-header-component'
 import Footer from '../components/common-footer-component'
 import WorkList from '../components/common-work-list-component'
 
-// bootstrap import 必要な部分をcomponentでimportする
 import { Button } from 'react-bootstrap'
 
-let dummyWorkList = [
-  { id: 1 },
-  { id: 2 },
-  { id: 3 }
-]
-
-class NewWorkListContainer extends Component {
+export default class NewWorkList extends Component {
+  onLoadMoreWork(e) {
+    const works = this.props.works
+    const offset = works.length
+    this.props.loadNewWorkList(offset)
+  }
+  
   render() {
+    console.log("NewWorkList render props=%o", this.props)
+    const { works, control } = this.props
+    const { allWorksLoaded } = control
+
     return (
       <div>
-        <Header />
         {/* この範囲でcomponetを作ってください */}
         <div className="new-work-list container">
-          <WorkList workList={dummyWorkList} />
-          <Button className="new-work-list-btn" bsSize="large" block>もっとみる</Button>
+          <WorkList workList={ works } />
+          {
+            (() => {
+              if (!allWorksLoaded) {
+                return (
+                  <Button className="new-work-list-btn" bsSize="large" onClick={(e) => this.onLoadMoreWork(e)} block>もっとみる</Button>
+                )
+              }
+            })()
+          }
+          
         </div>
         {/* ここまでComponent */}
-        <Footer />
       </div>
     )
   }
 }
 
-NewWorkListContainer.propTypes = {
+NewWorkList.propTypes = {
 }

@@ -1,0 +1,5 @@
+o:Net::HTTPOK:@http_version"1.1:
+@code"200:@message"OK :@header{"x-frame-options["SAMEORIGIN"x-xss-protection["1; mode=block"x-content-type-options["nosniff"content-type["$application/json; charset=utf-8"	etag[")W/"d9703386d39f8018f7218eb0a801fb33""cache-control["(max-age=0, private, must-revalidate"x-request-id[")f5dcd62e-da5a-4ecc-93ab-081d164e7357"x-runtime["0.014926"server["*WEBrick/1.3.1 (Ruby/2.1.0/2013-12-25)"	date[""Thu, 23 Jun 2016 10:49:42 GMT"content-length["554"connection["
+close:
+@body"*{"site_user":{"id":1,"user_id":1,"site_id":1,"image":{"url":"/site_users/1/site_user_images/40ec1114-55f5-40d8-96f3-6a0f0197efb9.jpg","thumb":{"url":"/site_users/1/site_user_images/thumb_40ec1114-55f5-40d8-96f3-6a0f0197efb9.jpg"}},"header_image":{"url":"/site_users/1/site_user_header_images/f61b6b7e-3f22-4fcf-bb1b-51159d0ebfc3.jpg"},"nickname":"ニックネーム001","biography":"バイオグラフィー001\nバイオグラフィー001\nバイオグラフィー001\n","tos_accepted":true,"site_user_status":{"id":20,"name":"本登録"},"owner":true}}:
+@readT:	@uri0:@decode_contentT:@socket0:@body_existT

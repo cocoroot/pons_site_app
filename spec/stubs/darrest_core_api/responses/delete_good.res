@@ -1,0 +1,5 @@
+o:Net::HTTPOK:@http_versionI"1.1:ET:
+@codeI"200;T:@messageI"OK ;T:@header{I"x-frame-options;T[I"SAMEORIGIN;TI"x-xss-protection;T[I"1; mode=block;TI"x-content-type-options;T[I"nosniff;TI"content-type;T[I"$application/json; charset=utf-8;TI"	etag;T[I")W/"807f003dac3fec9617a5b32c7df4fc7b";TI"cache-control;T[I"(max-age=0, private, must-revalidate;TI"x-request-id;T[I")e067e00e-373c-4564-9d07-76c447f3b93d;TI"x-runtime;T[I"0.022886;TI"server;T[I"*WEBrick/1.3.1 (Ruby/2.1.0/2013-12-25);TI"	date;T[I""Thu, 23 Jun 2016 11:58:53 GMT;TI"content-length;T[I"39;TI"connection;T[I"
+close;TI"set-cookie;T[I""request_method=DELETE; path=/;T:
+@bodyI",{"good":{"goods_count":0,"good":false}};T:
+@readT:	@uri0:@decode_contentT:@socket0:@body_existT

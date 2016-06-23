@@ -5,7 +5,7 @@ import DetailImage from './work-detail-image-component'
 import DetailData from './work-detail-data-component'
 import DetailComment from './work-detail-comment-component'
 import DetailControl from './work-detail-control-component'
-import DetailDetail from './work-detail-detail-component'
+import DetailDescription from './work-detail-description-component'
 import DetailTags from './work-detail-tags-component'
 import DetailResponse from './work-detail-response-component'
 import { Button, Media, Image, FormControl, Glyphicon } from 'react-bootstrap'
@@ -14,7 +14,13 @@ export default class WorkDetail extends Component {
 
   render() {
     console.log("WorkDetail render props=%o", this.props)
-    const { currentWork, editMode, commentControl, me } = this.props
+    const {
+      currentWork,
+      editMode,
+      commentControl,
+      imageControl,
+      me
+    } = this.props
     const { changeEditMode,
             changeInputComment,
             updateWork,
@@ -37,17 +43,26 @@ export default class WorkDetail extends Component {
 
 
     const propsForDetailHeader = {
-      values: { editMode },
+      values: {
+        editMode,
+        title: currentWork.title,
+        author: currentWork.user,
+        published_at: currentWork.published_at
+      },
       actions
     }
 
     const propsForDetailControl = {
-      values: { editMode },
+      values: {
+        editMode,
+        owner: currentWork.owner,
+        like: currentWork.like
+      },
       actions
     }
 
     const propsForDetailImage = {
-      values: { work_images: currentWork.work_images },
+      values: { editMode, currentWork, imageControl },
       actions
     }
 
@@ -62,12 +77,19 @@ export default class WorkDetail extends Component {
     }
 
     const propsForDetailResponse = {
-      values: {},
+      values: {
+        views_count: '000',
+        likes_count: currentWork.likes_count,
+        comments_count: currentWork.work_comments_count
+      },
       actions
     }
 
-    const propsForDetailDetail = {
-      values: {},
+    const propsForDetailDescription = {
+      values: {
+        editMode,
+        description: currentWork.description
+      },
       actions
     }
 
@@ -93,7 +115,7 @@ export default class WorkDetail extends Component {
             {/* lisence box */}
             <div className="workdetail-lisencebox">
               <img src="/assets/by-nc-sa.eu.png" />
-              <p>xxx作xxxは、クリエイティブコモンズ表示・非営利・継承2.1 日本ライセンスの元に提示されています</p>
+              <p>{currentWork.user.nickname}作{currentWork.title}は、クリエイティブコモンズ表示・非営利・継承2.1 日本ライセンスの元に提示されています</p>
             </div>
             {/* comment box */}
             <DetailComment {...propsForDetailComment} />
@@ -102,7 +124,7 @@ export default class WorkDetail extends Component {
             {/* response box */}
             <DetailResponse {...propsForDetailResponse} />
             {/* detail box */}
-            <DetailDetail {...propsForDetailDetail} />
+            <DetailDescription {...propsForDetailDescription} />
             {/* tag box */}
             <DetailTags {...propsForDetailTags} />
             {/* download button */}

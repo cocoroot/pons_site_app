@@ -26,4 +26,5 @@ export const WorkStatus = {
   INSPECTED: 5
 }
 
+export const WORKS_PER_PAGE = 10
 export const COMMENTS_PER_PAGE = 10

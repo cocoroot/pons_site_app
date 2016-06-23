@@ -20,30 +20,38 @@ const PICKUP_WORK_LIST_RESPONSE = {
     {
       id: 1,
       title: "hogehoge",
-      imgUrl: "http://pipsum.com/100x100.jpg",
-      author: {
+      user: {
         id: 300,
         name: "Penguin",
         url: "/user/300/",
-        img: "http://icon.img.jpg"
+        image: {
+          url: "http://pipsum.com/100x100.jpg",
+          thumb: { url: "http://pipsum.com/100x100.jpg" }
+        }
       },
       viewCount: 123,
-      likeCount: 45,
-      commentCount: 6
+      likes_count: 45,
+      work_comments_count: 6
     },
     {
       id: 2,
       title: "mofumofu",
-      imgUrl: "http://pipsum.com/100x100.jpg",
-      author: {
+      work_images: [
+        {
+          image: {
+            url: "http://pipsum.com/100x100.jpg",
+            thumb: { url: "http://pipsum.com/100x100.jpg" }
+          }
+        }
+      ],
+      user: {
         id: 301,
         name: "Cat",
         url: "/user/301/",
-        img: "http://icon.img.jpg"
-      },
-      viewCount: 123,
-      likeCount: 45,
-      commentCount: 6
+        image: {
+          url: "http://pipsum.com/100x100.jpg"
+        }
+      }
     }
   ]
 }
@@ -68,30 +76,41 @@ const PICKUP_NEW_WORK_LIST_RESPONSE = {
     {
       id: 1,
       title: "hogehoge",
-      imgUrl: "http://pipsum.com/100x100.jpg",
-      author: {
+      user: {
         id: 300,
         name: "Penguin",
         url: "/user/300/",
-        img: "http://pipsum.com/100x100.jpg"
+        image: {
+          url: "http://pipsum.com/100x100.jpg",
+          thumb: { url: "http://pipsum.com/100x100.jpg" }
+        }
       },
       viewCount: 123,
-      likeCount: 45,
-      commentCount: 6
+      likes_count: 45,
+      work_comments_count: 6
     },
     {
       id: 2,
       title: "mofumofu",
-      imgUrl: "http://pipsum.com/100x100.jpg",
-      author: {
+      work_images: [
+        {
+          image: {
+            url: "http://pipsum.com/100x100.jpg",
+            thumb: { url: "http://pipsum.com/100x100.jpg" }
+          }
+        }
+      ],
+      user: {
         id: 301,
         name: "Cat",
         url: "/user/301/",
-        img: "http://pipsum.com/100x100.jpg"
+        image: {
+          url: "http://pipsum.com/100x100.jpg"
+        }
       },
       viewCount: 123,
-      likeCount: 45,
-      commentCount: 6
+      likes_count: 45,
+      work_comments_count: 6
     }
   ]
 }
@@ -171,21 +190,21 @@ export default function coreApi(state = INITIAL_STATE, action) {
       // load Me
     case Actions.API_LOAD_ME_REQUEST: return state
     case Actions.API_LOAD_ME_SUCCESS: return Object.assign({}, state, {
-      me: action.payload
+      me: action.payload.user
     })
     case Actions.API_LOAD_ME_FAILURE: return state
 
       // update Me
     case Actions.API_UPDATE_ME_REQUEST: return state
     case Actions.API_UPDATE_ME_SUCCESS: return Object.assign({}, state, {
-      me: action.payload
+      me: action.payload.user
     })
     case Actions.API_UPDATE_ME_FAILURE: return state
 
       // load User
     case Actions.API_LOAD_USER_REQUEST: return state
     case Actions.API_LOAD_USER_SUCCESS: return Object.assign({}, state, {
-      user: action.payload
+      user: action.payload.user
     })
     case Actions.API_LOAD_USER_FAILURE: return state
 
@@ -228,21 +247,21 @@ export default function coreApi(state = INITIAL_STATE, action) {
       // create Work
     case Actions.API_CREATE_WORK_REQUEST: return state
     case Actions.API_CREATE_WORK_SUCCESS: return Object.assign({}, state, {
-      createdWork: action.payload
+      createdWork: action.payload.work
     })
     case Actions.API_CREATE_WORK_FAILURE: return state
 
       // update Work
     case Actions.API_UPDATE_WORK_REQUEST: return state
     case Actions.API_UPDATE_WORK_SUCCESS: return Object.assign({}, state, {
-      updatedWork: action.payload
+      updatedWork: action.payload.work
     })
     case Actions.API_UPDATE_WORK_FAILURE: return state
 
       // load Work
     case Actions.API_LOAD_WORK_REQUEST: return state
     case Actions.API_LOAD_WORK_SUCCESS: return Object.assign({}, state, {
-      work: action.payload
+      work: action.payload.work
     })
     case Actions.API_LOAD_WORK_FAILURE: return state
 
