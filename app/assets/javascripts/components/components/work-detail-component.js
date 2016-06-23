@@ -19,10 +19,14 @@ export default class WorkDetail extends Component {
       editMode,
       commentControl,
       imageControl,
+      formControl,
       me
     } = this.props
     const { changeEditMode,
             changeInputComment,
+            changeInputTitle,
+            changeInputDescription,
+            changeWorkStatus,
             updateWork,
             createWorkImage, updateWorkImage, deleteWorkImage,
             createWorkPiece, updateWorkPiece, deleteWorkPiece,
@@ -33,6 +37,9 @@ export default class WorkDetail extends Component {
     const actions = {
       changeEditMode,
       changeInputComment,
+      changeInputTitle,
+      changeInputDescription,
+      changeWorkStatus,
       updateWork,
       createWorkImage, updateWorkImage, deleteWorkImage,
       createWorkPiece, updateWorkPiece, deleteWorkPiece,
@@ -47,7 +54,8 @@ export default class WorkDetail extends Component {
         editMode,
         title: currentWork.title,
         author: currentWork.user,
-        published_at: currentWork.published_at
+        published_at: currentWork.published_at,
+        formControl
       },
       actions
     }
@@ -55,8 +63,8 @@ export default class WorkDetail extends Component {
     const propsForDetailControl = {
       values: {
         editMode,
-        owner: currentWork.owner,
-        like: currentWork.like
+        currentWork,
+        formControl
       },
       actions
     }
@@ -88,7 +96,8 @@ export default class WorkDetail extends Component {
     const propsForDetailDescription = {
       values: {
         editMode,
-        description: currentWork.description
+        description: currentWork.description,
+        formControl
       },
       actions
     }
