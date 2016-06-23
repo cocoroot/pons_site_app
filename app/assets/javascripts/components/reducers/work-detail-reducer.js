@@ -23,15 +23,17 @@ const INITIAL_STATE_FOR_CURRENT_WORK = {
   ...INITIAL_STATE_FOR_WORK
 }
 function currentWork(state = INITIAL_STATE_FOR_CURRENT_WORK, action) {
+  console.log("work-detail-reducer currentWork state=%o, action=%o", state, action)
   switch (action.type) {
 
       // Work
-    case Actions.WKD_RESET: return INITIAL_STATE_FOR_CURRENT_WORK
+    case Actions.WKD_RESET:
+      return INITIAL_STATE_FOR_CURRENT_WORK
 
     case ApiActions.API_CREATE_WORK_SUCCESS:
     case ApiActions.API_UPDATE_WORK_SUCCESS:
     case ApiActions.API_LOAD_WORK_SUCCESS:
-      return action.payload
+      return action.payload.work
 
       // Work Image
     case ApiActions.API_CREATE_WORK_IMAGE_SUCCESS:
@@ -85,7 +87,7 @@ function me(state = INITIAL_STATE_FOR_ME, action) {
     case Actions.WKD_RESET: return INITIAL_STATE_FOR_ME
 
     case ApiActions.API_LOAD_ME_SUCCESS:
-      return action.payload
+      return action.payload.user
 
     default:
       return state

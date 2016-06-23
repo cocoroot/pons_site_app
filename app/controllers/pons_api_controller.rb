@@ -4,85 +4,95 @@ class PonsApiController < ApplicationController
   #after_action :save_json
 
   def create_user
-    # @result = DarrestCoreApi.new.create_site_user(user_id: @user_info.ex_user_id)
+    # @response = DarrestCoreApi.new.create_site_user(user_id: @user_info.ex_user_id)
+    parse_response
   end
 
   def show_my_info
-    @result = DarrestCoreApi.new.show_my_info(
+    @response = DarrestCoreApi.new.show_my_info(
       user_baas_id: user_baas_id
     )
+    parse_response
   end
 
   def show_user
-    @result = DarrestCoreApi.new.show_site_user(
+    @response = DarrestCoreApi.new.show_site_user(
       user_baas_id: user_baas_id,
       id: params[:id]
     )
+    parse_response
   end
 
   def update_user
-    @result = DarrestCoreApi.new.update_site_user(
+    @response = DarrestCoreApi.new.update_site_user(
       user_baas_id: user_baas_id,
       site_user: params.require(:user).permit(:nickname, :biography)
     )
+    parse_response
   end
 
   def create_user_image
-    @result = DarrestCoreApi.new.create_site_user_image(
+    @response = DarrestCoreApi.new.create_site_user_image(
       user_baas_id: user_baas_id,
       site_user_image: {
         image: params[:image]
       })
+    parse_response
   end
 
   def create_user_header_image
-    @result = DarrestCoreApi.new.create_site_user_header_image(
+    @response = DarrestCoreApi.new.create_site_user_header_image(
       user_baas_id: user_baas_id,
       site_user_header_image: {
         image: params[:image]
       })
+    parse_response
   end
 
   def index_work_created_by_user
-    @result = DarrestCoreApi.new.index_creations_created_by_user(
+    @response = DarrestCoreApi.new.index_creations_created_by_user(
       user_baas_id: user_baas_id,
       site_user_id: params.require(:user_id),
       page: params[:page]
     )
+    parse_response
   end
 
   def index_latest
-    @result = DarrestCoreApi.new.index_latest(
+    @response = DarrestCoreApi.new.index_latest(
       user_baas_id: user_baas_id,
       offset: params[:offset]
     )
+    parse_response
   end
 
   def create_work
-    @result = DarrestCoreApi.new.create_creation(
+    @response = DarrestCoreApi.new.create_creation(
       user_baas_id: user_baas_id,
       creation: params[:work]
     )
+    parse_response
   end
 
   def show_work
-    @result = DarrestCoreApi.new.show_creation(
+    @response = DarrestCoreApi.new.show_creation(
       user_baas_id: user_baas_id,
       id: params[:id]
     )
+    parse_response
   end
 
   def update_work
-    @result = DarrestCoreApi.new.update_creation(
+    @response = DarrestCoreApi.new.update_creation(
       user_baas_id: user_baas_id,
       id: params[:id],
       creation: params[:work]
     )
-    render_json(@result)
+    parse_response
   end
 
   def create_work_image
-    @result = DarrestCoreApi.new.create_creation_image(
+    @response = DarrestCoreApi.new.create_creation_image(
       user_baas_id: user_baas_id,
       creation_id: params[:work_id],
       creation_image: {
@@ -90,28 +100,31 @@ class PonsApiController < ApplicationController
         order: params[:order]
       }
     )
+    parse_response
   end
 
   def show_work_image
   end
 
   def update_work_image
-    @result = DarrestCoreApi.new.update_creation_image(
+    @response = DarrestCoreApi.new.update_creation_image(
       user_baas_id: user_baas_id,
       id: params[:id],
       creation_image: params[:work_image]
     )
+    parse_response
   end
 
   def delete_work_image
-    @result = DarrestCoreApi.new.delete_creation_image(
+    @response = DarrestCoreApi.new.delete_creation_image(
       user_baas_id: user_baas_id,
       id: params[:id]
     )
+    parse_response
   end
 
   def create_work_piece
-    @result = DarrestCoreApi.new.create_creation_piece(
+    @response = DarrestCoreApi.new.create_creation_piece(
       user_baas_id: user_baas_id,
       creation_id: params[:work_id],
       creation_piece: {
@@ -120,74 +133,84 @@ class PonsApiController < ApplicationController
         name: params[:name]
       }
     )
+    parse_response
   end
 
   def update_work_piece
-    @result = DarrestCoreApi.new.update_creation_piece(
+    @response = DarrestCoreApi.new.update_creation_piece(
       user_baas_id: user_baas_id,
       id: params[:id],
       creation_piece: params[:work_piece]
     )
+    parse_response
   end
 
   def delete_work_piece
-    @result = DarrestCoreApi.new.delete_creation_piece(
+    @response = DarrestCoreApi.new.delete_creation_piece(
       user_baas_id: user_baas_id,
       id: params[:id]
     )
+    parse_response
   end
 
   def create_work_tag
-    @result = DarrestCoreApi.new.create_creation_tag(
+    @response = DarrestCoreApi.new.create_creation_tag(
       user_baas_id: user_baas_id,
       creation_id: params[:work_id],
       creation_tag: params[:work_tag]
     )
+    parse_response
   end
 
   def delete_work_tag
-    @result = DarrestCoreApi.new.delete_creation_tag(
+    @response = DarrestCoreApi.new.delete_creation_tag(
       user_baas_id: user_baas_id,
       id: params[:id]
     )
+    parse_response
   end
 
   def index_work_comment
-    @result = DarrestCoreApi.new.index_creation_comment(
+    @response = DarrestCoreApi.new.index_creation_comment(
       user_baas_id: user_baas_id,
       creation_id: params[:work_id],
       offset: params[:offset]
     )
+    parse_response
   end
 
   def create_work_comment
-    @result = DarrestCoreApi.new.create_creation_comment(
+    @response = DarrestCoreApi.new.create_creation_comment(
       user_baas_id: user_baas_id,
       creation_id: params[:work_id],
       creation_comment: params[:work_comment]
     )
+    parse_response
   end
 
   def create_like
-    @result = DarrestCoreApi.new.create_good(
+    @response = DarrestCoreApi.new.create_good(
       user_baas_id: user_baas_id,
       creation_id: params[:work_id]
     )
+    parse_response
   end
 
   def index_like_by_user
-    @result = DarrestCoreApi.new.index_good(
+    @response = DarrestCoreApi.new.index_good(
       user_baas_id: user_baas_id,
       site_user_id: params.require(:user_id),
       page: params[:page]
     )
+    parse_response
   end
 
   def delete_like
-    @result = DarrestCoreApi.new.delete_good(
+    @response = DarrestCoreApi.new.delete_good(
       user_baas_id: user_baas_id,
       creation_id: params[:work_id]
     )
+    parse_response
   end
 
   private
@@ -197,6 +220,11 @@ class PonsApiController < ApplicationController
   end
 
   def save_json
-    # JSON.dump(@result)
+    # JSON.dump(@response)
+  end
+
+  def parse_response
+    @result = JSON.parse(@response.body)
+    render status: @response.code
   end
 end
