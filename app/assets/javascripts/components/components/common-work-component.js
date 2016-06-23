@@ -8,7 +8,7 @@ import { Col, Image, Media, Glyphicon } from 'react-bootstrap'
 class Work extends Component {
   render() {
     console.log("Work render props=%o", this.props)
-    
+
     const {
       id,
       title,
@@ -18,11 +18,11 @@ class Work extends Component {
       likes_count: likeCount,
       work_comments_count: commentCount
     } = this.props.work
-    const image_url = !!images && images[0] ? CORE_CONTENTS_BASE_URL + images[0].image.url : ''
-    const user_image_url = !!user && user.image ? CORE_CONTENTS_BASE_URL + user.image.url : ''
+    const image_url = !!images && images[0] ? CORE_CONTENTS_BASE_URL + images[0].image.url : '/assets/no-image.png'
+    const user_image_url = !!user && user.image ? CORE_CONTENTS_BASE_URL + user.image.url : '/assets/no-user-image.png'
     const user_id = user ? user.id : 0
     const user_name = user ? user.nickname : ''
-    
+
     return (
       <Col xs={6} md={4}>
         <div>
