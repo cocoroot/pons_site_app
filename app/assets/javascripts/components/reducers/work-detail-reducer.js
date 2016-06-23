@@ -128,10 +128,30 @@ export function commentControl(state = INITIAL_STATE_FOR_COMMENT_CONTROL, action
   }
 }
 
+const INITIAL_STATE_FOR_IMAGE_CONTROL = {
+  uploading: false
+}
+export function imageControl(state = INITIAL_STATE_FOR_IMAGE_CONTROL, action) {
+  switch (action.type) {
+    case Actions.API_CREATE_WORK_IMAGE_REQUEST:
+      return Object.assign({}, state, {
+        uploading: true
+      })
+    case Actions.API_CREATE_WORK_IMAGE_SUCCESS:
+    case Actions.API_CREATE_WORK_IMAGE_FAILURE:
+      return Object.assign({}, state, {
+        uploading: false
+      })
+    default:
+      return state
+  }
+}
+
 const workDetailReducer = combineReducers({
   editMode,
   currentWork,
   commentControl,
+  imageControl,
   me
 })
 
