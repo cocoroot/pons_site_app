@@ -16,7 +16,7 @@ class PonsApiController < ApplicationController
   def show_user
     @result = DarrestCoreApi.new.show_site_user(
       user_baas_id: user_baas_id,
-      id: params[:id]
+      id: params.require(:id)
     )
   end
 
@@ -71,7 +71,6 @@ class PonsApiController < ApplicationController
       id: params[:id],
       creation: params[:work]
     )
-    render_json(@result)
   end
 
   def create_work_image
