@@ -41,7 +41,7 @@ function profile(state = INITIAL_STATE_FOR_PROFILE, action) {
       return INITIAL_STATE_FOR_PROFILE
     case ApiActions.API_LOAD_ME_SUCCESS:
     case ApiActions.API_LOAD_USER_SUCCESS:
-      return action.payload
+      return action.payload.user
     default:
       return state
   }

@@ -190,21 +190,21 @@ export default function coreApi(state = INITIAL_STATE, action) {
       // load Me
     case Actions.API_LOAD_ME_REQUEST: return state
     case Actions.API_LOAD_ME_SUCCESS: return Object.assign({}, state, {
-      me: action.payload
+      me: action.payload.user
     })
     case Actions.API_LOAD_ME_FAILURE: return state
 
       // update Me
     case Actions.API_UPDATE_ME_REQUEST: return state
     case Actions.API_UPDATE_ME_SUCCESS: return Object.assign({}, state, {
-      me: action.payload
+      me: action.payload.user
     })
     case Actions.API_UPDATE_ME_FAILURE: return state
 
       // load User
     case Actions.API_LOAD_USER_REQUEST: return state
     case Actions.API_LOAD_USER_SUCCESS: return Object.assign({}, state, {
-      user: action.payload
+      user: action.payload.user
     })
     case Actions.API_LOAD_USER_FAILURE: return state
 
@@ -247,21 +247,21 @@ export default function coreApi(state = INITIAL_STATE, action) {
       // create Work
     case Actions.API_CREATE_WORK_REQUEST: return state
     case Actions.API_CREATE_WORK_SUCCESS: return Object.assign({}, state, {
-      createdWork: action.payload
+      createdWork: action.payload.work
     })
     case Actions.API_CREATE_WORK_FAILURE: return state
 
       // update Work
     case Actions.API_UPDATE_WORK_REQUEST: return state
     case Actions.API_UPDATE_WORK_SUCCESS: return Object.assign({}, state, {
-      updatedWork: action.payload
+      updatedWork: action.payload.work
     })
     case Actions.API_UPDATE_WORK_FAILURE: return state
 
       // load Work
     case Actions.API_LOAD_WORK_REQUEST: return state
     case Actions.API_LOAD_WORK_SUCCESS: return Object.assign({}, state, {
-      work: action.payload
+      work: action.payload.work
     })
     case Actions.API_LOAD_WORK_FAILURE: return state
 

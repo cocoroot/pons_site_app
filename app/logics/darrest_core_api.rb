@@ -11,32 +11,14 @@ class DarrestCoreApi
     send_get('/me', params)
   end
 
-  # params = {
-  #   id: <site_user_id>
-  # }
   def show_site_user(params)
     send_get("/site_users/#{params[:id]}", params.except(:id))
   end
 
-  # params = {
-  #   user_baas_id: <user_baas_id>,
-  #   site_user: {
-  #     nickname: <nickname>,
-  #     biography: <biography>,
-  #     tos_accepted: <true|false>,
-  #     site_user_status: <site_user_status>
-  #   }
-  # }
   def update_site_user(params)
     send_put('/me', params)
   end
 
-  # params = {
-  #   user_baas_id: <user_baas_id>,
-  #   site_user_image: {
-  #     image: <image_file>
-  #   }
-  # }
   def create_site_user_image(params)
     send_post('/my/site_user_image', params) do |req, parameters|
       received_image = parameters[:site_user_image][:image]
@@ -55,12 +37,6 @@ class DarrestCoreApi
     end
   end
 
-  # params = {
-  #   user_baas_id: <user_baas_id>
-  #   site_user_header_image: {
-  #     image: <image_file>
-  #   }
-  # }
   def create_site_user_header_image(params)
     send_post('/my/site_user_header_image', params) do |req, parameters|
       received_image = parameters[:site_user_header_image][:image]
@@ -268,11 +244,11 @@ class DarrestCoreApi
     #
     # send request
     #
-    res = http.request(req)
+    http.request(req)
 
     #
     # parse response
     #
-    JSON.parse(res.body)
+    # JSON.parse(res.body)
   end
 end
