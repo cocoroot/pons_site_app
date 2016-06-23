@@ -103,7 +103,7 @@ pons_api:
     *action_default 
   update_work_piece:
     *action_default 
-  delete_cleation_piece:
+  delete_work_piece:
     *action_default 
   create_work_tag:
     *action_default 

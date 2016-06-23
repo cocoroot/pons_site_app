@@ -26,16 +26,13 @@ Rails.application.routes.draw do
       post 'works/:work_id/like' => 'pons_api#create_like'
       delete 'works/:work_id/like' => 'pons_api#delete_like'
 
-      # post 'works/:id/work_images' => 'pons_api#create_work_image'
       get 'work_images/:id' => 'pons_api#show_work_image'
       put 'work_images/:id' => 'pons_api#update_work_image'
       delete 'work_images/:id' => 'pons_api#delete_work_image'
 
-      # post 'work_pieces' => 'pons_api#create_work_piece'
       put 'work_pieces/:id' => 'pons_api#update_work_piece'
-      delete 'work_pieces/:id' => 'pons_api#delete_cleation_piece'
+      delete 'work_pieces/:id' => 'pons_api#delete_work_piece'
 
-      # post 'works/:id/work_tags' => 'pons_api#create_work_tag'
       delete 'work_tags/:id' => 'pons_api#delete_work_tag'
 
       match '*path', to: 'errors#routing_error', via: :all

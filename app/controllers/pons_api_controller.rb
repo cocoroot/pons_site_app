@@ -1,4 +1,8 @@
+require 'json'
+
 class PonsApiController < ApplicationController
+  #after_action :save_json
+
   def create_user
     # @result = DarrestCoreApi.new.create_site_user(user_id: @user_info.ex_user_id)
   end
@@ -24,7 +28,6 @@ class PonsApiController < ApplicationController
   end
 
   def create_user_image
-    logger.debug("CoreApiController params=#{params}")
     @result = DarrestCoreApi.new.create_site_user_image(
       user_baas_id: user_baas_id,
       site_user_image: {
@@ -87,7 +90,6 @@ class PonsApiController < ApplicationController
         order: params[:order]
       }
     )
-    render_json(@result)
   end
 
   def show_work_image
@@ -99,7 +101,6 @@ class PonsApiController < ApplicationController
       id: params[:id],
       creation_image: params[:work_image]
     )
-    render_json(@result)
   end
 
   def delete_work_image
@@ -107,7 +108,6 @@ class PonsApiController < ApplicationController
       user_baas_id: user_baas_id,
       id: params[:id]
     )
-    render_json(@result)
   end
 
   def create_work_piece
@@ -120,7 +120,6 @@ class PonsApiController < ApplicationController
         name: params[:name]
       }
     )
-    render_json(@result)
   end
 
   def update_work_piece
@@ -129,15 +128,13 @@ class PonsApiController < ApplicationController
       id: params[:id],
       creation_piece: params[:work_piece]
     )
-    render_json(@result)
   end
 
-  def delete_cleation_piece
+  def delete_work_piece
     @result = DarrestCoreApi.new.delete_creation_piece(
       user_baas_id: user_baas_id,
       id: params[:id]
     )
-    render_json(@result)
   end
 
   def create_work_tag
@@ -146,7 +143,6 @@ class PonsApiController < ApplicationController
       creation_id: params[:work_id],
       creation_tag: params[:work_tag]
     )
-    render_json(@result)
   end
 
   def delete_work_tag
@@ -154,7 +150,6 @@ class PonsApiController < ApplicationController
       user_baas_id: user_baas_id,
       id: params[:id]
     )
-    render_json(@result)
   end
 
   def index_work_comment
@@ -178,7 +173,6 @@ class PonsApiController < ApplicationController
       user_baas_id: user_baas_id,
       creation_id: params[:work_id]
     )
-    render_json(@result)
   end
 
   def index_like_by_user
@@ -194,12 +188,15 @@ class PonsApiController < ApplicationController
       user_baas_id: user_baas_id,
       creation_id: params[:work_id]
     )
-    render_json(@result)
   end
 
   private
 
   def render_json(result)
     render json: result
+  end
+
+  def save_json
+    # JSON.dump(@result)
   end
 end

@@ -61,7 +61,7 @@ export default class WorkDetail extends Component {
     }
 
     const propsForDetailData = {
-      values: {},
+      values: { currentWork, editMode },
       actions
     }
 
