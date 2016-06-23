@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  get 'site_new_work_list/index' => 'site_new_work_list#index'
+
   scope :api do
     with_options(defaults: { format: :json }, format: false) do
       # post 'create_user'
@@ -12,6 +15,7 @@ Rails.application.routes.draw do
       get 'users/:user_id/likes' => 'pons_api#index_like_by_user'
 
       post 'works' => 'pons_api#create_work'
+      get 'works/latest' => 'pons_api#index_latest'
       get 'works/:id' => 'pons_api#show_work'
       put 'works/:id' => 'pons_api#update_work'
       post 'works/:work_id/work_images' => 'pons_api#create_work_image'

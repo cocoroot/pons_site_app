@@ -81,6 +81,8 @@ pons_api:
     *action_default
   index_work_created_by_user:
     *action_default
+  index_latest:
+    *action_default
   index_like_by_user:
     *action_default 
   create_work:

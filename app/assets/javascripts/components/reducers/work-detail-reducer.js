@@ -26,7 +26,7 @@ function currentWork(state = INITIAL_STATE_FOR_CURRENT_WORK, action) {
   switch (action.type) {
 
       // Work
-    case Actions.RESET: return INITIAL_STATE_FOR_CURRENT_WORK
+    case Actions.WKD_RESET: return INITIAL_STATE_FOR_CURRENT_WORK
 
     case ApiActions.API_CREATE_WORK_SUCCESS:
     case ApiActions.API_UPDATE_WORK_SUCCESS:
@@ -82,7 +82,7 @@ const INITIAL_STATE_FOR_ME = {
 }
 function me(state = INITIAL_STATE_FOR_ME, action) {
   switch (action.type) {
-    case Actions.RESET: return INITIAL_STATE_FOR_ME
+    case Actions.WKD_RESET: return INITIAL_STATE_FOR_ME
 
     case ApiActions.API_LOAD_ME_SUCCESS:
       return action.payload
@@ -99,7 +99,7 @@ const INITIAL_STATE_FOR_COMMENT_CONTROL = {
 }
 export function commentControl(state = INITIAL_STATE_FOR_COMMENT_CONTROL, action) {
   switch (action.type) {
-    case Actions.RESET: return INITIAL_STATE_FOR_COMMENT_CONTROL
+    case Actions.WKD_RESET: return INITIAL_STATE_FOR_COMMENT_CONTROL
 
     case Actions.WKD_CHANGE_INPUT_COMMENT:
       return Object.assign({}, state, {
@@ -115,7 +115,7 @@ export function commentControl(state = INITIAL_STATE_FOR_COMMENT_CONTROL, action
       return Object.assign({}, state, {
         allCommentLoaded: action.payload.work_comments.length < Constants.COMMENTS_PER_PAGE
       })
-  
+
     case ApiActions.API_CREATE_WORK_COMMENT_SUCCESS:
       return Object.assign({}, state, {
         currentComment: ''

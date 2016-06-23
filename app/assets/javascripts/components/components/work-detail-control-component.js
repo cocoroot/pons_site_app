@@ -5,25 +5,20 @@ import { Button, Glyphicon, ButtonGroup } from 'react-bootstrap'
 export default class WorkDetailControl extends Component {
 
   render() {
-    console.log("components", this.props)
-    const { editMode } = this.props.values
+    const { editMode, owner, like } = this.props.values
+
     const { changeEditMode } = this.props.actions
-    const owner = true
-    const like = false
     if (owner) {
       if (editMode) {
         // 編集中
         return (
           <div className="workdetail-control col-xs-4 col-md-4">
+            <ButtonGroup className="workdetail-control-publish">
+              <Button><Glyphicon glyph="ok-sign" /> 公開</Button>
+              <Button><Glyphicon glyph="minus-sign" /> 非公開</Button>
+            </ButtonGroup>
+            <Button className="workdetail-control-delbtn"><Glyphicon glyph="trash" /> 削除</Button>
             <Button onClick={()=>changeEditMode(false)}><Glyphicon glyph="ok" /> 完了</Button>
-            <p>
-              <ButtonGroup>
-                <Button><Glyphicon glyph="ok-sign" /> 公開</Button>
-                <Button><Glyphicon glyph="minus-sign" /> 非公開</Button>
-              </ButtonGroup>
-              <Button><Glyphicon glyph="trash" /> 削除</Button>
-
-            </p>
           </div>
         )
       } else {

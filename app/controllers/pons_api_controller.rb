@@ -51,6 +51,13 @@ class PonsApiController < ApplicationController
     )
   end
 
+  def index_latest
+    @result = DarrestCoreApi.new.index_latest(
+      user_baas_id: user_baas_id,
+      offset: params[:offset]
+    )
+  end
+
   def create_work
     @result = DarrestCoreApi.new.create_creation(
       user_baas_id: user_baas_id,

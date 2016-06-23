@@ -6,7 +6,7 @@ import { Carousel, Button, ButtonToolbar } from 'react-bootstrap'
 
 export default class Top extends Component {
   render() {
-    const { banners, pickupWorks, tags, newWorks } = this.props.top
+    const { banners, pickupWorks, tags, newWorks } = this.props
     console.log("Top props=%o", this.props)
     return (
       <div>
