@@ -1,38 +1,39 @@
 Rails.application.routes.draw do
+
+  get 'site_new_work_list/index' => 'site_new_work_list#index'
+
   scope :api do
     with_options(defaults: { format: :json }, format: false) do
       # post 'create_user'
-      post 'users' => 'core_api#create_user'
-      get 'users/:id' => 'core_api#show_user'
-      get 'me' => 'core_api#show_my_info'
-      put 'me' => 'core_api#update_user'
-      post 'my/user_image' => 'core_api#create_user_image'
-      post 'my/user_header_image' => 'core_api#create_user_header_image'
-      get 'users/:user_id/works' => 'core_api#index_creation_created_by_user'
-      get 'users/:user_id/goods' => 'core_api#index_good_by_user'
+      post 'users' => 'pons_api#create_user'
+      get 'users/:id' => 'pons_api#show_user'
+      get 'me' => 'pons_api#show_my_info'
+      put 'me' => 'pons_api#update_user'
+      post 'my/user_image' => 'pons_api#create_user_image'
+      post 'my/user_header_image' => 'pons_api#create_user_header_image'
+      get 'users/:user_id/works' => 'pons_api#index_work_created_by_user'
+      get 'users/:user_id/likes' => 'pons_api#index_like_by_user'
 
-      post 'works' => 'core_api#create_creation'
-      get 'works/:id' => 'core_api#show_creation'
-      put 'works/:id' => 'core_api#update_creation'
-      post 'works/:id/work_images' => 'core_api#create_creation_image'
-      post 'works/:id/work_pieces' => 'core_api#create_creation_piece'
-      post 'works/:id/work_tags' => 'core_api#create_creation_tag'
-      post 'works/:id/work_comments' => 'core_api#create_creation_comment'
-      post 'works/:id/goods' => 'core_api#create_good'
+      post 'works' => 'pons_api#create_work'
+      get 'works/latest' => 'pons_api#index_latest'
+      get 'works/:id' => 'pons_api#show_work'
+      put 'works/:id' => 'pons_api#update_work'
+      post 'works/:work_id/work_images' => 'pons_api#create_work_image'
+      post 'works/:work_id/work_pieces' => 'pons_api#create_work_piece'
+      post 'works/:work_id/work_tags' => 'pons_api#create_work_tag'
+      get 'works/:work_id/work_comments' => 'pons_api#index_work_comment'
+      post 'works/:work_id/work_comments' => 'pons_api#create_work_comment'
+      post 'works/:work_id/like' => 'pons_api#create_like'
+      delete 'works/:work_id/like' => 'pons_api#delete_like'
 
-      # post 'works/:id/work_images' => 'core_api#create_creation_image'
-      get 'work_images/:id' => 'core_api#show_creation_image'
-      put 'work_images/:id' => 'core_api#update_creation_image'
-      delete 'work_images/:id' => 'core_api#delete_creation_image'
+      get 'work_images/:id' => 'pons_api#show_work_image'
+      put 'work_images/:id' => 'pons_api#update_work_image'
+      delete 'work_images/:id' => 'pons_api#delete_work_image'
 
-      # post 'work_pieces' => 'core_api#create_creation_piece'
-      put 'work_pieces/:id' => 'core_api#update_creation_piece'
-      delete 'work_pieces/:id' => 'core_api#delete_cleation_piece'
+      put 'work_pieces/:id' => 'pons_api#update_work_piece'
+      delete 'work_pieces/:id' => 'pons_api#delete_work_piece'
 
-      # post 'works/:id/work_tags' => 'core_api#create_creation_tag'
-      delete 'work_tags/:id' => 'core_api#delete_creation_tag'
-
-      delete 'goods/:id' => 'core_api#delete_good'
+      delete 'work_tags/:id' => 'pons_api#delete_work_tag'
 
       match '*path', to: 'errors#routing_error', via: :all
     end

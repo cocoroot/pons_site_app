@@ -7,9 +7,6 @@ import UserDetail from '../components/user-detail-component'
 
 function mapStateToProps(state) {
   return {
-    profile: state.coreApi.user,
-    originalWorks: state.coreApi.userWorks,
-    favoriteWorks: state.coreApi.favoriteWorks,
     ...state.userDetail
   }
 }
@@ -22,13 +19,13 @@ let UserDetailContainer = connect(mapStateToProps, mapDispatchToProps)(UserDetai
 
 UserDetailContainer.onEnter = function (dispatch, nextState, replace) {
   console.log("UserDetailContainer dispatch=%o, nextState=%o, replace=%o", dispatch, nextState, replace)
+  dispatch(Actions.reset())
   if (nextState.params) {
     const user_id = nextState.params.user_id || 0
     dispatch(ApiActions.loadUser(user_id))
     dispatch(ApiActions.loadWorkListCreatedByUser(user_id))
-    dispatch(ApiActions.loadFavoriteWorks(user_id))
+    dispatch(ApiActions.loadFavoriteWorkList(user_id))
   }
-  dispatch(Actions.reset())
 }
 
 export default UserDetailContainer

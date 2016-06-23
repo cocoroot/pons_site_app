@@ -7,6 +7,8 @@ import { CORE_CONTENTS_BASE_URL } from '../settings'
 
 class Header extends Component {
   render() {
+    const { me, newWorkModalOpened } = this.props
+    const { showNewWorkModal, createWork } = this.props
     return (
       <nav className="navbar navbar-default navbar-static-top">
         <div id="navbar">
@@ -16,10 +18,10 @@ class Header extends Component {
               <li><a href="#">新着作品</a></li>
               <li><a href="#">イベント</a></li>
             </ul>
-            <Account {...this.props} />
+            <Account me={me} showNewWorkModal={showNewWorkModal}/>
           </div>
         </div>
-        <CreateWork {...this.props} />
+        <CreateWork newWorkModalOpened={newWorkModalOpened} showNewWorkModal={showNewWorkModal} createWork={createWork}/>
       </nav>
     )
   }
@@ -27,15 +29,17 @@ class Header extends Component {
 
 class Account extends Component {
   render() {
-    const { me, openModal } = this.props
-    const  { nickname, user_id }  = me
+    const { me = { image: null } } = this.props
+    const { showNewWorkModal } = this.props
+    const  { nickname = '' , user_id = 0 }  = me
     const thumbnail_url = me.image ? CORE_CONTENTS_BASE_URL + me.image.thumb.url : ''
+
     if (Object.keys(me).length === 0) {
       return false
     } else {
       return (
         <ul className="nav navbar-nav navbar-right">
-          <li><Button className="navbar-btn" bsStyle="primary" onClick={()=>openModal()}>作品投稿</Button></li>
+          <li><Button className="navbar-btn" bsStyle="primary" onClick={()=>showNewWorkModal(true)}>作品投稿</Button></li>
           <li >
             <img className="avatar img-circle" src={thumbnail_url} />
           </li>

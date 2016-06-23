@@ -1,18 +1,26 @@
 import React, { Component, PropTypes } from 'react'
 import { Button, Modal, FormGroup, FormControl, ControlLabel, HelpBlock } from 'react-bootstrap'
+import { LinkContainer } from 'react-router-bootstrap'
 
 class CreateWork extends Component {
 
   onSubmit(e) {
     e.preventDefault()
-    var title = document.getElementById('title').value
+    const title = document.getElementById('title').value
     console.log("create work title=%o", title)
+
+    const params = {
+      title: title
+    }
+    this.props.createWork(params)
   }
 
   render() {
-    const { showModal, closeModal } = this.props
+    const { newWorkModalOpened } = this.props
+    const { showNewWorkModal } = this.props
+
     return (
-      <Modal show={showModal} onHide={closeModal}>
+      <Modal show={newWorkModalOpened} onHide={() => showNewWorkModal(false)}>
         <Modal.Header closeButton>
           <Modal.Title>作品投稿</Modal.Title>
         </Modal.Header>

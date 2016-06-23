@@ -16,6 +16,7 @@ import WorkDetail from '../containers/work-detail-container'
 import TestMe from '../containers/test-me-container'
 import TestUser from '../containers/test-user-container'
 import TestWork from '../containers/test-work-container'
+import TestApiCalls from '../containers/test-api-calls-container'
 
 import Header from '../containers/header-container'
 import Footer from '../components/common-footer-component'
@@ -54,9 +55,11 @@ class App extends Component {
               <LinkContainer to="/users/2"><NavItem>user: 2</NavItem></LinkContainer>
               <LinkContainer to="/works/1"><NavItem>work: 1</NavItem></LinkContainer>
               <LinkContainer to="/works/2"><NavItem>work: 2</NavItem></LinkContainer>
+              <LinkContainer to="/works/new"><NavItem>new works</NavItem></LinkContainer>
               <LinkContainer to="/test-users/1"><NavItem>test user: 1</NavItem></LinkContainer>
               <LinkContainer to="/test-users/2"><NavItem>test user: 2</NavItem></LinkContainer>
               <LinkContainer to="/test-me"><NavItem>me</NavItem></LinkContainer>
+              <LinkContainer to="/test-api-calls"><NavItem>API Test</NavItem></LinkContainer>
               <LinkContainer to="/sorry"><NavItem>sorry</NavItem></LinkContainer>
               <LinkContainer to="/regist"><NavItem>regist</NavItem></LinkContainer>
 
@@ -91,9 +94,11 @@ export class SiteRouter extends Component {
     }
   }
 
+  onEnterRoot(nextState, replace) { Header.onEnter(store.dispatch, nextState, replace) }
   onEnterTop(nextState, replace) { Top.onEnter(store.dispatch, nextState, replace) }
   onEnterUserDetail(nextState, replace) { UserDetail.onEnter(store.dispatch, nextState, replace) }
   onEnterWorkDetail(nextState, replace) { WorkDetail.onEnter(store.dispatch, nextState, replace) }
+  onEnterNewWorkList(nextState, replace) { NewWorkList.onEnter(store.dispatch, nextState, replace) }
 
   // TODO: 要削除　テスト用
   onEnterTestMe(nextState, replace) { TestMe.onEnter(store.dispatch, nextState, replace) }
@@ -101,20 +106,24 @@ export class SiteRouter extends Component {
 
   onEnterRegist(nextState, replace) { Regist.onEnter(store.dispatch, nextState, replace) }
   onEnterTestWork(nextState, replace) { TestWork.onEnter(store.dispatch, nextState, replace) }
+  onEnterTestApiCalls(nextState, replace) { TestApiCalls.onEnter(store.dispatch, nextState, replace) }
 
   render() {
     // console.log("SiteRouterComponent render props=%o", this.props)
     return(
       <Router history={ history }>
         <Route path="/login" component={ Login } />
-        <Route path="/" component={ App }>
+        <Route path="/" component={ App } onEnter={ this.onEnterRoot }>
           <IndexRoute component={ Top } onEnter={ this.onEnterTop } />
           <Route path="/" component={ Top } onEnter={ this.onEnterTop }/>
           <Route path="/users/:user_id" component={ UserDetail } onEnter={this.onEnterUserDetail} />
+          <Route path="/works/new" component={ NewWorkList } onEnter={this.onEnterNewWorkList} />
           <Route path="/works/:work_id" component={ WorkDetail } onEnter={this.onEnterWorkDetail} />
+
           <Route path="/test-users/:user_id" component={ TestUser } onEnter={this.onEnterTestUser} />
           <Route path="/test-me" component={ TestMe } onEnter={this.onEnterTestMe} />
           <Route path="/test-works/:work_id" component={ TestWork } onEnter={this.onEnterTestWork} />
+          <Route path="/test-api-calls" component={ TestApiCalls } onEnter={this.onEnterTestApiCalls} />
           <Route path="/sorry" component={ Sorry } />
           <Route path="/regist" component={ Regist } onEnter={ this.onEnterRegist }/>
         </Route>

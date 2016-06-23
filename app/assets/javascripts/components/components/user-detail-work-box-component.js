@@ -6,13 +6,13 @@ import { Tabs, Tab } from 'react-bootstrap'
 class UserDetailWorkBox extends Component {
   render() {
     console.log("UserDetailWorkBox render props=%o", this.props)
-    const { tabKey, originalWorks, favoriteWorks, changeTab } = this.props
+    const { tabKey, originalWorkList, favoriteWorkList, changeTab } = this.props
 
     var workList
     if (tabKey==1) {
-      workList = originalWorks
+      workList = originalWorkList
     } else {
-      workList = favoriteWorks
+      workList = favoriteWorkList
     }
 
     return (
