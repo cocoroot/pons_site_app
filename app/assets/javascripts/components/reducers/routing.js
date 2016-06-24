@@ -11,7 +11,7 @@ export default function routing(state = initialState, action) {
   switch (action.type) {
     case Actions.API_CREATE_WORK_SUCCESS: {
       let location = state.locationBeforeTransitions
-      let id = action.payload.id
+      let id = action.payload.work.id
       const pathname = `/works/${id}`
       location = { ...location, pathname, action: 'PUSH' }
       return { ...state, locationBeforeTransitions: location }

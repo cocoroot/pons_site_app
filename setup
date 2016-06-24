@@ -1,4 +1,15 @@
 export DBAAS_API_URL=https://api.stg.dbackend.jp/api
 export DBAAS_APP_ID=7fc25148
 export DBAAS_APP_KEY=d05e3c325e951267944e740d29a9e3a0
+export DBAAS_ADMIN_TOKEN=5nq5qZdhAngYKv497FVyxfMpKfiQAMu10dDnPZXA_f8
 export PROJECT_NAME=pons_site_app
+
+# ブレークポイント
+# binding.pry
+# response.status
+
+# 入力モード変更
+# Ctl-x Ctl-q
+
+# 入力保管オードoff
+# Meta-x company-mode

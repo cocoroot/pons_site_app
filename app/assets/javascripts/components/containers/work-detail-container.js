@@ -19,6 +19,7 @@ let WorkDetailContainer = connect(mapStateToProps, mapDispatchToProps)(WorkDetai
 
 WorkDetailContainer.onEnter = function (dispatch, nextState, replace) {
   console.log("WorkDetailContainer dispatch=%o, nextState=%o, replace=%o", dispatch, nextState, replace)
+  dispatch(Actions.reset())
   if (nextState.params) {
     const work_id = nextState.params.work_id || 0
     dispatch(ApiActions.loadWork(work_id))

@@ -47,7 +47,6 @@ export function regist(nickname, password, email) {
                 return json
               }).then(
 
-
                 //dispatch(loadMe())
               ).then(
                 //history.push('/')
