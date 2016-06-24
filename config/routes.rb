@@ -6,34 +6,34 @@ Rails.application.routes.draw do
     with_options(defaults: { format: :json }, format: false) do
       # post 'create_user'
       post 'users' => 'pons_api#create_user'
-      get 'users/:id' => 'pons_api#show_user'
+      get 'users/:id' => 'pons_api#show_user', as: 'user'
       get 'me' => 'pons_api#show_my_info'
       put 'me' => 'pons_api#update_user'
       post 'my/user_image' => 'pons_api#create_user_image'
       post 'my/user_header_image' => 'pons_api#create_user_header_image'
-      get 'users/:user_id/works' => 'pons_api#index_works_created_by_user'
-      get 'users/:user_id/likes' => 'pons_api#index_likes_by_user'
+      get 'users/:user_id/works' => 'pons_api#index_works_created_by_user', as: 'user_works'
+      get 'users/:user_id/likes' => 'pons_api#index_likes_by_user', as: 'user_likes'
 
       post 'works' => 'pons_api#create_work'
       get 'works/latest' => 'pons_api#index_latest_works'
-      get 'works/:id' => 'pons_api#show_work'
+      get 'works/:id' => 'pons_api#show_work', as: 'work'
       put 'works/:id' => 'pons_api#update_work'
-      post 'works/:work_id/work_images' => 'pons_api#create_work_image'
-      post 'works/:work_id/work_pieces' => 'pons_api#create_work_piece'
-      post 'works/:work_id/work_tags' => 'pons_api#create_work_tag'
-      get 'works/:work_id/work_comments' => 'pons_api#index_work_comments'
+      post 'works/:work_id/work_images' => 'pons_api#create_work_image', as: 'work_images'
+      post 'works/:work_id/work_pieces' => 'pons_api#create_work_piece', as: 'work_pieces'
+      post 'works/:work_id/work_tags' => 'pons_api#create_work_tag', as: 'work_tags'
+      get 'works/:work_id/work_comments' => 'pons_api#index_work_comments', as: 'work_comments'
       post 'works/:work_id/work_comments' => 'pons_api#create_work_comment'
-      post 'works/:work_id/like' => 'pons_api#create_like'
+      post 'works/:work_id/like' => 'pons_api#create_like', as: 'work_like'
       delete 'works/:work_id/like' => 'pons_api#delete_like'
 
-      get 'work_images/:id' => 'pons_api#show_work_image'
+      get 'work_images/:id' => 'pons_api#show_work_image', as: 'work_image'
       put 'work_images/:id' => 'pons_api#update_work_image'
       delete 'work_images/:id' => 'pons_api#delete_work_image'
 
-      put 'work_pieces/:id' => 'pons_api#update_work_piece'
+      put 'work_pieces/:id' => 'pons_api#update_work_piece', as: 'work_piece'
       delete 'work_pieces/:id' => 'pons_api#delete_work_piece'
 
-      delete 'work_tags/:id' => 'pons_api#delete_work_tag'
+      delete 'work_tags/:id' => 'pons_api#delete_work_tag', as: 'work_tag'
 
       match '*path', to: 'errors#routing_error', via: :all
     end

@@ -22,7 +22,7 @@ if work
   end
 
   json.work_tags do
-    json.array! work['creation_tags']
+    json.partial! 'work_tag', collection: work['creation_tags'], as: :tag
   end
 
   json.work_comments_count work['creation_comments_count']

@@ -20,6 +20,7 @@ export default class WorkDetail extends Component {
       commentControl,
       imageControl,
       formControl,
+      tagControl,
       me
     } = this.props
     const { changeEditMode,
@@ -27,6 +28,7 @@ export default class WorkDetail extends Component {
             changeInputTitle,
             changeInputDescription,
             changeWorkStatus,
+            changeInputTag,
             updateWork,
             createWorkImage, updateWorkImage, deleteWorkImage,
             createWorkPiece, updateWorkPiece, deleteWorkPiece,
@@ -40,6 +42,7 @@ export default class WorkDetail extends Component {
       changeInputTitle,
       changeInputDescription,
       changeWorkStatus,
+      changeInputTag,
       updateWork,
       createWorkImage, updateWorkImage, deleteWorkImage,
       createWorkPiece, updateWorkPiece, deleteWorkPiece,
@@ -103,7 +106,7 @@ export default class WorkDetail extends Component {
     }
 
     const propsForDetailTags = {
-      values: {},
+      values: { editMode, currentWork, tagControl },
       actions
     }
 
