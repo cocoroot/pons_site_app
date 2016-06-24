@@ -1,7 +1,7 @@
 require 'json'
 
 class PonsApiController < ApplicationController
-  #after_action :save_json
+  # after_action :save_response
 
   def create_user
     # @response = DarrestCoreApi.new.create_site_user(user_id: @user_info.ex_user_id)
@@ -18,7 +18,7 @@ class PonsApiController < ApplicationController
   def show_user
     @response = DarrestCoreApi.new.show_site_user(
       user_baas_id: user_baas_id,
-      id: params[:id]
+      id: params.require(:id)
     )
     parse_response
   end
@@ -49,7 +49,7 @@ class PonsApiController < ApplicationController
     parse_response
   end
 
-  def index_work_created_by_user
+  def index_works_created_by_user
     @response = DarrestCoreApi.new.index_creations_created_by_user(
       user_baas_id: user_baas_id,
       site_user_id: params.require(:user_id),
@@ -58,8 +58,8 @@ class PonsApiController < ApplicationController
     parse_response
   end
 
-  def index_latest
-    @response = DarrestCoreApi.new.index_latest(
+  def index_latest_works
+    @response = DarrestCoreApi.new.index_latest_creations(
       user_baas_id: user_baas_id,
       offset: params[:offset]
     )
@@ -170,8 +170,8 @@ class PonsApiController < ApplicationController
     parse_response
   end
 
-  def index_work_comment
-    @response = DarrestCoreApi.new.index_creation_comment(
+  def index_work_comments
+    @response = DarrestCoreApi.new.index_creation_comments(
       user_baas_id: user_baas_id,
       creation_id: params[:work_id],
       offset: params[:offset]
@@ -196,8 +196,8 @@ class PonsApiController < ApplicationController
     parse_response
   end
 
-  def index_like_by_user
-    @response = DarrestCoreApi.new.index_good(
+  def index_likes_by_user
+    @response = DarrestCoreApi.new.index_goods_by_user(
       user_baas_id: user_baas_id,
       site_user_id: params.require(:user_id),
       page: params[:page]
@@ -219,9 +219,17 @@ class PonsApiController < ApplicationController
     render json: result
   end
 
-  def save_json
-    # JSON.dump(@response)
-  end
+  # def save_response
+  #   #File.open("#{Rails.root}/spec/stubs/responses/darrest_core_api/#{params[:action]}.res", 'w') do |file|
+  #   File.open("#{Rails.root}/spec/stubs/responses/darrest_core_api/bad_request.res", 'w') do |file|
+  #     res = Marshal.dump(@response).force_encoding("UTF-8")
+  #     file.write res
+  #   end
+  #   # File.open("#{Rails.root}/spec/stubs/responses/darrest_core_api/#{params[:action]}.res", 'r') do |file|
+  #   #   obj = Marshal.load(file.read)
+  #   #   binding.pry
+  #   # end
+  # end
 
   def parse_response
     @result = JSON.parse(@response.body)

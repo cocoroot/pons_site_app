@@ -1,0 +1,5 @@
+o:Net::HTTPOK:@http_version"1.1:
+@code"200:@message"OK :@header{"x-frame-options["SAMEORIGIN"x-xss-protection["1; mode=block"x-content-type-options["nosniff"content-type["$application/json; charset=utf-8"	etag[")W/"299ea76a8284db23f167ca0dff5e7966""cache-control["(max-age=0, private, must-revalidate"x-request-id[")63146dd5-3209-483d-b8a4-1d5cb1bf87ac"x-runtime["0.134105"server["*WEBrick/1.3.1 (Ruby/2.1.0/2013-12-25)"	date[""Thu, 23 Jun 2016 11:45:54 GMT"content-length["267"connection["
+close"set-cookie[""request_method=DELETE; path=/:
+@body"{"creation_tags":[{"id":1,"creation_id":1,"tag_id":1,"tag_name":"タグ名001"},{"id":2,"creation_id":1,"tag_id":2,"tag_name":"タグ名002"},{"id":3,"creation_id":1,"tag_id":3,"tag_name":"タグ名003"},{"id":4,"creation_id":1,"tag_id":4,"tag_name":"タグ名004"}]}:
+@readT:	@uri0:@decode_contentT:@socket0:@body_existT
