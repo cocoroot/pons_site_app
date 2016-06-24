@@ -1,0 +1,5 @@
+o:Net::HTTPCreated:@http_versionI"1.1:ET:
+@codeI"201;T:@messageI"Created ;T:@header{I"x-frame-options;T[I"SAMEORIGIN;TI"x-xss-protection;T[I"1; mode=block;TI"x-content-type-options;T[I"nosniff;TI"content-type;T[I"$application/json; charset=utf-8;TI"	etag;T[I")W/"bbf9b5cc9391938f81065258e8b3a35e";TI"cache-control;T[I"(max-age=0, private, must-revalidate;TI"x-request-id;T[I")e60796a3-1f41-441d-983b-32897fb8c59a;TI"x-runtime;T[I"0.026331;TI"server;T[I"*WEBrick/1.3.1 (Ruby/2.1.0/2013-12-25);TI"	date;T[I""Thu, 23 Jun 2016 10:56:12 GMT;TI"content-length;T[I"187;TI"connection;T[I"
+close;TI"set-cookie;T[I" request_method=POST; path=/;T:
+@bodyI"»{"site_user_header_image":{"id":8,"site_user_id":1,"image":{"url":"/site_users/1/site_user_header_images/e16d3687-0ae5-497d-ba67-241b140c362c.jpg"},"image_name_for_user":"tachi_eye.jpg"}};T:
+@readT:	@uri0:@decode_contentT:@socket0:@body_existT

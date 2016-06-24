@@ -7,3 +7,4 @@ site_access_key: 8DC8D19E-8A35-43C8-95F4-49A316283591
 
 darrest_core:
   api_base: http://localhost:3000
+  stub: false
