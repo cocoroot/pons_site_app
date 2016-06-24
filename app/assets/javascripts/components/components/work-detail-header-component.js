@@ -5,16 +5,16 @@ import { CORE_CONTENTS_BASE_URL } from '../settings'
 
 export default class WorkDetailHeader extends Component {
 
+  onChangeInputTitle(e) {
+    this.props.actions.changeInputTitle(e.target.value)
+  }
+
   render() {
-    const { editMode, title, author, published_at } = this.props.values
-    const {
-      id,
-      nickname,
-      image
-    } = author
+    const { editMode, title, author, published_at, formControl } = this.props.values
+    const { id, nickname, image } = author
     let thumbnail_url = image.thumb.url ? CORE_CONTENTS_BASE_URL + image.thumb.url : ''
     let author_url = '/users/' + id
-    let form_title = title
+    let form_title = formControl.title
 
     let displayStyle = {
       display: editMode ? 'none' : 'block'
@@ -35,7 +35,7 @@ export default class WorkDetailHeader extends Component {
             {/* 表示用 */}
             <p style={displayStyle} className="workdetail-header-title">{title}</p>
             {/* 編集用 */}
-            <FormControl style={editStyle} type="text" name="title" value={form_title} />
+            <FormControl style={editStyle} type="text" name="title" value={form_title} onChange={(e) => this.onChangeInputTitle(e)} />
 
             <p>by <Link to={author_url}>{nickname}</Link>   {published_at}</p>
           </Media.Body>

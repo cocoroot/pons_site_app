@@ -1,7 +1,7 @@
 require 'json'
 
 class PonsApiController < ApplicationController
-  #after_action :save_response
+  # after_action :save_response
 
   def create_user
     # @response = DarrestCoreApi.new.create_site_user(user_id: @user_info.ex_user_id)
@@ -219,17 +219,17 @@ class PonsApiController < ApplicationController
     render json: result
   end
 
-  def save_response
-    #File.open("#{Rails.root}/spec/stubs/responses/darrest_core_api/#{params[:action]}.res", 'w') do |file|
-    File.open("#{Rails.root}/spec/stubs/responses/darrest_core_api/bad_request.res", 'w') do |file|
-      res = Marshal.dump(@response).force_encoding("UTF-8")
-      file.write res
-    end
-    # File.open("#{Rails.root}/spec/stubs/responses/darrest_core_api/#{params[:action]}.res", 'r') do |file|
-    #   obj = Marshal.load(file.read)
-    #   binding.pry
-    # end
-  end
+  # def save_response
+  #   #File.open("#{Rails.root}/spec/stubs/responses/darrest_core_api/#{params[:action]}.res", 'w') do |file|
+  #   File.open("#{Rails.root}/spec/stubs/responses/darrest_core_api/bad_request.res", 'w') do |file|
+  #     res = Marshal.dump(@response).force_encoding("UTF-8")
+  #     file.write res
+  #   end
+  #   # File.open("#{Rails.root}/spec/stubs/responses/darrest_core_api/#{params[:action]}.res", 'r') do |file|
+  #   #   obj = Marshal.load(file.read)
+  #   #   binding.pry
+  #   # end
+  # end
 
   def parse_response
     @result = JSON.parse(@response.body)

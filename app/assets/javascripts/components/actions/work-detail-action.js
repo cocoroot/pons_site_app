@@ -13,6 +13,38 @@ export function changeEditMode(mode) {
   }
 }
 
+//
+// Title
+//
+export const WKD_CHANGE_INPUT_TITLE = 'WKD_CHANGE_INPUT_TITLE'
+export function changeInputTitle(title) {
+  return {
+    type: WKD_CHANGE_INPUT_TITLE,
+    title: title
+  }
+}
+
+//
+// Control
+//
+export const WKD_CHANGE_WORK_STATUS = 'WKD_CHANGE_WORK_STATUS'
+export function changeWorkStatus(work_status) {
+  return {
+    type: WKD_CHANGE_WORK_STATUS,
+    work_status: work_status
+  }
+}
+
+//
+// Description
+//
+export const WKD_CHANGE_INPUT_DESCRIPTION = 'WKD_CHANGE_INPUT_DESCRIPTION'
+export function changeInputDescription(description) {
+  return {
+    type: WKD_CHANGE_INPUT_DESCRIPTION,
+    description: description
+  }
+}
 
 //
 // Comment
@@ -25,4 +57,3 @@ export function changeInputComment(comment) {
     comment: comment
   }
 }
-

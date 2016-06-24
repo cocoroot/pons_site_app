@@ -1,12 +1,13 @@
 
 require 'rails_helper'
 
-describe 'DarrestCoreApi', type: :request do
+describe 'API User', type: :request do
   before do
   end
 
   let(:access_token) do
-    'ZGlvbC3EmXps7OsgAdq17Tsp6opGZ3-Xn5jUDgjdM_Q'
+    'ZGlvbC3EmXps7OsgAdq17Tsp6opGZ3-Xn5jUDgjdM_Q' # site_user: 1
+    # 'NbDi5FOzBHml_VGMNNvfBt3XQorZSeLoiQmNgQdj7gA' # site_user: 2
   end
 
   describe 'GET /me' do
