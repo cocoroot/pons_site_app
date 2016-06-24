@@ -106,7 +106,7 @@ export default class WorkDetail extends Component {
     }
 
     const propsForDetailTags = {
-      values: { editMode, work_tags: currentWork.work_tags, tagControl },
+      values: { editMode, currentWork, tagControl },
       actions
     }
 

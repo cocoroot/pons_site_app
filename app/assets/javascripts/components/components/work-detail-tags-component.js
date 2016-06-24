@@ -9,32 +9,29 @@ export default class WorkDetailTags extends Component {
   }
 
   onCreateWorkTag() {
-    window.alert('add tag!')
+    let tag = this.props.values.tagControl.tag
     let id = this.props.values.currentWork.id
     let params = {
-      name: this.props.values.tagControl.tag
+      tag_name: tag
     }
-    this.props.createWorkTag(id, params)
+    this.props.actions.createWorkTag(id, params)
   }
 
-  onDeleteWorkTag() {
-    const work_tag_id = this.refs.work_tag_id.value
-    this.props.deleteWorkTag(work_tag_id)
+  onDeleteWorkTag(id) {
+    this.props.actions.deleteWorkTag(id)
   }
 
   render() {
-    // const { editMode, work_tags } = this.props.values
-    const { work_tags, tagControl } = this.props.values
-    var editMode = true
+    const { editMode, currentWork, tagControl } = this.props.values
     if (!editMode) {
       return (
         <div className="workdetail-tagbox">
           <h4><Glyphicon glyph="tags"/> 登録タグ</h4>
           <p className="workdetail-tags">
             {
-              work_tags.map((tag, index) => {
+              currentWork.work_tags.map(tag => {
                 return (
-                  <Button className="workdetail-tag" key={index}>{tag}</Button>
+                  <Button className="workdetail-tag" key={tag.id}>{tag.tag_name}</Button>
                 )
               })
             }
@@ -50,16 +47,18 @@ export default class WorkDetailTags extends Component {
               <InputGroup>
                 <FormControl type="text" value={tagControl.tag} onChange={(e) => this.onChangeInputTag(e)} />
                 <InputGroup.Button>
-                  <Button disable={tagControl.updating} onClick={()=>this.onCreateWorkTag()}>追加</Button>
+                  <Button disabled={tagControl.updating} onClick={()=>this.onCreateWorkTag()}>追加</Button>
                 </InputGroup.Button>
               </InputGroup>
             </FormGroup>
           </div>
           <p className="workdetail-tags">
             {
-              work_tags.map((tag, index) => {
+              currentWork.work_tags.map(tag => {
                 return (
-                  <Button className="workdetail-tag" key={index}>{tag}<Glyphicon glyph="remove" /></Button>
+                  <Button className="workdetail-tag" key={tag.id} onClick={()=>this.onDeleteWorkTag(tag.id)}>
+                    {tag.tag_name} <Glyphicon glyph="remove" />
+                  </Button>
                 )
               })
             }
