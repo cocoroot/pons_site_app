@@ -21,6 +21,14 @@
 .workdetail-control-publish  button {
   padding: 6px;
 }
+.workdetail-control-status {
+  position: absolute;
+  top: 0;
+  left:15px;
+  padding:6px 12px;
+  background-color: #eee;
+  // border:1px solid #ddd;
+}
 
 // response
 .workdetail-responsebox {

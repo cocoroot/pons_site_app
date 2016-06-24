@@ -14,6 +14,8 @@ function editMode(state = INITIAL_STATE_FOR_EDIT_MODE, action) {
       return INITIAL_STATE_FOR_EDIT_MODE
     case Actions.WKD_CHANGE_EDIT_MODE:
       return action.editMode
+    case ApiActions.API_UPDATE_WORK_SUCCESS:
+      return false
     default:
       return state
   }
@@ -131,7 +133,7 @@ export function commentControl(state = INITIAL_STATE_FOR_COMMENT_CONTROL, action
 const INITIAL_STATE_FOR_IMAGE_CONTROL = {
   uploading: false
 }
-export function imageControl(state = INITIAL_STATE_FOR_IMAGE_CONTROL, action) {
+function imageControl(state = INITIAL_STATE_FOR_IMAGE_CONTROL, action) {
   switch (action.type) {
     case Actions.API_CREATE_WORK_IMAGE_REQUEST:
       return Object.assign({}, state, {
@@ -147,11 +149,66 @@ export function imageControl(state = INITIAL_STATE_FOR_IMAGE_CONTROL, action) {
   }
 }
 
+const INITIAL_STATE_FOR_FORM_CONTROL = {
+  updating: false,
+  title: '',
+  description: '',
+  work_status: {
+    id: 0
+  }
+}
+function formControl(state = INITIAL_STATE_FOR_FORM_CONTROL, action) {
+  switch (action.type) {
+    case Actions.WKD_RESET:
+      return INITIAL_STATE_FOR_FORM_CONTROL
+
+    case ApiActions.API_CREATE_WORK_SUCCESS:
+    case ApiActions.API_UPDATE_WORK_SUCCESS:
+    case ApiActions.API_LOAD_WORK_SUCCESS:
+      var { title, description, work_status } = action.payload.work
+      return Object.assign({}, state, {
+        updating: false,
+        title,
+        description,
+        work_status
+      })
+
+    case ApiActions.API_UPDATE_WORK_REQUEST:
+      return Object.assign({}, state, {
+        updating: true
+      })
+
+    case ApiActions.API_UPDATE_WORK_FAILURE:
+      return Object.assign({}, state, {
+        updating: false
+      })
+
+    case Actions.WKD_CHANGE_INPUT_TITLE:
+      return Object.assign({}, state, {
+        title: action.title
+      })
+
+    case Actions.WKD_CHANGE_INPUT_DESCRIPTION:
+      return Object.assign({}, state, {
+        description: action.description
+      })
+
+    case Actions.WKD_CHANGE_WORK_STATUS:
+      return Object.assign({}, state, {
+        work_status: action.work_status
+      })
+
+    default:
+      return state
+  }
+}
+
 const workDetailReducer = combineReducers({
   editMode,
   currentWork,
   commentControl,
   imageControl,
+  formControl,
   me
 })
 
