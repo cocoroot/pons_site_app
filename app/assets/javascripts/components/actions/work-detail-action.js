@@ -47,6 +47,17 @@ export function changeInputDescription(description) {
 }
 
 //
+// Tag
+//
+export const WKD_CHANGE_INPUT_TAG = 'WKD_CHANGE_INPUT_TAG'
+export function changeInputTag(tag) {
+  return {
+    type: WKD_CHANGE_INPUT_TAG,
+    tag: tag
+  }
+}
+
+//
 // Comment
 //
 

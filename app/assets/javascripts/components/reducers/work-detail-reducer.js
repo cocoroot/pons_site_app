@@ -161,7 +161,6 @@ function formControl(state = INITIAL_STATE_FOR_FORM_CONTROL, action) {
   switch (action.type) {
     case Actions.WKD_RESET:
       return INITIAL_STATE_FOR_FORM_CONTROL
-
     case ApiActions.API_CREATE_WORK_SUCCESS:
     case ApiActions.API_UPDATE_WORK_SUCCESS:
     case ApiActions.API_LOAD_WORK_SUCCESS:
@@ -172,32 +171,49 @@ function formControl(state = INITIAL_STATE_FOR_FORM_CONTROL, action) {
         description,
         work_status
       })
-
     case ApiActions.API_UPDATE_WORK_REQUEST:
       return Object.assign({}, state, {
         updating: true
       })
-
     case ApiActions.API_UPDATE_WORK_FAILURE:
       return Object.assign({}, state, {
         updating: false
       })
-
     case Actions.WKD_CHANGE_INPUT_TITLE:
       return Object.assign({}, state, {
         title: action.title
       })
-
     case Actions.WKD_CHANGE_INPUT_DESCRIPTION:
       return Object.assign({}, state, {
         description: action.description
       })
-
     case Actions.WKD_CHANGE_WORK_STATUS:
       return Object.assign({}, state, {
         work_status: action.work_status
       })
+    default:
+      return state
+  }
+}
 
+const INITIAL_STATE_FOR_TAG_CONTROL = { tag: '', updating: false }
+function tagControl(state = INITIAL_STATE_FOR_TAG_CONTROL, action) {
+  switch (action.type) {
+    case Actions.WKD_RESET:
+    case ApiActions.API_CREATE_WORK_TAG_SUCCESS:
+      return INITIAL_STATE_FOR_TAG_CONTROL
+    case Actions.WKD_CHANGE_INPUT_TAG:
+      return Object.assign({}, state, {
+        tag: action.tag
+      })
+    case ApiActions.API_CREATE_WORK_TAG_REQUEST:
+      return Object.assign({}, state, {
+        updating: true
+      })
+    case ApiActions.API_CREATE_WORK_TAG_FAILURE:
+      return Object.assign({}, state, {
+        updating: false
+      })
     default:
       return state
   }
@@ -209,6 +225,7 @@ const workDetailReducer = combineReducers({
   commentControl,
   imageControl,
   formControl,
+  tagControl,
   me
 })
 
